@@ -1,9 +1,5 @@
 # Team_Project
 
-test test
-stergios
-gia to poutso
-
 Tables
 users,roles,user_roles
 
