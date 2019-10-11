@@ -33,3 +33,23 @@ plugin για πολυπλοκοτητα password
 hushpw  , checkpw
 
 session.ivalidate() an kanei log out
+
+
+Entities
+User
+Role
+Comment
+Post
+Trip -> Photos, Calendar, Notes (iclude links), Budget
+Location
+Transportation
+Accomodation
+Rentals
+Horeca
+Sightseeing
+History
+Tradition
+
+
+
+
