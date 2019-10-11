@@ -36,19 +36,20 @@ session.ivalidate() an kanei log out
 
 
 Entities
-User
-Role
-Comment
-Post
-Trip -> Photos, Calendar, Notes (iclude links), Budget
-Location
-Transportation
-Accomodation
-Rentals
-Horeca
-Sightseeing
-History
-Tradition
+
+User -> id ,( firstname, lastname, email, password , profile_photo )
+Admin ->id ,firstname, lastname, email, password 
+Comment -> id , timestamp , text , firstname , lastname , user_id
+Post -> id , timestamp , text , firstname , lastname , trip ,user_id
+Trip -> id , Photos, Calendar, Notes (iclude links), Budget, user_id
+Location -> id , link
+Transportation -> id , link
+Accomodation -> id , link
+Rentals -> id , link
+Horeca -> id , link
+Sightseeing -> id , link
+History -> id , link
+Tradition ->id , link
 
 
 
