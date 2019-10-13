@@ -12,7 +12,7 @@
 
     <body>
 
-        <spring:form modelAttribute="admin" action="${pageContext.request.contextPath}/admin/postRegister" method="POST">
+        <spring:form modelAttribute="admin" action="${pageContext.request.contextPath}/admin/postRegister" method="POST" id="adminRegisterForm">
 
             <div class="form-group">
                 <spring:label path="adminName">Username</spring:label>
@@ -37,5 +37,7 @@
         </spring:form>
 
 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.js"></script>
     </body>
 </html> 

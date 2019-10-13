@@ -13,7 +13,7 @@
 
     <body>
 
-        <spring:form modelAttribute="user" action="${pageContext.request.contextPath}/user/postRegister" method="POST">
+        <spring:form modelAttribute="user" action="${pageContext.request.contextPath}/user/postRegister" method="POST" id="registerForm">
 
             <div class="form-group">
                 <spring:label  path="firstname">First Name</spring:label>
@@ -40,6 +40,11 @@
                 <spring:input path="password" cssClass="form-control" placeholder="Enter password..."/>
 
             </div>
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input name="confirmPassword" Class="form-control" placeholder="Enter password..."/>
+
+            </div>
             </br>
             <div class="form-group">
                 <button type="submit" Class="btn btn-primary btn-block">Save</button>
@@ -48,8 +53,10 @@
         </spring:form>
 
 
-  
-            <script type="text/javascript" src="../../../resources/static/js/validateRegister.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/additional-methods.js"></script>
+        <script type="text/javascript" src="../../../resources/static/js/register.js"></script>
 
 
     </body>
