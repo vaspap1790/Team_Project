@@ -32,23 +32,10 @@ plugin για πολυπλοκοτητα password
 
 hushpw  , checkpw
 
-session.ivalidate() an kanei log out
+session.ivalidate() an kanei log out αλλιώς κλείνει μόνο του μετά από 30 λεπτά (ρυθμίζεται στο web.xml)
 
-
-Entities
-User
-Role
-Comment
-Post
-Trip -> Photos, Calendar, Notes (iclude links), Budget
-Location
-Transportation
-Accomodation
-Rentals
-Horeca
-Sightseeing
-History
-Tradition
+αν δε θελω να γεμισω το session για να περασω μια παραμετρο μετα απο redirect -> addFlashAAttribute("...","...") -> ζούνε μόνο για ένα 'πήγαινε-έλα'
+στον controller (RedirectAttribute)
 
 
 
