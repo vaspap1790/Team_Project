@@ -1,26 +1,25 @@
 package com.mainpackage.tripPlan.model;
 
 import java.io.Serializable;
+import java.sql.Date;
+import java.time.LocalDate;
+import org.springframework.format.annotation.DateTimeFormat;
 
 public class Flight implements Serializable{
 
     private String country="US";
     private String currency="USD";
     private String locale="en-US";
-    private int adults;  
+    private String adults;  
     private String originPlace;
-    private String destinationPlace;
-    private String outboundDate;
-    private String inboundDate;
-    
-    private int infants;
-    private int children;
+    private String destinationPlace;   
+    private Date outboundDate;   
+    private Date inboundDate;  
     private String cabinClass;
+  
     public Flight() {
     }
-    
-    
-    
+
     public void setCountry(String country) {
         this.country = country;
     }
@@ -33,8 +32,8 @@ public class Flight implements Serializable{
         this.locale = locale;
     }
 
-    public void setCabinClass(String cabinClass) {
-        this.cabinClass = cabinClass;
+    public void setAdults(String adults) {
+        this.adults = adults;
     }
 
     public void setOriginPlace(String originPlace) {
@@ -45,24 +44,10 @@ public class Flight implements Serializable{
         this.destinationPlace = destinationPlace;
     }
 
-    public void setOutboundDate(String outboundDate) {
-        this.outboundDate = outboundDate;
-    }
+   
 
-    public void setInboundDate(String inboundDate) {
-        this.inboundDate = inboundDate;
-    }
-
-    public void setAdults(int adults) {
-        this.adults = adults;
-    }
-
-    public void setInfants(int infants) {
-        this.infants = infants;
-    }
-
-    public void setChildren(int children) {
-        this.children = children;
+    public void setCabinClass(String cabinClass) {
+        this.cabinClass = cabinClass;
     }
 
     public String getCountry() {
@@ -77,8 +62,8 @@ public class Flight implements Serializable{
         return locale;
     }
 
-    public String getCabinClass() {
-        return cabinClass;
+    public String getAdults() {
+        return adults;
     }
 
     public String getOriginPlace() {
@@ -89,25 +74,39 @@ public class Flight implements Serializable{
         return destinationPlace;
     }
 
-    public String getOutboundDate() {
+    public Date getOutboundDate() {
         return outboundDate;
     }
 
-    public String getInboundDate() {
+    public Date getInboundDate() {
         return inboundDate;
     }
 
-    public int getAdults() {
-        return adults;
+    public void setOutboundDate(Date outboundDate) {
+        this.outboundDate = outboundDate;
     }
 
-    public int getInfants() {
-        return infants;
+    public void setInboundDate(Date inboundDate) {
+        this.inboundDate = inboundDate;
     }
 
-    public int getChildren() {
-        return children;
+ 
+
+    public String getCabinClass() {
+        return cabinClass;
     }
+
+    @Override
+    public String toString() {
+        return "Flight{" + "country=" + country + ", currency=" + currency + ", locale=" + locale + ", adults=" + adults + ", originPlace=" + originPlace + ", destinationPlace=" + destinationPlace + ", outboundDate=" + outboundDate + ", inboundDate=" + inboundDate + ", cabinClass=" + cabinClass + '}';
+    }
+    
+    
+    
+ 
+
+
+  
     
     
     

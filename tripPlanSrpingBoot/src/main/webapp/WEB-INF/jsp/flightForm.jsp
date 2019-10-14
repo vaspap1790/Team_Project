@@ -1,9 +1,5 @@
-<%-- 
-    Document   : flightForm
-    Created on : 14 Οκτ 2019, 4:22:49 μμ
-    Author     : vasil
---%>
-
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="spring" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,6 +8,40 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>adassa!</h1>
+
+        <spring:form modelAttribute="flight" action="${pageContext.request.contextPath}/flight/postRegister" method="POST" onsubmit="">
+
+            <div >
+                <spring:hidden path="country"/>  
+            </div>
+            <div class="col-md-2">
+                <spring:hidden path="currency" />
+            </div>
+            <div class="col-md-2">       
+                <spring:hidden path="locale" />
+            </div>
+            <div class="col-md-2">       
+                <spring:input path="originPlace" placeholder="From *" maxlength="20" required="required" />
+            </div>
+            <div class="col-md-2">       
+                <spring:input path="destinationPlace" type="text" placeholder="to *" maxlength="20" required="required" />
+            </div>
+            <div class="col-md-2">       
+                <spring:input path="outboundDate" type="date" placeholder="outbounddate *" maxlength="20" required="required" />
+            </div>
+            <div class="col-md-2">       
+                <spring:input path="adults" type="text" placeholder="adults *" maxlength="20" required="required" />
+            </div>
+            <div class="col-md-2">       
+                <spring:input path="inboundDate" type="date" placeholder="inbounddate *" maxlength="20" required="required" />
+            </div>
+          
+             <div class="col-md-2">       
+                <spring:input path="cabinClass" type="text" placeholder="cabin *" maxlength="20" required="required" />
+            </div>
+            
+            <button type="submit" class="btnSubmit">Search</button>   
+        </spring:form>
     </body>
 </html>
