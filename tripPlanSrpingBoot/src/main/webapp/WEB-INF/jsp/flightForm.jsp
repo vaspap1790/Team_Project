@@ -44,5 +44,6 @@
             
             <button type="submit" class="btnSubmit">Search</button>   
         </spring:form>
+            
     </body>
 </html>
