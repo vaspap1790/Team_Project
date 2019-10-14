@@ -1,6 +1,7 @@
 package com.mainpackage.tripPlan.model;
 
 import java.io.Serializable;
+import java.sql.Blob;
 import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -70,7 +71,7 @@ public class User implements Serializable {
     private String password;
     @Lob
     @Column(name = "profile_photo")
-    private MultipartFile profilePhoto;
+    private Blob profilePhoto;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
     private Collection<Trip> tripCollection;
 
@@ -138,14 +139,13 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public MultipartFile getProfilePhoto() {
+    public Blob getProfilePhoto() {
         return profilePhoto;
     }
 
-    public void setProfilePhoto(MultipartFile profilePhoto) {
+    public void setProfilePhoto(Blob profilePhoto) {
         this.profilePhoto = profilePhoto;
     }
-
 
 
     @XmlTransient

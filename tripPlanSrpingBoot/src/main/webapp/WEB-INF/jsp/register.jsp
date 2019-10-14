@@ -13,7 +13,7 @@
 
     <body>
 
-        <spring:form modelAttribute="user" action="${pageContext.request.contextPath}/user/postRegister" method="POST" id="registerForm">
+        <spring:form modelAttribute="user" action="${pageContext.request.contextPath}/user/postRegister" method="POST" id="registerForm" enctype="multipart/form-data">
 
             <div class="form-group">
                 <spring:label  path="firstname">First Name</spring:label>

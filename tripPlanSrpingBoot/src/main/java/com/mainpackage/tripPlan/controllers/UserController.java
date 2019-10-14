@@ -8,6 +8,9 @@ import com.mainpackage.tripPlan.services.FileService;
 import com.mainpackage.tripPlan.services.UserService;
 import com.mainpackage.tripPlan.utilities.Check;
 import com.mainpackage.tripPlan.utilities.Encryption;
+import java.io.IOException;
+import java.sql.Blob;
+import java.sql.SQLException;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -61,7 +64,7 @@ public class UserController {
     }
 
     @PostMapping(value = "postRegister")
-    public String post(@Valid @ModelAttribute("user") User user, @RequestParam("file") MultipartFile file, BindingResult br, ModelMap m) {
+    public String post(@Valid @ModelAttribute("user") User user, @RequestParam("photo") MultipartFile file, BindingResult br, ModelMap m) throws IOException, SQLException {
 
         if (br.hasErrors()) {
             return "redirect:/user/register";
@@ -72,7 +75,8 @@ public class UserController {
             m.addAttribute("failed", failed);
             return "redirect:/user/register";
         }
-        
+
+        fileService.setUserPhoto(file, user);
         userService.insert(user);
         return "redirect:/";
     }
