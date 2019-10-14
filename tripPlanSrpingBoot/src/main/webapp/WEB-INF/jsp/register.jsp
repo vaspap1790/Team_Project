@@ -42,8 +42,13 @@
             </div>
             <div class="form-group">
                 <label for="confirmPassword">Confirm Password</label>
-                <input name="confirmPassword" Class="form-control" placeholder="Enter password..."/>
+                <input name="confirmPassword" class="form-control" placeholder="Enter password..."/>
 
+            </div>
+            <div class="form-group">
+                <label for="photo">Photo</label>
+                <input name="photo" type="file" class="form-control"/>
+                
             </div>
             </br>
             <div class="form-group">

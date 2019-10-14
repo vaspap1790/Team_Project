@@ -3,9 +3,11 @@ package com.mainpackage.tripPlan.controllers;
 
 import com.mainpackage.tripPlan.model.User;
 import com.mainpackage.tripPlan.services.UserService;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -41,8 +43,11 @@ public class UserController {
     }
 
     @PostMapping(value = "postRegister")
-    public String post(@ModelAttribute("user") User user) {
-
+    public String post(@Valid @ModelAttribute("user") User user, BindingResult br) {
+        
+        if (br.hasErrors()) {
+            return "register";
+        }
         userService.insert(user);
 
         return "redirect:/";

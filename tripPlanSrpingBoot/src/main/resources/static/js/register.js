@@ -4,6 +4,10 @@ jQuery.validator.addMethod("lettersonly", function (value, element) {
     return this.optional(element) || /^[A-Za-z ]+$/i.test(value);
 }, "Letters and spaces only please");
 
+$.validator.addMethod('filesize', function (value, element, max) {
+    return this.optional(element) || (element.files[0].size <= max);
+}, 'Photo size must be less than {0}');
+
 $().ready(val("#registerForm"));
 
 function val(text) {
@@ -34,6 +38,9 @@ function val(text) {
             },
             confirmPassword: {
                 equalTo:"#password"
+            },
+            photo: {
+                filesize: 104857600
             }
         },
         messages: {
