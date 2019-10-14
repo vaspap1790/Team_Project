@@ -29,6 +29,7 @@ public class UserService {
 
     public void insert(User u) {
 
+
         String hashed = encrypt.hashPassword(u.getPassword());
         u.setPassword(hashed);
 

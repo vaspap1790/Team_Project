@@ -20,6 +20,7 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 @Table(name = "user")
@@ -69,7 +70,7 @@ public class User implements Serializable {
     private String password;
     @Lob
     @Column(name = "profile_photo")
-    private byte[] profilePhoto;
+    private MultipartFile profilePhoto;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
     private Collection<Trip> tripCollection;
 
@@ -137,13 +138,15 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public byte[] getProfilePhoto() {
+    public MultipartFile getProfilePhoto() {
         return profilePhoto;
     }
 
-    public void setProfilePhoto(byte[] profilePhoto) {
+    public void setProfilePhoto(MultipartFile profilePhoto) {
         this.profilePhoto = profilePhoto;
     }
+
+
 
     @XmlTransient
     public Collection<Trip> getTripCollection() {
