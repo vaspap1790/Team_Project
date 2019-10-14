@@ -46,7 +46,7 @@ public class UserController {
     public String post(@Valid @ModelAttribute("user") User user, BindingResult br) {
         
         if (br.hasErrors()) {
-            return "register";
+            return "redirect:/user/register";
         }
         userService.insert(user);
 
