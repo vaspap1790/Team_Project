@@ -66,4 +66,8 @@ kostas 5678
 mitsos 0123
 billy 9876
 
+mail
+tripPlannerBeta@gmail.com
+mivast13
+
 
