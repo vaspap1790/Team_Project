@@ -13,8 +13,7 @@ public class Flight implements Serializable{
     private String adults;  
     private String originPlace;
     private String destinationPlace;   
-    private Date outboundDate;   
-    private Date inboundDate;  
+    private Date outboundDate;     
     private String cabinClass;
   
     public Flight() {
@@ -78,17 +77,13 @@ public class Flight implements Serializable{
         return outboundDate;
     }
 
-    public Date getInboundDate() {
-        return inboundDate;
-    }
+  
 
     public void setOutboundDate(Date outboundDate) {
         this.outboundDate = outboundDate;
     }
 
-    public void setInboundDate(Date inboundDate) {
-        this.inboundDate = inboundDate;
-    }
+   
 
  
 
@@ -98,9 +93,10 @@ public class Flight implements Serializable{
 
     @Override
     public String toString() {
-        return "Flight{" + "country=" + country + ", currency=" + currency + ", locale=" + locale + ", adults=" + adults + ", originPlace=" + originPlace + ", destinationPlace=" + destinationPlace + ", outboundDate=" + outboundDate + ", inboundDate=" + inboundDate + ", cabinClass=" + cabinClass + '}';
+        return "Flight{" + "country=" + country + ", currency=" + currency + ", locale=" + locale + ", adults=" + adults + ", originPlace=" + originPlace + ", destinationPlace=" + destinationPlace + ", outboundDate=" + outboundDate + ", cabinClass=" + cabinClass + '}';
     }
-    
+
+   
     
     
  

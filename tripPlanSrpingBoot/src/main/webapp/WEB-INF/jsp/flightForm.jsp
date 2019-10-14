@@ -31,10 +31,11 @@
                 <spring:input path="outboundDate" type="date" placeholder="outbounddate *" maxlength="20" required="required" />
             </div>
             <div class="col-md-2">       
-                <spring:input path="adults" type="text" placeholder="adults *" maxlength="20" required="required" />
+                <spring:input path="adults" type="text" placeholder="epivates *" maxlength="20" required="required" />
             </div>
-            <div class="col-md-2">       
-                <spring:input path="inboundDate" type="date" placeholder="inbounddate *" maxlength="20" required="required" />
+            <div class="col-md-2">  
+<!--                <label for="inboudDate">epistrofi</label>-->
+                <input name="inboundDate" type="date" placeholder="epistrofi *" maxlength="20"  />
             </div>
           
              <div class="col-md-2">       
