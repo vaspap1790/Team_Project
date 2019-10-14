@@ -36,8 +36,13 @@ public class FlightController {
     public String postFlight(@ModelAttribute("flight") Flight flight,RedirectAttributes redirectAttrs,
             @RequestParam(name = "inboundDate")@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date inboundDate ) throws IOException, UnirestException {
          
-         System.out.println(inboundDate);
+         
         String sessionKey=sky.CreateSession(flight,inboundDate);
+        
+        if(sessionKey==null){
+            return "redirect:/flight/register";
+        }
+        
         redirectAttrs.addFlashAttribute("sessionKey", sessionKey);
         
         return "redirect:/flight/showFlights";

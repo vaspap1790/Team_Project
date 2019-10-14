@@ -8,7 +8,7 @@
     </head>
     <body>
         <h1>Hello ${role}</h1>
-         ${Json}
+      
         <script>
         console.log(${Json})
         </script>

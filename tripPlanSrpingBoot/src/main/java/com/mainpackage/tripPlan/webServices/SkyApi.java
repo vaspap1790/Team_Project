@@ -40,8 +40,12 @@ public class SkyApi {
                 .field("outboundDate",f.getOutboundDate())
                 .field("adults",f.getAdults())
                 .asJson();
-         System.out.println(response.getHeaders());
+         
         List session = response.getHeaders().get("Location");
+         System.out.println(session);
+        if (session==null){
+            return null;
+        }
         String[] ar = session.get(0).toString().split("/");
         String sessionKey = ar[ar.length - 1];
 
