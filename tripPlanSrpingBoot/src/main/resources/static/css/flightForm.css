@@ -14,9 +14,13 @@
     background-position: center center;
 }
 
-#flightform {
+ #flightform {
     background-color: rgb(4, 4, 44);
     border: none !important;
+} 
+
+#map {
+    margin-left: 862px;
 }
 
 h1 {
