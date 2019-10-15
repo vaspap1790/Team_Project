@@ -7,6 +7,8 @@ import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.Date;
 import org.json.JSONArray;
 import org.json.simple.JSONObject;
@@ -69,7 +71,9 @@ public class FlightController {
 
     @GetMapping(value = "city/{city}", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public String cities(ModelMap m, @PathVariable("city") String city) throws UnirestException {
+    public String cities(ModelMap m, @PathVariable("city") String city) throws UnirestException, UnsupportedEncodingException {
+     
+
         HttpResponse<String> response = Unirest.get("https://cometari-airportsfinder-v1.p.rapidapi.com/api/airports/by-text?text=" + city)
                 .header("x-rapidapi-host", "cometari-airportsfinder-v1.p.rapidapi.com")
                 .header("x-rapidapi-key", "2f7c656e8emsh52fa210fd1c2272p1016dbjsn00574276a26e")
