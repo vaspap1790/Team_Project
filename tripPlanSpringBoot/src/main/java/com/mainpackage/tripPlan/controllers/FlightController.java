@@ -9,6 +9,9 @@ import com.mashape.unirest.http.exceptions.UnirestException;
 import java.io.IOException;
 import java.util.Date;
 import org.json.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.MediaType;
@@ -52,9 +55,12 @@ public class FlightController {
     }
 
     @GetMapping(value = "showFlights")
-    public String showFlights(ModelMap m) throws UnirestException {
+    public String showFlights(ModelMap m) throws UnirestException, ParseException {
 
-        JsonNode Json = sky.SessionResults(m.get("sessionKey").toString());
+        String JsonString = sky.SessionResults(m.get("sessionKey").toString());
+
+        JSONParser jsonParser = new JSONParser();
+        JSONObject Json = (JSONObject) jsonParser.parse(JsonString);
 
         m.addAttribute("Json", Json);
 
@@ -68,7 +74,7 @@ public class FlightController {
                 .header("x-rapidapi-host", "cometari-airportsfinder-v1.p.rapidapi.com")
                 .header("x-rapidapi-key", "2f7c656e8emsh52fa210fd1c2272p1016dbjsn00574276a26e")
                 .asString();
-        
+
         String cities = response.getBody();
 
         return cities;
