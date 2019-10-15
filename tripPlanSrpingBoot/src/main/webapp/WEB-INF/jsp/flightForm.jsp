@@ -83,9 +83,18 @@
                     </div>
                 </spring:form>
             </div>
+<<<<<<< HEAD
         </div>
 
     </div>
 </body>
 
 </html>
+=======
+            
+            <button type="submit" class="btnSubmit">Search</button>   
+        </spring:form>
+            
+    </body>
+</html>
+>>>>>>> 84134137733b0c041351f25f70833ab1758d0524
