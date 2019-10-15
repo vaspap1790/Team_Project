@@ -51,11 +51,11 @@
                         <div class="form-row">
                             <div class="form-group col-md-2">
                                 <spring:label path="originPlace">From</spring:label>
-                                <spring:input path="originPlace" type="text" placeholder="From *" />
+                                <spring:input class="autocomplete" path="originPlace" type="text" placeholder="From *" />
                             </div>
                             <div class="form-group col-md-2">
                                 <spring:label path="destinationPlace">To</spring:label>
-                                <spring:input path="destinationPlace" type="text" placeholder="To *" />
+                                <spring:input class="autocomplete" path="destinationPlace" type="text" placeholder="To *" />
                             </div>
                             <div class="form-group col-md-2">
                                 <spring:label path="originPlace">Depart</spring:label>
@@ -82,6 +82,9 @@
                 </div>
             </div>
         </div>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+                <script type="text/javascript" src="${pageContext.request.contextPath}/js/flightJs.js"></script>
+
     </body>
 
 </html>

@@ -57,19 +57,5 @@ public class SkyApi {
 
         return Json;
    }  
-    public JSONArray getIata(String city) throws UnirestException {
-
-        HttpResponse<JsonNode> response = Unirest.get("https://cometari-airportsfinder-v1.p.rapidapi.com/api/airports/by-text?text="+city)
-                .header("x-rapidapi-host", "cometari-airportsfinder-v1.p.rapidapi.com")
-                .header("x-rapidapi-key", "2f7c656e8emsh52fa210fd1c2272p1016dbjsn00574276a26e")
-                .asJson();
-        
-        if (response.getStatus() != 200) {
-            return null;
-        }
-        
-     JSONArray cities=response.getBody().getArray();
-     
-        return cities;
-    }
+  
 }
