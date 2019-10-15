@@ -40,16 +40,13 @@ public class SkyApi {
 
         List session = response.getHeaders().get("Location");
 
-        if (response.getStatus() != 200) {
-            return null;
-        }
         String[] ar = session.get(0).toString().split("/");
         String sessionKey = ar[ar.length - 1];
 
         return sessionKey;
     }
 
-    public JsonNode SessionResults(String sessionKey) throws UnirestException {
+   public JsonNode SessionResults(String sessionKey) throws UnirestException {
 
         HttpResponse<JsonNode> response = Unirest.get("https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/pricing/uk2/v1.0/" + sessionKey + "?pageIndex=0&pageSize=10")
                 .header("X-RapidAPI-Host", "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com")
@@ -59,8 +56,7 @@ public class SkyApi {
         JsonNode Json = response.getBody();
 
         return Json;
-    }
-    
+   }  
     public JSONArray getIata(String city) throws UnirestException {
 
         HttpResponse<JsonNode> response = Unirest.get("https://cometari-airportsfinder-v1.p.rapidapi.com/api/airports/by-text?text="+city)
