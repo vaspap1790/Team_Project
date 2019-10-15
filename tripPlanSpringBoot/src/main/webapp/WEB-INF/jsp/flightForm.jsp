@@ -51,11 +51,11 @@
                         <div class="form-row">
                             <div class="form-group col-md-2">
                                 <spring:label path="originPlace">From</spring:label>
-                                <spring:input class="autocomplete" path="originPlace" type="text" placeholder="From *" />
+                                <spring:input cssClass="autocomplete"  path="originPlace" type="text" placeholder="From *" />
                             </div>
                             <div class="form-group col-md-2">
                                 <spring:label path="destinationPlace">To</spring:label>
-                                <spring:input class="autocomplete" path="destinationPlace" type="text" placeholder="To *" />
+                                <spring:input cssClass="autocomplete" path="destinationPlace" type="text" placeholder="To *" />
                             </div>
                             <div class="form-group col-md-2">
                                 <spring:label path="originPlace">Depart</spring:label>

@@ -3,7 +3,7 @@
             });
 
             function callRest() {
-                var userinput = $(".autocomplete").val();
+                var userinput = $(this).val();
                 
                 $.ajax({
                     url: "city/" + userinput
@@ -12,7 +12,7 @@
                     $.each(data, function (i,json) {
                        let name= json.name;
                        let code=json.code;
-                       console.log(name+" "+code)
+                       console.log(name+" "+code);
                     });
                 });
             }

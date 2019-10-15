@@ -11,7 +11,7 @@
       ${Json}
         <script>
 
-        console.log(${Json})
+        console.log(${Json});
         
         </script>
     </body>
