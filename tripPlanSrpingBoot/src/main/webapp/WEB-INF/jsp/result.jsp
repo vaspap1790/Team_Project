@@ -11,6 +11,8 @@
       
         <script>
         console.log(${Json})
+        console.log(${city})
+        
         </script>
     </body>
 </html>
