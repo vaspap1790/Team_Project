@@ -8,10 +8,10 @@
     </head>
     <body>
         <h1>Hello ${role}</h1>
-      
+      ${Json}
         <script>
-        console.log(${Json})
-        console.log(${city})
+
+        console.log(${Json});
         
         </script>
     </body>

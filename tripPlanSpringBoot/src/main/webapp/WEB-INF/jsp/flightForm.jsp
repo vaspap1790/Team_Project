@@ -55,6 +55,7 @@
                                 href="https://gr.skyscanner.com/inspire/map?outboundDate=2019-10-14&outboundPlace=&preferDirects=false">Map</a>
                         </div>
 
+<<<<<<< HEAD
                     </div>
 
                     <div class="form-row">
@@ -69,6 +70,33 @@
                         <div class="form-group col-md-2">
                             <spring:label path="originPlace">Depart</spring:label>
                             <spring:input path="outboundDate" type="date" placeholder="outbounddate *" />
+=======
+                        <div class="form-row">
+                            <div class="form-group col-md-2">
+                                <spring:label path="originPlace">From</spring:label>
+                                <spring:input cssClass="autocomplete"  path="originPlace" type="text" placeholder="From *" />
+                            </div>
+                            <div class="form-group col-md-2">
+                                <spring:label path="destinationPlace">To</spring:label>
+                                <spring:input cssClass="autocomplete" path="destinationPlace" type="text" placeholder="To *" />
+                            </div>
+                            <div class="form-group col-md-2">
+                                <spring:label path="originPlace">Depart</spring:label>
+                                <spring:input path="outboundDate" type="date" placeholder="outbounddate *" />
+                            </div>
+                            <div class="col-md-2">
+                                <label path="inboundDate">Return</label>
+                                <input name="inboundDate" type="date" placeholder="epistrofi *" />
+                            </div>
+                            <div class="form-group col-md-2">
+                                <spring:label path="adults">Travelers</spring:label>
+                                <spring:input path="adults" type="text" placeholder="Travelers *" />
+                            </div>
+                            <div class="col-md-2">
+                                <spring:label path="cabinClass">Cabin Class</spring:label>
+                                <spring:input path="cabinClass" type="text" placeholder="Cabin Class *" />
+                            </div>
+>>>>>>> ac746de19ff202cec96430c35d502082d4f867d5
                         </div>
                         <div class="col-md-2">
                             <label path="inboundDate">Return</label>
@@ -96,7 +124,14 @@
                 </spring:form>
             </div>
         </div>
+<<<<<<< HEAD
     </div>
 </body>
+=======
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+                <script type="text/javascript" src="${pageContext.request.contextPath}/js/flightJs.js"></script>
+
+    </body>
+>>>>>>> ac746de19ff202cec96430c35d502082d4f867d5
 
 </html>
