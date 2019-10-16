@@ -1,6 +1,5 @@
 package com.mainpackage.tripPlan.controllers;
 
-import com.mainpackage.tripPlan.model.Esky;
 import com.mainpackage.tripPlan.model.Flight;
 import com.mainpackage.tripPlan.webServices.SkyApi;
 import com.mashape.unirest.http.HttpResponse;
@@ -8,8 +7,6 @@ import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.time.LocalDate;
 import java.util.*;
 import org.json.simple.JSONObject;
@@ -17,10 +14,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -87,37 +81,5 @@ public class FlightController {
 
         return cities;
     }
-    
-    ////////
-    @GetMapping(value = "register1")
-    public String preFlightForm1(ModelMap m) {
-        Esky esky=new Esky();
-        esky.setPy("0");
-        esky.setPi("0");
-        esky.setPc("0");
-        m.addAttribute("esky", esky);
-        return "flightFormTest";
-    }
-    
-       @PostMapping(value = "postRegister1")
-    public ResponseEntity<Object> postFlight1(@ModelAttribute("esky") Esky esky, RedirectAttributes redirectAttrs
-    ,@RequestParam(name = "returnDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate returnDate) throws IOException, UnirestException, URISyntaxException {
-       
-        String link= "https://www.esky.gr/flights/select/"+esky.getType()+"/ap/"+esky.getOriginPlace()+"/ap/"+esky.getDestinationPlace()+"?";   
-      
-        Map<String, String> map=new HashMap<>();
-         
-           map.put("departureDate", esky.getDepartureDate().toString());
-           if (returnDate!=null){map.put("returnDate", returnDate.toString());}       
-           map.put("pa", esky.getPa());
-           map.put("py", esky.getPy());
-           map.put("pc", esky.getPc());
-           map.put("pi", esky.getPi());
-           map.put("sc", esky.getSc());        
-           
-       URI yahoo = new URI(link+sky.getParamsString(map));
-    HttpHeaders httpHeaders = new HttpHeaders();
-    httpHeaders.setLocation(yahoo);
-    return new ResponseEntity<>(httpHeaders, HttpStatus.SEE_OTHER);
-    }
+ 
 }
