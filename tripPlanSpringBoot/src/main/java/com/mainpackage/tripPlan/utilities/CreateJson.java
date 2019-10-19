@@ -1,6 +1,7 @@
 
 package com.mainpackage.tripPlan.utilities;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -17,4 +18,11 @@ public class CreateJson {
         return json;
     }
     
+    public JSONArray createJsonArray(String jsonString) throws ParseException{
+        
+        JSONParser jsonParser = new JSONParser();
+        JSONArray json = (JSONArray) jsonParser.parse(jsonString);
+
+        return json;
+    }
 }

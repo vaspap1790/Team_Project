@@ -4,114 +4,171 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>JSP Page</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+                integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+                integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+                integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/e41a5911e2.js"></script>
-    <link href="${pageContext.request.contextPath}/css/flightForm.css" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/e41a5911e2.js"></script>
+        <link href="${pageContext.request.contextPath}/css/flightForm.css" rel="stylesheet">
+        <style>
+            .ui-autocomplete {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                z-index: 1000;
+                float: left;
+                display: none;
+                min-width: 160px;   
+                padding: 4px 0;
+                margin: 0 0 10px 25px;
+                list-style: none;
+                background-color: #ffffff;
+                border-color: #ccc;
+                border-color: rgba(0, 0, 0, 0.2);
+                border-style: solid;
+                border-width: 1px;
+                -webkit-border-radius: 5px;
+                -moz-border-radius: 5px;
+                border-radius: 5px;
+                -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+                -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+                -webkit-background-clip: padding-box;
 
-</head>
+                background-clip: padding-box;
+                *border-right-width: 2px;
+                *border-bottom-width: 2px;
+            }
 
-<body>
+            .ui-menu-item > a.ui-corner-all {
+                display: block;
+                padding: 3px 15px;
+                clear: both;
+                font-weight: normal;
+                line-height: 18px;
+                color: #555555;
+                white-space: nowrap;
+                text-decoration: none;
+            }
 
-    <div class="mainpage">
+            .ui-state-hover, .ui-state-active {
+                color: #ffffff;
+                text-decoration: none;
+                background-color: #0088cc;
+                border-radius: 0px;
+                -webkit-border-radius: 0px;
+                -moz-border-radius: 0px;
+                background-image: none;
+            }
+            .ui-helper-hidden-accessible {
+                display: none !important;
+            }
 
-        <div class="home-inner">
-            <h1 class="text-center p-5">Where to next?</h1>
-            <div id="flightform" class="container border shadow p-3 rounded">
-                <spring:form modelAttribute="flight" action="${pageContext.request.contextPath}/flight/postRegister"
-                    method="POST" onsubmit="">
+        </style>
 
-                    <div>
-                        <spring:hidden path="country" />
-                    </div>
-                    <div class="col-md-2">
-                        <spring:hidden path="currency" />
-                    </div>
-                    <div class="col-md-2">
-                        <spring:hidden path="locale" />
-                    </div>
+    </head>
 
-                    <div class="d-flex form-row p-2">
-                        <input type="radio" name="radiogroup" value="on" checked>
-                        <label for="">Roundtrip</label>
+    <body>
 
-                        <input type="radio" name="radiogroup" value="on">
-                        <label for="">One way</label>
+        <div class="mainpage">
 
-                        <div class="">
-                            <a id="map"
-                                href="https://gr.skyscanner.com/inspire/map?outboundDate=2019-10-14&outboundPlace=&preferDirects=false">Map</a>
+            <div class="home-inner">
+                <h1 class="text-center p-5">Where to next?</h1>
+                <div id="flightform" class="container border shadow p-3 rounded">
+                    <spring:form modelAttribute="flight" action="${pageContext.request.contextPath}/flight/postRegister"
+                                 method="POST" onsubmit="">
+
+                        <div>
+                            <spring:hidden path="country" />
+                        </div>
+                        <div class="col-md-2">
+                            <spring:hidden path="currency" />
+                        </div>
+                        <div class="col-md-2">
+                            <spring:hidden path="locale" />
                         </div>
 
-                    </div>
+                        <div class="d-flex form-row p-2">
+                            <input type="radio" name="radiogroup" value="on" checked>
+                            <label for="">Roundtrip</label>
 
-                    <div class="form-row">
+                            <input type="radio" name="radiogroup" value="on">
+                            <label for="">One way</label>
 
-                        <div class="form-row">
-                            <div class="form-group col-md-2">
-                                <spring:label path="originPlace">From</spring:label>
-                                <spring:input cssClass="autocomplete" path="originPlace" type="text"
-                                    placeholder="From *" />
-                            </div>
-                            <div class="form-group col-md-2">
-                                <spring:label path="destinationPlace">To</spring:label>
-                                <spring:input cssClass="autocomplete" path="destinationPlace" type="text"
-                                    placeholder="To *" />
-                            </div>
-                            <div class="form-group col-md-2">
-                                <spring:label path="originPlace">Depart</spring:label>
-                                <spring:input path="outboundDate" type="date" placeholder="outbounddate *" />
+                            <div class="">
+                                <a id="map"
+                                   href="https://gr.skyscanner.com/inspire/map?outboundDate=2019-10-14&outboundPlace=&preferDirects=false">Map</a>
                             </div>
 
+                        </div>
 
-                            <div class="col-md-2">
-                                <label path="inboundDate">Return</label>
-                                <input name="inboundDate" type="date" placeholder="epistrofi *" />
-                            </div>
-                            <div class="form-group col-md-2">
-                                <spring:label path="adults">Travelers</spring:label>
-                                <spring:input path="adults" type="text" placeholder="Travelers *" />
-                            </div>
-                            <div class="col-md-2">
-                                <spring:label path="cabinClass">Cabin Class</spring:label>
-                                <div>
-                                    <spring:select path="cabinClass">
-                                        <spring:option value="economy" selected="selected">economy</spring:option>
-                                        <spring:option value="business">business</spring:option>
-                                    </spring:select>
+                        <div class="form-row ui-menu">
+
+                            <div class="form-row">
+                                <div class="form-group col-md-2">
+                                    
+                                    <spring:label path="originPlace">From</spring:label>
+                                    <spring:input cssClass="autocomplete" path="originPlace" type="text"
+                                                  placeholder="From *" />
                                 </div>
-                                <!-- <spring:input path="cabinClass" type="text" placeholder="Cabin Class *" /> -->
+                                <div class="form-group col-md-2">
+                                    <spring:label path="destinationPlace">To</spring:label>
+                                    <spring:input cssClass="autocomplete" path="destinationPlace" type="text"
+                                                  placeholder="To *" />
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <spring:label path="originPlace">Depart</spring:label>
+                                    <spring:input path="outboundDate" cssClass="datepicker" type="date" placeholder="outbounddate *" />
+                                </div>
+
+
+                                <div class="col-md-2">
+                                    <label path="inboundDate">Return</label>
+                                    <input name="inboundDate" cssClass="datepicker"  type="date" placeholder="epistrofi *" />
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <spring:label path="adults">Travelers</spring:label>
+                                    <spring:input path="adults" type="text" placeholder="Travelers *" />
+                                </div>
+                                <div class="col-md-2">
+                                    <spring:label path="cabinClass">Cabin Class</spring:label>
+                                        <div>
+                                        <spring:select path="cabinClass">
+                                            <spring:option value="economy" selected="selected">economy</spring:option>
+                                            <spring:option value="business">business</spring:option>
+                                        </spring:select>
+                                    </div>
+                                    <!-- <spring:input path="cabinClass" type="text" placeholder="Cabin Class *" /> -->
+                                </div>
+
+
                             </div>
 
-                        
                         </div>
-                        
-                    </div>
-                    <div class="d-flex justify-content-md-end">
-                        <button type="submit" class="btn btn-info">Search flights <i
-                                class="fas fa-arrow-right"></i></button>
-                    </div>
-                </spring:form>
+                        <div class="d-flex justify-content-md-end">
+                            <button type="submit" class="btn btn-info">Search flights <i
+                                    class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </spring:form>
+                </div>
             </div>
         </div>
-    </div>
 
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/flightJs.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script type="text/javascript" src="${pageContext.request.contextPath}/js/flightJs.js"></script>
 
-</body>
+    </body>
 
 </html>

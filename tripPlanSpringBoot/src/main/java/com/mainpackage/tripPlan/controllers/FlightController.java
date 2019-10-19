@@ -1,6 +1,8 @@
 package com.mainpackage.tripPlan.controllers;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.mainpackage.tripPlan.model.Flight;
+import com.mainpackage.tripPlan.utilities.CreateJson;
 import com.mainpackage.tripPlan.webServices.SkyApi;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
@@ -14,7 +16,9 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,6 +36,8 @@ public class FlightController {
 
     @Autowired
     SkyApi sky;
+    @Autowired
+    CreateJson createJ;
 
     @GetMapping(value = "register")
     public String preFlightForm(ModelMap m) {
@@ -59,8 +65,7 @@ public class FlightController {
 
         String JsonString = sky.SessionResults(m.get("sessionKey").toString());
 
-        JSONParser jsonParser = new JSONParser();
-        JSONObject Json = (JSONObject) jsonParser.parse(JsonString);
+        JSONObject Json = createJ.createJson(JsonString);
 
         m.addAttribute("Json", Json);
 
@@ -69,7 +74,7 @@ public class FlightController {
 
     @GetMapping(value = "city/{city}", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public String cities(ModelMap m, @PathVariable("city") String city) throws UnirestException, UnsupportedEncodingException {
+    public ResponseEntity<Object> citiesI(ModelMap m, @PathVariable("city") String city) throws UnirestException, UnsupportedEncodingException {
      
 
         HttpResponse<String> response = Unirest.get("https://cometari-airportsfinder-v1.p.rapidapi.com/api/airports/by-text?text=" + city)
@@ -79,7 +84,7 @@ public class FlightController {
 
         String cities = response.getBody();
 
-        return cities;
+        return new ResponseEntity<>(cities,HttpStatus.OK);
     }
  
 }

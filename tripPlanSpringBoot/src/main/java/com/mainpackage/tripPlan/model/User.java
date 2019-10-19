@@ -72,7 +72,7 @@ public class User implements Serializable {
     @Lob
     @Column(name = "profile_photo")
     private Blob profilePhoto;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
+    @OneToMany( mappedBy = "userId")
     private Collection<Trip> tripCollection;
 
     public User() {
