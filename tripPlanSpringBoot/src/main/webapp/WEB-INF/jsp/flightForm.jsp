@@ -73,7 +73,7 @@
             .ui-helper-hidden-accessible {
                 display: none !important;
             }
-
+            
         </style>
 
     </head>
@@ -85,7 +85,7 @@
             <div class="home-inner">
                 <h1 class="text-center p-5">Where to next?</h1>
                 <div id="flightform" class="container border shadow p-3 rounded">
-                    <spring:form modelAttribute="flight" action="${pageContext.request.contextPath}/flight/postRegister"
+                    <spring:form id="flightForm" modelAttribute="flight" action="${pageContext.request.contextPath}/flight/postRegister"
                                  method="POST" onsubmit="">
 
                         <div>
@@ -116,15 +116,16 @@
 
                             <div class="form-row">
                                 <div class="form-group col-md-2">
-                                    
+
                                     <spring:label path="originPlace">From</spring:label>
-                                    <spring:input cssClass="autocomplete" path="originPlace" type="text"
-                                                  placeholder="From *" />
+                                        <input type="text" class="autocomplete" placeholder="From *">
+                                    <spring:hidden id="originPlace" path="originPlace" />
                                 </div>
                                 <div class="form-group col-md-2">
                                     <spring:label path="destinationPlace">To</spring:label>
-                                    <spring:input cssClass="autocomplete" path="destinationPlace" type="text"
-                                                  placeholder="To *" />
+                                        <input type="text" class="autocomplete" placeholder="to *">
+                                    <spring:hidden id="destinationPlace" path="destinationPlace"
+                                                   />
                                 </div>
                                 <div class="form-group col-md-2">
                                     <spring:label path="originPlace">Depart</spring:label>
