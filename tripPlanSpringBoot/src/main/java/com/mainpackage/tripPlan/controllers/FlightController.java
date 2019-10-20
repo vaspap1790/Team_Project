@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.time.LocalDate;
 import java.util.*;
+import javax.servlet.http.HttpSession;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -28,6 +29,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -46,36 +48,31 @@ public class FlightController {
     }
 
     @PostMapping(value = "postRegister")
-    public String postFlight(@ModelAttribute("flight") Flight flight, RedirectAttributes redirectAttrs,
+    public ModelAndView postFlight(@ModelAttribute("flight") Flight flight, HttpSession hs,
             @RequestParam(name = "inboundDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate inboundDate) throws IOException, UnirestException {
-       
-        String sessionKey = sky.CreateSession(flight, inboundDate);
 
-        if (sessionKey == null) {
-            return "redirect:/flight/register";
+        HttpResponse<String> skyReport = sky.browseFlights(flight, inboundDate);
+        if (skyReport.getStatus() == 200) {
+            hs.setAttribute("jsonFlights", skyReport);
+            return new ModelAndView("result");
         }
 
-        redirectAttrs.addFlashAttribute("sessionKey", sessionKey);
-
-        return "redirect:/flight/showFlights";
+        return new ModelAndView("redirect:/flight/register");
     }
 
-    @GetMapping(value = "showFlights")
-    public String showFlights(ModelMap m) throws UnirestException, ParseException {
+    ///////////////////// return flights with sesssion
+    @GetMapping(value = "returnFlights", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public ResponseEntity<Object> returnFlights(HttpSession hp) throws UnirestException, UnsupportedEncodingException, ParseException {
 
-        String JsonString = sky.SessionResults(m.get("sessionKey").toString());
+        HttpResponse flights = (HttpResponse) hp.getAttribute("jsonFlights");
 
-        JSONObject Json = createJ.createJson(JsonString);
-
-        m.addAttribute("Json", Json);
-
-        return "result";
+        return new ResponseEntity<>(flights.getBody(), HttpStatus.OK);
     }
 
     @GetMapping(value = "city/{city}", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseEntity<Object> citiesI(ModelMap m, @PathVariable("city") String city) throws UnirestException, UnsupportedEncodingException {
-     
 
         HttpResponse<String> response = Unirest.get("https://cometari-airportsfinder-v1.p.rapidapi.com/api/airports/by-text?text=" + city)
                 .header("x-rapidapi-host", "cometari-airportsfinder-v1.p.rapidapi.com")
@@ -84,7 +81,7 @@ public class FlightController {
 
         String cities = response.getBody();
 
-        return new ResponseEntity<>(cities,HttpStatus.OK);
+        return new ResponseEntity<>(cities, HttpStatus.OK);
     }
- 
+
 }

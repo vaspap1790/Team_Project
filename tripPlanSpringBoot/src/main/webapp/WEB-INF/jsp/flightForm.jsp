@@ -87,36 +87,16 @@
                 <div id="flightform" class="container border shadow p-3 rounded">
                     <spring:form id="flightForm" modelAttribute="flight" action="${pageContext.request.contextPath}/flight/postRegister"
                                  method="POST" onsubmit="">
-
-                        <div>
-                            <spring:hidden path="country" />
-                        </div>
-                        <div class="col-md-2">
-                            <spring:hidden path="currency" />
-                        </div>
-                        <div class="col-md-2">
-                            <spring:hidden path="locale" />
-                        </div>
-
                         <div class="d-flex form-row p-2">
                             <input type="radio" name="radiogroup" value="on" checked>
                             <label for="">Roundtrip</label>
-
                             <input type="radio" name="radiogroup" value="on">
-                            <label for="">One way</label>
-
-                            <div class="">
-                                <a id="map"
-                                   href="https://gr.skyscanner.com/inspire/map?outboundDate=2019-10-14&outboundPlace=&preferDirects=false">Map</a>
-                            </div>
-
+                            <label for="">One way</label>                    
                         </div>
-
                         <div class="form-row ui-menu">
 
                             <div class="form-row">
                                 <div class="form-group col-md-2">
-
                                     <spring:label path="originPlace">From</spring:label>
                                         <input type="text" class="autocomplete" placeholder="From *">
                                     <spring:hidden id="originPlace" path="originPlace" />
@@ -124,35 +104,16 @@
                                 <div class="form-group col-md-2">
                                     <spring:label path="destinationPlace">To</spring:label>
                                         <input type="text" class="autocomplete" placeholder="to *">
-                                    <spring:hidden id="destinationPlace" path="destinationPlace"
-                                                   />
+                                    <spring:hidden id="destinationPlace" path="destinationPlace"/>
                                 </div>
                                 <div class="form-group col-md-2">
                                     <spring:label path="originPlace">Depart</spring:label>
-                                    <spring:input path="outboundDate" cssClass="datepicker" type="date" placeholder="outbounddate *" />
+                                    <spring:input path="outboundDate"  type="date" placeholder="outbounddate *" />
                                 </div>
-
-
                                 <div class="col-md-2">
                                     <label path="inboundDate">Return</label>
-                                    <input name="inboundDate" cssClass="datepicker"  type="date" placeholder="epistrofi *" />
+                                    <input name="inboundDate"   type="date" placeholder="epistrofi *" />
                                 </div>
-                                <div class="form-group col-md-2">
-                                    <spring:label path="adults">Travelers</spring:label>
-                                    <spring:input path="adults" type="text" placeholder="Travelers *" />
-                                </div>
-                                <div class="col-md-2">
-                                    <spring:label path="cabinClass">Cabin Class</spring:label>
-                                        <div>
-                                        <spring:select path="cabinClass">
-                                            <spring:option value="economy" selected="selected">economy</spring:option>
-                                            <spring:option value="business">business</spring:option>
-                                        </spring:select>
-                                    </div>
-                                    <!-- <spring:input path="cabinClass" type="text" placeholder="Cabin Class *" /> -->
-                                </div>
-
-
                             </div>
 
                         </div>
