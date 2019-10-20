@@ -88,7 +88,7 @@
                     <spring:form id="flightForm" modelAttribute="flight" action="${pageContext.request.contextPath}/flight/postRegister"
                                  method="POST" onsubmit="">
                         <div class="d-flex form-row p-2">
-                            <spring:radiobutton   path="type" value="oneWay" />
+                            <spring:radiobutton   path="type" value="oneWay" checked="checked"/>
                             <label for="">One Way</label>
                             <spring:radiobutton   path="type" value="roundTrip"/>
                             <label for="">Roundtrip</label>                    
@@ -112,7 +112,7 @@
                                 </div>
                                 <div class="col-md-2">
                                     <label path="inboundDate">Return</label>
-                                    <input name="inboundDate"   type="date" placeholder="epistrofi *" />
+                                    <input name="inboundDate"  class="ml-3" type="date" placeholder="epistrofi *" />
                                 </div>
                             </div>
 

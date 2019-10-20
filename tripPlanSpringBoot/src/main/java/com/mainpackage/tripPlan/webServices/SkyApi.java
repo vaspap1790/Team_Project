@@ -2,28 +2,20 @@ package com.mainpackage.tripPlan.webServices;
 
 import com.mainpackage.tripPlan.model.Flight;
 import com.mashape.unirest.http.HttpResponse;
-import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import java.time.LocalDate;
-import java.util.*;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Component
 public class SkyApi {
 
-    public HttpResponse<String> oneWay(Flight f,
-            @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate inboundDate) throws UnirestException {
+    public HttpResponse<String> oneWay(Flight f) throws UnirestException {
 
         HttpResponse<String> response = Unirest.get("https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browsedates/v1.0/GR/USD/en-US/" + f.getDestinationPlace() + "-sky/" + f.getOriginPlace() + "-sky/" + f.getOutboundDate())
                 .header("x-rapidapi-host", "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com")
                 .header("x-rapidapi-key", "2f7c656e8emsh52fa210fd1c2272p1016dbjsn00574276a26e")
-                .queryString("inboundpartialdate", inboundDate)
                 .asString();
 
         return response;
