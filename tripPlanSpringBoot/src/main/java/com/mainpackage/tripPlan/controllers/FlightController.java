@@ -1,19 +1,16 @@
 package com.mainpackage.tripPlan.controllers;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
+
 import com.mainpackage.tripPlan.model.Flight;
 import com.mainpackage.tripPlan.utilities.CreateJson;
 import com.mainpackage.tripPlan.webServices.SkyApi;
 import com.mashape.unirest.http.HttpResponse;
-import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.time.LocalDate;
 import java.util.*;
 import javax.servlet.http.HttpSession;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -30,7 +27,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping(value = "flight/")
@@ -50,8 +46,15 @@ public class FlightController {
     @PostMapping(value = "postRegister")
     public ModelAndView postFlight(@ModelAttribute("flight") Flight flight, HttpSession hs,
             @RequestParam(name = "inboundDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate inboundDate) throws IOException, UnirestException {
-
-        HttpResponse<String> skyReport = sky.browseFlights(flight, inboundDate);
+       
+        HttpResponse<String> skyReport;
+        
+        if(flight.getType().equals("oneWay")){
+             skyReport = sky.oneWay(flight, inboundDate);
+        }else{
+          skyReport = sky.roundTrip(flight, inboundDate);
+        }
+        
         if (skyReport.getStatus() == 200) {
             hs.setAttribute("jsonFlights", skyReport);
             return new ModelAndView("result");
@@ -74,14 +77,9 @@ public class FlightController {
     @ResponseBody
     public ResponseEntity<Object> citiesI(ModelMap m, @PathVariable("city") String city) throws UnirestException, UnsupportedEncodingException {
 
-        HttpResponse<String> response = Unirest.get("https://cometari-airportsfinder-v1.p.rapidapi.com/api/airports/by-text?text=" + city)
-                .header("x-rapidapi-host", "cometari-airportsfinder-v1.p.rapidapi.com")
-                .header("x-rapidapi-key", "2f7c656e8emsh52fa210fd1c2272p1016dbjsn00574276a26e")
-                .asString();
+        HttpResponse<String> cities=sky.cities(city);
 
-        String cities = response.getBody();
-
-        return new ResponseEntity<>(cities, HttpStatus.OK);
+        return new ResponseEntity<>(cities.getBody(), HttpStatus.OK);
     }
 
 }

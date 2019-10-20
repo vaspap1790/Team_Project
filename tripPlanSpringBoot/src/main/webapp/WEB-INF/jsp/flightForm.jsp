@@ -88,10 +88,10 @@
                     <spring:form id="flightForm" modelAttribute="flight" action="${pageContext.request.contextPath}/flight/postRegister"
                                  method="POST" onsubmit="">
                         <div class="d-flex form-row p-2">
-                            <input type="radio" name="radiogroup" value="on" checked>
-                            <label for="">Roundtrip</label>
-                            <input type="radio" name="radiogroup" value="on">
-                            <label for="">One way</label>                    
+                            <spring:radiobutton   path="type" value="oneWay" />
+                            <label for="">One Way</label>
+                            <spring:radiobutton   path="type" value="roundTrip"/>
+                            <label for="">Roundtrip</label>                    
                         </div>
                         <div class="form-row ui-menu">
 

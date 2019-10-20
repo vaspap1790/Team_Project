@@ -5,19 +5,22 @@ import java.sql.Date;
 import java.time.LocalDate;
 import org.springframework.format.annotation.DateTimeFormat;
 
-public class Flight implements Serializable{
+public class Flight implements Serializable {
 
     private String originPlace;
-    private String destinationPlace;   
-    private Date outboundDate;     
-  
+    private String destinationPlace;
+    private Date outboundDate;
+    private String type;
+
     public Flight() {
     }
 
     @Override
     public String toString() {
-        return "Flight{" + "originPlace=" + originPlace + ", destinationPlace=" + destinationPlace + ", outboundDate=" + outboundDate + '}';
+        return "Flight{" + "originPlace=" + originPlace + ", destinationPlace=" + destinationPlace + ", outboundDate=" + outboundDate + ", type=" + type + '}';
     }
+
+    
 
     public String getOriginPlace() {
         return originPlace;
@@ -44,16 +47,12 @@ public class Flight implements Serializable{
     }
 
 
-   
 
-   
-    
-    
- 
+    public String getType() {
+        return type;
+    }
 
-
-  
-    
-    
-    
+    public void setType(String type) {
+        this.type = type;
+    }
 }
