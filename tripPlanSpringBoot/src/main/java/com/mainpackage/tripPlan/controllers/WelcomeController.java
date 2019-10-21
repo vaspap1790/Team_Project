@@ -1,6 +1,5 @@
 package com.mainpackage.tripPlan.controllers;
 
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -10,5 +9,10 @@ public class WelcomeController {
     @GetMapping(value = "/")
     public String welcome() {
         return "index";
+    }
+
+    @GetMapping(value = "/choices")
+    public String choices() {
+        return "choices";
     }
 }
