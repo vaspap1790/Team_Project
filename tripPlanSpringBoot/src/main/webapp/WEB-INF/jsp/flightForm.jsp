@@ -7,22 +7,6 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-        <!--                <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-                                  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-                            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-                                    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-                            crossorigin="anonymous"></script>
-                            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-                                    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-                            crossorigin="anonymous"></script>
-                            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-                                    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-                            crossorigin="anonymous"></script>
-                            <script src="https://kit.fontawesome.com/e41a5911e2.js"></script>
-                            <link href="${pageContext.request.contextPath}/css/flightForm.css" rel="stylesheet">-->
-
-
-
 
         <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
@@ -46,120 +30,9 @@
         <link rel="stylesheet" href="../css/icomoon.css">
         <link rel="stylesheet" href="../css/style.css">
 
-
-
-
     </head>
 
     <body>
-
-        <!--        <div class="mainpage">
-            
-                        <div class="home-inner">
-                            <h1 class="text-center p-5">Where to next?</h1>
-                            <div id="flightform" class="container border shadow p-3 rounded">
-        <spring:form modelAttribute="flight" action="${pageContext.request.contextPath}/flight/postRegister"
-                     method="POST" onsubmit="">
-
-            <div>
-            <spring:hidden path="country" />
-        </div>
-        <div class="col-md-2">
-            <spring:hidden path="currency" />
-        </div>
-        <div class="col-md-2">
-            <spring:hidden path="locale" />
-        </div>
-
-        <div class="d-flex form-row p-2">
-            <input type="radio" name="radiogroup" value="on" checked>
-            <label for="">Roundtrip</label>
-
-            <input type="radio" name="radiogroup" value="on">
-            <label for="">One way</label>
-
-            <div class="">
-                <a id="map"
-                   href="https://gr.skyscanner.com/inspire/map?outboundDate=2019-10-14&outboundPlace=&preferDirects=false">Map</a>
-            </div>
-
-        </div>
-
-
-
-        <div class="form-row">
-            <div class="form-group col-md-2">
-            <spring:label path="originPlace">From</spring:label>
-            <spring:input cssClass="autocomplete form-control" path="originPlace" type="text"
-                          placeholder="From *" />
-        </div>
-        <div class="form-group col-md-2">
-            <spring:label path="destinationPlace">To</spring:label>
-            <spring:input cssClass="autocomplete form-control" path="destinationPlace" type="text"
-                          placeholder="To *" />
-        </div>
-        <div class="form-group col-md-2">
-            <spring:label path="originPlace">Depart</spring:label>
-            <spring:input path="outboundDate" type="date" class="form-control" placeholder="outbounddate *" />
-        </div>
-
-
-        <div class="col-md-2">
-            <label path="inboundDate">Return</label>
-            <input name="inboundDate" type="date" class="form-control" placeholder="epistrofi *" />
-        </div>
-         <div class="form-group col-md-2">
-            <spring:label path="adults">Travelers</spring:label>
-            <spring:input path="adults" type="text" class="form-control" placeholder="Travelers *" />
-        </div> 
-
-
-            <div class="col-md-2">
-            <spring:label path="adults">Travelers</spring:label>
-                <div>
-            <spring:select path="adults" class="form-control">
-                <spring:option value="1" selected="selected">1</spring:option>
-                <spring:option value="2">2</spring:option>
-                <spring:option value="3">3</spring:option>
-                <spring:option value="4">4</spring:option>
-                <spring:option value="5">5</spring:option>
-            </spring:select>
-        </div>
-    </div>
-
-
-    <div class="col-md-2">
-            <spring:label path="cabinClass">Cabin Class</spring:label>
-                <div>
-            <spring:select path="cabinClass" class="form-control">
-                <spring:option value="economy" selected="selected">economy</spring:option>
-                <spring:option value="business">business</spring:option>
-            </spring:select>
-        </div>
-
-    </div>
-
-
-</div>
-
-
-<div class="d-flex justify-content-md-end">
-    <button type="submit" class="btn btn-info">Search flights <i
-            class="fas fa-arrow-right"></i></button>
-</div>
-        </spring:form>
-    </div>
-</div>
-</div>
-
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/js/flightJs.js"></script>-->
-
-
-
-
-
 
         <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
             <div class="container">
@@ -183,7 +56,7 @@
         </nav>
         <!-- END nav -->
 
-        <div class="hero-wrap js-fullheight" style="background-image: url('images/bg_1.jpg');">
+        <div class="hero-wrap js-fullheight" style="background-image: url('../images/bg_1.jpg');">
             <div class="overlay"></div>
             <div class="container">
                 <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start"

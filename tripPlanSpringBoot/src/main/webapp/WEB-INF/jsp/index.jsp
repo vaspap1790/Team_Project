@@ -4,42 +4,42 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>JSP Page</title>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>JSP Page</title>
 
 
-    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="css/animate.css">
+        <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+        <link rel="stylesheet" href="css/animate.css">
 
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
+        <link rel="stylesheet" href="css/owl.carousel.min.css">
+        <link rel="stylesheet" href="css/owl.theme.default.min.css">
+        <link rel="stylesheet" href="css/magnific-popup.css">
 
-    <link rel="stylesheet" href="css/aos.css">
+        <link rel="stylesheet" href="css/aos.css">
 
-    <link rel="stylesheet" href="css/ionicons.min.css">
+        <link rel="stylesheet" href="css/ionicons.min.css">
 
-    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="css/jquery.timepicker.css">
-
-
-    <link rel="stylesheet" href="css/flaticon.css">
-    <link rel="stylesheet" href="css/icomoon.css">
-    <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+        <link rel="stylesheet" href="css/jquery.timepicker.css">
 
 
-</head>
+        <link rel="stylesheet" href="css/flaticon.css">
+        <link rel="stylesheet" href="css/icomoon.css">
+        <link rel="stylesheet" href="css/style.css">
+
+
+    </head>
 
 
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
         <div class="container">
             <a class="navbar-brand" href="index.html">TripPlanner</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
-                aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                    aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="oi oi-menu"></span> Menu
             </button>
 
@@ -61,13 +61,13 @@
         <div class="overlay"></div>
         <div class="container">
             <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start"
-                data-scrollax-parent="true">
+                 data-scrollax-parent="true">
                 <div class="col-12 text-right">
                     <a href="${pageContext.request.contextPath}/user/logIn" class="btn btn-warning">Sign In</a>
                     <a href="${pageContext.request.contextPath}/user/register" class="btn btn-warning">Sign Up</a>
                 </div>
                 <div class="col-md-9 ftco-animate mb-5 pb-5 text-center text-md-left"
-                    data-scrollax=" properties: { translateY: '70%' }">
+                     data-scrollax=" properties: { translateY: '70%' }">
                     <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Plan <br>Your own
                         Trip</h1>
                     <p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Find great places to stay, eat,
@@ -82,213 +82,6 @@
             </div>
         </div>
     </div>
-
-<!--        <section class="ftco-section justify-content-end ftco-search">
-        <div class="container-wrap ml-auto">
-            <div class="row no-gutters">
-                <div class="col-md-12 nav-link-wrap">
-                    <div class="nav nav-pills justify-content-center text-center" id="v-pills-tab" role="tablist"
-                        aria-orientation="vertical">
-                        <a class="nav-link active" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab"
-                            aria-controls="v-pills-1" aria-selected="true">Flight</a>
-
-                        <a class="nav-link" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2" role="tab"
-                            aria-controls="v-pills-2" aria-selected="false">Hotel</a>
-
-                        <a class="nav-link" id="v-pills-3-tab" data-toggle="pill" href="#v-pills-3" role="tab"
-                            aria-controls="v-pills-3" aria-selected="false">Car Rent</a>
-                    </div>
-                </div>
-                <div class="col-md-12 tab-wrap">
-
-                    <div class="tab-content p-4 px-5" id="v-pills-tabContent">
-
-                        <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel"
-                            aria-labelledby="v-pills-nextgen-tab">
-                            <form action="#" class="search-destination">
-                                <div class="row">
-                                    <div class="col-md align-items-end">
-                                        <div class="form-group">
-                                            <label for="#">From</label>
-                                            <div class="form-field">
-                                                <div class="icon"><span class="icon-my_location"></span></div>
-                                                <input type="text" class="form-control" placeholder="From">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md align-items-end">
-                                        <div class="form-group">
-                                            <label for="#">Where</label>
-                                            <div class="form-field">
-                                                <div class="icon"><span class="icon-map-marker"></span></div>
-                                                <input type="text" class="form-control" placeholder="Where">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md align-items-end">
-                                        <div class="form-group">
-                                            <label for="#">Depart</label>
-                                            <div class="form-field">
-                                                <div class="icon"><span class="icon-map-marker"></span></div>
-                                                <input type="text" class="form-control checkin_date"
-                                                    placeholder="Check In">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md align-items-end">
-                                        <div class="form-group">
-                                            <label for="#">Return</label>
-                                            <div class="form-field">
-                                                <div class="icon"><span class="icon-map-marker"></span></div>
-                                                <input type="text" class="form-control checkout_date"
-                                                    placeholder="From">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md align-items-end">
-                                        <div class="form-group">
-                                            <label for="#">Travelers</label>
-                                            <div class="form-field">
-                                                <div class="select-wrap">
-                                                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                                                    <select name="" id="" class="form-control">
-                                                        <option value="">1</option>
-                                                        <option value="">2</option>
-                                                        <option value="">3</option>
-                                                        <option value="">4</option>
-                                                        <option value="">5</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md align-items-end">
-                                        <div class="form-group">
-                                            <label for="#">Cabin Class</label>
-                                            <div class="form-field">
-                                                <div class="select-wrap">
-                                                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                                                    <select name="" id="" class="form-control">
-                                                        <option value="">Economy</option>
-                                                        <option value="">Business</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md align-self-end">
-                                        <div class="form-group">
-                                            <div class="form-field">
-                                                <input type="submit" value="Search"
-                                                    class="form-control btn btn-primary">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-
-                        <div class="tab-pane fade" id="v-pills-2" role="tabpanel"
-                            aria-labelledby="v-pills-performance-tab">
-                            <form action="#" class="search-destination">
-                                <div class="row">
-                                    <div class="col-md align-items-end">
-                                        <div class="form-group">
-                                            <label for="#">Check In</label>
-                                            <div class="form-field">
-                                                <div class="icon"><span class="icon-map-marker"></span></div>
-                                                <input type="text" class="form-control checkin_date"
-                                                    placeholder="Check In">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md align-items-end">
-                                        <div class="form-group">
-                                            <label for="#">Check Out</label>
-                                            <div class="form-field">
-                                                <div class="icon"><span class="icon-map-marker"></span></div>
-                                                <input type="text" class="form-control checkout_date"
-                                                    placeholder="From">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md align-items-end">
-                                        <div class="form-group">
-                                            <label for="#">Guest</label>
-                                            <div class="form-field">
-                                                <div class="select-wrap">
-                                                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                                                    <select name="" id="" class="form-control">
-                                                        <option value="">1</option>
-                                                        <option value="">2</option>
-                                                        <option value="">3</option>
-                                                        <option value="">4</option>
-                                                        <option value="">5</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md align-self-end">
-                                        <div class="form-group">
-                                            <div class="form-field">
-                                                <input type="submit" value="Search"
-                                                    class="form-control btn btn-primary">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-
-                        <div class="tab-pane fade" id="v-pills-3" role="tabpanel" aria-labelledby="v-pills-effect-tab">
-                            <form action="#" class="search-destination">
-                                <div class="row">
-                                    <div class="col-md align-items-end">
-                                        <div class="form-group">
-                                            <label for="#">Where</label>
-                                            <div class="form-field">
-                                                <div class="icon"><span class="icon-map-marker"></span></div>
-                                                <input type="text" class="form-control" placeholder="Where">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md align-items-end">
-                                        <div class="form-group">
-                                            <label for="#">Check In</label>
-                                            <div class="form-field">
-                                                <div class="icon"><span class="icon-map-marker"></span></div>
-                                                <input type="text" class="form-control checkin_date"
-                                                    placeholder="Check In">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md align-items-end">
-                                        <div class="form-group">
-                                            <label for="#">Check Out</label>
-                                            <div class="form-field">
-                                                <div class="icon"><span class="icon-map-marker"></span></div>
-                                                <input type="text" class="form-control checkout_date"
-                                                    placeholder="From">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md align-self-end">
-                                        <div class="form-group">
-                                            <div class="form-field">
-                                                <input type="submit" value="Search"
-                                                    class="form-control btn btn-primary">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>-->
 
     <section class="ftco-section bg-light">
         <div class="container">
@@ -335,7 +128,7 @@
                 </div>
                 <div class="col-md-4 ftco-animate">
                     <a href="#" class="destination-entry img"
-                        style="background-image: url(images/destination-2-1.jpg);">
+                       style="background-image: url(images/destination-2-1.jpg);">
                         <div class="text text-center">
                             <h3>Group Holidays</h3>
                         </div>
@@ -425,7 +218,7 @@
                 <div class="col-sm col-md-6 col-lg ftco-animate">
                     <div class="destination">
                         <a href="#" class="img img-2 d-flex justify-content-center align-items-center"
-                            style="background-image: url(images/destination-1.jpg);">
+                           style="background-image: url(images/destination-1.jpg);">
                             <div class="icon d-flex justify-content-center align-items-center">
                                 <span class="icon-link"></span>
                             </div>
@@ -460,7 +253,7 @@
                 <div class="col-sm col-md-6 col-lg ftco-animate">
                     <div class="destination d-md-flex flex-column-reverse">
                         <a href="#" class="img img-2 d-flex justify-content-center align-items-center"
-                            style="background-image: url(images/destination-2.jpg);">
+                           style="background-image: url(images/destination-2.jpg);">
                             <div class="icon d-flex justify-content-center align-items-center">
                                 <span class="icon-link"></span>
                             </div>
@@ -495,7 +288,7 @@
                 <div class="col-sm col-md-6 col-lg ftco-animate">
                     <div class="destination">
                         <a href="#" class="img img-2 d-flex justify-content-center align-items-center"
-                            style="background-image: url(images/destination-3.jpg);">
+                           style="background-image: url(images/destination-3.jpg);">
                             <div class="icon d-flex justify-content-center align-items-center">
                                 <span class="icon-link"></span>
                             </div>
@@ -530,7 +323,7 @@
                 <div class="col-sm col-md-6 col-lg ftco-animate">
                     <div class="destination d-md-flex flex-column-reverse">
                         <a href="#" class="img img-2 d-flex justify-content-center align-items-center"
-                            style="background-image: url(images/destination-4.jpg);">
+                           style="background-image: url(images/destination-4.jpg);">
                             <div class="icon d-flex justify-content-center align-items-center">
                                 <span class="icon-link"></span>
                             </div>
@@ -567,7 +360,7 @@
     </section>
 
     <section class="ftco-section ftco-counter img" id="section-counter" style="background-image: url(images/bg_1.jpg);"
-        data-stellar-background-ratio="0.5">
+             data-stellar-background-ratio="0.5">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-10">
@@ -624,7 +417,7 @@
                 <div class="col-sm col-md-6 col-lg ftco-animate">
                     <div class="destination">
                         <a href="#" class="img img-2 d-flex justify-content-center align-items-center"
-                            style="background-image: url(images/hotel-1.jpg);">
+                           style="background-image: url(images/hotel-1.jpg);">
                             <div class="icon d-flex justify-content-center align-items-center">
                                 <span class="icon-link"></span>
                             </div>
@@ -658,7 +451,7 @@
                 <div class="col-sm col-md-6 col-lg ftco-animate">
                     <div class="destination d-md-flex flex-column-reverse">
                         <a href="#" class="img img-2 d-flex justify-content-center align-items-center"
-                            style="background-image: url(images/hotel-2.jpg);">
+                           style="background-image: url(images/hotel-2.jpg);">
                             <div class="icon d-flex justify-content-center align-items-center">
                                 <span class="icon-link"></span>
                             </div>
@@ -692,7 +485,7 @@
                 <div class="col-sm col-md-6 col-lg ftco-animate">
                     <div class="destination">
                         <a href="#" class="img img-2 d-flex justify-content-center align-items-center"
-                            style="background-image: url(images/hotel-3.jpg);">
+                           style="background-image: url(images/hotel-3.jpg);">
                             <div class="icon d-flex justify-content-center align-items-center">
                                 <span class="icon-link"></span>
                             </div>
@@ -726,7 +519,7 @@
                 <div class="col-sm col-md-6 col-lg ftco-animate">
                     <div class="destination d-md-flex flex-column-reverse">
                         <a href="#" class="img img-2 d-flex justify-content-center align-items-center"
-                            style="background-image: url(images/hotel-4.jpg);">
+                           style="background-image: url(images/hotel-4.jpg);">
                             <div class="icon d-flex justify-content-center align-items-center">
                                 <span class="icon-link"></span>
                             </div>
@@ -760,7 +553,7 @@
                 <div class="col-sm col-md-6 col-lg ftco-animate">
                     <div class="destination">
                         <a href="#" class="img img-2 d-flex justify-content-center align-items-center"
-                            style="background-image: url(images/hotel-5.jpg);">
+                           style="background-image: url(images/hotel-5.jpg);">
                             <div class="icon d-flex justify-content-center align-items-center">
                                 <span class="icon-link"></span>
                             </div>
@@ -899,7 +692,7 @@
                 <div class="col-md-6 col-lg-3 ftco-animate">
                     <div class="destination">
                         <a href="#" class="img img-2 d-flex justify-content-center align-items-center"
-                            style="background-image: url(images/restaurant-1.jpg);">
+                           style="background-image: url(images/restaurant-1.jpg);">
                             <div class="icon d-flex justify-content-center align-items-center">
                                 <span class="icon-link"></span>
                             </div>
@@ -926,7 +719,7 @@
                 <div class="col-md-6 col-lg-3 ftco-animate">
                     <div class="destination d-md-flex flex-column-reverse">
                         <a href="#" class="img img-2 d-flex justify-content-center align-items-center"
-                            style="background-image: url(images/restaurant-2.jpg);">
+                           style="background-image: url(images/restaurant-2.jpg);">
                             <div class="icon d-flex justify-content-center align-items-center">
                                 <span class="icon-link"></span>
                             </div>
@@ -953,7 +746,7 @@
                 <div class="col-md-6 col-lg-3 ftco-animate">
                     <div class="destination">
                         <a href="#" class="img img-2 d-flex justify-content-center align-items-center"
-                            style="background-image: url(images/restaurant-3.jpg);">
+                           style="background-image: url(images/restaurant-3.jpg);">
                             <div class="icon d-flex justify-content-center align-items-center">
                                 <span class="icon-link"></span>
                             </div>
@@ -980,7 +773,7 @@
                 <div class="col-md-6 col-lg-3 ftco-animate">
                     <div class="destination d-md-flex flex-column-reverse">
                         <a href="#" class="img img-2 d-flex justify-content-center align-items-center"
-                            style="background-image: url(images/restaurant-4.jpg);">
+                           style="background-image: url(images/restaurant-4.jpg);">
                             <div class="icon d-flex justify-content-center align-items-center">
                                 <span class="icon-link"></span>
                             </div>
@@ -1019,7 +812,7 @@
                 <div class="col-md-4 d-flex ftco-animate">
                     <div class="blog-entry align-self-stretch">
                         <a href="blog-single.html" class="block-20"
-                            style="background-image: url('images/image_1.jpg');">
+                           style="background-image: url('images/image_1.jpg');">
                         </a>
                         <div class="text">
                             <span class="tag">Tips, Travel</span>
@@ -1036,7 +829,7 @@
                 <div class="col-md-4 d-flex ftco-animate">
                     <div class="blog-entry align-self-stretch">
                         <a href="blog-single.html" class="block-20"
-                            style="background-image: url('images/image_2.jpg');">
+                           style="background-image: url('images/image_2.jpg');">
                         </a>
                         <div class="text">
                             <span class="tag">Culture</span>
@@ -1053,7 +846,7 @@
                 <div class="col-md-4 d-flex ftco-animate">
                     <div class="blog-entry align-self-stretch">
                         <a href="blog-single.html" class="block-20"
-                            style="background-image: url('images/image_3.jpg');">
+                           style="background-image: url('images/image_3.jpg');">
                         </a>
                         <div class="text">
                             <span class="tag">Tips, Travel</span>
@@ -1167,8 +960,8 @@
 
     <!-- loader -->
     <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
-            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
-            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
+        <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+        <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
                 stroke="#F96D00" /></svg></div>
 
 
@@ -1187,7 +980,7 @@
     <!--<script src="js/jquery.timepicker.min.js"></script>-->
     <script src="js/scrollax.min.js"></script>
     <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
     <script src="js/google-map.js"></script>
     <script src="js/main.js"></script>
 
