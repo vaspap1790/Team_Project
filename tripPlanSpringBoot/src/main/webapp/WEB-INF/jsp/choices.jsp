@@ -94,7 +94,7 @@
                                                     <div class="select-wrap">
                                                         <div class="icon"><span class="ion-ios-arrow-down"></span></div>
                                                         <select name="" class="form-control">
-                                                            <option value="">Airplane</option>
+                                                            <option value="" selected="selected">Airplane</option>
                                                             <option value="">Train</option>
                                                             <option value="">Ship</option>
                                                         </select>
@@ -109,7 +109,7 @@
                                                     <div class="select-wrap">
                                                         <div class="icon"><span class="ion-ios-arrow-down"></span></div>
                                                         <select name="" class="form-control">
-                                                            <option value="">Hotel</option>
+                                                            <option value="" selected="selected">Hotel</option>
                                                             <option value="">Hostel</option>
                                                             <option value="">AirBnb</option>
                                                         </select>
@@ -124,7 +124,7 @@
                                                     <div class="select-wrap">
                                                         <div class="icon"><span class="ion-ios-arrow-down"></span></div>
                                                         <select name="" class="form-control">
-                                                            <option value="">Car</option>
+                                                            <option value="" selected="selected">Car</option>
                                                             <option value="">Motocycle</option>
                                                         </select>
                                                     </div>
