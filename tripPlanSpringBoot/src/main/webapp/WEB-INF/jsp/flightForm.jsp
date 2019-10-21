@@ -56,7 +56,7 @@
         </nav>
         <!-- END nav -->
 
-        <div class="hero-wrap js-fullheight" style="background-image: url('../images/bg_1.jpg');">
+        <div class="hero-wrap js-fullheight" style="background-image: url('../images/destination-4.jpg');">
             <div class="overlay"></div>
             <div class="container">
                 <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start"
@@ -193,7 +193,7 @@
         <script src="../js/scrollax.min.js"></script>
         <script
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-        <script src="../js/google-map.js"></script>
+        <!--<script src="../js/google-map.js"></script>-->
         <script src="../js/main.js"></script>
 
 

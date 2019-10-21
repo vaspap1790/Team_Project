@@ -53,7 +53,7 @@
         </nav>
         <!-- END nav -->
 
-        <div class="hero-wrap js-fullheight" style="background-image: url('images/bg_1.jpg');">
+        <div class="hero-wrap js-fullheight" style="background-image: url('images/destination-1.jpg');">
             <div class="overlay"></div>
             <div class="container">
                 <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start"
@@ -93,12 +93,10 @@
                                                 <div class="form-field">
                                                     <div class="select-wrap">
                                                         <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                                                        <select class="form-control">
-                                                            <option value="">1</option>
-                                                            <option value="">2</option>
-                                                            <option value="">3</option>
-                                                            <option value="">4</option>
-                                                            <option value="">5</option>
+                                                        <select name="" class="form-control">
+                                                            <option value="">Airplane</option>
+                                                            <option value="">Train</option>
+                                                            <option value="">Ship</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -110,12 +108,10 @@
                                                 <div class="form-field">
                                                     <div class="select-wrap">
                                                         <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                                                        <select class="form-control">
-                                                            <option value="">1</option>
-                                                            <option value="">2</option>
-                                                            <option value="">3</option>
-                                                            <option value="">4</option>
-                                                            <option value="">5</option>
+                                                        <select name="" class="form-control">
+                                                            <option value="">Hotel</option>
+                                                            <option value="">Hostel</option>
+                                                            <option value="">AirBnb</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -127,12 +123,9 @@
                                                 <div class="form-field">
                                                     <div class="select-wrap">
                                                         <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                                                        <select class="form-control">
-                                                            <option value="">1</option>
-                                                            <option value="">2</option>
-                                                            <option value="">3</option>
-                                                            <option value="">4</option>
-                                                            <option value="">5</option>
+                                                        <select name="" class="form-control">
+                                                            <option value="">Car</option>
+                                                            <option value="">Motocycle</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -172,7 +165,7 @@
         <script src="js/scrollax.min.js"></script>
         <script
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-        <script src="js/google-map.js"></script>
+        <!--<script src="js/google-map.js"></script>-->
         <script src="js/main.js"></script>
 
 
