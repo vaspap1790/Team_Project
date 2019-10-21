@@ -1,6 +1,5 @@
 package com.mainpackage.tripPlan.controllers;
 
-
 import com.mainpackage.tripPlan.model.Flight;
 import com.mainpackage.tripPlan.utilities.CreateJson;
 import com.mainpackage.tripPlan.webServices.SkyApi;
@@ -46,15 +45,9 @@ public class FlightController {
     @PostMapping(value = "postRegister")
     public ModelAndView postFlight(@ModelAttribute("flight") Flight flight, HttpSession hs,
             @RequestParam(name = "inboundDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate inboundDate) throws IOException, UnirestException {
-      
-        HttpResponse<String> skyReport;
-        
-        if(flight.getType().equals("oneWay")){
-             skyReport = sky.oneWay(flight);
-        }else{
-          skyReport = sky.roundTrip(flight, inboundDate);
-        }
-        
+
+        HttpResponse<String> skyReport = sky.browseRoutes(flight, inboundDate);
+
         if (skyReport.getStatus() == 200) {
             hs.setAttribute("jsonFlights", skyReport);
             return new ModelAndView("result");
@@ -77,7 +70,7 @@ public class FlightController {
     @ResponseBody
     public ResponseEntity<Object> citiesI(ModelMap m, @PathVariable("city") String city) throws UnirestException, UnsupportedEncodingException {
 
-        HttpResponse<String> cities=sky.cities(city);
+        HttpResponse<String> cities = sky.cities(city);
 
         return new ResponseEntity<>(cities.getBody(), HttpStatus.OK);
     }
