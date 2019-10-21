@@ -2,108 +2,55 @@ package com.mainpackage.tripPlan.model;
 
 import java.io.Serializable;
 import java.sql.Date;
-import java.time.LocalDate;
-import org.springframework.format.annotation.DateTimeFormat;
 
-public class Flight implements Serializable{
+public class Flight implements Serializable {
 
-    private String country="US";
-    private String currency="USD";
-    private String locale="en-US";
-    private String adults;  
     private String originPlace;
-    private String destinationPlace;   
-    private Date outboundDate;     
-    private String cabinClass;
-  
+    private String destinationPlace;
+    private Date outboundDate;
+    private String type;
+
     public Flight() {
     }
 
-    public void setCountry(String country) {
-        this.country = country;
+    @Override
+    public String toString() {
+        return "Flight{" + "originPlace=" + originPlace + ", destinationPlace=" + destinationPlace + ", outboundDate=" + outboundDate + ", type=" + type + '}';
     }
 
-    public void setCurrency(String currency) {
-        this.currency = currency;
-    }
+    
 
-    public void setLocale(String locale) {
-        this.locale = locale;
-    }
-
-    public void setAdults(String adults) {
-        this.adults = adults;
+    public String getOriginPlace() {
+        return originPlace;
     }
 
     public void setOriginPlace(String originPlace) {
         this.originPlace = originPlace;
     }
 
-    public void setDestinationPlace(String destinationPlace) {
-        this.destinationPlace = destinationPlace;
-    }
-
-   
-
-    public void setCabinClass(String cabinClass) {
-        this.cabinClass = cabinClass;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public String getCurrency() {
-        return currency;
-    }
-
-    public String getLocale() {
-        return locale;
-    }
-
-    public String getAdults() {
-        return adults;
-    }
-
-    public String getOriginPlace() {
-        return originPlace;
-    }
-
     public String getDestinationPlace() {
         return destinationPlace;
+    }
+
+    public void setDestinationPlace(String destinationPlace) {
+        this.destinationPlace = destinationPlace;
     }
 
     public Date getOutboundDate() {
         return outboundDate;
     }
 
-  
-
     public void setOutboundDate(Date outboundDate) {
         this.outboundDate = outboundDate;
     }
 
-   
 
- 
 
-    public String getCabinClass() {
-        return cabinClass;
+    public String getType() {
+        return type;
     }
 
-    @Override
-    public String toString() {
-        return "Flight{" + "country=" + country + ", currency=" + currency + ", locale=" + locale + ", adults=" + adults + ", originPlace=" + originPlace + ", destinationPlace=" + destinationPlace + ", outboundDate=" + outboundDate + ", cabinClass=" + cabinClass + '}';
+    public void setType(String type) {
+        this.type = type;
     }
-
-   
-    
-    
- 
-
-
-  
-    
-    
-    
 }
