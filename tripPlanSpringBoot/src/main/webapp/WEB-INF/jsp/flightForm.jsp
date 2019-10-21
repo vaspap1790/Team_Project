@@ -95,6 +95,7 @@
                         </div>
                         <div class="form-row ui-menu">
 
+<<<<<<< HEAD
                             <div class="form-row">
                                 <div class="form-group col-md-2">
                                     <spring:label path="originPlace">From</spring:label>
@@ -114,15 +115,81 @@
                                     <label path="inboundDate">Return</label>
                                     <input name="inboundDate"  class="ml-3" type="date" placeholder="epistrofi *" />
                                 </div>
+=======
+                    </div>
+
+                    
+
+                        <div class="form-row">
+                            <div class="form-group col-md-2">
+                                <spring:label path="originPlace">From</spring:label>
+                                <spring:input cssClass="autocomplete form-control" path="originPlace" type="text"
+                                    placeholder="From *" />
+                            </div>
+                            <div class="form-group col-md-2">
+                                <spring:label path="destinationPlace">To</spring:label>
+                                <spring:input cssClass="autocomplete form-control" path="destinationPlace" type="text"
+                                    placeholder="To *" />
+                            </div>
+                            <div class="form-group col-md-2">
+                                <spring:label path="originPlace">Depart</spring:label>
+                                <spring:input path="outboundDate" type="date" class="form-control" placeholder="outbounddate *" />
+                            </div>
+
+
+                            <div class="col-md-2">
+                                <label path="inboundDate">Return</label>
+                                <input name="inboundDate" type="date" class="form-control" placeholder="epistrofi *" />
+                            </div>
+                            <!-- <div class="form-group col-md-2">
+                                <spring:label path="adults">Travelers</spring:label>
+                                <spring:input path="adults" type="text" class="form-control" placeholder="Travelers *" />
+                            </div> -->
+
+
+                            <div class="col-md-2">
+                                    <spring:label path="adults">Travelers</spring:label>
+                                    <div>
+                                        <spring:select path="adults" class="form-control">
+                                            <spring:option value="1" selected="selected">1</spring:option>
+                                            <spring:option value="2">2</spring:option>
+                                            <spring:option value="3">3</spring:option>
+                                            <spring:option value="4">4</spring:option>
+                                            <spring:option value="5">5</spring:option>
+                                        </spring:select>
+                                    </div>
+                                    </div>
+
+
+                            <div class="col-md-2">
+                                <spring:label path="cabinClass">Cabin Class</spring:label>
+                                <div>
+                                    <spring:select path="cabinClass" class="form-control">
+                                        <spring:option value="economy" selected="selected">economy</spring:option>
+                                        <spring:option value="business">business</spring:option>
+                                    </spring:select>
+                                </div>
+                                
+>>>>>>> 57ef244a589a7e2df6d17f81001a2efd530af57d
                             </div>
 
                         </div>
+<<<<<<< HEAD
                         <div class="d-flex justify-content-md-end">
                             <button type="submit" class="btn btn-info">Search flights <i
                                     class="fas fa-arrow-right"></i></button>
                         </div>
                     </spring:form>
                 </div>
+=======
+                        
+                    
+                    <div class="d-flex justify-content-md-end">
+                        <button type="submit" class="btn btn-info">Search flights <i
+                                class="fas fa-arrow-right"></i></button>
+                    </div>
+                </spring:form>
+>>>>>>> 57ef244a589a7e2df6d17f81001a2efd530af57d
             </div>
         </div>
 
