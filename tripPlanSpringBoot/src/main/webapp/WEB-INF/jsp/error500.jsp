@@ -1,4 +1,3 @@
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,7 +17,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <h1 class="text-center" style="margin: 40px;"> Admin Area <small>500 Internal Server Error</small>
+                    <h1 class="text-center" style="margin: 40px;"> Admin Area <small>500 Internal Server
+                            Error</small>
                     </h1>
                 </div>
             </div>
@@ -29,14 +29,16 @@
         <div class="container text-center">
 
             <img src="https://undsgn.com/wp-content/uploads/2018/02/dribbbler_error_500_white.jpg"
-                style="margin: 30px;">
+                style="margin: -8px;">
 
         </div>
+
     </section>
 
     <footer id="footer" class="text-center">
         <p><img src="https://i.ibb.co/YfsyLGp/logo.png" style="height: 1.5rem;"> Copyright AdminCS, &copy; 2019</p>
     </footer>
+
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
