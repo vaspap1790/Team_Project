@@ -46,7 +46,7 @@ public class FlightController {
     @PostMapping(value = "postRegister")
     public ModelAndView postFlight(@ModelAttribute("flight") Flight flight, HttpSession hs,
             @RequestParam(name = "inboundDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate inboundDate) throws IOException, UnirestException {
-       
+      
         HttpResponse<String> skyReport;
         
         if(flight.getType().equals("oneWay")){

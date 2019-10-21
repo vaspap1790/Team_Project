@@ -29,6 +29,7 @@
         <link rel="stylesheet" href="../css/flaticon.css">
         <link rel="stylesheet" href="../css/icomoon.css">
         <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="../css/autocomplete.css">
 
     </head>
 
@@ -88,14 +89,24 @@
 
                             <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel"
                                  aria-labelledby="v-pills-nextgen-tab">
-                                <form action="#" class="search-destination">
+                                <spring:form  id="flightForm" modelAttribute="flight" action="${pageContext.request.contextPath}/flight/postRegister"
+                                             class="search-destination">
+                                    <div class="d-flex form-row p-2">
+                                        <div class="form-group">
+                                        <spring:radiobutton   path="type" value="oneWay" checked="checked"/>
+                                        <label for="">One Way</label>
+                                        <spring:radiobutton   path="type" value="roundTrip"/>
+                                        <label for="">Roundtrip</label>  
+                                        </div>
+                                    </div>
                                     <div class="row">
                                         <div class="col-md align-items-end">
                                             <div class="form-group">
                                                 <label for="#">From</label>
                                                 <div class="form-field">
                                                     <div class="icon"><span class="icon-my_location"></span></div>
-                                                    <input type="text" class="form-control" placeholder="From">
+                                                    <input type="text" class="autocomplete form-control" placeholder="From *">
+                                                    <spring:hidden id="originPlace" path="originPlace" />
                                                 </div>
                                             </div>
                                         </div>
@@ -104,17 +115,17 @@
                                                 <label for="#">Where</label>
                                                 <div class="form-field">
                                                     <div class="icon"><span class="icon-map-marker"></span></div>
-                                                    <input type="text" class="form-control" placeholder="Where">
+                                                    <input type="text" class="autocomplete form-control" placeholder="To *">
+                                                    <spring:hidden id="destinationPlace" path="destinationPlace"/>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-md align-items-end">
                                             <div class="form-group">
-                                                <label for="#">Depart</label>
-                                                <div class="form-field">
-                                                    <div class="icon"><span class="icon-map-marker"></span></div>
-                                                    <input type="text" class="form-control checkin_date"
-                                                           placeholder="Check In">
+                                                <label for="#">Depart</label>                           
+                                                <div class="form-field" >
+                                                    <div class="icon"><span class="icon-map-marker"></span></div>          
+                                                    <spring:input path="outboundDate" cssClass="form-control checkin_date"  type="text" placeholder="To *" />
                                                 </div>
                                             </div>
                                         </div>
@@ -122,40 +133,8 @@
                                             <div class="form-group">
                                                 <label for="#">Return</label>
                                                 <div class="form-field">
-                                                    <div class="icon"><span class="icon-map-marker"></span></div>
-                                                    <input type="text" class="form-control checkout_date"
-                                                           placeholder="From">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md align-items-end">
-                                            <div class="form-group">
-                                                <label for="#">Travelers</label>
-                                                <div class="form-field">
-                                                    <div class="select-wrap">
-                                                        <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                                                        <select name="" id="" class="form-control">
-                                                            <option value="">1</option>
-                                                            <option value="">2</option>
-                                                            <option value="">3</option>
-                                                            <option value="">4</option>
-                                                            <option value="">5</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md align-items-end">
-                                            <div class="form-group">
-                                                <label for="#">Cabin Class</label>
-                                                <div class="form-field">
-                                                    <div class="select-wrap">
-                                                        <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                                                        <select name="" id="" class="form-control">
-                                                            <option value="">Economy</option>
-                                                            <option value="">Business</option>
-                                                        </select>
-                                                    </div>
+                                                    <div class="icon"><span class="icon-map-marker"></span></div>                                                 
+                                                    <input name="inboundDate"  class="form-control checkout_date" type="text" placeholder="From *" />
                                                 </div>
                                             </div>
                                         </div>
@@ -168,7 +147,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </form>
+                                </spring:form>
                             </div>
                         </div>
                     </div>
@@ -198,6 +177,7 @@
 
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <script type="text/javascript" src="${pageContext.request.contextPath}/js/flightJs.js"></script>
 
     </body>

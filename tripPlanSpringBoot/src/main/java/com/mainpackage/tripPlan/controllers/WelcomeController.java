@@ -16,14 +16,6 @@ public class WelcomeController {
     @GetMapping(value = "/")
     public String welcome(ModelMap m, HttpSession session) {
 
-        User user = (User) session.getAttribute("user");
-
-        if (user == null) {
-            user = new User();
-        }
-        m.addAttribute("user", user);
-        
-       
         return "index";
     }
 }
