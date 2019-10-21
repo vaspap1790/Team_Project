@@ -1,17 +1,23 @@
 $(document).ready(function () {
 
-    $.ajax({
-        type: "GET",
-        url: "returnFlights",
-        dataType: "json",
-        success: function (flight) {
-            
-            console.log(flight);
-         
-
-        }
+    function testAjax(handleData) {
+        $.ajax({
+            type: "GET",
+            url: "returnFlights",
+            dataType: "json",
+            success: function (data) {
+                handleData(data);
+            }
+        });
+    }
+    ;
+    
+    testAjax(function (obj) {
+        console.log(obj);
+       const places= obj.Places;
+       
 
     });
 
-
 });
+

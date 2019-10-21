@@ -50,7 +50,7 @@ public class FlightController {
         HttpResponse<String> skyReport;
         
         if(flight.getType().equals("oneWay")){
-             skyReport = sky.oneWay(flight, inboundDate);
+             skyReport = sky.oneWay(flight);
         }else{
           skyReport = sky.roundTrip(flight, inboundDate);
         }
