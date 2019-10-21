@@ -11,6 +11,7 @@ import com.mainpackage.tripPlan.utilities.Encryption;
 import java.io.IOException;
 import java.sql.Blob;
 import java.sql.SQLException;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -48,12 +49,13 @@ public class UserController {
     }
 
     @PostMapping(value = "postLogIn")
-    public String postlogIn(ModelMap m, @RequestParam(name = "username") String username, @RequestParam(name = "password") String password) {
+    public String postlogIn(ModelMap m, @RequestParam(name = "username") String username, @RequestParam(name = "password") String password,HttpSession session) {
 
         String role = userService.postLogIn(username, password);
-        m.addAttribute("role", role);
+        User user = userRepo.findByUsername(username);
+        session.setAttribute("user", user);
 
-        return "result";
+        return "index";
     }
 
     @GetMapping(value = "register")
