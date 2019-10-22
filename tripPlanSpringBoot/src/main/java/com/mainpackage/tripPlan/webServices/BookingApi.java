@@ -18,14 +18,14 @@ public class BookingApi {
     CreateJson cJ;
 
     /////insert city////get dest_id
-    public String locations(String city) throws UnirestException, ParseException {
+    public HttpResponse<String> locations(String city) throws UnirestException, ParseException {
         
         HttpResponse<String> response = Unirest.get("https://apidojo-booking-v1.p.rapidapi.com/locations/auto-complete?languagecode=en-us&text=" + city)
                 .header("x-rapidapi-host", "apidojo-booking-v1.p.rapidapi.com")
                 .header("x-rapidapi-key", "2f7c656e8emsh52fa210fd1c2272p1016dbjsn00574276a26e")
                 .asString();
 
-        return response.getBody();
+        return response;
     }
 
     public void propertiesList(String dest_id) throws UnirestException {

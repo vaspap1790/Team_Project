@@ -41,11 +41,21 @@ public class SkyApi {
         return response;
     }
 
-    public HttpResponse<String> browseRoutes(Flight f,
+    public HttpResponse<String> browseRoutesRoundTrip(Flight f,
             @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate inboundDate) throws UnirestException {
 
         HttpResponse<String> response = Unirest.get("https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browseroutes/v1.0/GR/USD/en-US/"
                 +f.getOriginPlace()+"-SKY/"+f.getDestinationPlace()+"-SKY/"+f.getOutboundDate()+"/"+inboundDate)
+                .header("x-rapidapi-host", "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com")
+                .header("x-rapidapi-key", "2f7c656e8emsh52fa210fd1c2272p1016dbjsn00574276a26e")
+                .asString();
+
+        return response;
+    }
+        public HttpResponse<String> browseRoutesOneWay(Flight f) throws UnirestException {
+
+        HttpResponse<String> response = Unirest.get("https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browseroutes/v1.0/GR/USD/en-US/"
+                +f.getOriginPlace()+"-SKY/"+f.getDestinationPlace()+"-SKY/"+f.getOutboundDate())
                 .header("x-rapidapi-host", "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com")
                 .header("x-rapidapi-key", "2f7c656e8emsh52fa210fd1c2272p1016dbjsn00574276a26e")
                 .asString();

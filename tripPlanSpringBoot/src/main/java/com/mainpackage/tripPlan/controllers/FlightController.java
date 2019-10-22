@@ -46,8 +46,15 @@ public class FlightController {
     public ModelAndView postFlight(@ModelAttribute("flight") Flight flight, HttpSession hs,
             @RequestParam(name = "inboundDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate inboundDate) throws IOException, UnirestException {
 
-        HttpResponse<String> skyReport = sky.browseRoutes(flight, inboundDate);
-
+        HttpResponse<String> skyReport;
+        
+        if(flight.getType().equals("roundTrip")){
+         skyReport = sky.browseRoutesRoundTrip(flight, inboundDate);
+        }
+        else{
+          skyReport =sky.browseRoutesOneWay(flight);
+        }
+        
         if (skyReport.getStatus() == 200) {
             hs.setAttribute("jsonFlights", skyReport);
             return new ModelAndView("result");
