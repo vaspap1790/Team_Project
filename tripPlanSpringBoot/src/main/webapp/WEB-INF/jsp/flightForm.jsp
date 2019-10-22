@@ -45,7 +45,7 @@
 
                 <div class="collapse navbar-collapse" id="ftco-nav">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item active"><a href="#" class="nav-link">Home</a></li>
+                        <li class="nav-item active"><a href="${pageContext.request.contextPath}/" class="nav-link">Home</a></li>
                         <li class="nav-item"><a href="" class="nav-link">About</a></li>
                         <li class="nav-item"><a href="" class="nav-link">Places</a></li>
                         <li class="nav-item"><a href="" class="nav-link">Hotels</a></li>
@@ -57,24 +57,23 @@
         </nav>
         <!-- END nav -->
 
-        <div class="hero-wrap js-fullheight" style="background-image: url('../images/bg_1.jpg');">
+        <div class="hero-wrap js-fullheight" style="background-image: url('../images/destination-4.jpg');">
             <div class="overlay"></div>
             <div class="container">
                 <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start"
                      data-scrollax-parent="true">
                     <div class="col-md-9 ftco-animate mb-5 pb-5 text-center text-md-left"
                          data-scrollax=" properties: { translateY: '70%' }">
-                        <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Plan <br>Your own
-                            Trip</h1>
-                        <p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Find great places to stay, eat,
-                            shop, or visit from local experts</p>
+                        <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Plan <br>Your Flight
+                        </h1>
+                        <p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Find great prices to fly and explore the world</p>
                     </div>
                 </div>
             </div>
         </div>
 
         <section class="ftco-section justify-content-end ftco-search">
-            <div class="container-wrap ml-auto">
+            <div class="container justify-content-center">
                 <div class="row no-gutters">
                     <div class="col-md-12 nav-link-wrap">
                         <div class="nav nav-pills justify-content-center text-center" id="v-pills-tab" role="tablist"
@@ -90,13 +89,13 @@
                             <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel"
                                  aria-labelledby="v-pills-nextgen-tab">
                                 <spring:form  id="flightForm" modelAttribute="flight" action="${pageContext.request.contextPath}/flight/postRegister"
-                                             class="search-destination">
-                                    <div class="d-flex form-row p-2">
-                                        <div class="form-group">
-                                        <spring:radiobutton   path="type" value="oneWay" checked="checked"/>
-                                        <label for="">One Way</label>
-                                        <spring:radiobutton   path="type" value="roundTrip"/>
-                                        <label for="">Roundtrip</label>  
+                                              class="search-destination">
+                                    <div class="d-flex form-row">
+                                        <div class="form-group my-auto">
+                                            <spring:radiobutton path="type" style="transform: scale(1.5);" class="m-2" value="oneWay" checked="checked"/>
+                                            <label for="">One Way</label>
+                                            <spring:radiobutton  path="type" style="transform: scale(1.5);" class="m-2 ml-4" value="roundTrip"/>
+                                            <label for="">Round trip</label>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -125,7 +124,7 @@
                                                 <label for="#">Depart</label>                           
                                                 <div class="form-field" >
                                                     <div class="icon"><span class="icon-map-marker"></span></div>          
-                                                    <spring:input path="outboundDate" cssClass="form-control checkin_date"  type="text" placeholder="To *" />
+                                                        <spring:input path="outboundDate" cssClass="form-control checkin_date"  type="text" placeholder="To *" />
                                                 </div>
                                             </div>
                                         </div>
@@ -172,7 +171,7 @@
         <script src="../js/scrollax.min.js"></script>
         <script
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-        <script src="../js/google-map.js"></script>
+        <!--<script src="../js/google-map.js"></script>-->
         <script src="../js/main.js"></script>
 
 
