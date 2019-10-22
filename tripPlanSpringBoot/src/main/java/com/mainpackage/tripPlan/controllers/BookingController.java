@@ -36,6 +36,13 @@ public class BookingController {
         return "booking";
     }
     
+    @GetMapping(value = "city/{city}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public String location(ModelMap m, @PathVariable("city") String city) throws UnirestException, ParseException {
+
+        System.out.println(city);
+
+        return "result"; 
+    }
 
     
 }
