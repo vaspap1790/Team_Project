@@ -90,12 +90,12 @@
                                  aria-labelledby="v-pills-nextgen-tab">
                                 <spring:form  id="flightForm" modelAttribute="flight" action="${pageContext.request.contextPath}/flight/postRegister"
                                               class="search-destination">
-                                    <div class="d-flex form-row p-2">
-                                        <div class="form-group">
-                                            <spring:radiobutton  path="type" value="oneWay" checked="checked"/>
+                                    <div class="d-flex form-row">
+                                        <div class="form-group my-auto">
+                                            <spring:radiobutton path="type" style="transform: scale(1.5);" class="m-2" value="oneWay" checked="checked"/>
                                             <label for="">One Way</label>
-                                            <spring:radiobutton  path="type" class="ml-4" value="roundTrip"/>
-                                            <label for="">Roundtrip</label>
+                                            <spring:radiobutton  path="type" style="transform: scale(1.5);" class="m-2 ml-4" value="roundTrip"/>
+                                            <label for="">Round trip</label>
                                         </div>
                                     </div>
                                     <div class="row">
