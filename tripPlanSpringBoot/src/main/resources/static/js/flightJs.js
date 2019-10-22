@@ -1,9 +1,10 @@
 
-///////////////////////////////////Autocomplete for skyscanner/////////
+
 $(document).ready(function () {
     $(".autocomplete").keyup(function () {
 
         const city = $(this).val().trim();
+        ///////////////////////////////////Autocomplete for skyscanner/////////
         $(this).autocomplete({
             source: function (request, response) {
                 $.ajax({
@@ -39,4 +40,16 @@ $('#flightForm').on('keyup keypress', function(e) {
     e.preventDefault();
     return false;
   }
+  
+  /////////roundtrip oneway//////////
+  
+  const inboundDate=$("#inboundDate");
+  const oneway=$("#onewayradio");
+  const roundtrip=$("#roundtripradio");
+  const glif=$("#glif");
+  
+  $("#roundtripradio").on("click",function(){
+      $("#glif").removeClass("d-none");
+      
+  });
 });

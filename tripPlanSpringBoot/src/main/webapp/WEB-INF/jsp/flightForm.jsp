@@ -30,6 +30,7 @@
         <link rel="stylesheet" href="../css/icomoon.css">
         <link rel="stylesheet" href="../css/style.css">
         <link rel="stylesheet" href="../css/autocomplete.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     </head>
 
@@ -92,9 +93,9 @@
                                               class="search-destination">
                                     <div class="d-flex form-row">
                                         <div class="form-group my-auto">
-                                            <spring:radiobutton path="type" style="transform: scale(1.5);" class="m-2" value="oneWay" checked="checked"/>
+                                            <spring:radiobutton path="type" id="onewayradio" style="transform: scale(1.5);" class="m-2" value="oneWay" checked="checked"/>
                                             <label for="">One Way</label>
-                                            <spring:radiobutton  path="type" style="transform: scale(1.5);" class="m-2 ml-4" value="roundTrip"/>
+                                            <spring:radiobutton  path="type" id="roundtripradio" style="transform: scale(1.5);" class="m-2 ml-4" value="roundTrip"/>
                                             <label for="">Round trip</label>
                                         </div>
                                     </div>
@@ -104,7 +105,7 @@
                                                 <label for="#">From</label>
                                                 <div class="form-field">
                                                     <div class="icon"><span class="icon-my_location"></span></div>
-                                                    <input type="text" class="autocomplete form-control" placeholder="From *">
+                                                    <input type="text" class="autocomplete form-control" required placeholder="From *">
                                                     <spring:hidden id="originPlace" path="originPlace" />
                                                 </div>
                                             </div>
@@ -114,7 +115,7 @@
                                                 <label for="#">Where</label>
                                                 <div class="form-field">
                                                     <div class="icon"><span class="icon-map-marker"></span></div>
-                                                    <input type="text" class="autocomplete form-control" placeholder="To *">
+                                                    <input type="text" class="autocomplete form-control" required="required" placeholder="To *">
                                                     <spring:hidden id="destinationPlace" path="destinationPlace"/>
                                                 </div>
                                             </div>
@@ -124,16 +125,19 @@
                                                 <label for="#">Depart</label>                           
                                                 <div class="form-field" >
                                                     <div class="icon"><span class="icon-map-marker"></span></div>          
-                                                        <spring:input path="outboundDate" cssClass="form-control checkin_date"  type="text" placeholder="To *" />
+                                                        <spring:input path="outboundDate" cssClass="form-control checkin_date" required="required"  type="text" placeholder="To *" />
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md align-items-end">
+                                        <div  class="d-flex align-items-center mt-3">                                         
+                                                    <i id="glif" class="fa fa-exchange d-none"></i>          
+                                        </div>                        
+                                        <div class="col-md align-items-end ">
                                             <div class="form-group">
-                                                <label for="#">Return</label>
+                                                <label id="labelinbounddate" for="#">Return</label>
                                                 <div class="form-field">
                                                     <div class="icon"><span class="icon-map-marker"></span></div>                                                 
-                                                    <input name="inboundDate"  class="form-control checkout_date" type="text" placeholder="From *" />
+                                                    <input id="inboundDate" name="inboundDate" disabled="disabled"  class="form-control checkout_date" required type="text" placeholder="From *" />
                                                 </div>
                                             </div>
                                         </div>
