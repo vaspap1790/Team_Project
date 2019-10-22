@@ -41,7 +41,7 @@
 
                 <div class="collapse navbar-collapse" id="ftco-nav">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item active"><a href="#" class="nav-link">Home</a></li>
+                        <li class="nav-item active"><a href="${pageContext.request.contextPath}/" class="nav-link">Home</a></li>
                         <li class="nav-item"><a href="" class="nav-link">About</a></li>
                         <li class="nav-item"><a href="" class="nav-link">Places</a></li>
                         <li class="nav-item"><a href="" class="nav-link">Hotels</a></li>
@@ -70,7 +70,7 @@
         </div>
 
         <section class="ftco-section justify-content-end ftco-search">
-            <div class="container-wrap ml-auto">
+            <div class="container justify-content-center">
                 <div class="row no-gutters">
                     <div class="col-md-12 nav-link-wrap">
                         <div class="nav nav-pills justify-content-center text-center" id="v-pills-tab" role="tablist"

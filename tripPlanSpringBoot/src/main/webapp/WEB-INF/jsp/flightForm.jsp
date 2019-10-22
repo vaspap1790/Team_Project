@@ -45,7 +45,7 @@
 
                 <div class="collapse navbar-collapse" id="ftco-nav">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item active"><a href="#" class="nav-link">Home</a></li>
+                        <li class="nav-item active"><a href="${pageContext.request.contextPath}/" class="nav-link">Home</a></li>
                         <li class="nav-item"><a href="" class="nav-link">About</a></li>
                         <li class="nav-item"><a href="" class="nav-link">Places</a></li>
                         <li class="nav-item"><a href="" class="nav-link">Hotels</a></li>
@@ -66,15 +66,14 @@
                          data-scrollax=" properties: { translateY: '70%' }">
                         <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Plan <br>Your Flight
                         </h1>
-                        <p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Find great places to stay, eat,
-                            shop, or visit from local experts</p>
+                        <p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Find great prices to fly and explore the world</p>
                     </div>
                 </div>
             </div>
         </div>
 
         <section class="ftco-section justify-content-end ftco-search">
-            <div class="container-wrap ml-auto">
+            <div class="container justify-content-center">
                 <div class="row no-gutters">
                     <div class="col-md-12 nav-link-wrap">
                         <div class="nav nav-pills justify-content-center text-center" id="v-pills-tab" role="tablist"
@@ -93,10 +92,10 @@
                                               class="search-destination">
                                     <div class="d-flex form-row p-2">
                                         <div class="form-group">
-                                            <spring:radiobutton   path="type" value="oneWay" checked="checked"/>
+                                            <spring:radiobutton  path="type" value="oneWay" checked="checked"/>
                                             <label for="">One Way</label>
-                                            <spring:radiobutton   path="type" value="roundTrip"/>
-                                            <label for="">Roundtrip</label>  
+                                            <spring:radiobutton  path="type" class="ml-4" value="roundTrip"/>
+                                            <label for="">Roundtrip</label>
                                         </div>
                                     </div>
                                     <div class="row">
