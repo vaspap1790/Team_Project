@@ -28,7 +28,7 @@
                         </div>
                         <div class="form-wrapper">
                             <spring:label path="lastname">Last Name</spring:label>
-                            <spring:input path="lastname" cssClass="form-control" placeholder="Enter Second Name..."/>
+                            <spring:input path="lastname" cssClass="form-control" placeholder="Enter Last Name..."/>
                         </div>
                     </div>
                     <div class="form-wrapper">
@@ -36,16 +36,16 @@
                         <spring:input path="username" cssClass="form-control" placeholder="Enter Username..."/>
                     </div>
                     <div class="form-wrapper">
-                        <spring:label path="email">email</spring:label>
-                        <spring:input path="email" cssClass="form-control" placeholder="Enter email..."/>
+                        <spring:label path="email">Email</spring:label>
+                        <spring:input path="email" cssClass="form-control" placeholder="Enter Email..."/>
                     </div>
                     <div class="form-wrapper">
                         <spring:label path="password">Password</spring:label>
-                        <spring:input path="password" type="password" cssClass="form-control" placeholder="Enter password..."/>
+                        <spring:input path="password" type="password" cssClass="form-control" placeholder="Enter Password..."/>
                     </div>
                     <div class="form-wrapper">
                         <label for="confirmPassword">Confirm Password</label>
-                        <input name="confirmPassword" type="password" class="form-control" placeholder="Enter password..."/>
+                        <input name="confirmPassword" type="password" class="form-control" placeholder="Enter Password..."/>
                     </div>
                     <div class="form-wrapper">
                         <label for="photo">Photo</label>
