@@ -50,7 +50,7 @@ public class WelcomeController {
     @GetMapping (value = "/userTripsPage")
     public  String userTripsPage(){
         
-        return "userTripPage";
+        return "userTripsPage";
     }
 
 }

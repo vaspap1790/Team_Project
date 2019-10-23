@@ -17,7 +17,7 @@
     <body>
 
         <div class="wrapper" style="background-image: url('${pageContext.request.contextPath}/css/registercss/images/bg-registration-form-2.jpg');">
-            <div class="inner" style="background-image: url('${pageContext.request.contextPath}/css/registercss/images/registration-form-2.jpg');">
+            <div class="inner" style="background-image: url('https://images.all-free-download.com/images/graphiclarge/registration_and_login_form_vector_290456.jpg');">
                 <spring:form modelAttribute="user" action="${pageContext.request.contextPath}/user/postRegister" method="POST" id="registerForm" enctype="multipart/form-data">
                     <h3>Registration Form</h3>
                     <div class="form-group">
@@ -28,7 +28,7 @@
                         </div>
                         <div class="form-wrapper">
                             <spring:label path="lastname">Last Name</spring:label>
-                            <spring:input path="lastname" cssClass="form-control" placeholder="Enter Second Name..."/>
+                            <spring:input path="lastname" cssClass="form-control" placeholder="Enter Last Name..."/>
                         </div>
                     </div>
                     <div class="form-wrapper">
@@ -36,16 +36,16 @@
                         <spring:input path="username" cssClass="form-control" placeholder="Enter Username..."/>
                     </div>
                     <div class="form-wrapper">
-                        <spring:label path="email">email</spring:label>
-                        <spring:input path="email" cssClass="form-control" placeholder="Enter email..."/>
+                        <spring:label path="email">Email</spring:label>
+                        <spring:input path="email" cssClass="form-control" placeholder="Enter Email..."/>
                     </div>
                     <div class="form-wrapper">
                         <spring:label path="password">Password</spring:label>
-                        <spring:input path="password" type="password" cssClass="form-control" placeholder="Enter password..."/>
+                        <spring:input path="password" type="password" cssClass="form-control" placeholder="Enter Password..."/>
                     </div>
                     <div class="form-wrapper">
                         <label for="confirmPassword">Confirm Password</label>
-                        <input name="confirmPassword" type="password" class="form-control" placeholder="Enter password..."/>
+                        <input name="confirmPassword" type="password" class="form-control" placeholder="Enter Password..."/>
                     </div>
                     <div class="form-wrapper">
                         <label for="photo">Photo</label>
