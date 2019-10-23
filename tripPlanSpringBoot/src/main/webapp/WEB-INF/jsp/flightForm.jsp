@@ -118,7 +118,7 @@
                                                 <label for="#">Where</label>
                                                 <div class="form-field">
                                                     <div class="icon"><span class="icon-map-marker"></span></div>
-                                                    <input type="text" class="autocomplete form-control" required="required" placeholder="To *">
+                                                    <input type="text" class="autocomplete form-control" required="required" placeholder="Where *">
                                                     <spring:hidden id="destinationPlace" path="destinationPlace"/>
                                                 </div>
                                             </div>
