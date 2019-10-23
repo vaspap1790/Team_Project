@@ -17,7 +17,7 @@
     <body>
 
         <div class="wrapper" style="background-image: url('${pageContext.request.contextPath}/css/registercss/images/bg-registration-form-2.jpg');">
-            <div class="inner" style="background-image: url('${pageContext.request.contextPath}/css/registercss/images/registration-form-2.jpg');">
+            <div class="inner" style="background-image: url('https://images.all-free-download.com/images/graphiclarge/registration_and_login_form_vector_290456.jpg');">
                 <spring:form modelAttribute="user" action="${pageContext.request.contextPath}/user/postRegister" method="POST" id="registerForm" enctype="multipart/form-data">
                     <h3>Registration Form</h3>
                     <div class="form-group">
