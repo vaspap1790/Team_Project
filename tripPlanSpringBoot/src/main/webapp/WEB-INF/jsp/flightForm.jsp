@@ -118,7 +118,7 @@
                                                 <label for="#">Where</label>
                                                 <div class="form-field">
                                                     <div class="icon"><span class="icon-map-marker"></span></div>
-                                                    <input type="text" class="autocomplete form-control" required="required" placeholder="To *">
+                                                    <input type="text" class="autocomplete form-control" required="required" placeholder="Where *">
                                                     <spring:hidden id="destinationPlace" path="destinationPlace"/>
                                                 </div>
                                             </div>
@@ -128,7 +128,7 @@
                                                 <label for="#">Depart</label>                           
                                                 <div class="form-field" >
                                                     <div class="icon"><span class="icon-map-marker"></span></div>          
-                                                        <spring:input path="outboundDate" cssClass="form-control checkin_date" required="required"  type="text" placeholder="To *" />
+                                                    <spring:input autocomplete="off" path="outboundDate" cssClass="form-control checkin_date" required="required"  type="text" placeholder="To *" />
                                                 </div>
                                             </div>
                                         </div>                
@@ -137,7 +137,7 @@
                                                 <label id="labelinbounddate" for="#">Return</label>
                                                 <div  class="form-field ">
                                                     <div class="icon"><span class="icon-map-marker "></span></div>                                                 
-                                                    <input id="inboundDate" name="inboundDate"   class="form-control checkout_date "  type="text" placeholder="From *" />
+                                                    <input autocomplete="off" id="inboundDate" name="inboundDate"   class="form-control checkout_date "  type="text" placeholder="From *" />
                                                 </div>
                                             </div>
                                         </div>
