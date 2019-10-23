@@ -47,12 +47,12 @@ $('#flightForm').on('keyup keypress', function(e) {
   
   $("#butt2").change(function(){
       $("#glif,#return").removeClass("d-none");
-      $("#inboundDate").addClass("required");
+      $("#inboundDate").addatt("required");
   });
   
  $("#butt1").change(function(){
       $("#glif,#return").addClass("d-none");
-
+      $("#inboundDate").removeAttr("required");
  
   });
 

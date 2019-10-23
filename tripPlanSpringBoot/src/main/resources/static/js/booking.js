@@ -10,7 +10,6 @@ $(document).ready(function () {
                     url: "http://api.geonames.org/search?name_startsWith=" + city + "&username=dimitris&type=json&cities='cities15000'",
                     data: {query: request.term},
                     success: function (data) {
-
                         const geo = data.geonames;
 
                         var transformed = $.map(geo, function (el) {
