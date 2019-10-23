@@ -50,8 +50,10 @@
                     <li class="nav-item"><a href="" class="nav-link">Places</a></li>
                     <li class="nav-item"><a href="" class="nav-link">Hotels</a></li>
                     <li class="nav-item"><a href="" class="nav-link">Blog</a></li>
-                    <li class="nav-item"><a href="" class="nav-link">Contact</a></li>
+                    <li class="nav-item"><a href="#foot" class="nav-link">Contact</a></li>
                 </ul>
+                <a href="${pageContext.request.contextPath}/user/logIn" class="btn btn-warning mr-2">Sign In</a>
+                <a href="${pageContext.request.contextPath}/user/register" class="btn btn-warning">Sign Up</a>
             </div>
         </div>
     </nav>
@@ -62,14 +64,14 @@
         <div class="container">
             <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start"
                  data-scrollax-parent="true">
-                <div class="col-12 text-right">
-                    <a href="${pageContext.request.contextPath}/user/logIn" class="btn btn-warning">Sign In</a>
-                    <a href="${pageContext.request.contextPath}/user/register" class="btn btn-warning">Sign Up</a>
-                </div>
+                <!--                <div class="col-12 text-right">
+                                    <a href="${pageContext.request.contextPath}/user/logIn" class="btn btn-warning">Sign In</a>
+                                    <a href="${pageContext.request.contextPath}/user/register" class="btn btn-warning">Sign Up</a>
+                                </div>-->
                 <div class="col-md-9 ftco-animate mb-5 pb-5 text-center text-md-left"
                      data-scrollax=" properties: { translateY: '70%' }">
-                    <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Plan <br>Your own
-                        Trip</h1>
+                    <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Discover <br>A new Place
+                    </h1>
                     <p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Find great places to stay, eat,
                         shop, or visit from local experts</p>
 
@@ -888,7 +890,7 @@
         </div>
     </section>
 
-    <footer class="ftco-footer ftco-bg-dark ftco-section">
+    <footer id="foot" class="ftco-footer ftco-bg-dark ftco-section">
         <div class="container">
             <div class="row mb-5">
                 <div class="col-md">
@@ -963,7 +965,7 @@
         <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
         <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
                 stroke="#F96D00" /></svg></div>
-    
+
 
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery-migrate-3.0.1.min.js"></script>

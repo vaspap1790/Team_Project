@@ -33,19 +33,24 @@ public class WelcomeController {
     }
 
     @GetMapping(value = "/postChoices")
-    public String postChoices(
+    public ModelAndView postChoices(
             HttpSession session,
             HttpServletRequest request,
             @RequestParam(name = "transportation") String transportation,
             @RequestParam(name = "accomodation") String accomodation,
             @RequestParam(name = "rental") String rental) {
 
-
         session.setAttribute("transportation", transportation);
         session.setAttribute("accomodation", accomodation);
         session.setAttribute("rental", rental);
 
-        return transportation + "Form";
+        return new ModelAndView("redirect:/" + transportation + "/register");
+    }
+    
+    @GetMapping (value = "userTripsPage")
+    public  String userTripsPage(){
+        
+        return "userTripPage";
     }
 
 }

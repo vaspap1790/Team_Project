@@ -1,8 +1,8 @@
 package com.mainpackage.tripPlan.controllers;
 
-import com.mainpackage.tripPlan.model.Flight;
 import com.mainpackage.tripPlan.utilities.CreateJson;
 import com.mainpackage.tripPlan.webServices.BookingApi;
+import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
@@ -20,6 +20,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping(value = "hotel/")
@@ -30,32 +31,33 @@ public class BookingController {
     @Autowired
     CreateJson jsonUtil;
 
-    @GetMapping(value = "city/{city}", produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseBody
-    public ResponseEntity<Object> location(ModelMap m, @PathVariable("city") String city) throws UnirestException, ParseException {
-
-        String j = booking.locations(city);
-
-        JSONArray array = jsonUtil.createJsonArray(j);
-
-        return new ResponseEntity<>(array, HttpStatus.OK);
+    @GetMapping(value="hotelForm")
+    public String hotelForm(){
+        
+        return "hotelForm";
+        
     }
+    @GetMapping(value="postHotelForm")
+    public String postHotelForm(){
+        
+        return "hotelResults";
+        
+    }
+    
 
-    @PostMapping(value = "hotelResults")
-    public String hotelResults(ModelMap m, HttpSession session) {
+    @PostMapping(value = "postHotelResults")
+    public ModelAndView hotelResults(ModelMap m, HttpSession session) {
 
         String getRentalFromSess = (String) session.getAttribute("rental");
         if (getRentalFromSess.equals("None")) {
-            if (session.getAttribute("unloggedUser") == null) {
-                return "userTripsPage";
-            }else {
-                return "register";
-            }
-        } else {
-            String rental = getRentalFromSess + "Form";
+            
+                return new ModelAndView("userTripsPage") ;
 
-            return rental;
+        } else {
+            String rental = getRentalFromSess + "/" + getRentalFromSess + "Form";
+
+            return new ModelAndView("redirect:/"+rental) ;
         }
     }
-
+    
 }

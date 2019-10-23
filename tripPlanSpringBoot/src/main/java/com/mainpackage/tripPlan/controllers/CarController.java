@@ -11,14 +11,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping(value = "car/")
 public class CarController {
 
-    @PostMapping(value = "carResults")
+    
+    @GetMapping(value="carForm")
+    public String carForm(){
+        
+    return "carResults";    
+    }
+    
+    @PostMapping(value = "postCarResults")
     public String hotelResults(ModelMap m, HttpSession session) {
 
-        if (session.getAttribute("unloggedUser") == null) {
             return "userTripsPage";
-        } else {
-            return "register";
-        }
 
     }
 

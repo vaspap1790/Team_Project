@@ -9,5 +9,6 @@
     </head>
     <body>
         <h1>Hello World!</h1>
+        <a href="${pageContext.request.contextPath}/postCarResults">Post Car Results</a>
     </body>
 </html>

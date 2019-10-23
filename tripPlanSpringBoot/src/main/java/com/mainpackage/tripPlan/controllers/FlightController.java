@@ -48,11 +48,12 @@ public class FlightController {
             @RequestParam(name = "inboundDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate inboundDate) throws IOException, UnirestException {
 
         HttpResponse<String> skyReport;
-
-        if (flight.getType().equals("oneWay")) {
-            skyReport = sky.oneWay(flight);
-        } else {
-            skyReport = sky.roundTrip(flight, inboundDate);
+     
+        if(flight.getType().equals("roundTrip")){
+         skyReport = sky.browseRoutesRoundTrip(flight, inboundDate);
+        }
+        else{
+          skyReport =sky.browseRoutesOneWay(flight);
         }
 
         if (skyReport.getStatus() == 200) {
@@ -63,16 +64,16 @@ public class FlightController {
         return new ModelAndView("redirect:/flight/register");
     }
 
-    @PostMapping(value = "flightResults")
-    public String flightResultForm(ModelMap m, HttpSession session) {
+    @GetMapping(value = "postFlightResults")
+    public ModelAndView flightResultForm(ModelMap m, HttpSession session) {
 
         String getAccomFromSess = (String) session.getAttribute("accomodation");
         String accomodation =  getAccomFromSess + "Form";
 
-        return accomodation;
+        return new ModelAndView("redirect:/"+getAccomFromSess+"/"+accomodation );
     }
 
-    ///////////////////// return flights with sesssion
+
     @GetMapping(value = "returnFlights", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseEntity<Object> returnFlights(HttpSession hp) throws UnirestException, UnsupportedEncodingException, ParseException {
