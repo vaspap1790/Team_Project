@@ -98,12 +98,6 @@
                                                             <option value="flight">Airplane</option>
                                                             <option value="train">Train</option>
                                                             <option value="ship">Ship</option>
-                                                            
-                                                        <select name="" class="form-control">
-                                                            <option value="" selected="selected">Airplane</option>
-                                                            <option value="">Train</option>
-                                                            <option value="">Ship</option>
-
                                                         </select>
                                                     </div>
                                                 </div>
@@ -120,12 +114,6 @@
                                                             <option value="hotel">Hotel</option>
                                                             <option value="hostel">Hostel</option>
                                                             <option value="airbnb">AirBnb</option>
-
-                                                        <select name="" class="form-control">
-                                                            <option value="" selected="selected">Hotel</option>
-                                                            <option value="">Hostel</option>
-                                                            <option value="">AirBnb</option>
-
                                                         </select>
                                                     </div>
                                                 </div>
@@ -142,11 +130,6 @@
                                                             <option value="car">Car</option>
                                                             <option value="motocycle">Motocycle</option>
                                                             <option value="none">None</option>
-
-                                                        <select name="" class="form-control">
-                                                            <option value="" selected="selected">Car</option>
-                                                            <option value="">Motocycle</option>
-
                                                         </select>
                                                     </div>
                                                 </div>
