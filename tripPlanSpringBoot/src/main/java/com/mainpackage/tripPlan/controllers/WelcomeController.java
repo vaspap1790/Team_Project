@@ -47,7 +47,7 @@ public class WelcomeController {
         return new ModelAndView("redirect:/" + transportation + "/register");
     }
     
-    @GetMapping (value = "userTripsPage")
+    @GetMapping (value = "/userTripsPage")
     public  String userTripsPage(){
         
         return "userTripPage";

@@ -45,16 +45,17 @@ public class BookingController {
     }
     
 
-    @PostMapping(value = "postHotelResults")
+    @GetMapping(value = "postHotelResults")
     public ModelAndView hotelResults(ModelMap m, HttpSession session) {
 
         String getRentalFromSess = (String) session.getAttribute("rental");
         if (getRentalFromSess.equals("None")) {
             
-                return new ModelAndView("userTripsPage") ;
+                return new ModelAndView("/userTripsPage") ;
 
         } else {
             String rental = getRentalFromSess + "/" + getRentalFromSess + "Form";
+            System.out.println(rental);
 
             return new ModelAndView("redirect:/"+rental) ;
         }

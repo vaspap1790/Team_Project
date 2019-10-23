@@ -15,10 +15,16 @@ public class CarController {
     @GetMapping(value="carForm")
     public String carForm(){
         
+    return "carForm";    
+    }
+    
+    @GetMapping(value="carResults")
+    public String carResults(){
+        
     return "carResults";    
     }
     
-    @PostMapping(value = "postCarResults")
+    @GetMapping(value = "postCarResults")
     public String hotelResults(ModelMap m, HttpSession session) {
 
             return "userTripsPage";

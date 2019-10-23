@@ -93,17 +93,17 @@
                                                 <div class="form-field">
                                                     <div class="select-wrap">
                                                         <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-<<<<<<< HEAD
+
                                                         <select name="transportation" class="form-control">
                                                             <option value="flight">Airplane</option>
                                                             <option value="train">Train</option>
                                                             <option value="ship">Ship</option>
-=======
+                                                            
                                                         <select name="" class="form-control">
                                                             <option value="" selected="selected">Airplane</option>
                                                             <option value="">Train</option>
                                                             <option value="">Ship</option>
->>>>>>> 9ba28888e4bb97dd21d75502b4f27dd811e968cf
+
                                                         </select>
                                                     </div>
                                                 </div>
@@ -115,17 +115,17 @@
                                                 <div class="form-field">
                                                     <div class="select-wrap">
                                                         <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-<<<<<<< HEAD
+
                                                         <select name="accomodation" class="form-control">
                                                             <option value="hotel">Hotel</option>
                                                             <option value="hostel">Hostel</option>
                                                             <option value="airbnb">AirBnb</option>
-=======
+
                                                         <select name="" class="form-control">
                                                             <option value="" selected="selected">Hotel</option>
                                                             <option value="">Hostel</option>
                                                             <option value="">AirBnb</option>
->>>>>>> 9ba28888e4bb97dd21d75502b4f27dd811e968cf
+
                                                         </select>
                                                     </div>
                                                 </div>
@@ -137,16 +137,16 @@
                                                 <div class="form-field">
                                                     <div class="select-wrap">
                                                         <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-<<<<<<< HEAD
+
                                                         <select name="rental" class="form-control">
                                                             <option value="car">Car</option>
                                                             <option value="motocycle">Motocycle</option>
                                                             <option value="none">None</option>
-=======
+
                                                         <select name="" class="form-control">
                                                             <option value="" selected="selected">Car</option>
                                                             <option value="">Motocycle</option>
->>>>>>> 9ba28888e4bb97dd21d75502b4f27dd811e968cf
+
                                                         </select>
                                                     </div>
                                                 </div>

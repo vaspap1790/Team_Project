@@ -13,6 +13,6 @@
     </head>
     <body>
         <h1>Hello World!</h1>
-        <a href="${pageContext.request.contextPath}/car/carResults"></a>
+        <a href="${pageContext.request.contextPath}/car/carResults">CarResults</a>
     </body>
 </html>

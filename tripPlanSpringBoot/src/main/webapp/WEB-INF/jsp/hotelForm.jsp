@@ -12,7 +12,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
-        <a href="${pageContext.request.contextPath}/hotel/hotelResults"></a>
+        <h1>Hello World!ggffg</h1>
+        <a href="${pageContext.request.contextPath}/hotel/postHotelForm">hotel</a>
     </body>
 </html>
