@@ -111,7 +111,7 @@
                                             </div>
                                         </div>
                                         <div  class="d-flex align-items-center mt-3">                                         
-                                            <i id="glif" class="fa fa-exchange d-none"></i>          
+                                            <i id="glif" class="fa fa-exchange"></i>          
                                         </div>   
                                         <div class="col-md align-items-end">
                                             <div class="form-group">

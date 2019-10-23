@@ -14,11 +14,6 @@ $(document).ready(function () {
     
     testAjax(function (obj) {
         console.log(obj);
-       const places= obj.Places;
-       const carriers= obj.Carriers;
-       const quotes= obj.Quotes;
-       const routes= obj.Routes;
-       
 
     });
 

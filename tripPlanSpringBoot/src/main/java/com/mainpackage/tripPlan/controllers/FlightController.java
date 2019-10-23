@@ -45,7 +45,7 @@ public class FlightController {
 
     @PostMapping(value = "postRegister")
     public ModelAndView postFlight(@ModelAttribute("flight") Flight flight, HttpSession session,
-            @RequestParam(name = "inboundDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate inboundDate) throws IOException, UnirestException {
+            @RequestParam(name = "inboundDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate inboundDate) throws IOException, UnirestException, ParseException {
 
         HttpResponse<String> skyReport;
      
@@ -55,10 +55,10 @@ public class FlightController {
         else{
           skyReport =sky.browseRoutesOneWay(flight);
         }
-
+         
         if (skyReport.getStatus() == 200) {
             session.setAttribute("jsonFlights", skyReport);
-            return new ModelAndView("flightResults");
+            return new ModelAndView("flightResults","flights",createJ.createJson(skyReport.getBody()));
         }
 
         return new ModelAndView("redirect:/flight/register");

@@ -46,13 +46,13 @@ $('#flightForm').on('keyup keypress', function(e) {
 
   
   $("#butt2").change(function(){
-      $("#glif,#return").removeClass("d-none");
-      $("#inboundDate").addatt("required");
+      $("#return").removeClass("d-none");
+      $("#inboundDate").prop('required',true);
   });
   
  $("#butt1").change(function(){
-      $("#glif,#return").addClass("d-none");
-      $("#inboundDate").removeAttr("required");
+      $("#return").addClass("d-none");
+      $("#inboundDate").removeProp("required");
  
   });
 
