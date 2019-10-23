@@ -93,9 +93,9 @@
                                               class="search-destination">
                                     <div class="d-flex form-row">
                                         <div class="form-group my-auto">
-                                            <spring:radiobutton path="type" id="onewayradio" style="transform: scale(1.5);" class="m-2" value="oneWay" checked="checked"/>
+                                            <spring:radiobutton path="type" id="butt1" style="transform: scale(1.5);" class="m-2" value="oneWay" checked="checked"/>
                                             <label for="">One Way</label>
-                                            <spring:radiobutton  path="type" id="roundtripradio" style="transform: scale(1.5);" class="m-2 ml-4" value="roundTrip"/>
+                                            <spring:radiobutton  path="type" id="butt2" style="transform: scale(1.5);" class="m-2 ml-4" value="roundTrip"/>
                                             <label for="">Round trip</label>
                                         </div>
                                     </div>
@@ -110,6 +110,9 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <div  class="d-flex align-items-center mt-3">                                         
+                                            <i id="glif" class="fa fa-exchange d-none"></i>          
+                                        </div>   
                                         <div class="col-md align-items-end">
                                             <div class="form-group">
                                                 <label for="#">Where</label>
@@ -128,16 +131,13 @@
                                                         <spring:input path="outboundDate" cssClass="form-control checkin_date" required="required"  type="text" placeholder="To *" />
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div  class="d-flex align-items-center mt-3">                                         
-                                                    <i id="glif" class="fa fa-exchange d-none"></i>          
-                                        </div>                        
-                                        <div class="col-md align-items-end ">
-                                            <div class="form-group">
+                                        </div>                
+                                        <div id="return" class="col-md align-items-end d-none">
+                                            <div  class="form-group">
                                                 <label id="labelinbounddate" for="#">Return</label>
-                                                <div class="form-field">
-                                                    <div class="icon"><span class="icon-map-marker"></span></div>                                                 
-                                                    <input id="inboundDate" name="inboundDate" disabled="disabled"  class="form-control checkout_date" required type="text" placeholder="From *" />
+                                                <div  class="form-field ">
+                                                    <div class="icon"><span class="icon-map-marker "></span></div>                                                 
+                                                    <input id="inboundDate" name="inboundDate"   class="form-control checkout_date "  type="text" placeholder="From *" />
                                                 </div>
                                             </div>
                                         </div>

@@ -20,7 +20,8 @@ $(document).ready(function () {
                         response(transformed.slice(0, 10));
                     }
                 });
-            }
+            },
+            position: { my: "left bottom", at: "left top"}
             ,
             select: function (event, ui) {
 
@@ -32,7 +33,7 @@ $(document).ready(function () {
             minLength: 2
         });
     });
-});
+
                             /////////disable form submit on enter
 $('#flightForm').on('keyup keypress', function(e) {
   var keyCode = e.keyCode || e.which;
@@ -40,16 +41,21 @@ $('#flightForm').on('keyup keypress', function(e) {
     e.preventDefault();
     return false;
   }
-  
-  /////////roundtrip oneway//////////
-  
-  const inboundDate=$("#inboundDate");
-  const oneway=$("#onewayradio");
-  const roundtrip=$("#roundtripradio");
-  const glif=$("#glif");
-  
-  $("#roundtripradio").on("click",function(){
-      $("#glif").removeClass("d-none");
-      
   });
+  /////////roundtrip oneway//////////
+
+  
+  $("#butt2").change(function(){
+      $("#glif,#return").removeClass("d-none");
+      $("#inboundDate").addClass("required");
+  });
+  
+ $("#butt1").change(function(){
+      $("#glif,#return").addClass("d-none");
+
+ 
+  });
+
+
+
 });
