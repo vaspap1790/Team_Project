@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping(value = "user/")
@@ -49,13 +50,13 @@ public class UserController {
     }
 
     @PostMapping(value = "postLogIn")
-    public String postlogIn(ModelMap m, @RequestParam(name = "username") String username, @RequestParam(name = "password") String password,HttpSession session) {
+    public ModelAndView postlogIn(ModelMap m, @RequestParam(name = "username") String username, @RequestParam(name = "password") String password,HttpSession session) {
 
         String role = userService.postLogIn(username, password);
         User user = userRepo.findByUsername(username);
         session.setAttribute("user", user);
 
-        return "index";
+        return new ModelAndView("redirect:/");
     }
 
     @GetMapping(value = "register")
@@ -66,21 +67,24 @@ public class UserController {
     }
 
     @PostMapping(value = "postRegister")
-    public String post(@Valid @ModelAttribute("user") User user, @RequestParam("photo") MultipartFile file, BindingResult br, ModelMap m) throws IOException, SQLException {
+    public ModelAndView post(@Valid @ModelAttribute("user") User user, @RequestParam("photo") MultipartFile file, BindingResult br, ModelMap m, HttpSession session) throws IOException, SQLException {
 
         if (br.hasErrors()) {
-            return "redirect:/user/register";
+            return new ModelAndView("redirect:/user/register") ;
         }
 
         if (check.isNotNull(userRepo.findByUsername(user.getUsername()))) {
             String failed = "This username is already in use";
             m.addAttribute("failed", failed);
-            return "redirect:/user/register";
+            
+            return new ModelAndView("redirect:/user/register") ;
         }
 
         fileService.setUserPhoto(file, user);
         userService.insert(user);
-        return "redirect:/";
+        session.setAttribute("user", user);
+        
+        return new ModelAndView("redirect:/") ;
     }
 
 }
