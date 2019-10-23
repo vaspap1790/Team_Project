@@ -1,6 +1,5 @@
 package com.mainpackage.tripPlan.controllers;
 
-
 import com.mainpackage.tripPlan.model.Flight;
 import com.mainpackage.tripPlan.utilities.CreateJson;
 import com.mainpackage.tripPlan.webServices.SkyApi;
@@ -10,6 +9,7 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.time.LocalDate;
 import java.util.*;
+import static javassist.CtMethod.ConstParameter.string;
 import javax.servlet.http.HttpSession;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,23 +44,32 @@ public class FlightController {
     }
 
     @PostMapping(value = "postRegister")
-    public ModelAndView postFlight(@ModelAttribute("flight") Flight flight, HttpSession hs,
+    public ModelAndView postFlight(@ModelAttribute("flight") Flight flight, HttpSession session,
             @RequestParam(name = "inboundDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate inboundDate) throws IOException, UnirestException {
-      
+
         HttpResponse<String> skyReport;
-        
-        if(flight.getType().equals("oneWay")){
-             skyReport = sky.oneWay(flight);
-        }else{
-          skyReport = sky.roundTrip(flight, inboundDate);
+
+        if (flight.getType().equals("oneWay")) {
+            skyReport = sky.oneWay(flight);
+        } else {
+            skyReport = sky.roundTrip(flight, inboundDate);
         }
-        
+
         if (skyReport.getStatus() == 200) {
-            hs.setAttribute("jsonFlights", skyReport);
-            return new ModelAndView("result");
+            session.setAttribute("jsonFlights", skyReport);
+            return new ModelAndView("flightResults");
         }
 
         return new ModelAndView("redirect:/flight/register");
+    }
+
+    @PostMapping(value = "flightResults")
+    public String flightResultForm(ModelMap m, HttpSession session) {
+
+        String getAccomFromSess = (String) session.getAttribute("accomodation");
+        String accomodation =  getAccomFromSess + "Form";
+
+        return accomodation;
     }
 
     ///////////////////// return flights with sesssion
@@ -77,7 +86,7 @@ public class FlightController {
     @ResponseBody
     public ResponseEntity<Object> citiesI(ModelMap m, @PathVariable("city") String city) throws UnirestException, UnsupportedEncodingException {
 
-        HttpResponse<String> cities=sky.cities(city);
+        HttpResponse<String> cities = sky.cities(city);
 
         return new ResponseEntity<>(cities.getBody(), HttpStatus.OK);
     }
