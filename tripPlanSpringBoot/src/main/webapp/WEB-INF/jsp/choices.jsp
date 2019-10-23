@@ -85,7 +85,7 @@
 
                             <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel"
                                  aria-labelledby="v-pills-nextgen-tab">
-                                <form action="#" class="search-destination">
+                                <form action="${pageContext.request.contextPath}/postChoices" class="search-destination">
                                     <div class="row">
                                         <div class="col-md align-items-end">
                                             <div class="form-group">
@@ -93,10 +93,11 @@
                                                 <div class="form-field">
                                                     <div class="select-wrap">
                                                         <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                                                        <select name="" class="form-control">
-                                                            <option value="" selected="selected">Airplane</option>
-                                                            <option value="">Train</option>
-                                                            <option value="">Ship</option>
+
+                                                        <select name="transportation" class="form-control">
+                                                            <option value="flight">Airplane</option>
+                                                            <option value="train">Train</option>
+                                                            <option value="ship">Ship</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -108,10 +109,11 @@
                                                 <div class="form-field">
                                                     <div class="select-wrap">
                                                         <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                                                        <select name="" class="form-control">
-                                                            <option value="" selected="selected">Hotel</option>
-                                                            <option value="">Hostel</option>
-                                                            <option value="">AirBnb</option>
+
+                                                        <select name="accomodation" class="form-control">
+                                                            <option value="hotel">Hotel</option>
+                                                            <option value="hostel">Hostel</option>
+                                                            <option value="airbnb">AirBnb</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -123,9 +125,11 @@
                                                 <div class="form-field">
                                                     <div class="select-wrap">
                                                         <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                                                        <select name="" class="form-control">
-                                                            <option value="" selected="selected">Car</option>
-                                                            <option value="">Motocycle</option>
+
+                                                        <select name="rental" class="form-control">
+                                                            <option value="car">Car</option>
+                                                            <option value="motocycle">Motocycle</option>
+                                                            <option value="none">None</option>
                                                         </select>
                                                     </div>
                                                 </div>

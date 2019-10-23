@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.time.LocalDate;
 import java.util.*;
+import static javassist.CtMethod.ConstParameter.string;
 import javax.servlet.http.HttpSession;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,27 +44,36 @@ public class FlightController {
     }
 
     @PostMapping(value = "postRegister")
-    public ModelAndView postFlight(@ModelAttribute("flight") Flight flight, HttpSession hs,
+    public ModelAndView postFlight(@ModelAttribute("flight") Flight flight, HttpSession session,
             @RequestParam(name = "inboundDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate inboundDate) throws IOException, UnirestException {
 
         HttpResponse<String> skyReport;
-        
+     
         if(flight.getType().equals("roundTrip")){
          skyReport = sky.browseRoutesRoundTrip(flight, inboundDate);
         }
         else{
           skyReport =sky.browseRoutesOneWay(flight);
         }
-        
+
         if (skyReport.getStatus() == 200) {
-            hs.setAttribute("jsonFlights", skyReport);
-            return new ModelAndView("result");
+            session.setAttribute("jsonFlights", skyReport);
+            return new ModelAndView("flightResults");
         }
 
         return new ModelAndView("redirect:/flight/register");
     }
 
-    ///////////////////// return flights with sesssion
+    @GetMapping(value = "postFlightResults")
+    public ModelAndView flightResultForm(ModelMap m, HttpSession session) {
+
+        String getAccomFromSess = (String) session.getAttribute("accomodation");
+        String accomodation =  getAccomFromSess + "Form";
+
+        return new ModelAndView("redirect:/"+getAccomFromSess+"/"+accomodation );
+    }
+
+
     @GetMapping(value = "returnFlights", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseEntity<Object> returnFlights(HttpSession hp) throws UnirestException, UnsupportedEncodingException, ParseException {
