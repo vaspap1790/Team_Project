@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping(value = "admin/")
@@ -27,12 +28,16 @@ public class AdminController {
     }
 
     @PostMapping(value = "postRegister")
-    public String post(@ModelAttribute("admin") Admin admin) {
+    public ModelAndView post(@ModelAttribute("admin") Admin admin) {
 
         adminService.insert(admin);
 
-        return "redirect:/";
+        return new ModelAndView("redirect:/");
     }
 
+    @GetMapping(value="administration")
+    public String administration (){
+        return "admin";
+    }
 }
 

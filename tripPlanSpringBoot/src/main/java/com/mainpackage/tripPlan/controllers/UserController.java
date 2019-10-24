@@ -1,6 +1,7 @@
 package com.mainpackage.tripPlan.controllers;
 
 import com.mainpackage.tripPlan.daos.GenericJpaDao;
+import com.mainpackage.tripPlan.model.Admin;
 import com.mainpackage.tripPlan.model.User;
 import com.mainpackage.tripPlan.repositories.AdminRepo;
 import com.mainpackage.tripPlan.repositories.UserRepo;
@@ -53,6 +54,14 @@ public class UserController {
     public ModelAndView postlogIn(ModelMap m, @RequestParam(name = "username") String username, @RequestParam(name = "password") String password,HttpSession session) {
 
         String role = userService.postLogIn(username, password);
+        
+        if (role.equals("Admin")){
+            Admin admin = adminRepo.findByAdminName(username);
+            session.setAttribute("admin", admin);
+            
+            return new ModelAndView("redirect:/admin/administration");
+        }
+        
         User user = userRepo.findByUsername(username);
         session.setAttribute("user", user);
 
