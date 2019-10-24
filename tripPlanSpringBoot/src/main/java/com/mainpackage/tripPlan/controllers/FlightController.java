@@ -49,13 +49,9 @@ public class FlightController {
 
         HttpResponse<String> skyReport;
      
-        if(flight.getType().equals("roundTrip")){
-         skyReport = sky.browseRoutesRoundTrip(flight, inboundDate);
-        }
-        else{
-          skyReport =sky.browseRoutesOneWay(flight);
-        }
-         
+        String sessionKey = sky.CreateSession(flight, inboundDate);
+        skyReport= sky.SessionResults(sessionKey);
+        
         if (skyReport.getStatus() == 200) {
             session.setAttribute("jsonFlights", skyReport);
             return new ModelAndView("flightResults","flights",createJ.createJson(skyReport.getBody()));
