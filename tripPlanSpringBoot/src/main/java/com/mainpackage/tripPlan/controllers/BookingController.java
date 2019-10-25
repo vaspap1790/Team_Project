@@ -1,11 +1,14 @@
 package com.mainpackage.tripPlan.controllers;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.mainpackage.tripPlan.utilities.CreateJson;
 import com.mainpackage.tripPlan.webServices.BookingApi;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import java.time.LocalDate;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
+
 
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,11 +32,17 @@ public class BookingController {
     @Autowired
     CreateJson jsonUtil;
 
-    @GetMapping(value = "hotelForm")
-    public String hotelForm() {
 
-        return "hotelForm";
-
+    @GetMapping(value="hotelForm")
+    public String hotelForm(){
+        
+        return "forms/hotelForm";
+        
+    }
+    @GetMapping(value="postHotelForm")
+    public String postHotelForm(){
+        
+        return "responses/hotelResults";
     }
 
     @PostMapping(value = "postHotelForm")
@@ -48,7 +57,7 @@ public class BookingController {
         try {
             count = Integer.parseInt(obj.get("count").toString());
             if (bookingResults.getStatus() == 200 && count > 0) {
-                return new ModelAndView("hotelResults", "bookingJson", jsonUtil.createJson(bookingResults.getBody()));
+                return new ModelAndView("responses/hotelResults", "bookingJson", jsonUtil.createJson(bookingResults.getBody()));
             }
         } catch (Exception e) {
             e.printStackTrace();

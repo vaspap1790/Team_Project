@@ -38,7 +38,7 @@ public class FlightController {
     @GetMapping(value = "register")
     public String preFlightForm(ModelMap m) {
         m.addAttribute("flight", new Flight());
-        return "flightForm";
+        return "forms/flightForm";
     }
 
     @PostMapping(value = "postRegister")
@@ -52,7 +52,7 @@ public class FlightController {
         
         if (skyReport.getStatus() == 200) {
             session.setAttribute("jsonFlights", skyReport);
-            return new ModelAndView("flightResults","flights",createJ.createJson(skyReport.getBody()));
+            return new ModelAndView("responses/flightResults","flights",createJ.createJson(skyReport.getBody()));
         }
 
         return new ModelAndView("redirect:/flight/register");

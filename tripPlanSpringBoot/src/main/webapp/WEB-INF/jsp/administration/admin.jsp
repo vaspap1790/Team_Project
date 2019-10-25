@@ -29,17 +29,15 @@
                 <div id="navbar" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="index.html">Dashboard</a></li>
-                        <li><a href="pages.html">Pages</a></li>
-                        <li><a href="posts.html">Posts</a></li>
-                        <li><a href="users.html">Users</a></li>
-                        <li><a href="courses.html">Courses</a></li>
-                        <li><a href="trainers.html">Trainers</a></li>
-                        <li><a href="students.html">Students</a></li>
-                        <li><a href="assignments.html">Assignments</a></li>
+                        <li><a href="#">Pages</a></li>
+                        <li><a href="#">Posts</a></li>
+                        <li><a href="#">Administrators</a></li>
+                        <li><a href="#">Users</a></li>
+                        <li><a href="#">Trips</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="#">Welcome, ${sessionScope.admin.adminName}</a></li>
-                        <li><a href="login.html">Logout</a></li>
+                        <li><a href="#">Logout</a></li>
                     </ul>
                 </div>
             </div>
