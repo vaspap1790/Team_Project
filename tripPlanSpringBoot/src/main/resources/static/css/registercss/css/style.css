@@ -39,6 +39,10 @@ a:hover {
 :focus {
   outline: none; }
 
+  ::placeholder {
+    color: white;
+  }
+
 .wrapper {
   min-height: 100vh;
   background-size: cover;
@@ -135,7 +139,7 @@ button {
     left: 0;
     right: 0;
     bottom: 0;
-    background: #bb8103;
+    background: #1ca80f;
     -webkit-transform: scaleX(0);
     transform: scaleX(0);
     -webkit-transform-origin: 0 50%;
@@ -175,7 +179,7 @@ button {
   background-color: #ebebeb;
   border: 1px solid #ccc;
   font-family: Material-Design-Iconic-Font;
-  color: white;
+  color: #000;
   font-size: 10px;
   font-weight: bolder; }
   .checkmark:after {
