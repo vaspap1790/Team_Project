@@ -18,7 +18,7 @@
         <h1>Hello World!</h1>
         <a href="${pageContext.request.contextPath}/flight/postFlightResults">Post Flight Results</a>
 
-        
+        ${flights}
         <div class="container border w-50 mt-5 shadow">
             <div class="d-flex d-row">
                 <div class="pr-3">
