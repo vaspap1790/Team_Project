@@ -24,7 +24,7 @@ public class AdminController {
         
         Admin admin = new Admin();
         m.addAttribute("admin", admin);
-        return "adminRegister";
+        return "forms/adminRegister";
     }
 
     @PostMapping(value = "postRegister")
@@ -37,7 +37,7 @@ public class AdminController {
 
     @GetMapping(value="administration")
     public String administration (){
-        return "admin";
+        return "administration/admin";
     }
 }
 

@@ -10,7 +10,6 @@ import com.mainpackage.tripPlan.services.UserService;
 import com.mainpackage.tripPlan.utilities.Check;
 import com.mainpackage.tripPlan.utilities.Encryption;
 import java.io.IOException;
-import java.sql.Blob;
 import java.sql.SQLException;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -47,7 +46,7 @@ public class UserController {
 
     @GetMapping(value = "logIn")
     public String logIn(ModelMap m) {
-        return "logIn";
+        return "forms/logIn";
     }
 
     @PostMapping(value = "postLogIn")
@@ -72,7 +71,7 @@ public class UserController {
     public String form(ModelMap m) {
         User user = new User();
         m.addAttribute("user", user);
-        return "register";
+        return "forms/register";
     }
 
     @PostMapping(value = "postRegister")

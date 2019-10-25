@@ -28,11 +28,17 @@ public class BookingController {
     @Autowired
     CreateJson jsonUtil;
 
-    @GetMapping(value = "hotelForm")
-    public String hotelForm() {
 
-        return "hotelForm";
-
+    @GetMapping(value="hotelForm")
+    public String hotelForm(){
+        
+        return "forms/hotelForm";
+        
+    }
+    @GetMapping(value="postHotelForm")
+    public String postHotelForm(){
+        
+        return "responses/hotelResults";
     }
 
     @PostMapping(value = "postHotelForm")
@@ -47,7 +53,7 @@ public class BookingController {
         try {
             count = Integer.parseInt(obj.get("count").toString());
             if (bookingResults.getStatus() == 200 && count > 0) {
-                return new ModelAndView("hotelResults", "bookingJson", jsonUtil.createJson(bookingResults.getBody()));
+                return new ModelAndView("responses/hotelResults", "bookingJson", jsonUtil.createJson(bookingResults.getBody()));
             }
         } catch (Exception e) {
             e.printStackTrace();

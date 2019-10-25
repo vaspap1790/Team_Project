@@ -15,7 +15,7 @@
         <link rel="stylesheet" href="../css/autocomplete.css">
     </head>
     <body>
-        <jsp:include page="navbar.jsp"/> 
+        <jsp:include page="../components/navbar.jsp"/> 
         <h1>Hello World!ggffg</h1>
         <a href="${pageContext.request.contextPath}/hotel/postHotelForm">hotel</a>
 
