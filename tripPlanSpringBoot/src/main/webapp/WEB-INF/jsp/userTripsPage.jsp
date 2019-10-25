@@ -16,7 +16,6 @@
         
         <h1>Hello userTripsPage!</h1>
         
-        
         <jsp:include page="components/footer.jsp"/>
         <jsp:include page="components/scripts.jsp"/>
     </body>

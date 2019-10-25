@@ -10,15 +10,15 @@
 
             <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active"><a href="#" class="nav-link">Home</a></li>
+                    <li class="nav-item active"><a href="${pageContext.request.contextPath}/" class="nav-link">Home</a></li>
                     <li class="nav-item"><a href="" class="nav-link">About</a></li>
                     <li class="nav-item"><a href="" class="nav-link">Places</a></li>
                     <li class="nav-item"><a href="" class="nav-link">Hotels</a></li>
                     <li class="nav-item"><a href="" class="nav-link">Blog</a></li>
                     <li class="nav-item"><a href="#foot" class="nav-link">Contact</a></li>
                 </ul>
-                <a href="${pageContext.request.contextPath}/user/logIn" class="btn btn-warning mr-2">Sign In</a>
-                <a href="${pageContext.request.contextPath}/user/register" class="btn btn-warning">Sign Up</a>
+<!--                <a href="${pageContext.request.contextPath}/user/logIn" class="btn btn-warning mr-2">Sign In</a>
+                <a href="${pageContext.request.contextPath}/user/register" class="btn btn-warning">Sign Up</a>-->
             </div>
         </div>
     </nav>

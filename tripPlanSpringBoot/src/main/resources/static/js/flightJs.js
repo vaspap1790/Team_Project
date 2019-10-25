@@ -23,6 +23,7 @@ $(document).ready(function () {
             },
             position: { my: "left bottom", at: "left top"}
             ,
+            autoFocus: true,
             select: function (event, ui) {
 
                 const regExp = /\(([^)]+)\)/;
@@ -31,6 +32,7 @@ $(document).ready(function () {
                 $(this).next().val(iata);             
             },
             minLength: 2
+            
         });
     });
 

@@ -8,6 +8,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Register</title>
+        <%--<jsp:include page="linksHeader.jsp"/>--%>
 
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/registercss/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
 
@@ -15,9 +16,10 @@
     </head>
 
     <body>
+        <%--<jsp:include page="navbar.jsp"/>--%>
 
-        <div class="wrapper" style="background-image: url('${pageContext.request.contextPath}/css/registercss/images/bg-registration-form-2.jpg');">
-            <div class="inner" style="background-image: url('https://images.all-free-download.com/images/graphiclarge/registration_and_login_form_vector_290456.jpg');">
+        <div class="wrapper" style="background-image: url('https://www.azamara.co.uk/sites/default/files/heros/abu-dhabi-united-arab-emirates_0.jpg');">
+            <div class="inner" style="background-image: url('');">
                 <spring:form modelAttribute="user" action="${pageContext.request.contextPath}/user/postRegister" method="POST" id="registerForm" enctype="multipart/form-data">
                     <h3>Registration Form</h3>
                     <div class="form-group">
@@ -62,7 +64,9 @@
             </div>
         </div>
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <jsp:include page="scripts.jsp"/>
+
+        <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/additional-methods.js"></script>
         <script type="text/javascript" src="${pageContext.request.contextPath}/js/register.js"></script>
