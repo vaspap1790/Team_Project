@@ -6,7 +6,7 @@ import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import java.time.LocalDate;
 import com.fasterxml.jackson.core.JsonProcessingException;
- import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +15,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.HttpSession;
+import org.json.simple.JSONObject;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -42,14 +43,19 @@ public class BookingController {
             @RequestParam(name = "checkin") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate checkin,
             @RequestParam(name = "checkout") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate checkout) throws UnirestException, ParseException, JsonProcessingException {
 
-       HttpResponse<String> bookingResults = booking.propertiesList(dest_id,checkin,checkout,guests);
-
-        if (bookingResults.getStatus() == 200 || !bookingResults.getBody().isEmpty()) {
-
-            return new ModelAndView("hotelResults","bookingJson",jsonUtil.createJson(bookingResults.getBody()));
-        } else {
-            return new ModelAndView("redirect:/hotel/hotelForm");
+        HttpResponse<String> bookingResults = booking.propertiesList(dest_id, checkin, checkout, guests);
+        JSONObject obj = jsonUtil.createJson(bookingResults.getBody());
+        int count;
+        try {
+            count = Integer.parseInt(obj.get("count").toString());
+            if (bookingResults.getStatus() == 200 && count > 0) {
+                return new ModelAndView("hotelResults", "bookingJson", jsonUtil.createJson(bookingResults.getBody()));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+        return new ModelAndView("redirect:/hotel/hotelForm");
+
     }
 
     @GetMapping(value = "postHotelResults")
@@ -62,7 +68,7 @@ public class BookingController {
 
         } else {
             String rental = getRentalFromSess + "/" + getRentalFromSess + "Form";
-            System.out.println(rental);
+      
 
             return new ModelAndView("redirect:/" + rental);
         }

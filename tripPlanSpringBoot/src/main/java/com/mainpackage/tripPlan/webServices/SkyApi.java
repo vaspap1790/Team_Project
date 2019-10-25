@@ -7,7 +7,6 @@ import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
@@ -69,11 +68,10 @@ public class SkyApi {
                 .asJson();
 
         List session = response.getHeaders().get("Location");
-       
-       
+  
         String[] ar = session.get(0).toString().split("/");
         String sessionKey = ar[ar.length - 1];
-        System.out.println(sessionKey);
+
         return sessionKey;
     }
 
