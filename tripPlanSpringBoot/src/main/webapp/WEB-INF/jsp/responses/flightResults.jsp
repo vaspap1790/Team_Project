@@ -13,47 +13,73 @@
         <title>JSP Page</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/flightResults.css">
+        <style>
+            input{
+                border:0;
+
+            }
+        </style>
     </head>
     <body>
         <h1>Hello World!</h1>
         <a href="${pageContext.request.contextPath}/flight/postFlightResults">Post Flight Results</a>
 
-        ${flights}
+
+
         <div class="container border w-50 mt-5 shadow">
-            <div class="d-flex d-row">
-                <div class="pr-3">
-                    <img src="https://s1.apideeplink.com/images/airlines/RO.png" />
-                </div>
+            <form action="${pageContext.request.contextPath}/flight/postFlightResults">
+                <div class="d-flex d-row">
+                    <div class="pr-3">
+                        <img src="https://s1.apideeplink.com/images/airlines/RO.png" />
+                    </div>
 
-                <div class="d-flex align-items-center">
-                    <div class="p-3">
-                        <div class="d-flex justify-content-end"><span class="time">22:00</span></div>
-                        <div class="d-flex justify-content-end">ATH</div>
+                    <div class="d-flex align-items-center">
+                        <div class="p-3 ">
+                            <div class="d-flex justify-content-end">
+                                <span class="time">22:00</span>
+                            </div>
+                            <div id="place_form" class="d-flex justify-content-end">
+                                <input class="text-right"  name="place_form" value="ATH"  size="2" readonly="">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="LegInfo_stopsContainer__1XNWn ">
+                        <span class="airUp">12h12m</span>
+                        <ul class="LegInfo_stopLine__3_s15">
+                            <li class="LegInfo_stopDot__2vHOR"></li>
+                        </ul>
+                        <span class="airUp">1 stop</span>
+                    </div>
+
+                    <div class="d-flex align-items-center">
+                        <div class="p-3">
+                            <div class="d-flex justify-content-end">
+                                <span  class="time">22:00</span>
+                            </div>
+                            <div id="place_to" class="d-flex justify-content-end">
+                                <input class="text-right" name="place_to" value="SKG"  size="2" readonly="">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-center">
+                        <div class="p-3">
+                            <div class="d-flex justify-content-end">
+                                <span id="date">2019/11/11</span>
+                            </div>                    
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-center ml-3">
+                        <div class=" d-flex justify-content-center">
+                            <h4> <input class="font-weight-bold" name="price" value="400$"  size="2" readonly=""></h4>
+                        </div>
+                        <input type="hidden" name="DeeplinkUrl" value="">
+                        <button id="submit" class="ml-4 btn btn-primary" > Select</button>
                     </div>
                 </div>
-
-                <div class="LegInfo_stopsContainer__1XNWn">
-                    <span class="airUp">12h12m</span>
-                    <ul class="LegInfo_stopLine__3_s15">
-                        <li class="LegInfo_stopDot__2vHOR"></li>
-                    </ul>
-                    <span class="airUp">1 stop</span>
-                </div>
-
-                <div class="d-flex align-items-center">
-                    <div class="p-3">
-                        <div class="d-flex justify-content-end"><span class="time">22:00</span></div>
-                        <div class="d-flex justify-content-end">SKG</div>
-                    </div>
-                </div>
-
-
-                <div class="d-flex flex-column ml-auto mr-auto">
-                    <div class="mt-1 d-flex justify-content-center"> <span> 25 $ </span></div>
-                    <button class="mt-2">Select</button>
-
-                </div>
-            </div>
+            </form>
         </div>
 
 
