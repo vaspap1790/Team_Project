@@ -14,13 +14,13 @@
 
 body {
   font-family: "Muli-Regular";
-  color: #666;
+  color: white!important;
   font-size: 13px;
   margin: 0; }
 
 input, textarea, select, button {
   font-family: "Muli-Regular";
-  color: white;
+  color: white!important;
   font-size: 13px; }
 
 p, h1, h2, h3, h4, h5, h6, ul {
@@ -135,7 +135,7 @@ button {
     left: 0;
     right: 0;
     bottom: 0;
-    background: #faac03;
+    background: #bb8103;
     -webkit-transform: scaleX(0);
     transform: scaleX(0);
     -webkit-transform-origin: 0 50%;

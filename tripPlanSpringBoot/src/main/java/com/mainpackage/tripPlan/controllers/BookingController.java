@@ -5,7 +5,14 @@ import com.mainpackage.tripPlan.webServices.BookingApi;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import java.time.LocalDate;
+<<<<<<< HEAD
 import com.fasterxml.jackson.core.JsonProcessingException;
+=======
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+
+
+>>>>>>> 5d1fc9b44f258cf427ec106f9940ec0c3c519c0a
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
