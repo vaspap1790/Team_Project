@@ -14,5 +14,6 @@
     <body>
         <h1>Hello World!</h1>
         <a href="${pageContext.request.contextPath}/hotel/postHotelResults">Post Hotel Results</a>
+        ${bookingJson.count}
     </body>
 </html>

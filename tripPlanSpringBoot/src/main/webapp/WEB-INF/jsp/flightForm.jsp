@@ -129,7 +129,7 @@
                                                 <label for="#">Depart</label>                           
                                                 <div class="form-field" >
                                                     <div class="icon"><span class="icon-map-marker"></span></div>          
-                                                    <spring:input autocomplete="off" path="outboundDate" cssClass="form-control checkin_date" required="required"  type="text" placeholder="To *" />
+                                                        <spring:input autocomplete="off" path="outboundDate" cssClass="form-control checkin_date" required="required"  type="text" placeholder="To *" />
                                                 </div>
                                             </div>
                                         </div>                
@@ -172,16 +172,15 @@
         <script src="../js/aos.js"></script>
         <script src="../js/jquery.animateNumber.min.js"></script>
         <script src="../js/bootstrap-datepicker.js"></script>
-        <!--<script src="../js/jquery.timepicker.min.js"></script>-->
         <script src="../js/scrollax.min.js"></script>
-        <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-        <!--<script src="../js/google-map.js"></script>-->
         <script src="../js/main.js"></script>
 
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script
+            src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"
+            integrity="sha256-0YPKAwZP7Mp3ALMRVB2i8GXeEndvCq3eSl/WsAl1Ryk="
+        crossorigin="anonymous"></script>
         <script type="text/javascript" src="${pageContext.request.contextPath}/js/flightJs.js"></script>
 
     </body>
