@@ -34,13 +34,13 @@ public class BookingController {
     @GetMapping(value="hotelForm")
     public String hotelForm(){
         
-        return "hotelForm";
+        return "forms/hotelForm";
         
     }
     @GetMapping(value="postHotelForm")
     public String postHotelForm(){
         
-        return "hotelResults";
+        return "responses/hotelResults";
         
     }
     
