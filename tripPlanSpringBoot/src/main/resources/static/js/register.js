@@ -1,4 +1,4 @@
-alert("I'm active");
+//alert("I'm active");
 
 jQuery.validator.addMethod("lettersonly", function (value, element) {
     return this.optional(element) || /^[A-Za-z ]+$/i.test(value);
