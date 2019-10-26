@@ -8,7 +8,6 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Register</title>
-        <%--<jsp:include page="linksHeader.jsp"/>--%>
 
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/registercss/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
 
@@ -16,9 +15,8 @@
     </head>
 
     <body>
-        <%--<jsp:include page="navbar.jsp"/>--%>
 
-        <div class="wrapper" style="background-image: url('https://www.azamara.co.uk/sites/default/files/heros/abu-dhabi-united-arab-emirates_0.jpg');">
+        <div class="wrapper" style="background-image: url('https://cdn-image.travelandleisure.com/sites/default/files/styles/1600x1000/public/1556296757/st-regis-bora-bora-bungalows-DREAMTRIPS0419.jpg?itok=3Si28lbw');">
             <div class="inner" style="background-image: url('');">
                 <spring:form modelAttribute="user" action="${pageContext.request.contextPath}/user/postRegister" method="POST" id="registerForm" enctype="multipart/form-data">
                     <h3>Registration Form</h3>
@@ -66,7 +64,7 @@
 
         <jsp:include page="../components/scripts.jsp"/>
 
-        <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>-->
+        
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/additional-methods.js"></script>
         <script type="text/javascript" src="${pageContext.request.contextPath}/js/register.js"></script>
