@@ -64,10 +64,6 @@
             <div class="container">
                 <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start"
                      data-scrollax-parent="true">
-                    <!--                <div class="col-12 text-right">
-                                        <a href="${pageContext.request.contextPath}/user/logIn" class="btn btn-warning">Sign In</a>
-                                        <a href="${pageContext.request.contextPath}/user/register" class="btn btn-warning">Sign Up</a>
-                                    </div>-->
                     <div class="col-md-9 ftco-animate mb-5 pb-5 text-center text-md-left"
                          data-scrollax=" properties: { translateY: '70%' }">
                         <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Discover ${sessionScope.user.username} <br>A new Place
