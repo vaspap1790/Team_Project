@@ -12,7 +12,6 @@
     <body>
         <jsp:include page="../components/navbar.jsp"/> 
 
-<!--<a href="${pageContext.request.contextPath}/hotel/postHotelForm">hotel</a>-->
 
         <div class="hero-wrap js-fullheight" style="background-image: url('../images/hotel-5.jpg');">
             <div class="overlay"></div>
@@ -28,91 +27,6 @@
                 </div>
             </div>
         </div>
-        
-        
-        
-        
-        
-<!--        <section class="ftco-section justify-content-end ftco-search">
-            <div class="container justify-content-center">
-                <div class="row no-gutters">
-                    <div class="col-md-12 nav-link-wrap">
-                        <div class="nav nav-pills justify-content-center text-center" id="v-pills-tab" role="tablist"
-                             aria-orientation="vertical">
-                            <a class="nav-link active" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab"
-                               aria-controls="v-pills-1" aria-selected="true">Flight</a>
-                        </div>
-                    </div>
-                    <div class="col-md-12 tab-wrap">
-
-                        <div class="tab-content p-4 px-5" id="v-pills-tabContent">
-
-                            <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel"
-                                 aria-labelledby="v-pills-nextgen-tab">
-                                <form  id="flightForm" modelAttribute="flight" action="${pageContext.request.contextPath}/flight/postRegister"
-                                              class="search-destination">
-                                    
-                                    <div class="row">
-                                        <div class="col-md align-items-end">
-                                            <div class="form-group">
-                                                <label for="#">From</label>
-                                                <div class="form-field">
-                                                    <div class="icon"><span class="icon-my_location"></span></div>
-                                                    <input type="text" class="autocomplete form-control" required placeholder="From *">
-                                                    <hidden id="originPlace" path="originPlace" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div  class="d-flex align-items-center mt-3">                                         
-                                            <i id="glif" class="fa fa-exchange"></i>          
-                                        </div>   
-                                        <div class="col-md align-items-end">
-                                            <div class="form-group">
-                                                <label for="#">Where</label>
-                                                <div class="form-field">
-                                                    <div class="icon"><span class="icon-map-marker"></span></div>
-                                                    <input type="text" class="autocomplete form-control" required="required" placeholder="Where *">
-                                                    <hidden id="destinationPlace" path="destinationPlace"/>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md align-items-end">
-                                            <div class="form-group">
-                                                <label for="#">Depart</label>                           
-                                                <div class="form-field" >
-                                                    <div class="icon"><span class="icon-map-marker"></span></div>          
-                                                        <input autocomplete="off" path="outboundDate" cssClass="form-control checkin_date" required="required"  type="text" placeholder="To *" />
-                                                </div>
-                                            </div>
-                                        </div>                
-                                        <div id="return" class="col-md align-items-end d-none">
-                                            <div  class="form-group">
-                                                <label id="labelinbounddate" for="#">Return</label>
-                                                <div  class="form-field ">
-                                                    <div class="icon"><span class="icon-map-marker "></span></div>                                                 
-                                                    <input autocomplete="off" id="inboundDate" name="inboundDate"   class="form-control checkout_date "  type="text" placeholder="From *" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md align-self-end">
-                                            <div class="form-group">
-                                                <div class="form-field">
-                                                    <input type="submit" value="Search"
-                                                           class="form-control btn btn-primary">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>-->
-        
-        
-        
         
 
         <section class="ftco-section justify-content-end ftco-search">
