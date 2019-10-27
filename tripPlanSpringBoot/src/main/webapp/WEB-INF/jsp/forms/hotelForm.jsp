@@ -6,7 +6,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Hotel Form</title>
         <jsp:include page="../components/linksHeader.jsp"/>
-        
+
         <link rel="stylesheet" href="../css/autocomplete.css">
     </head>
     <body>
@@ -27,7 +27,7 @@
                 </div>
             </div>
         </div>
-        
+
 
         <section class="ftco-section justify-content-end ftco-search">
             <div class="container justify-content-center">
@@ -111,9 +111,6 @@
 
 
 
-
-
-
 <!--        <form action="${pageContext.request.contextPath}/hotel/postHotelForm" method="POST">
             <div class="container w-25">
 
@@ -132,17 +129,15 @@
         </form>-->
 
         <!--<div id="cityImg" ></div>-->
-        
-        
+
+
         <jsp:include page="../components/scripts.jsp"/>
-        
 
 
-        <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>-->
-                <script
-                    src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"
-                    integrity="sha256-0YPKAwZP7Mp3ALMRVB2i8GXeEndvCq3eSl/WsAl1Ryk="
-                crossorigin="anonymous"></script>
+        <script
+            src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"
+            integrity="sha256-0YPKAwZP7Mp3ALMRVB2i8GXeEndvCq3eSl/WsAl1Ryk="
+        crossorigin="anonymous"></script>
 
         <script type="text/javascript" src="${pageContext.request.contextPath}/js/booking.js"></script>
 
