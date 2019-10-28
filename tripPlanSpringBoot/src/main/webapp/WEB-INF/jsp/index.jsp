@@ -32,6 +32,10 @@
         <link rel="stylesheet" href="css/style.css">
 
 
+        <link rel="stylesheet"
+              href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.0.1/css/ol.css" type="text/css">
+
+        <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.0.1/build/ol.js"></script>
     </head>
 
     <body>
@@ -933,15 +937,15 @@
                             <h2 class="ftco-heading-2">Have a Questions?</h2>
                             <div class="block-23 mb-3">
                                 <ul>
-                                    <li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain
-                                            View, San Francisco, California, USA</span></li>
-                                    <li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929
-                                                210</span></a></li>
+                                    <li><span class="icon icon-map-marker"></span><span class="text"><a target="_blank" href="https://www.google.com/maps/place/Omonoia+39,+Athina+105+64/@37.9807716,23.7300947,17z/data=!3m1!4b1!4m5!3m4!1s0x14a1bd3a371b1527:0xc814362af19d1764!8m2!3d37.9807716!4d23.7322834">Πανεπιστημίου 39, 1ος όροφος,<br>Τ.Κ. 10564, Αθήνα</a></span></li>
+                                    <li><a href="#"><span class="icon icon-phone"></span><span class="text">+30 210 60 87 264
+                                                </span></a></li>
                                     <li><a href="#"><span class="icon icon-envelope"></span><span
-                                                class="text">info@yourdomain.com</span></a></li>
+                                                class="text">tripPlannerDemo@gmail.com</span></a></li>
                                 </ul>
                             </div>
                         </div>
+                        <div id="map" class="map" style="height: 250px; width: 250px;"></div>
                     </div>
                 </div>
                 <div class="row">
@@ -982,6 +986,54 @@
         <!--<script src="js/google-map.js"></script>-->
         <script src="js/main.js"></script>
 
+
+
+
+        <script>
+
+                                const displayMap = (lon, lat, zoom) => {
+                                    //Clear Map
+                                    document.querySelector("#map").innerHTML = "";
+
+                                    //Create Map
+                                    const map = new ol.Map({
+                                        target: 'map',
+                                        layers: [
+                                            new ol.layer.Tile({
+                                                source: new ol.source.OSM()
+                                            })
+                                        ],
+                                        view: new ol.View({
+                                            center: ol.proj.fromLonLat([lon, lat]),
+                                            zoom: zoom
+                                        })
+                                    });
+                                }
+
+
+                                const success = (response) => {
+                                    return response.json();
+                                }
+                                const error = (err) => {
+                                    console.error("Fetch error", err);
+                                }
+
+
+                                const handleData = (data) => {
+                                    return data[0];
+                                }
+
+                                const init = (countryData) => {
+                                    displayMap(countryData.latlng[1], countryData.latlng[0], 6);
+                                }
+
+// fetch() -> URL -> Response {}
+                                fetch("https://restcountries.eu/rest/v2/name/greece")
+                                        .then(success) // Successful
+                                        .then(handleData)
+                                        .then(init)
+                                        .catch(error); // Error
+        </script>
     </body>
 
 </html>

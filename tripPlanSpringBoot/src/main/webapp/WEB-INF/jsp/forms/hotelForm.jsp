@@ -8,6 +8,12 @@
         <jsp:include page="../components/linksHeader.jsp"/>
 
         <link rel="stylesheet" href="../css/autocomplete.css">
+        <style>
+            img{
+                height: 100%;
+                width: 100%;
+            }
+        </style>
     </head>
     <body>
         <jsp:include page="../components/navbar.jsp"/> 
@@ -46,7 +52,7 @@
                             <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel"
                                  aria-labelledby="v-pills-nextgen-tab">
                                 <form action="${pageContext.request.contextPath}/hotel/postHotelForm" class="search-destination" method="POST">
-                                    <div class="row"><div id="cityImg" style="max-height: 80px; max-width: 150px;"></div>
+                                    <div class="row"><div id="cityImg" style="max-height: 105px; max-width: 150px;"></div>
                                         <div class="col-md align-items-end">
                                             <div class="form-group">
                                                 <label for="#">City</label>

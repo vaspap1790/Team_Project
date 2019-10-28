@@ -44,7 +44,7 @@
                                                 <option value="">Select Location</option>
                                                 <option value="">San Francisco USA</option>
                                                 <option value="">Berlin Germany</option>
-                                                <option value="">Lodon United Kingdom</option>
+                                                <option value="">London United Kingdom</option>
                                                 <option value="">Paris Italy</option>
                                             </select>
                                         </div>
