@@ -46,15 +46,14 @@ public class FlightController {
             @RequestParam(name = "inboundDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate inboundDate) throws IOException, UnirestException, ParseException {
 
         HttpResponse<String> skyReport;
-     
-        String sessionKey = sky.CreateSession(flight, inboundDate);
-        skyReport= sky.SessionResults(sessionKey);
-      
-        if (skyReport.getStatus() == 200) {
-            session.setAttribute("jsonFlights", skyReport);
-            return new ModelAndView("responses/flightResults","flights",createJ.createJson(skyReport.getBody()));
-        }
+        String sessionKey = sky.CreateSession(flight, inboundDate);     
+        skyReport = sky.SessionResults(sessionKey);
 
+        if (skyReport.getStatus() == 200 && sessionKey != null) {
+            session.setAttribute("jsonFlights", skyReport);
+
+            return new ModelAndView("responses/flightResults", "flights", createJ.createJson(skyReport.getBody()));
+        }
         return new ModelAndView("redirect:/flight/register");
     }
 
@@ -62,11 +61,10 @@ public class FlightController {
     public ModelAndView flightResultForm(ModelMap m, HttpSession session) {
 
         String getAccomFromSess = (String) session.getAttribute("accomodation");
-        String accomodation =  getAccomFromSess + "Form";
+        String accomodation = getAccomFromSess + "Form";
 
-        return new ModelAndView("redirect:/"+getAccomFromSess+"/"+accomodation );
+        return new ModelAndView("redirect:/" + getAccomFromSess + "/" + accomodation);
     }
-
 
     @GetMapping(value = "returnFlights", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody

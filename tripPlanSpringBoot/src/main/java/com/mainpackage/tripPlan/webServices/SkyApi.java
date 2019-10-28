@@ -2,7 +2,6 @@ package com.mainpackage.tripPlan.webServices;
 
 import com.mainpackage.tripPlan.model.Flight;
 import com.mashape.unirest.http.HttpResponse;
-import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import java.io.IOException;
@@ -24,29 +23,6 @@ public class SkyApi {
         return response;
     }
 
-    public HttpResponse<String> browseRoutesRoundTrip(Flight f,
-            @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate inboundDate) throws UnirestException {
-
-        HttpResponse<String> response = Unirest.get("https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browseroutes/v1.0/GR/USD/en-US/"
-                + f.getOriginPlace() + "-SKY/" + f.getDestinationPlace() + "-SKY/" + f.getOutboundDate() + "/" + inboundDate)
-                .header("x-rapidapi-host", "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com")
-                .header("x-rapidapi-key", "2f7c656e8emsh52fa210fd1c2272p1016dbjsn00574276a26e")
-                .asString();
-
-        return response;
-    }
-
-    public HttpResponse<String> browseRoutesOneWay(Flight f) throws UnirestException {
-
-        HttpResponse<String> response = Unirest.get("https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/browseroutes/v1.0/GR/USD/en-US/"
-                + f.getOriginPlace() + "-SKY/" + f.getDestinationPlace() + "-SKY/" + f.getOutboundDate())
-                .header("x-rapidapi-host", "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com")
-                .header("x-rapidapi-key", "2f7c656e8emsh52fa210fd1c2272p1016dbjsn00574276a26e")
-                .asString();
-
-        return response;
-    }
-
     public String CreateSession(Flight f, @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate inboundDate) throws IOException, UnirestException {
         String sessionKey = null;
 
@@ -58,7 +34,7 @@ public class SkyApi {
                 .field("cabinClass", "economy")
                 .field("children", 0)
                 .field("infants", 0)
-                .field("country", "US")
+                .field("country", "GR")
                 .field("currency", "USD")
                 .field("locale", "en-US")
                 .field("originPlace", f.getOriginPlace() + "-sky")
@@ -68,17 +44,17 @@ public class SkyApi {
                 .asString();
         try {
             List session = response.getHeaders().get("Location");
-           
+
             String[] ar = session.get(0).toString().split("/");
             sessionKey = ar[ar.length - 1];
-            
+
             return sessionKey;
-            
+
         } catch (Exception e) {
             System.out.println("session key is null");
             e.printStackTrace();
         }
-
+      
         return sessionKey;
     }
 
@@ -88,7 +64,7 @@ public class SkyApi {
                 .header("X-RapidAPI-Host", "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com")
                 .header("X-RapidAPI-Key", "2f7c656e8emsh52fa210fd1c2272p1016dbjsn00574276a26e")
                 .asString();
-
+      
         return response;
     }
 }

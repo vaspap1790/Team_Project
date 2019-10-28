@@ -18,6 +18,7 @@
                 border:0;
 
             }
+
         </style>
     </head>
     <body>
@@ -26,78 +27,153 @@
         <a href="${pageContext.request.contextPath}/flight/postFlightResults">Post Flight Results</a>
 
 
-        <c:forEach items="${flights.Legs}" var="f" varStatus="fcount" >
-            <c:if test="${fn:length(flights.Itineraries) > fcount.index }">
-                <div class="container border w-50 mt-2 shadow">
-                    <form action="${pageContext.request.contextPath}/flight/postFlightResults">
-                        <div class="d-flex d-row">
-                            <div class="pr-3">
-                                <c:forEach items="${flights.Carriers}" var="car" varStatus="carcount">
-                                    <c:if test="${car.Id==f.Carriers[0]}">
-                                        <img src="${car.ImageUrl}" />
-                                    </c:if>
+
+        <div class="container">
+
+            <c:forEach items="${flights.Itineraries}" var="it" >
+                <form action="${pageContext.request.contextPath}/flight/postFlightResults">
+                        <div class="row border">
+                            <div class="col-md-8">
+                                 <c:forEach items="${flights.Legs}" var="f" varStatus="fcount" >
+                                <c:if test="${f.Id == it.OutboundLegId }">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="d-flex d-row">
+                                                <div class="pr-3">
+                                                    <c:forEach items="${flights.Carriers}" var="car" varStatus="carcount">
+                                                        <c:if test="${car.Id==f.Carriers[0]}">
+                                                            <img src="${car.ImageUrl}" />
+                                                        </c:if>
+                                                    </c:forEach>
+                                                </div>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="p-3 ">
+                                                        <div class="d-flex justify-content-end">
+                                                            <span class="time">${fn:substring(f.Departure,11,16)}</span>
+                                                        </div>
+                                                        <div id="place_form" class="d-flex justify-content-end">
+                                                            <c:forEach items="${flights.Places}" var="p" varStatus="pcount">
+                                                                <c:if test="${p.Id==f.OriginStation}">
+                                                                    <input class="text-right"  name="place_form" value="${p.Code}"  size="2" readonly="">
+                                                                </c:if>
+                                                            </c:forEach>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="LegInfo_stopsContainer__1XNWn ">
+                                                    <span class="airUp">${f.Duration} m</span>
+                                                    <ul class="LegInfo_stopLine__3_s15">
+                                                        <li class="LegInfo_stopDot__2vHOR"></li>
+                                                    </ul>
+                                                    <span class="airUp">${fn:length(f.Stops)} stops</span>
+                                                </div>
+                                                <div class="d-flex align-items-center">
+                                                    <div class=" p-3">
+                                                        <div class="d-flex justify-content-end">
+                                                            <span  class="time">${fn:substring(f.Arrival,11,16)}</span>
+                                                        </div>
+                                                        <div id="place_to" class="d-flex justify-content-end">
+                                                            <c:forEach items="${flights.Places}" var="p" varStatus="pcount">
+                                                                <c:if test="${p.Id==f.DestinationStation}">
+                                                                    <input class="text-right" name="place_to" value="${p.Code}"  size="2" readonly="">
+                                                                </c:if>
+                                                            </c:forEach>
+                                                        </div>                                             
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex align-items-center ml-4">
+                                                    <div class="p-3">
+                                                        <div class="d-flex justify-content-center">
+                                                            <span id="date">${fn:substring(fn:replace(f.Departure,"-","/"),5,10)} </span>
+                                                        </div>                    
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </c:if>
+                                  </c:forEach>
+                                <c:forEach items="${flights.Legs}" var="f" varStatus="fcount" >
+                                <c:if test="${f.Id == it.InboundLegId }">
+                                    <div class="row">
+
+                                        <div class="col-sm-12">
+                                            <div class="d-flex d-row">
+                                                <div class="pr-3">
+                                                    <c:forEach items="${flights.Carriers}" var="car" varStatus="carcount">
+                                                        <c:if test="${car.Id==f.Carriers[0]}">
+                                                            <img src="${car.ImageUrl}" />
+                                                        </c:if>
+                                                    </c:forEach>
+                                                </div>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="p-3 ">
+                                                        <div class="d-flex justify-content-end">
+                                                            <span class="time">${fn:substring(f.Departure,11,16)}</span>
+                                                        </div>
+                                                        <div id="place_form" class="d-flex justify-content-end">
+                                                            <c:forEach items="${flights.Places}" var="p" varStatus="pcount">
+                                                                <c:if test="${p.Id==f.OriginStation}">
+                                                                    <input class="text-right"  name="place_form_in" value="${p.Code}"  size="2" readonly="">
+                                                                </c:if>
+                                                            </c:forEach>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="LegInfo_stopsContainer__1XNWn ">
+                                                    <span class="airUp">${f.Duration} m</span>
+                                                    <ul class="LegInfo_stopLine__3_s15">
+                                                        <li class="LegInfo_stopDot__2vHOR"></li>
+                                                    </ul>
+                                                    <span class="airUp">${fn:length(f.Stops)} stops</span>
+                                                </div>
+                                                <div class="d-flex align-items-center">
+                                                    <div class="p-3">
+                                                        <div class="d-flex justify-content-end">
+                                                            <span  class="time">${fn:substring(f.Arrival,11,16)}</span>
+                                                        </div>
+                                                        <div id="place_to" class="d-flex justify-content-end">
+                                                            <c:forEach items="${flights.Places}" var="p" varStatus="pcount">
+                                                                <c:if test="${p.Id==f.DestinationStation}">
+                                                                    <input class="text-right" name="place_to_in" value="${p.Code}"  size="2" readonly="">
+                                                                </c:if>
+                                                            </c:forEach>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex align-items-center ml-4">
+                                                    <div class="p-3">
+                                                        <div class="d-flex justify-content-center">
+                                                            <span id="date">${fn:substring(fn:replace(f.Departure,"-","/"),5,10)} </span>
+                                                        </div>                    
+                                                    </div>
+                                                </div>
+                                            </div>      
+                                        </div>
+                                    </div>
+                                </c:if>
                                 </c:forEach>
                             </div>
-                            <div class="d-flex align-items-center">
-                                <div class="p-3 ">
-                                    <div class="d-flex justify-content-end">
-                                        <span class="time">${fn:substring(f.Departure,11,16)}</span>
-                                    </div>
-                                    <div id="place_form" class="d-flex justify-content-end">
-                                        <c:forEach items="${flights.Places}" var="p" varStatus="pcount">
-                                            <c:if test="${p.Id==f.OriginStation}">
-                                                <input class="text-right"  name="place_form" value="${p.Code}"  size="2" readonly="">
-                                            </c:if>
-                                        </c:forEach>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="LegInfo_stopsContainer__1XNWn ">
-                                <span class="airUp">${f.Duration} m</span>
-                                <ul class="LegInfo_stopLine__3_s15">
-                                    <li class="LegInfo_stopDot__2vHOR"></li>
-                                </ul>
-                                <span class="airUp">${fn:length(f.Stops)} stops</span>
-                            </div>
-                            <div class="d-flex align-items-center">
-                                <div class="p-3">
-                                    <div class="d-flex justify-content-end">
-                                        <span  class="time">${fn:substring(f.Arrival,11,16)}</span>
-                                    </div>
-                                    <div id="place_to" class="d-flex justify-content-end">
-                                        <c:forEach items="${flights.Places}" var="p" varStatus="pcount">
-                                            <c:if test="${p.Id==f.DestinationStation}">
-                                                <input class="text-right" name="place_to" value="${p.Code}"  size="2" readonly="">
-                                            </c:if>
-                                        </c:forEach>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center">
-                                <div class="p-3">
-                                    <div class="d-flex justify-content-center">
-                                        <span id="date">${fn:substring(fn:replace(f.Departure,"-","/"),5,10)} </span>
-                                    </div>                    
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center ml-3">
-                                <div class=" d-flex justify-content-center">
-                                    <c:forEach items="${flights.Itineraries}" var="it" varStatus="count" >
-                                        <c:if test="${f.Id==it.OutboundLegId}">                                      
-                                            <h4> <input class="font-weight-bold" name="price" value="<c:out value="${it.PricingOptions[0].Price}"/>"  size="3" readonly="">$</h4>
-                                            </c:if>
-                                        </c:forEach>
-                                </div>
-                                <input type="hidden" name="DeeplinkUrl" value="">
-                                <button id="submit" class="ml-4 btn btn-primary" > Select</button>
+                            <div class="col-md-4 d-flex align-items-center">
+                                <c:forEach items="${flights.Legs}" var="f" varStatus="fcount" >
+                                <c:if test="${f.Id==it.OutboundLegId }">     
+                                    <div class="d-flex align-items-center">
+                                        <div class=" d-flex justify-content-center">                                                                            
+                                            <h4> <input class="font-weight-bold" name="price" value="<c:out value="${it.PricingOptions[0].Price}"/>"  size="3" readonly=""></h4>
+                                            <button id="submit" type="submit" class="ml-4 btn btn-primary" > Select</button>
+                                        </div>
+                                        <input type="hidden" name="departure" value="${f.Departure}">
+                                        <input type="hidden" name="arrival" value="${f.Arrival}">
+                                        <input type="hidden" name="id" value="${f.OutboundLegId}">
+                                    </div> 
+                                </c:if>
+                                </c:forEach>
                             </div>
                         </div>
-                    </form>
-                </div>
-            </c:if>
-        </c:forEach>
+                        </form>
+            </c:forEach>
 
-
+        </div>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
