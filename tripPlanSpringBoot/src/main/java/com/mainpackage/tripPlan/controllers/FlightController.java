@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.time.LocalDate;
 import javax.servlet.http.HttpSession;
+import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -51,8 +52,8 @@ public class FlightController {
 
         if (skyReport.getStatus() == 200 && sessionKey != null) {
             session.setAttribute("jsonFlights", skyReport);
-
-            return new ModelAndView("responses/flightResults", "flights", createJ.createJson(skyReport.getBody()));
+                JSONObject skyJson= createJ.createJson(skyReport.getBody());
+            return new ModelAndView("responses/flightResults", "flights", skyJson);
         }
         return new ModelAndView("redirect:/flight/register");
     }

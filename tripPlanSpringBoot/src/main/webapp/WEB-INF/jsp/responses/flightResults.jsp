@@ -32,9 +32,10 @@
 
             <c:forEach items="${flights.Itineraries}" var="it" >
                 <form action="${pageContext.request.contextPath}/flight/postFlightResults">
-                        <div class="row border">
-                            <div class="col-md-8">
-                                 <c:forEach items="${flights.Legs}" var="f" varStatus="fcount" >
+                    <div class="row border border-primary mt-2">
+                        <div class="col-md-8">
+                            <c:forEach items="${flights.Legs}" var="f" varStatus="fcount" >
+                                
                                 <c:if test="${f.Id == it.OutboundLegId }">
                                     <div class="row">
                                         <div class="col-sm-12">
@@ -92,9 +93,10 @@
                                         </div>
                                     </div>
                                 </c:if>
-                                  </c:forEach>
-                                <c:forEach items="${flights.Legs}" var="f" varStatus="fcount" >
+                            </c:forEach>
+                            <c:forEach items="${flights.Legs}" var="f" varStatus="fcount" >
                                 <c:if test="${f.Id == it.InboundLegId }">
+                                    <hr>
                                     <div class="row">
 
                                         <div class="col-sm-12">
@@ -152,12 +154,12 @@
                                         </div>
                                     </div>
                                 </c:if>
-                                </c:forEach>
-                            </div>
-                            <div class="col-md-4 d-flex align-items-center">
-                                <c:forEach items="${flights.Legs}" var="f" varStatus="fcount" >
-                                <c:if test="${f.Id==it.OutboundLegId }">     
-                                    <div class="d-flex align-items-center">
+                            </c:forEach>
+                        </div>
+                        <div class="col-md-4 d-flex align-items-center">
+                            <c:forEach items="${flights.Legs}" var="f" varStatus="fcount" >
+                                <c:if test="${f.Id==it.OutboundLegId}">     
+                                    <div class="d-flex align-items-center ml-4">
                                         <div class=" d-flex justify-content-center">                                                                            
                                             <h4> <input class="font-weight-bold" name="price" value="<c:out value="${it.PricingOptions[0].Price}"/>"  size="3" readonly=""></h4>
                                             <button id="submit" type="submit" class="ml-4 btn btn-primary" > Select</button>
@@ -167,10 +169,10 @@
                                         <input type="hidden" name="id" value="${f.OutboundLegId}">
                                     </div> 
                                 </c:if>
-                                </c:forEach>
-                            </div>
+                            </c:forEach>
                         </div>
-                        </form>
+                    </div>
+                </form>
             </c:forEach>
 
         </div>
