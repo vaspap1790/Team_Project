@@ -1,10 +1,13 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.mainpackage.tripPlan.model;
 
 import java.io.Serializable;
 import java.sql.Blob;
-import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,16 +16,15 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
-import org.springframework.web.multipart.MultipartFile;
 
+/**
+ *
+ * @author vasil
+ */
 @Entity
 @Table(name = "user")
 @XmlRootElement
@@ -34,7 +36,6 @@ import org.springframework.web.multipart.MultipartFile;
     , @NamedQuery(name = "User.findByUsername", query = "SELECT u FROM User u WHERE u.username = :username")
     , @NamedQuery(name = "User.findByEmail", query = "SELECT u FROM User u WHERE u.email = :email")
     , @NamedQuery(name = "User.findByPassword", query = "SELECT u FROM User u WHERE u.password = :password")})
-@Valid
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -58,7 +59,7 @@ public class User implements Serializable {
     @Size(min = 1, max = 30)
     @Column(name = "username")
     private String username;
-    @Pattern(regexp = "[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message = "Invalid email")//if the field contains email address consider using this annotation to enforce field validation
+    // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 30)
@@ -72,8 +73,6 @@ public class User implements Serializable {
     @Lob
     @Column(name = "profile_photo")
     private Blob profilePhoto;
-    @OneToMany( mappedBy = "userId")
-    private Collection<Trip> tripCollection;
 
     public User() {
     }
@@ -147,16 +146,6 @@ public class User implements Serializable {
         this.profilePhoto = profilePhoto;
     }
 
-
-    @XmlTransient
-    public Collection<Trip> getTripCollection() {
-        return tripCollection;
-    }
-
-    public void setTripCollection(Collection<Trip> tripCollection) {
-        this.tripCollection = tripCollection;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -181,5 +170,5 @@ public class User implements Serializable {
     public String toString() {
         return "com.mainpackage.tripPlan.model.User[ userId=" + userId + " ]";
     }
-
+    
 }

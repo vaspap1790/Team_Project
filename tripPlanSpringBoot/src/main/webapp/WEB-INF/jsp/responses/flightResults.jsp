@@ -16,7 +16,6 @@
         <style>
             input{
                 border:0;
-
             }
 
         </style>
@@ -57,7 +56,7 @@
                                                                 <c:if test="${p.Id==f.OriginStation}">
                                                                     <input class="text-right"  name="place_form" value="${p.Code}"  size="2" readonly="">
                                                                 </c:if>
-                                                            </c:forEach>
+                                                           </c:forEach>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -116,7 +115,7 @@
                                                         <div id="place_form" class="d-flex justify-content-end">
                                                             <c:forEach items="${flights.Places}" var="p" varStatus="pcount">
                                                                 <c:if test="${p.Id==f.OriginStation}">
-                                                                    <input class="text-right"  name="place_form_in" value="${p.Code}"  size="2" readonly="">
+                                                                    <span>${p.Code}</span>
                                                                 </c:if>
                                                             </c:forEach>
                                                         </div>
@@ -137,7 +136,7 @@
                                                         <div id="place_to" class="d-flex justify-content-end">
                                                             <c:forEach items="${flights.Places}" var="p" varStatus="pcount">
                                                                 <c:if test="${p.Id==f.DestinationStation}">
-                                                                    <input class="text-right" name="place_to_in" value="${p.Code}"  size="2" readonly="">
+                                                                    <span>${p.Code}</span>
                                                                 </c:if>
                                                             </c:forEach>
                                                         </div>

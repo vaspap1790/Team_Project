@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author vaspa
+ * @author vasil
  */
 @Entity
 @Table(name = "transportation")
@@ -35,7 +35,11 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Transportation.findAll", query = "SELECT t FROM Transportation t")
     , @NamedQuery(name = "Transportation.findByTransportationId", query = "SELECT t FROM Transportation t WHERE t.transportationId = :transportationId")
-    , @NamedQuery(name = "Transportation.findByTimestamp", query = "SELECT t FROM Transportation t WHERE t.timestamp = :timestamp")})
+    , @NamedQuery(name = "Transportation.findByPrice", query = "SELECT t FROM Transportation t WHERE t.price = :price")
+    , @NamedQuery(name = "Transportation.findByStartingPoint", query = "SELECT t FROM Transportation t WHERE t.startingPoint = :startingPoint")
+    , @NamedQuery(name = "Transportation.findByDestination", query = "SELECT t FROM Transportation t WHERE t.destination = :destination")
+    , @NamedQuery(name = "Transportation.findByDeparture", query = "SELECT t FROM Transportation t WHERE t.departure = :departure")
+    , @NamedQuery(name = "Transportation.findByArrival", query = "SELECT t FROM Transportation t WHERE t.arrival = :arrival")})
 public class Transportation implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -48,11 +52,24 @@ public class Transportation implements Serializable {
     @Size(max = 65535)
     @Column(name = "this")
     private String this1;
+    @Column(name = "price")
+    private Long price;
+    @Size(max = 30)
+    @Column(name = "starting_point")
+    private String startingPoint;
+    @Size(max = 30)
+    @Column(name = "destination")
+    private String destination;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "timestamp")
+    @Column(name = "departure")
     @Temporal(TemporalType.TIMESTAMP)
-    private Date timestamp;
+    private Date departure;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "arrival")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date arrival;
     @JoinColumn(name = "trip_id", referencedColumnName = "trip_id")
     @ManyToOne(optional = false)
     private Trip tripId;
@@ -64,9 +81,10 @@ public class Transportation implements Serializable {
         this.transportationId = transportationId;
     }
 
-    public Transportation(Integer transportationId, Date timestamp) {
+    public Transportation(Integer transportationId, Date departure, Date arrival) {
         this.transportationId = transportationId;
-        this.timestamp = timestamp;
+        this.departure = departure;
+        this.arrival = arrival;
     }
 
     public Integer getTransportationId() {
@@ -85,12 +103,44 @@ public class Transportation implements Serializable {
         this.this1 = this1;
     }
 
-    public Date getTimestamp() {
-        return timestamp;
+    public Long getPrice() {
+        return price;
     }
 
-    public void setTimestamp(Date timestamp) {
-        this.timestamp = timestamp;
+    public void setPrice(Long price) {
+        this.price = price;
+    }
+
+    public String getStartingPoint() {
+        return startingPoint;
+    }
+
+    public void setStartingPoint(String startingPoint) {
+        this.startingPoint = startingPoint;
+    }
+
+    public String getDestination() {
+        return destination;
+    }
+
+    public void setDestination(String destination) {
+        this.destination = destination;
+    }
+
+    public Date getDeparture() {
+        return departure;
+    }
+
+    public void setDeparture(Date departure) {
+        this.departure = departure;
+    }
+
+    public Date getArrival() {
+        return arrival;
+    }
+
+    public void setArrival(Date arrival) {
+        this.arrival = arrival;
     }
 
     public Trip getTripId() {

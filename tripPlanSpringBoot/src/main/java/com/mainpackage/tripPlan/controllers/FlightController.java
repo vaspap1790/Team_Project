@@ -46,13 +46,12 @@ public class FlightController {
     public ModelAndView postFlight(@ModelAttribute("flight") Flight flight, HttpSession session,
             @RequestParam(name = "inboundDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate inboundDate) throws IOException, UnirestException, ParseException {
 
-        HttpResponse<String> skyReport;
-        String sessionKey = sky.CreateSession(flight, inboundDate);     
-        skyReport = sky.SessionResults(sessionKey);
+        String sessionKey = sky.CreateSession(flight, inboundDate);
+        HttpResponse<String> skyReport = sky.SessionResults(sessionKey);
 
         if (skyReport.getStatus() == 200 && sessionKey != null) {
-            session.setAttribute("jsonFlights", skyReport);
-                JSONObject skyJson= createJ.createJson(skyReport.getBody());
+
+            JSONObject skyJson = createJ.createJson(skyReport.getBody());
             return new ModelAndView("responses/flightResults", "flights", skyJson);
         }
         return new ModelAndView("redirect:/flight/register");
@@ -67,14 +66,14 @@ public class FlightController {
         return new ModelAndView("redirect:/" + getAccomFromSess + "/" + accomodation);
     }
 
-    @GetMapping(value = "returnFlights", produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseBody
-    public ResponseEntity<Object> returnFlights(HttpSession hp) throws UnirestException, UnsupportedEncodingException, ParseException {
-
-        HttpResponse flights = (HttpResponse) hp.getAttribute("jsonFlights");
-
-        return new ResponseEntity<>(flights.getBody(), HttpStatus.OK);
-    }
+//    @GetMapping(value = "returnFlights", produces = MediaType.APPLICATION_JSON_VALUE)
+//    @ResponseBody
+//    public ResponseEntity<Object> returnFlights(HttpSession hp) throws UnirestException, UnsupportedEncodingException, ParseException {
+//
+//        HttpResponse flights = (HttpResponse) hp.getAttribute("jsonFlights");
+//
+//        return new ResponseEntity<>(flights.getBody(), HttpStatus.OK);
+//    }
 
     @GetMapping(value = "city/{city}", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
