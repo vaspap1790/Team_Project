@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.time.LocalDate;
 import javax.servlet.http.HttpSession;
+import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -45,16 +46,14 @@ public class FlightController {
     public ModelAndView postFlight(@ModelAttribute("flight") Flight flight, HttpSession session,
             @RequestParam(name = "inboundDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate inboundDate) throws IOException, UnirestException, ParseException {
 
-        HttpResponse<String> skyReport;
-     
         String sessionKey = sky.CreateSession(flight, inboundDate);
-        skyReport= sky.SessionResults(sessionKey);
-        
-        if (skyReport.getStatus() == 200) {
-            session.setAttribute("jsonFlights", skyReport);
-            return new ModelAndView("responses/flightResults","flights",createJ.createJson(skyReport.getBody()));
-        }
+        HttpResponse<String> skyReport = sky.SessionResults(sessionKey);
 
+        if (skyReport.getStatus() == 200 && sessionKey != null) {
+
+            JSONObject skyJson = createJ.createJson(skyReport.getBody());
+            return new ModelAndView("responses/flightResults", "flights", skyJson);
+        }
         return new ModelAndView("redirect:/flight/register");
     }
 
@@ -62,20 +61,19 @@ public class FlightController {
     public ModelAndView flightResultForm(ModelMap m, HttpSession session) {
 
         String getAccomFromSess = (String) session.getAttribute("accomodation");
-        String accomodation =  getAccomFromSess + "Form";
+        String accomodation = getAccomFromSess + "Form";
 
-        return new ModelAndView("redirect:/"+getAccomFromSess+"/"+accomodation );
+        return new ModelAndView("redirect:/" + getAccomFromSess + "/" + accomodation);
     }
 
-
-    @GetMapping(value = "returnFlights", produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseBody
-    public ResponseEntity<Object> returnFlights(HttpSession hp) throws UnirestException, UnsupportedEncodingException, ParseException {
-
-        HttpResponse flights = (HttpResponse) hp.getAttribute("jsonFlights");
-
-        return new ResponseEntity<>(flights.getBody(), HttpStatus.OK);
-    }
+//    @GetMapping(value = "returnFlights", produces = MediaType.APPLICATION_JSON_VALUE)
+//    @ResponseBody
+//    public ResponseEntity<Object> returnFlights(HttpSession hp) throws UnirestException, UnsupportedEncodingException, ParseException {
+//
+//        HttpResponse flights = (HttpResponse) hp.getAttribute("jsonFlights");
+//
+//        return new ResponseEntity<>(flights.getBody(), HttpStatus.OK);
+//    }
 
     @GetMapping(value = "city/{city}", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody

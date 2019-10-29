@@ -1,15 +1,11 @@
 package com.mainpackage.tripPlan.controllers;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.mainpackage.tripPlan.utilities.CreateJson;
 import com.mainpackage.tripPlan.webServices.BookingApi;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import java.time.LocalDate;
-
 import com.fasterxml.jackson.core.JsonProcessingException;
-
-
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

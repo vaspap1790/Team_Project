@@ -1,4 +1,4 @@
-alert("I'm active");
+//alert("I'm active");
 
 $().ready(val("#logInForm"));
 

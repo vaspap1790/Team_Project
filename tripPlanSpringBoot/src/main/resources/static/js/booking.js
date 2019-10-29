@@ -21,7 +21,8 @@ $(document).ready(function () {
                         response(transformed.slice(0, 7));
                     }
                 });
-            }
+            },
+            position: {my: "left bottom", at: "left top"}
             ,
             select: function (event, ui) {
 
@@ -31,7 +32,7 @@ $(document).ready(function () {
                 var settings = {
                     "async": true,
                     "crossDomain": true,
-                    "url": "https://apidojo-booking-v1.p.rapidapi.com/locations/auto-complete?languagecode=en-us&text="+result_city,
+                    "url": "https://apidojo-booking-v1.p.rapidapi.com/locations/auto-complete?languagecode=en-us&text=" + result_city,
                     "method": "GET",
                     "headers": {
                         "x-rapidapi-host": "apidojo-booking-v1.p.rapidapi.com",
@@ -40,19 +41,20 @@ $(document).ready(function () {
                 };
 
                 $.ajax(settings).done(function (response) {
-                   
+
                     console.log(response);
-                    const img_city=response[0].image_url;
-                    const dest_id=response[0].dest_id;
+                    const img_city = response[0].image_url;
+                    const dest_id = response[0].dest_id;
                     $("#dest_id").val(dest_id);
                     $("#cityImg").html(`<img src="${img_city}">`);
-                    
+
                 });
 
             },
             minLength: 2,
             autoFocus: true,
-            delay:0
+            delay: 0
+
         });
     });
 

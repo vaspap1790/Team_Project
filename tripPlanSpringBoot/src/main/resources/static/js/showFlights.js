@@ -1,21 +1,11 @@
-$(document).ready(function () {
-
-    function testAjax(handleData) {
-        $.ajax({
-            type: "GET",
-            url: "returnFlights",
-            dataType: "json",
-            success: function (data) {
-                handleData(data);
-            }
-        });
-    }
-    ;
-    
-    testAjax(function (obj) {
-        console.log(obj);
-
-    });
-
-});
+//$(document).ready(function () {
+//         $.ajax({
+//                    url: "returnFlights/",
+//                    
+//                    success: function (data) {
+//                        console.log(data);
+//                    }
+//                });
+//
+//});
 
