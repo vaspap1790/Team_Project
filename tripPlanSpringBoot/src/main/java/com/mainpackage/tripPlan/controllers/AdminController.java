@@ -3,6 +3,7 @@ package com.mainpackage.tripPlan.controllers;
 
 import com.mainpackage.tripPlan.model.Admin;
 import com.mainpackage.tripPlan.services.AdminService;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -38,6 +39,32 @@ public class AdminController {
     @GetMapping(value="administration")
     public String administration (){
         return "administration/admin";
+    }
+    
+    @GetMapping(value="users")
+    public String users (){
+        return "administration/users";
+    }
+    
+    @GetMapping(value="administrators")
+    public String administrators (){
+        return "administration/administrators";
+    }
+    
+    @GetMapping(value="posts")
+    public String posts (){
+        return "administration/posts";
+    }
+    
+    @GetMapping(value="pages")
+    public String pages (){
+        return "administration/pages";
+    }
+    
+    @GetMapping(value="logout")
+    public ModelAndView logout (HttpSession session){
+        session.invalidate();
+        return new ModelAndView("redirect:/");
     }
 }
 
