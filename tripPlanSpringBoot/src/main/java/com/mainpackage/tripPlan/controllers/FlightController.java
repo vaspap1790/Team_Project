@@ -2,6 +2,8 @@ package com.mainpackage.tripPlan.controllers;
 
 import com.mainpackage.tripPlan.model.Flight;
 import com.mainpackage.tripPlan.model.Transportation;
+import com.mainpackage.tripPlan.model.Trip;
+import com.mainpackage.tripPlan.model.User;
 import com.mainpackage.tripPlan.utilities.CreateJson;
 import com.mainpackage.tripPlan.webServices.SkyApi;
 import com.mashape.unirest.http.HttpResponse;
@@ -53,17 +55,22 @@ public class FlightController {
 
         if (skyReport.getStatus() == 200 && sessionKey != null) {
             
-            m.addAttribute("transportation",new Transportation());
+            Transportation trans=new Transportation();
+
+            m.addAttribute("transportation",trans);
+            
             JSONObject skyJson = createJ.createJson(skyReport.getBody());
             return new ModelAndView("responses/flightResults", "flights", skyJson);
         }
         return new ModelAndView("redirect:/flight/register");
     }
 
-    @GetMapping(value = "postFlightResults")
-    public ModelAndView flightResultForm(ModelMap m, HttpSession session,@ModelAttribute("transportation") Transportation tr) {
-        System.out.println(m.get("transportation"));
+    @PostMapping(value = "postFlightResults")
+    public ModelAndView flightResultForm(ModelMap m, HttpSession session,
+            @ModelAttribute("transportation") Transportation tr) {
         String getAccomFromSess = (String) session.getAttribute("accomodation");
+        
+        System.out.println(tr);
         String accomodation = getAccomFromSess + "Form";
 
         return new ModelAndView("redirect:/" + getAccomFromSess + "/" + accomodation);

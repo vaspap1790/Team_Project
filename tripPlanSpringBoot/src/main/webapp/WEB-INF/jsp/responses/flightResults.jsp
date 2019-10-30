@@ -175,7 +175,7 @@
                                         </div>
                                         <s:input type="hidden" path="this1" value="${it.PricingOptions[0].DeeplinkUrl}"/>
                                         <s:input type="hidden" path="transportationId" />
-                                        <s:input type="hidden" path="tripId" />
+                                        <%--<s:input type="hidden" path="tripId"  />--%>
                                         
                                     </div> 
                                 </c:if>
