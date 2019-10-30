@@ -55,10 +55,7 @@ public class FlightController {
 
         if (skyReport.getStatus() == 200 && sessionKey != null) {
             
-            Transportation trans=new Transportation();
-
-            m.addAttribute("transportation",trans);
-            
+            m.addAttribute("transportation",new Transportation());         
             JSONObject skyJson = createJ.createJson(skyReport.getBody());
             return new ModelAndView("responses/flightResults", "flights", skyJson);
         }
@@ -68,22 +65,19 @@ public class FlightController {
     @PostMapping(value = "postFlightResults")
     public ModelAndView flightResultForm(ModelMap m, HttpSession session,
             @ModelAttribute("transportation") Transportation tr) {
+        
+        session.setAttribute("transportation", tr);
+        
         String getAccomFromSess = (String) session.getAttribute("accomodation");
         
-        System.out.println(tr);
+        if(getAccomFromSess==null){
+            return new ModelAndView("redirect:/");
+        }
+        
         String accomodation = getAccomFromSess + "Form";
-
         return new ModelAndView("redirect:/" + getAccomFromSess + "/" + accomodation);
     }
 
-//    @GetMapping(value = "returnFlights", produces = MediaType.APPLICATION_JSON_VALUE)
-//    @ResponseBody
-//    public ResponseEntity<Object> returnFlights(HttpSession hp) throws UnirestException, UnsupportedEncodingException, ParseException {
-//
-//        HttpResponse flights = (HttpResponse) hp.getAttribute("jsonFlights");
-//
-//        return new ResponseEntity<>(flights.getBody(), HttpStatus.OK);
-//    }
 
     @GetMapping(value = "city/{city}", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
