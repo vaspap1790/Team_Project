@@ -52,7 +52,8 @@
                         <li class="nav-item active"><a href="${pageContext.request.contextPath}/" class="nav-link">Home</a></li>
                         <li class="nav-item"><a href="" class="nav-link">About</a></li>
                         <li class="nav-item"><a href="" class="nav-link">Places</a></li>
-                        <li class="nav-item"><a href="" class="nav-link">Hotels</a></li>
+                        <li class="nav-item"><a href="${pageContext.request.contextPath}/flight/register" class="nav-link">Flights</a></li>
+                        <li class="nav-item"><a href="${pageContext.request.contextPath}/hotel/hotelForm" class="nav-link">Hotels</a></li>
                         <li class="nav-item"><a href="" class="nav-link">Blog</a></li>
                         <li class="nav-item"><a href="${pageContext.request.contextPath}/contact" class="nav-link">Contact</a></li>
                     </ul>
@@ -934,12 +935,12 @@
                     </div>
                     <div class="col-md">
                         <div class="ftco-footer-widget mb-4">
-                            <h2 class="ftco-heading-2">Have a Questions?</h2>
+                            <h2 class="ftco-heading-2">Have Questions?</h2>
                             <div class="block-23 mb-3">
                                 <ul>
                                     <li><span class="icon icon-map-marker"></span><span class="text"><a target="_blank" href="https://www.google.com/maps/place/Omonoia+39,+Athina+105+64/@37.9807716,23.7300947,17z/data=!3m1!4b1!4m5!3m4!1s0x14a1bd3a371b1527:0xc814362af19d1764!8m2!3d37.9807716!4d23.7322834">Πανεπιστημίου 39, 1ος όροφος,<br>Τ.Κ. 10564, Αθήνα</a></span></li>
                                     <li><a href="#"><span class="icon icon-phone"></span><span class="text">+30 210 60 87 264
-                                                </span></a></li>
+                                            </span></a></li>
                                     <li><a href="#"><span class="icon icon-envelope"></span><span
                                                 class="text">tripPlannerDemo@gmail.com</span></a></li>
                                 </ul>
@@ -952,7 +953,7 @@
                     <div class="col-md-12 text-center">
 
                         <p>Copyright &copy;
-                            <script>document.write(new Date().getFullYear());</script> All rights reserved | </p>
+                            <script>document.write(new Date().getFullYear());</script> All rights reserved</p>
                     </div>
                 </div>
             </div>
