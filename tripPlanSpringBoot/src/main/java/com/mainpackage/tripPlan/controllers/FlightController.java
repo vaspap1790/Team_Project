@@ -1,6 +1,7 @@
 package com.mainpackage.tripPlan.controllers;
 
 import com.mainpackage.tripPlan.model.Flight;
+import com.mainpackage.tripPlan.model.Transportation;
 import com.mainpackage.tripPlan.utilities.CreateJson;
 import com.mainpackage.tripPlan.webServices.SkyApi;
 import com.mashape.unirest.http.HttpResponse;
@@ -43,14 +44,16 @@ public class FlightController {
     }
 
     @PostMapping(value = "postRegister")
-    public ModelAndView postFlight(@ModelAttribute("flight") Flight flight, HttpSession session,
+    public ModelAndView postFlight(@ModelAttribute("flight") Flight flight,
+            HttpSession session,ModelMap m,
             @RequestParam(name = "inboundDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate inboundDate) throws IOException, UnirestException, ParseException {
 
         String sessionKey = sky.CreateSession(flight, inboundDate);
         HttpResponse<String> skyReport = sky.SessionResults(sessionKey);
 
         if (skyReport.getStatus() == 200 && sessionKey != null) {
-
+            
+            m.addAttribute("transportation",new Transportation());
             JSONObject skyJson = createJ.createJson(skyReport.getBody());
             return new ModelAndView("responses/flightResults", "flights", skyJson);
         }
@@ -58,8 +61,8 @@ public class FlightController {
     }
 
     @GetMapping(value = "postFlightResults")
-    public ModelAndView flightResultForm(ModelMap m, HttpSession session) {
-
+    public ModelAndView flightResultForm(ModelMap m, HttpSession session,@ModelAttribute("transportation") Transportation tr) {
+        System.out.println(m.get("transportation"));
         String getAccomFromSess = (String) session.getAttribute("accomodation");
         String accomodation = getAccomFromSess + "Form";
 

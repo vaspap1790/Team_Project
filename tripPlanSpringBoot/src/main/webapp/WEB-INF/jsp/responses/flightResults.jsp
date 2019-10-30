@@ -3,6 +3,7 @@
     Created on : Oct 22, 2019, 3:22:17 PM
     Author     : vaspa
 --%>
+<%@ taglib prefix="s" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %> 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>  
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -30,11 +31,11 @@
         <div class="container">
 
             <c:forEach items="${flights.Itineraries}" var="it" >
-                <form action="${pageContext.request.contextPath}/flight/postFlightResults">
+                <s:form action="${pageContext.request.contextPath}/flight/postFlightResults" method="POST" modelAttribute="transportation">
                     <div class="row border border-primary mt-2">
                         <div class="col-md-8">
                             <c:forEach items="${flights.Legs}" var="f" varStatus="fcount" >
-                                
+
                                 <c:if test="${f.Id == it.OutboundLegId }">
                                     <div class="row">
                                         <div class="col-sm-12">
@@ -50,13 +51,15 @@
                                                     <div class="p-3 ">
                                                         <div class="d-flex justify-content-end">
                                                             <span class="time">${fn:substring(f.Departure,11,16)}</span>
+                                                            <s:input type="hidden" path="departure" value="${f.Departure}"/>
                                                         </div>
                                                         <div id="place_form" class="d-flex justify-content-end">
                                                             <c:forEach items="${flights.Places}" var="p" varStatus="pcount">
                                                                 <c:if test="${p.Id==f.OriginStation}">
-                                                                    <input class="text-right"  name="place_form" value="${p.Code}"  size="2" readonly="">
+                                                                    <s:input type="hidden" path="startingPoint" value="${p.Name}" ></s:input>
+                                                                    <span>${p.Code}</span>
                                                                 </c:if>
-                                                           </c:forEach>
+                                                            </c:forEach>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -71,11 +74,13 @@
                                                     <div class=" p-3">
                                                         <div class="d-flex justify-content-end">
                                                             <span  class="time">${fn:substring(f.Arrival,11,16)}</span>
+                                                            <s:input type="hidden" path="arrival" value="${f.Arrival}"/>
                                                         </div>
                                                         <div id="place_to" class="d-flex justify-content-end">
                                                             <c:forEach items="${flights.Places}" var="p" varStatus="pcount">
                                                                 <c:if test="${p.Id==f.DestinationStation}">
-                                                                    <input class="text-right" name="place_to" value="${p.Code}"  size="2" readonly="">
+                                                                    <span>${p.Code}</span>
+                                                                    <s:input type="hidden" path="destination" value="${p.Name}" ></s:input>
                                                                 </c:if>
                                                             </c:forEach>
                                                         </div>                                             
@@ -85,6 +90,7 @@
                                                     <div class="p-3">
                                                         <div class="d-flex justify-content-center">
                                                             <span id="date">${fn:substring(fn:replace(f.Departure,"-","/"),5,10)} </span>
+                                                            <s:input type="hidden" path="arrival" value="${f.Arrival}"/>
                                                         </div>                    
                                                     </div>
                                                 </div>
@@ -149,6 +155,8 @@
                                                         </div>                    
                                                     </div>
                                                 </div>
+
+
                                             </div>      
                                         </div>
                                     </div>
@@ -160,18 +168,21 @@
                                 <c:if test="${f.Id==it.OutboundLegId}">     
                                     <div class="d-flex align-items-center ml-4">
                                         <div class=" d-flex justify-content-center">                                                                            
-                                            <h4> <input class="font-weight-bold" name="price" value="<c:out value="${it.PricingOptions[0].Price}"/>"  size="3" readonly=""></h4>
+                                            <h4> <span class="font-weight-bold" > ${it.PricingOptions[0].Price}</span></h4>
+                                            <s:input type="hidden" path="price" value="${it.PricingOptions[0].Price}" />
                                             <button id="submit" type="submit" class="ml-4 btn btn-primary" > Select</button>
+
                                         </div>
-                                        <input type="hidden" name="departure" value="${f.Departure}">
-                                        <input type="hidden" name="arrival" value="${f.Arrival}">
-                                        <input type="hidden" name="id" value="${f.OutboundLegId}">
+                                        <s:input type="hidden" path="this1" value="${it.PricingOptions[0].DeeplinkUrl}"/>
+                                        <s:input type="hidden" path="transportationId" />
+                                        <s:input type="hidden" path="tripId" />
+                                        
                                     </div> 
                                 </c:if>
                             </c:forEach>
                         </div>
                     </div>
-                </form>
+                </s:form>
             </c:forEach>
 
         </div>
