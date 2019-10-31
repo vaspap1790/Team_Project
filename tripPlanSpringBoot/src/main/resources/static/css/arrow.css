@@ -1,4 +1,6 @@
-
+html {
+    scroll-behavior: smooth;
+}
 
 .bounce { /*arrow bouncing duration*/
     -moz-animation: bounce 2s infinite;

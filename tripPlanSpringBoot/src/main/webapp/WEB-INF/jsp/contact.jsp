@@ -67,7 +67,7 @@
             </div>
         </div>
 
-        <section class="ftco-section contact-section ftco-degree-bg">
+        <section class="ftco-section contact-section ftco-degree-bg ftco-animate">
             <div class="container">
                 <div class="row d-flex mb-5 contact-info">
                     <div class="col-md-12 mb-4">
@@ -116,7 +116,7 @@
             </div>
         </section>
 
-        <section class="ftco-section-parallax">
+        <section class="ftco-section-parallax ftco-animate">
             <div class="parallax-img d-flex align-items-center">
                 <div class="container">
                     <div class="row d-flex justify-content-center">
@@ -140,7 +140,7 @@
         </section>
 
 
-        <footer id="foot" class="ftco-footer ftco-bg-dark ftco-section">
+        <footer id="foot" class="ftco-footer ftco-bg-dark ftco-section ftco-animate">
             <div class="container">
                 <div class="row mb-5">
                     <div class="col-md">
