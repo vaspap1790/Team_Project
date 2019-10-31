@@ -261,7 +261,6 @@
                                                                 <h4> <span class="font-weight-bold" > ${it.PricingOptions[0].Price}</span></h4>
                                                                 <s:input type="hidden" path="price" value="${it.PricingOptions[0].Price}" />
                                                                 <button id="submit" type="submit" class="ml-4 btn btn-primary" > Select</button>
-
                                                             </div>
                                                             <s:input type="hidden" path="this1" value="${it.PricingOptions[0].DeeplinkUrl}"/>
                                                             <s:input type="hidden" path="transportationId" />
