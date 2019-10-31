@@ -13,6 +13,13 @@
         <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/flightResults.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/arrow.css">
+        <script src="https://kit.fontawesome.com/e41a5911e2.js"></script>
+
+        <style>
+            html {
+                scroll-behavior: smooth;
+            }
+        </style>
 
     </head>
     <body>
@@ -30,7 +37,7 @@
                 </div>
             </div>
 
-            <a class="down-arrow" href="">
+            <a class="down-arrow" href="#start">
                 <div class="arrow bounce d-none d-md-block">
                     <i class="fas fa-angle-down" aria-hidden="true"></i>
                 </div>
@@ -40,7 +47,7 @@
 
 
 
-        <section class="ftco-section">
+        <section id="start" class="ftco-section">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-3 sidebar order-md-last ftco-animate">
