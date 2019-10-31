@@ -12,12 +12,8 @@
 
         <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/flightResults.css">
-        <!--        <style>
-                    input{
-                        border:0;
-                    }
-        
-                </style>-->
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/arrow.css">
+
     </head>
     <body>
         <jsp:include page="../components/navbar.jsp"/>
@@ -33,7 +29,15 @@
                     </div>
                 </div>
             </div>
+
+            <a class="down-arrow" href="">
+                <div class="arrow bounce d-none d-md-block">
+                    <i class="fas fa-angle-down" aria-hidden="true"></i>
+                </div>
+            </a>
+
         </div>
+
 
 
         <section class="ftco-section">
@@ -119,12 +123,12 @@
                         </div>
                     </div><!-- END-->
 
-                    <div class="col-lg-9">
+                    <div class="col-lg-9 ">
                         <div class="row">
                             <div class="container">
                                 <c:forEach items="${flights.Itineraries}" var="it" >
                                     <s:form action="${pageContext.request.contextPath}/flight/postFlightResults" method="POST" modelAttribute="transportation">
-                                        <div class="row border border-primary mt-2">
+                                        <div class="row border shadow border-primary mt-2 ftco-animate">
                                             <div class="col-md-8">
                                                 <c:forEach items="${flights.Legs}" var="f" varStatus="fcount" >
                                                     <c:if test="${f.Id == it.OutboundLegId }">
@@ -318,7 +322,7 @@
         </section>
 
 
-        
+
         <jsp:include page="../components/footer.jsp"/>
         <jsp:include page="../components/scripts.jsp"/>
 
