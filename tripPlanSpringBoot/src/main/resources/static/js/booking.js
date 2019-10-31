@@ -36,13 +36,12 @@ $(document).ready(function () {
                     "method": "GET",
                     "headers": {
                         "x-rapidapi-host": "apidojo-booking-v1.p.rapidapi.com",
-                        "x-rapidapi-key": "2f7c656e8emsh52fa210fd1c2272p1016dbjsn00574276a26e"
+                        "x-rapidapi-key": "755b00a104msh85506be4fa8861dp10f6abjsn986404c91cd5"
                     }
                 };
 
                 $.ajax(settings).done(function (response) {
 
-                    console.log(response);
                     const img_city = response[0].image_url;
                     const dest_id = response[0].dest_id;
                     $("#dest_id").val(dest_id);

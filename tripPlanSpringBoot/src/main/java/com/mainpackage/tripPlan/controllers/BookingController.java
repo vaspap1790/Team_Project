@@ -35,11 +35,6 @@ public class BookingController {
         return "forms/hotelForm";
         
     }
-    @GetMapping(value="postHotelForm")
-    public String postHotelForm(){
-        
-        return "responses/hotelResults";
-    }
 
     @PostMapping(value = "postHotelForm")
     public ModelAndView postHotelForm(@RequestParam(name = "guests") String guests,
