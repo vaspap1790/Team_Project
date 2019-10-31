@@ -278,7 +278,7 @@
                                 </c:forEach>
                             </div>
                         </div>
-                        <div class="row mt-5">
+                        <div class="row mt-5 ftco-animate">
                             <div class="col text-center">
                                 <div class="block-27">
                                     <ul>
@@ -298,7 +298,7 @@
             </div>
         </section>
 
-        <section class="ftco-section-parallax">
+        <section class="ftco-section-parallax ftco-animate">
             <div class="parallax-img d-flex align-items-center">
                 <div class="container">
                     <div class="row d-flex justify-content-center">

@@ -1,6 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<footer id="foot" class="ftco-footer ftco-bg-dark ftco-section">
+<footer id="foot" class="ftco-footer ftco-bg-dark ftco-section ftco-animate">
     <div class="container">
         <div class="row mb-5">
             <div class="col-md">
