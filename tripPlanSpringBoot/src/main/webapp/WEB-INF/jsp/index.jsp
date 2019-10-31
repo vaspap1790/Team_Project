@@ -31,6 +31,9 @@
         <link rel="stylesheet" href="css/icomoon.css">
         <link rel="stylesheet" href="css/style.css">
 
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/arrow.css">
+        <script src="https://kit.fontawesome.com/e41a5911e2.js"></script>
+
     </head>
 
     <body>
@@ -79,9 +82,14 @@
                     </div>
                 </div>
             </div>
+            <a class="down-arrow" href="#start">
+                <div class="arrow bounce d-none d-md-block">
+                    <i class="fas fa-angle-down fa-3x" aria-hidden="true"></i>
+                </div>
+            </a>
         </div>
 
-        <section class="ftco-section bg-light">
+        <section id="start" class="ftco-section bg-light">
             <div class="container">
                 <div class="row">
                     <div class="col-md-4">

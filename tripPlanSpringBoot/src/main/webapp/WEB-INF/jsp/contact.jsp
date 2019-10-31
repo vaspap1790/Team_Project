@@ -75,7 +75,7 @@
                     </div>
                     <div class="w-100"></div>
                     <div class="col-md-3">
-                        <p><span>Address:</span> <a target="_blank" href="https://www.google.com/maps/place/Omonoia+39,+Athina+105+64/@37.9807716,23.7300947,17z/data=!3m1!4b1!4m5!3m4!1s0x14a1bd3a371b1527:0xc814362af19d1764!8m2!3d37.9807716!4d23.7322834">Πανεπιστημίου 39, 1ος όροφος,<br>Τ.Κ. 10564, Αθήνα</a></p>
+                        <p><span>Address:</span> <a target="_blank" href="https://www.google.com/maps/place/Omonoia+39,+Athina+105+64/@37.9807716,23.7300947,17z/data=!3m1!4b1!4m5!3m4!1s0x14a1bd3a371b1527:0xc814362af19d1764!8m2!3d37.9807716!4d23.7322834">Πανεπιστημίου 39,<br> 1ος όροφος,<br>Τ.Κ. 10564, Αθήνα</a></p>
                     </div>
                     <div class="col-md-3">
                         <p><span>Phone:</span> <a href="tel://1234567920">+30 210 60 87 264</a></p>
@@ -110,7 +110,7 @@
                     </div>
 
                     <div class="col-md-6">
-                        <div id="map"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4258.929409008639!2d23.73275264300153!3d37.980652573342525!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x21c2c4ed5d5b2eb9!2sPeopleCert!5e0!3m2!1sen!2sgr!4v1572537672640!5m2!1sen!2sgr" width="550" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe></div>
+                        <div id="map"><iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1111.8734290683103!2d23.732775172937295!3d37.980560549553495!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sgr!4v1572558519810!5m2!1sen!2sgr" width="550" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe></div>
                     </div>
                 </div>
             </div>
@@ -195,7 +195,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <div style="height: 250px; width: 250px;"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4258.929409008639!2d23.73275264300153!3d37.980652573342525!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x21c2c4ed5d5b2eb9!2sPeopleCert!5e0!3m2!1sen!2sgr!4v1572537672640!5m2!1sen!2sgr" width="250" height="250" frameborder="0" style="border:0;" allowfullscreen=""></iframe></div>
+                        <div style="height: 250px; width: 250px;"><iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d786.2119282487015!2d23.732529646567396!3d37.98068313206236!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sgr!4v1572558339900!5m2!1sen!2sgr" width="250" height="250" frameborder="0" style="border:0;" allowfullscreen=""></iframe></div>
                     </div>
                 </div>
                 <div class="row">
