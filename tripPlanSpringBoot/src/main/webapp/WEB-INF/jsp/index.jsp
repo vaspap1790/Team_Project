@@ -30,12 +30,7 @@
         <link rel="stylesheet" href="css/flaticon.css">
         <link rel="stylesheet" href="css/icomoon.css">
         <link rel="stylesheet" href="css/style.css">
-
-
-        <link rel="stylesheet"
-              href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.0.1/css/ol.css" type="text/css">
-
-        <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.0.1/build/ol.js"></script>
+        
     </head>
 
     <body>
@@ -984,57 +979,10 @@
         <script src="js/scrollax.min.js"></script>
         <script
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-        <!--<script src="js/google-map.js"></script>-->
+        <script src="js/google-map.js"></script>
         <script src="js/main.js"></script>
 
-
-
-
-        <script>
-
-                                const displayMap = (lon, lat, zoom) => {
-                                    //Clear Map
-                                    document.querySelector("#map").innerHTML = "";
-
-                                    //Create Map
-                                    const map = new ol.Map({
-                                        target: 'map',
-                                        layers: [
-                                            new ol.layer.Tile({
-                                                source: new ol.source.OSM()
-                                            })
-                                        ],
-                                        view: new ol.View({
-                                            center: ol.proj.fromLonLat([lon, lat]),
-                                            zoom: zoom
-                                        })
-                                    });
-                                }
-
-
-                                const success = (response) => {
-                                    return response.json();
-                                }
-                                const error = (err) => {
-                                    console.error("Fetch error", err);
-                                }
-
-
-                                const handleData = (data) => {
-                                    return data[0];
-                                }
-
-                                const init = (countryData) => {
-                                    displayMap(countryData.latlng[1], countryData.latlng[0], 6);
-                                }
-
-// fetch() -> URL -> Response {}
-                                fetch("https://restcountries.eu/rest/v2/name/greece")
-                                        .then(success) // Successful
-                                        .then(handleData)
-                                        .then(init)
-                                        .catch(error); // Error
-        </script>
+        
     </body>
 
 </html>
