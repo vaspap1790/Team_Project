@@ -110,7 +110,7 @@
                     </div>
 
                     <div class="col-md-6">
-                        <div id="map"></div>
+                        <div id="map"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4258.929409008639!2d23.73275264300153!3d37.980652573342525!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x21c2c4ed5d5b2eb9!2sPeopleCert!5e0!3m2!1sen!2sgr!4v1572537672640!5m2!1sen!2sgr" width="550" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe></div>
                     </div>
                 </div>
             </div>
@@ -195,7 +195,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <div id="map" class="map" style="height: 250px; width: 250px;"></div>
+                        <div style="height: 250px; width: 250px;"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4258.929409008639!2d23.73275264300153!3d37.980652573342525!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x21c2c4ed5d5b2eb9!2sPeopleCert!5e0!3m2!1sen!2sgr!4v1572537672640!5m2!1sen!2sgr" width="250" height="250" frameborder="0" style="border:0;" allowfullscreen=""></iframe></div>
                     </div>
                 </div>
                 <div class="row">
@@ -225,7 +225,7 @@
         <script src="js/scrollax.min.js"></script>
         <script
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-        <script src="js/google-map.js"></script>
+        <!--<script src="js/google-map.js"></script>-->
         <script src="js/main.js"></script>
 
     </body>
