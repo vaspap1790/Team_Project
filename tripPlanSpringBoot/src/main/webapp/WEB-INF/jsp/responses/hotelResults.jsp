@@ -124,11 +124,11 @@
                             </form>
                         </div>
                     </div><!-- END-->
+                    
                     <div class="col-lg-9">
                         <div class="row">
-
-                            <c:if test="${bookingJson.count>0}">
-                                <c:forEach items="${bookingJson.result}" var="res">
+                            <c:if test="${booking.bookingJson.count>0}">
+                                <c:forEach items="${booking.bookingJson.result}" var="res">
                                     <div class="col-sm col-md-6 col-lg-4 ftco-animate">
                                         <div class="destination">
                                             <div class="destination">
@@ -141,6 +141,7 @@
                                                     <div class="d-flex">
                                                         <div class="one">
                                                             <h3><a href="${res.url}">${res.hotel_name}</a></h3>
+                                                            
                                                             <p class="rate">
                                                                 <i class="icon-star"></i>
                                                                 <i class="icon-star"></i>
@@ -157,20 +158,29 @@
                                                                     <br><small>/night</small></span>
                                                                 </c:if>
                                                                 <c:if test="${res.min_total_price eq 0}">
-                                                                        N/A
-                                                                </c:if>
+                                                                N/A
+                                                            </c:if>
                                                         </div>
                                                     </div>
                                                     <p><small>Adress : ${res.address} </small></p>
                                                     <hr>
                                                     <p class="bottom-area d-flex">
                                                         <span><i class="icon-map-o"></i> ${res.city}</span> 
-                                                        <span class="ml-auto"><a href="${res.url}">Book Now</a></span>
+                                                        <%--<s:form action="${pageContext.request.contextPath}/hotel/postHotelResults" modelAttribute="accommodation" method="POST">--%>
+                                                            <%--<s:input type="hidden" path="" value="${res.url}" />--%>
+                                                            <%--<s:input type="hidden" path="" value="${res.address}" />--%>
+                                                            <%--<s:input type="hidden" path="" value="${res.min_total_price}" />--%>
+                                                            <%--<s:input type="hidden" path="" value="${res.hotel_name}" />--%>
+                                                            <%--<s:input type="hidden" path="" value="${booking.checkin}" />--%>
+                                                            <%--<s:input type="hidden" path="" value="${booking.checkout}" />--%>
+                                                            <span class="ml-auto"><button class="btn btn-primary" type="submit">Book Now</button></span>
+                                                        <%--</s:form>--%>
                                                     </p>
                                                 </div>
                                             </div>          
                                         </div>
                                     </div>
+
                                 </c:forEach>
                             </c:if>
                         </div>
