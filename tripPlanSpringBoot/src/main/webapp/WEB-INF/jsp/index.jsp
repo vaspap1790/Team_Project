@@ -31,11 +31,9 @@
         <link rel="stylesheet" href="css/icomoon.css">
         <link rel="stylesheet" href="css/style.css">
 
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/arrow.css">
+        <script src="https://kit.fontawesome.com/e41a5911e2.js"></script>
 
-        <link rel="stylesheet"
-              href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.0.1/css/ol.css" type="text/css">
-
-        <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.0.1/build/ol.js"></script>
     </head>
 
     <body>
@@ -52,7 +50,8 @@
                         <li class="nav-item active"><a href="${pageContext.request.contextPath}/" class="nav-link">Home</a></li>
                         <li class="nav-item"><a href="" class="nav-link">About</a></li>
                         <li class="nav-item"><a href="" class="nav-link">Places</a></li>
-                        <li class="nav-item"><a href="" class="nav-link">Hotels</a></li>
+                        <li class="nav-item"><a href="${pageContext.request.contextPath}/flight/register" class="nav-link">Flights</a></li>
+                        <li class="nav-item"><a href="${pageContext.request.contextPath}/hotel/hotelForm" class="nav-link">Hotels</a></li>
                         <li class="nav-item"><a href="" class="nav-link">Blog</a></li>
                         <li class="nav-item"><a href="${pageContext.request.contextPath}/contact" class="nav-link">Contact</a></li>
                     </ul>
@@ -83,9 +82,14 @@
                     </div>
                 </div>
             </div>
+            <a class="down-arrow" href="#start">
+                <div class="arrow bounce d-none d-md-block">
+                    <i class="fas fa-angle-down fa-3x" aria-hidden="true"></i>
+                </div>
+            </a>
         </div>
 
-        <section class="ftco-section bg-light">
+        <section id="start" class="ftco-section bg-light">
             <div class="container">
                 <div class="row">
                     <div class="col-md-4">
@@ -934,25 +938,25 @@
                     </div>
                     <div class="col-md">
                         <div class="ftco-footer-widget mb-4">
-                            <h2 class="ftco-heading-2">Have a Questions?</h2>
+                            <h2 class="ftco-heading-2">Have Questions?</h2>
                             <div class="block-23 mb-3">
                                 <ul>
                                     <li><span class="icon icon-map-marker"></span><span class="text"><a target="_blank" href="https://www.google.com/maps/place/Omonoia+39,+Athina+105+64/@37.9807716,23.7300947,17z/data=!3m1!4b1!4m5!3m4!1s0x14a1bd3a371b1527:0xc814362af19d1764!8m2!3d37.9807716!4d23.7322834">Πανεπιστημίου 39, 1ος όροφος,<br>Τ.Κ. 10564, Αθήνα</a></span></li>
                                     <li><a href="#"><span class="icon icon-phone"></span><span class="text">+30 210 60 87 264
-                                                </span></a></li>
+                                            </span></a></li>
                                     <li><a href="#"><span class="icon icon-envelope"></span><span
                                                 class="text">tripPlannerDemo@gmail.com</span></a></li>
                                 </ul>
                             </div>
                         </div>
-                        <div id="map" class="map" style="height: 250px; width: 250px;"></div>
+                        <div style="height: 250px; width: 250px;"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4258.929409008639!2d23.73275264300153!3d37.980652573342525!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x21c2c4ed5d5b2eb9!2sPeopleCert!5e0!3m2!1sen!2sgr!4v1572537672640!5m2!1sen!2sgr" width="250" height="250" frameborder="0" style="border:0;" allowfullscreen=""></iframe></div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12 text-center">
 
                         <p>Copyright &copy;
-                            <script>document.write(new Date().getFullYear());</script> All rights reserved | </p>
+                            <script>document.write(new Date().getFullYear());</script> All rights reserved</p>
                     </div>
                 </div>
             </div>
@@ -983,57 +987,10 @@
         <script src="js/scrollax.min.js"></script>
         <script
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-        <!--<script src="js/google-map.js"></script>-->
+        <script src="js/google-map.js"></script>
         <script src="js/main.js"></script>
 
 
-
-
-        <script>
-
-                                const displayMap = (lon, lat, zoom) => {
-                                    //Clear Map
-                                    document.querySelector("#map").innerHTML = "";
-
-                                    //Create Map
-                                    const map = new ol.Map({
-                                        target: 'map',
-                                        layers: [
-                                            new ol.layer.Tile({
-                                                source: new ol.source.OSM()
-                                            })
-                                        ],
-                                        view: new ol.View({
-                                            center: ol.proj.fromLonLat([lon, lat]),
-                                            zoom: zoom
-                                        })
-                                    });
-                                }
-
-
-                                const success = (response) => {
-                                    return response.json();
-                                }
-                                const error = (err) => {
-                                    console.error("Fetch error", err);
-                                }
-
-
-                                const handleData = (data) => {
-                                    return data[0];
-                                }
-
-                                const init = (countryData) => {
-                                    displayMap(countryData.latlng[1], countryData.latlng[0], 6);
-                                }
-
-// fetch() -> URL -> Response {}
-                                fetch("https://restcountries.eu/rest/v2/name/greece")
-                                        .then(success) // Successful
-                                        .then(handleData)
-                                        .then(init)
-                                        .catch(error); // Error
-        </script>
     </body>
 
 </html>

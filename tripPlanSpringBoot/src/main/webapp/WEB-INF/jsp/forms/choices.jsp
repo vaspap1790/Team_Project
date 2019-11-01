@@ -49,7 +49,7 @@
             </div>
         </div>
 
-        <section class="ftco-section justify-content-end ftco-search">
+        <section class="ftco-section justify-content-end ftco-search ftco-animate">
             <div class="container justify-content-center">
                 <div class="row no-gutters">
                     <div class="col-md-12 nav-link-wrap">
