@@ -168,7 +168,7 @@
                                                         <span><i class="icon-map-o"></i> ${res.city}</span> 
                                                         <%--<s:form action="${pageContext.request.contextPath}/hotel/postHotelResults" modelAttribute="accommodation" method="POST">--%>
                                                             <%--<s:input type="hidden" path="" value="${res.url}" />--%>
-                                                            <%--<s:input type="hidden" path="" value="${res.address}" />--%>
+                                                            <%--<s:input type="hidden" path="" value="${res.country_trans}" />--%>
                                                             <%--<s:input type="hidden" path="" value="${res.min_total_price}" />--%>
                                                             <%--<s:input type="hidden" path="" value="${res.hotel_name}" />--%>
                                                             <%--<s:input type="hidden" path="" value="${booking.checkin}" />--%>
