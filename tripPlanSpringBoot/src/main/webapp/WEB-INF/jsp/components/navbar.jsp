@@ -13,7 +13,7 @@
                     <li class="nav-item"><a href="${pageContext.request.contextPath}/" class="nav-link">Home</a></li>
                     <li class="nav-item"><a href="" class="nav-link">About</a></li>
                     <li class="nav-item"><a href="" class="nav-link">Places</a></li>
-                    <li class="nav-item"><a href="${pageContext.request.contextPath}/flight/postRegister" class="nav-link">Flights</a></li>
+                    <li class="nav-item"><a href="${pageContext.request.contextPath}/flight/register" class="nav-link">Flights</a></li>
                     <li class="nav-item"><a href="${pageContext.request.contextPath}/hotel/hotelForm" class="nav-link">Hotels</a></li>
                     <li class="nav-item"><a href="" class="nav-link">Blog</a></li>
                     <li class="nav-item"><a href="${pageContext.request.contextPath}/contact" class="nav-link">Contact</a></li>
