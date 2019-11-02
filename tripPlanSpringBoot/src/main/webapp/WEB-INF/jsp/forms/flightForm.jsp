@@ -18,7 +18,7 @@
     <body>
         <jsp:include page="../components/navbar.jsp"/>
 
-        <div class="hero-wrap js-fullheight" style="background-image: url('../images/destination-4.jpg');">
+        <div class="hero-wrap js-fullheight" style="background-image: url('https://cdnstatic1.eskypartners.com/backgrounds/main_page/hero_main_3_1.jpg');">
             <div class="overlay"></div>
             <div class="container">
                 <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start"
@@ -39,7 +39,7 @@
                     <div class="col-md-12 nav-link-wrap">
                         <div class="nav nav-pills justify-content-center text-center" id="v-pills-tab" role="tablist"
                              aria-orientation="vertical">
-                            <a class="nav-link active" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab"
+                            <a class="nav-link active" id="v-pills-1-tab" data-toggle="pill" role="tab"
                                aria-controls="v-pills-1" aria-selected="true">Flight</a>
                         </div>
                     </div>
