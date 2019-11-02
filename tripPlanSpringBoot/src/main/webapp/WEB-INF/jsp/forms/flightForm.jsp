@@ -45,13 +45,13 @@
                     </div>
                     <div class="col-md-12 tab-wrap">
 
-                        <div class="tab-content p-4 px-5" id="v-pills-tabContent">
+                        <div class="tab-content pb-0 px-5" id="v-pills-tabContent">
 
                             <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel"
                                  aria-labelledby="v-pills-nextgen-tab">
                                 <spring:form  id="flightForm" modelAttribute="flight" action="${pageContext.request.contextPath}/flight/postRegister"
                                               class="search-destination">
-                                    <div class="d-flex form-row">
+                                    <div class="d-flex form-row pt-2">
                                         <div class="form-group my-auto">
                                             <spring:radiobutton path="type" id="butt1" style="transform: scale(1.5);" class="m-2" value="oneWay" checked="checked"/>
                                             <label for="">One Way</label>
