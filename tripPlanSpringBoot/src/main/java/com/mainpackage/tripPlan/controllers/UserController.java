@@ -56,32 +56,32 @@ public class UserController {
 //        return new ModelAndView("redirect:/");
 //    }
 
-    @GetMapping(value = "register")
-    public String form(ModelMap m) {
-        User user = new User();
-        m.addAttribute("user", user);
-        return "forms/register";
-    }
+//    @GetMapping(value = "register")
+//    public String form(ModelMap m) {
+//        User user = new User();
+//        m.addAttribute("user", user);
+//        return "forms/register";
+//    }
 
-    @PostMapping(value = "postRegister")
-    public ModelAndView post(@Valid @ModelAttribute("user") User user, @RequestParam("photo") MultipartFile file, BindingResult br, ModelMap m, HttpSession session) throws IOException, SQLException {
-
-        if (br.hasErrors()) {
-            return new ModelAndView("redirect:/user/register") ;
-        }
-
-        if (check.isNotNull(userRepo.findByUsername(user.getUsername()))) {
-            String failed = "This username is already in use";
-            m.addAttribute("failed", failed);
-            
-            return new ModelAndView("redirect:/user/register") ;
-        }
-
-
-        userService.insert(user);
-        session.setAttribute("user", user);
-        
-        return new ModelAndView("redirect:/") ;
-    }
+//    @PostMapping(value = "postRegister")
+//    public ModelAndView post(@Valid @ModelAttribute("user") User user, @RequestParam("photo") MultipartFile file, BindingResult br, ModelMap m, HttpSession session) throws IOException, SQLException {
+//
+//        if (br.hasErrors()) {
+//            return new ModelAndView("redirect:/user/register") ;
+//        }
+//
+//        if (check.isNotNull(userRepo.findByUsername(user.getUsername()))) {
+//            String failed = "This username is already in use";
+//            m.addAttribute("failed", failed);
+//            
+//            return new ModelAndView("redirect:/user/register") ;
+//        }
+//
+//
+//        userService.insert(user);
+//        session.setAttribute("user", user);
+//        
+//        return new ModelAndView("redirect:/") ;
+//    }
 
 }
