@@ -16,7 +16,7 @@
 
     <body>
 
-        <div class="wrapper" style="background-image: url('https://cdn-image.travelandleisure.com/sites/default/files/styles/1600x1000/public/1556296757/st-regis-bora-bora-bungalows-DREAMTRIPS0419.jpg?itok=3Si28lbw');">
+        <div class="wrapper" style="background-image: url('https://azmind.com/demo/bootstrap-registration-forms/form-1/assets/img/backgrounds/1@2x.jpg');">
             <div class="inner" style="background-image: url('');">
                 <spring:form modelAttribute="user" action="${pageContext.request.contextPath}/postRegister" method="POST" id="registerForm" enctype="multipart/form-data">
                     <h3>Registration Form</h3>

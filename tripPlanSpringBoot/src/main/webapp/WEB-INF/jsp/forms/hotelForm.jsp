@@ -19,7 +19,7 @@
         <jsp:include page="../components/navbar.jsp"/> 
 
 
-        <div class="hero-wrap js-fullheight" style="background-image: url('../images/hotel-5.jpg');">
+        <div class="hero-wrap js-fullheight" style="background-image: url('https://cdnstatic1.eskypartners.com/backgrounds/hotele/hero_main4.jpg');">
             <div class="overlay"></div>
             <div class="container">
                 <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start"
@@ -41,7 +41,7 @@
                     <div class="col-md-12 nav-link-wrap">
                         <div class="nav nav-pills justify-content-center text-center" id="v-pills-tab" role="tablist"
                              aria-orientation="vertical">
-                            <a class="nav-link active" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab"
+                            <a class="nav-link active" id="v-pills-1-tab" data-toggle="pill" role="tab"
                                aria-controls="v-pills-1" aria-selected="true">Choose Hotel</a>
                         </div>
                     </div>
@@ -58,7 +58,7 @@
                                                 <label for="#">City</label>
                                                 <div class="form-field">
                                                     <div class="icon"><span class="icon-my_location"></span></div>
-                                                    <input type="text" id="city1" class="autocomplete form-control" required placeholder="Pick destination">
+                                                    <input autocomplete="off" type="text" id="city1" class="autocomplete form-control" required placeholder="Pick destination">
                                                 </div>
                                             </div>
                                         </div>
@@ -114,27 +114,6 @@
                 </div>
             </div>
         </section>
-
-
-
-<!--        <form action="${pageContext.request.contextPath}/hotel/postHotelForm" method="POST">
-            <div class="container w-25">
-
-                <input type="text" id="city1" class="form-control autocomplete" placeholder="Pick destination">
-                <input name="checkin" type="date" class="form-control" placeholder="Check in">
-                <input name="checkout" type="date" class="form-control" placeholder="Check out">
-                <select name="guests" class="form-control">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                </select>
-                <input name="dest_id" id="dest_id" hidden>
-                <button class="btn btn-primary" id="submit" >Search</button>
-            </div>
-        </form>-->
-
-        <!--<div id="cityImg" ></div>-->
 
 
         <jsp:include page="../components/scripts.jsp"/>

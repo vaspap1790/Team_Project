@@ -7,27 +7,13 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Hotel Results</title>
         <jsp:include page="../components/linksHeader.jsp"/>
-        <style>
 
-        </style>
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/arrow.css">
+        <script src="https://kit.fontawesome.com/e41a5911e2.js"></script>
+
     </head>
     <body>
         <jsp:include page="../components/navbar.jsp"/>
-
-        <!--<a href="${pageContext.request.contextPath}/hotel/postHotelResults">Post Hotel Results</a>-->
-        <!--${bookingJson.count}-->
-
-
-
-
-
-
-
-
-
-
-
-
 
 
         <div class="hero-wrap js-fullheight" style="background-image: url('https://cdn.hotelplanner.com/Common/Images/_HotelPlanner/Home-Page/fade/sld6.jpg');">
@@ -40,9 +26,14 @@
                     </div>
                 </div>
             </div>
+            <a class="down-arrow" href="#start">
+                <div class="arrow bounce d-none d-md-block">
+                    <i class="fas fa-angle-down fa-3x" aria-hidden="true"></i>
+                </div>
+            </a>
         </div>
 
-        <section class="ftco-section">
+        <section id="start" class="ftco-section">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-3 sidebar order-md-last ftco-animate">
@@ -124,7 +115,7 @@
                             </form>
                         </div>
                     </div><!-- END-->
-                    
+
                     <div class="col-lg-9">
                         <div class="row">
                             <c:if test="${booking.bookingJson.count>0}">
@@ -140,8 +131,8 @@
                                                 <div class="text p-3">
                                                     <div class="d-flex">
                                                         <div class="one">
-                                                            <h3><a href="${res.url}">${res.hotel_name}</a></h3>
-                                                            
+                                                            <h3 style="width: 180px; height: 30px; overflow: hidden;"><a href="${res.url}">${res.hotel_name}</a></h3>
+
                                                             <p class="rate">
                                                                 <i class="icon-star"></i>
                                                                 <i class="icon-star"></i>
@@ -162,18 +153,18 @@
                                                             </c:if>
                                                         </div>
                                                     </div>
-                                                    <p><small>Adress : ${res.address} </small></p>
+                                                    <p style="width: 210px; height: 25px; overflow: hidden;"><small>Adress : ${res.address} </small></p>
                                                     <hr>
                                                     <p class="bottom-area d-flex">
                                                         <span><i class="icon-map-o"></i> ${res.city}</span> 
                                                         <%--<s:form action="${pageContext.request.contextPath}/hotel/postHotelResults" modelAttribute="accommodation" method="POST">--%>
-                                                            <%--<s:input type="hidden" path="" value="${res.url}" />--%>
-                                                            <%--<s:input type="hidden" path="" value="${res.country_trans}" />--%>
-                                                            <%--<s:input type="hidden" path="" value="${res.min_total_price}" />--%>
-                                                            <%--<s:input type="hidden" path="" value="${res.hotel_name}" />--%>
-                                                            <%--<s:input type="hidden" path="" value="${booking.checkin}" />--%>
-                                                            <%--<s:input type="hidden" path="" value="${booking.checkout}" />--%>
-                                                            <span class="ml-auto"><button class="btn btn-primary" type="submit">Book Now</button></span>
+                                                        <%--<s:input type="hidden" path="" value="${res.url}" />--%>
+                                                        <%--<s:input type="hidden" path="" value="${res.country_trans}" />--%>
+                                                        <%--<s:input type="hidden" path="" value="${res.min_total_price}" />--%>
+                                                        <%--<s:input type="hidden" path="" value="${res.hotel_name}" />--%>
+                                                        <%--<s:input type="hidden" path="" value="${booking.checkin}" />--%>
+                                                        <%--<s:input type="hidden" path="" value="${booking.checkout}" />--%>
+                                                        <span class="ml-auto"><button class="btn btn-primary" type="submit">Book Now</button></span>
                                                         <%--</s:form>--%>
                                                     </p>
                                                 </div>
@@ -189,13 +180,13 @@
                             <div class="col text-center">
                                 <div class="block-27">
                                     <ul>
-                                        <li><a href="#">&lt;</a></li>
+                                        <li><a href="#start">&lt;</a></li>
                                         <li class="active"><span>1</span></li>
-                                        <li><a href="#">2</a></li>
-                                        <li><a href="#">3</a></li>
-                                        <li><a href="#">4</a></li>
-                                        <li><a href="#">5</a></li>
-                                        <li><a href="#">&gt;</a></li>
+                                        <li><a href="#start">2</a></li>
+                                        <li><a href="#start">3</a></li>
+                                        <li><a href="#start">4</a></li>
+                                        <li><a href="#start">5</a></li>
+                                        <li><a href="#start">&gt;</a></li>
                                     </ul>
                                 </div>
                             </div>

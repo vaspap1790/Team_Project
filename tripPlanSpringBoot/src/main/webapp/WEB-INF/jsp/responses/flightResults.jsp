@@ -253,15 +253,16 @@
                                                     </c:if>
                                                 </c:forEach>
                                             </div>
-                                            <div class="col-md-4 d-flex align-items-center">
+                                            <div class="col-md-2 d-flex align-items-center">
                                                 <c:forEach items="${flights.Legs}" var="f" varStatus="fcount" >
                                                     <c:if test="${f.Id==it.OutboundLegId}">     
                                                         <div class="d-flex align-items-center ml-4">
                                                             <div class=" d-flex justify-content-center">                                                                            
                                                                 <h4> <span class="font-weight-bold" > ${it.PricingOptions[0].Price}</span></h4>
                                                                 <s:input type="hidden" path="price" value="${it.PricingOptions[0].Price}" />
-                                                                <button id="submit" type="submit" class="ml-4 btn btn-primary" > Select</button>
+                                                                
                                                             </div>
+                                                                
                                                             <s:input type="hidden" path="this1" value="${it.PricingOptions[0].DeeplinkUrl}"/>
                                                             <s:input type="hidden" path="transportationId" />
                                                             <%--<s:input type="hidden" path="tripId"  />--%>
@@ -269,6 +270,12 @@
                                                     </c:if>
                                                 </c:forEach>
                                             </div>
+                                            
+                                            
+                                            <div class="col-md-2 mb-2 d-flex align-items-center">
+                                                <button id="submit" type="submit" class="btn btn-primary" > Select</button>
+                                            </div>
+                                                
                                         </div>
                                     </s:form>
                                 </c:forEach>
@@ -278,13 +285,13 @@
                             <div class="col text-center">
                                 <div class="block-27">
                                     <ul>
-                                        <li><a href="#">&lt;</a></li>
+                                        <li><a href="#start">&lt;</a></li>
                                         <li class="active"><span>1</span></li>
-                                        <li><a href="#">2</a></li>
-                                        <li><a href="#">3</a></li>
-                                        <li><a href="#">4</a></li>
-                                        <li><a href="#">5</a></li>
-                                        <li><a href="#">&gt;</a></li>
+                                        <li><a href="#start">2</a></li>
+                                        <li><a href="#start">3</a></li>
+                                        <li><a href="#start">4</a></li>
+                                        <li><a href="#start">5</a></li>
+                                        <li><a href="#start">&gt;</a></li>
                                     </ul>
                                 </div>
                             </div>

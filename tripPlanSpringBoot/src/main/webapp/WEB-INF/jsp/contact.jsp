@@ -27,6 +27,9 @@
         <link rel="stylesheet" href="css/flaticon.css">
         <link rel="stylesheet" href="css/icomoon.css">
         <link rel="stylesheet" href="css/style.css">
+
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/arrow.css">
+        <script src="https://kit.fontawesome.com/e41a5911e2.js"></script>
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
@@ -65,9 +68,14 @@
                     </div>
                 </div>
             </div>
+            <a class="down-arrow" href="#start">
+                <div class="arrow bounce d-none d-md-block">
+                    <i class="fas fa-angle-down fa-3x" aria-hidden="true"></i>
+                </div>
+            </a>
         </div>
 
-        <section class="ftco-section contact-section ftco-degree-bg ftco-animate">
+        <section id="start" class="ftco-section contact-section ftco-degree-bg ftco-animate">
             <div class="container">
                 <div class="row d-flex mb-5 contact-info">
                     <div class="col-md-12 mb-4">
@@ -80,11 +88,8 @@
                     <div class="col-md-3">
                         <p><span>Phone:</span> <a href="tel://1234567920">+30 210 60 87 264</a></p>
                     </div>
-                    <div class="col-md-3">
-                        <p><span>Email:</span> <a href="mailto:info@yoursite.com">tripPlannerDemo@gmail.com</a></p>
-                    </div>
-                    <div class="col-md-3">
-                        <p><span>Website</span> <a href="#">yoursite.com</a></p>
+                    <div class="col-md-6">
+                        <p><span>Email:</span> <a href="#">tripPlannerDemo@gmail.com</a></p>
                     </div>
                 </div>
                 <div class="row block-9">
@@ -145,7 +150,7 @@
                 <div class="row mb-5">
                     <div class="col-md">
                         <div class="ftco-footer-widget mb-4">
-                            <h2 class="ftco-heading-2">Adventure</h2>
+                            <h2 class="ftco-heading-2">Contact Us</h2>
                             <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
                                 there live the blind texts.</p>
                             <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3">

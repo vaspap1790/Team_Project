@@ -18,7 +18,7 @@
     <body>
         <jsp:include page="../components/navbar.jsp"/>
 
-        <div class="hero-wrap js-fullheight" style="background-image: url('../images/destination-4.jpg');">
+        <div class="hero-wrap js-fullheight" style="background-image: url('https://cdnstatic1.eskypartners.com/backgrounds/main_page/hero_main_3_1.jpg');">
             <div class="overlay"></div>
             <div class="container">
                 <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start"
@@ -39,19 +39,19 @@
                     <div class="col-md-12 nav-link-wrap">
                         <div class="nav nav-pills justify-content-center text-center" id="v-pills-tab" role="tablist"
                              aria-orientation="vertical">
-                            <a class="nav-link active" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab"
+                            <a class="nav-link active" id="v-pills-1-tab" data-toggle="pill" role="tab"
                                aria-controls="v-pills-1" aria-selected="true">Flight</a>
                         </div>
                     </div>
                     <div class="col-md-12 tab-wrap">
 
-                        <div class="tab-content p-4 px-5" id="v-pills-tabContent">
+                        <div class="tab-content pb-0 px-5" id="v-pills-tabContent">
 
                             <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel"
                                  aria-labelledby="v-pills-nextgen-tab">
-                                <spring:form  id="flightForm" modelAttribute="flight" action="${pageContext.request.contextPath}/flight/postRegister"
+                                <spring:form  id="flightForm" modelAttribute="flight" action="${pageContext.request.contextPath}/flight/postRegister" method="POST"
                                               class="search-destination">
-                                    <div class="d-flex form-row">
+                                    <div class="d-flex form-row pt-2">
                                         <div class="form-group my-auto">
                                             <spring:radiobutton path="type" id="butt1" style="transform: scale(1.5);" class="m-2" value="oneWay" checked="checked"/>
                                             <label for="">One Way</label>
