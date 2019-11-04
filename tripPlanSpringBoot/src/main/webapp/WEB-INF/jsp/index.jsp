@@ -55,7 +55,7 @@
                         <li class="nav-item"><a href="" class="nav-link">Blog</a></li>
                         <li class="nav-item"><a href="${pageContext.request.contextPath}/contact" class="nav-link">Contact</a></li>
                     </ul>
-                    <a href="${pageContext.request.contextPath}/user/logIn" class="btn btn-warning mr-2">Sign In</a>
+                    <a href="${pageContext.request.contextPath}/login" class="btn btn-warning mr-2">Sign In</a>
                     <a href="${pageContext.request.contextPath}/user/register" class="btn btn-warning">Sign Up</a>
                 </div>
             </div>

@@ -26,16 +26,16 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author vaspa
+ * @author vasil
  */
 @Entity
-@Table(name = "thingstodo")
+@Table(name = "thingsToDo")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Thingstodo.findAll", query = "SELECT t FROM Thingstodo t")
-    , @NamedQuery(name = "Thingstodo.findByThingsToDoid", query = "SELECT t FROM Thingstodo t WHERE t.thingsToDoid = :thingsToDoid")
-    , @NamedQuery(name = "Thingstodo.findByDate", query = "SELECT t FROM Thingstodo t WHERE t.date = :date")})
-public class Thingstodo implements Serializable {
+    @NamedQuery(name = "ThingsToDo.findAll", query = "SELECT t FROM ThingsToDo t")
+    , @NamedQuery(name = "ThingsToDo.findByThingsToDoid", query = "SELECT t FROM ThingsToDo t WHERE t.thingsToDoid = :thingsToDoid")
+    , @NamedQuery(name = "ThingsToDo.findByDate", query = "SELECT t FROM ThingsToDo t WHERE t.date = :date")})
+public class ThingsToDo implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -54,10 +54,10 @@ public class Thingstodo implements Serializable {
     @ManyToOne(optional = false)
     private Trip tripId;
 
-    public Thingstodo() {
+    public ThingsToDo() {
     }
 
-    public Thingstodo(Integer thingsToDoid) {
+    public ThingsToDo(Integer thingsToDoid) {
         this.thingsToDoid = thingsToDoid;
     }
 
@@ -103,10 +103,10 @@ public class Thingstodo implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Thingstodo)) {
+        if (!(object instanceof ThingsToDo)) {
             return false;
         }
-        Thingstodo other = (Thingstodo) object;
+        ThingsToDo other = (ThingsToDo) object;
         if ((this.thingsToDoid == null && other.thingsToDoid != null) || (this.thingsToDoid != null && !this.thingsToDoid.equals(other.thingsToDoid))) {
             return false;
         }
@@ -115,7 +115,7 @@ public class Thingstodo implements Serializable {
 
     @Override
     public String toString() {
-        return "com.mainpackage.tripPlan.model.Thingstodo[ thingsToDoid=" + thingsToDoid + " ]";
+        return "com.mainpackage.tripPlan.model.ThingsToDo[ thingsToDoid=" + thingsToDoid + " ]";
     }
     
 }

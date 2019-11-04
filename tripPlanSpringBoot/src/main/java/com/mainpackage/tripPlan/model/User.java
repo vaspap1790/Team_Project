@@ -6,20 +6,24 @@
 package com.mainpackage.tripPlan.model;
 
 import java.io.Serializable;
-import java.sql.Blob;
+import java.util.Collection;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Lob;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -31,8 +35,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "User.findAll", query = "SELECT u FROM User u")
     , @NamedQuery(name = "User.findByUserId", query = "SELECT u FROM User u WHERE u.userId = :userId")
-    , @NamedQuery(name = "User.findByFirstname", query = "SELECT u FROM User u WHERE u.firstname = :firstname")
-    , @NamedQuery(name = "User.findByLastname", query = "SELECT u FROM User u WHERE u.lastname = :lastname")
     , @NamedQuery(name = "User.findByUsername", query = "SELECT u FROM User u WHERE u.username = :username")
     , @NamedQuery(name = "User.findByEmail", query = "SELECT u FROM User u WHERE u.email = :email")
     , @NamedQuery(name = "User.findByPassword", query = "SELECT u FROM User u WHERE u.password = :password")})
@@ -44,16 +46,6 @@ public class User implements Serializable {
     @Basic(optional = false)
     @Column(name = "user_id")
     private Integer userId;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 30)
-    @Column(name = "firstname")
-    private String firstname;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 30)
-    @Column(name = "lastname")
-    private String lastname;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 30)
@@ -70,9 +62,11 @@ public class User implements Serializable {
     @Size(min = 1, max = 60)
     @Column(name = "password")
     private String password;
-    @Lob
-    @Column(name = "profile_photo")
-    private Blob profilePhoto;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
+    private Collection<Trip> tripCollection;
+    @JoinColumn(name = "role_ref", referencedColumnName = "role_id")
+    @ManyToOne(optional = false)
+    private Role roleRef;
 
     public User() {
     }
@@ -81,10 +75,8 @@ public class User implements Serializable {
         this.userId = userId;
     }
 
-    public User(Integer userId, String firstname, String lastname, String username, String email, String password) {
+    public User(Integer userId, String username, String email, String password) {
         this.userId = userId;
-        this.firstname = firstname;
-        this.lastname = lastname;
         this.username = username;
         this.email = email;
         this.password = password;
@@ -96,22 +88,6 @@ public class User implements Serializable {
 
     public void setUserId(Integer userId) {
         this.userId = userId;
-    }
-
-    public String getFirstname() {
-        return firstname;
-    }
-
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
     }
 
     public String getUsername() {
@@ -138,12 +114,21 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public Blob getProfilePhoto() {
-        return profilePhoto;
+    @XmlTransient
+    public Collection<Trip> getTripCollection() {
+        return tripCollection;
     }
 
-    public void setProfilePhoto(Blob profilePhoto) {
-        this.profilePhoto = profilePhoto;
+    public void setTripCollection(Collection<Trip> tripCollection) {
+        this.tripCollection = tripCollection;
+    }
+
+    public Role getRoleRef() {
+        return roleRef;
+    }
+
+    public void setRoleRef(Role roleRef) {
+        this.roleRef = roleRef;
     }
 
     @Override

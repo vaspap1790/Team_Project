@@ -1,4 +1,8 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.mainpackage.tripPlan.model;
 
 import java.io.Serializable;
@@ -20,6 +24,10 @@ import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
+/**
+ *
+ * @author vasil
+ */
 @Entity
 @Table(name = "trip")
 @XmlRootElement
@@ -39,24 +47,24 @@ public class Trip implements Serializable {
     @Column(name = "total_budget")
     private BigDecimal totalBudget;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "tripId")
-    private Collection<Thingstodo> thingstodoCollection;
+    private Collection<Photo> photoCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tripId")
+    private Collection<BarRestaurant> barRestaurantCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tripId")
+    private Collection<Rental> rentalCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tripId")
+    private Collection<Transportation> transportationCollection;
     @JoinColumn(name = "user_id", referencedColumnName = "user_id")
     @ManyToOne(optional = false)
     private User userId;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "tripId")
     private Collection<Post> postCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "tripId")
-    private Collection<Photo> photoCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tripId")
-    private Collection<Barrestaurant> barrestaurantCollection;
+    private Collection<ThingsToDo> thingsToDoCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "tripId")
     private Collection<Comment> commentCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "tripId")
     private Collection<Location> locationCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tripId")
-    private Collection<Rental> rentalCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tripId")
-    private Collection<Transportation> transportationCollection;
 
     public Trip() {
     }
@@ -82,12 +90,39 @@ public class Trip implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Thingstodo> getThingstodoCollection() {
-        return thingstodoCollection;
+    public Collection<Photo> getPhotoCollection() {
+        return photoCollection;
     }
 
-    public void setThingstodoCollection(Collection<Thingstodo> thingstodoCollection) {
-        this.thingstodoCollection = thingstodoCollection;
+    public void setPhotoCollection(Collection<Photo> photoCollection) {
+        this.photoCollection = photoCollection;
+    }
+
+    @XmlTransient
+    public Collection<BarRestaurant> getBarRestaurantCollection() {
+        return barRestaurantCollection;
+    }
+
+    public void setBarRestaurantCollection(Collection<BarRestaurant> barRestaurantCollection) {
+        this.barRestaurantCollection = barRestaurantCollection;
+    }
+
+    @XmlTransient
+    public Collection<Rental> getRentalCollection() {
+        return rentalCollection;
+    }
+
+    public void setRentalCollection(Collection<Rental> rentalCollection) {
+        this.rentalCollection = rentalCollection;
+    }
+
+    @XmlTransient
+    public Collection<Transportation> getTransportationCollection() {
+        return transportationCollection;
+    }
+
+    public void setTransportationCollection(Collection<Transportation> transportationCollection) {
+        this.transportationCollection = transportationCollection;
     }
 
     public User getUserId() {
@@ -108,21 +143,12 @@ public class Trip implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Photo> getPhotoCollection() {
-        return photoCollection;
+    public Collection<ThingsToDo> getThingsToDoCollection() {
+        return thingsToDoCollection;
     }
 
-    public void setPhotoCollection(Collection<Photo> photoCollection) {
-        this.photoCollection = photoCollection;
-    }
-
-    @XmlTransient
-    public Collection<Barrestaurant> getBarrestaurantCollection() {
-        return barrestaurantCollection;
-    }
-
-    public void setBarrestaurantCollection(Collection<Barrestaurant> barrestaurantCollection) {
-        this.barrestaurantCollection = barrestaurantCollection;
+    public void setThingsToDoCollection(Collection<ThingsToDo> thingsToDoCollection) {
+        this.thingsToDoCollection = thingsToDoCollection;
     }
 
     @XmlTransient
@@ -141,24 +167,6 @@ public class Trip implements Serializable {
 
     public void setLocationCollection(Collection<Location> locationCollection) {
         this.locationCollection = locationCollection;
-    }
-
-    @XmlTransient
-    public Collection<Rental> getRentalCollection() {
-        return rentalCollection;
-    }
-
-    public void setRentalCollection(Collection<Rental> rentalCollection) {
-        this.rentalCollection = rentalCollection;
-    }
-
-    @XmlTransient
-    public Collection<Transportation> getTransportationCollection() {
-        return transportationCollection;
-    }
-
-    public void setTransportationCollection(Collection<Transportation> transportationCollection) {
-        this.transportationCollection = transportationCollection;
     }
 
     @Override

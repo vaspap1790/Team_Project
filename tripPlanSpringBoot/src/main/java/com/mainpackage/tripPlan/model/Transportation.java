@@ -24,8 +24,7 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import org.springframework.format.annotation.DateTimeFormat;
-import java.math.BigDecimal;
+
 /**
  *
  * @author vasil
@@ -54,7 +53,7 @@ public class Transportation implements Serializable {
     @Column(name = "this")
     private String this1;
     @Column(name = "price")
-    private BigDecimal price;
+    private Long price;
     @Size(max = 30)
     @Column(name = "starting_point")
     private String startingPoint;
@@ -63,21 +62,29 @@ public class Transportation implements Serializable {
     private String destination;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "departure", columnDefinition="DATETIME")
+    @Column(name = "departure")
     @Temporal(TemporalType.TIMESTAMP)
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private Date departure;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "arrival", columnDefinition="DATETIME")
+    @Column(name = "arrival")
     @Temporal(TemporalType.TIMESTAMP)
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private Date arrival;
     @JoinColumn(name = "trip_id", referencedColumnName = "trip_id")
     @ManyToOne(optional = false)
     private Trip tripId;
 
     public Transportation() {
+    }
+
+    public Transportation(Integer transportationId) {
+        this.transportationId = transportationId;
+    }
+
+    public Transportation(Integer transportationId, Date departure, Date arrival) {
+        this.transportationId = transportationId;
+        this.departure = departure;
+        this.arrival = arrival;
     }
 
     public Integer getTransportationId() {
@@ -96,11 +103,11 @@ public class Transportation implements Serializable {
         this.this1 = this1;
     }
 
-    public BigDecimal getPrice() {
+    public Long getPrice() {
         return price;
     }
 
-    public void setPrice(BigDecimal price) {
+    public void setPrice(Long price) {
         this.price = price;
     }
 
@@ -166,9 +173,7 @@ public class Transportation implements Serializable {
 
     @Override
     public String toString() {
-        return "Transportation{" + "transportationId=" + transportationId + ", this1=" + this1 + ", price=" + price + ", startingPoint=" + startingPoint + ", destination=" + destination + ", departure=" + departure + ", arrival=" + arrival + ", tripId=" + tripId + '}';
+        return "com.mainpackage.tripPlan.model.Transportation[ transportationId=" + transportationId + " ]";
     }
-
-   
     
 }

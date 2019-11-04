@@ -1,11 +1,8 @@
 package com.mainpackage.tripPlan.controllers;
 
 import com.mainpackage.tripPlan.daos.GenericJpaDao;
-import com.mainpackage.tripPlan.model.Admin;
 import com.mainpackage.tripPlan.model.User;
-import com.mainpackage.tripPlan.repositories.AdminRepo;
 import com.mainpackage.tripPlan.repositories.UserRepo;
-import com.mainpackage.tripPlan.services.FileService;
 import com.mainpackage.tripPlan.services.UserService;
 import com.mainpackage.tripPlan.utilities.Check;
 import com.mainpackage.tripPlan.utilities.Encryption;
@@ -32,40 +29,32 @@ public class UserController {
     @Autowired
     UserService userService;
     @Autowired
-    FileService fileService;
-    @Autowired
     GenericJpaDao<User> userDao;
     @Autowired
     Encryption encrypt;
     @Autowired
     UserRepo userRepo;
     @Autowired
-    AdminRepo adminRepo;
-    @Autowired
     Check check;
 
-    @GetMapping(value = "logIn")
-    public String logIn(ModelMap m) {
-        return "forms/logIn";
-    }
 
-    @PostMapping(value = "postLogIn")
-    public ModelAndView postlogIn(ModelMap m, @RequestParam(name = "username") String username, @RequestParam(name = "password") String password,HttpSession session) {
-
-        String role = userService.postLogIn(username, password);
-        
-        if (role.equals("Admin")){
-            Admin admin = adminRepo.findByAdminName(username);
-            session.setAttribute("admin", admin);
-            
-            return new ModelAndView("redirect:/admin/administration");
-        }
-        
-        User user = userRepo.findByUsername(username);
-        session.setAttribute("user", user);
-
-        return new ModelAndView("redirect:/");
-    }
+//    @PostMapping(value = "postLogIn")
+//    public ModelAndView postlogIn(ModelMap m, @RequestParam(name = "username") String username, @RequestParam(name = "password") String password,HttpSession session) {
+//
+//        String role = userService.postLogIn(username, password);
+//        
+//        if (role.equals("Admin")){
+//            Admin admin = adminRepo.findByAdminName(username);
+//            session.setAttribute("admin", admin);
+//            
+//            return new ModelAndView("redirect:/admin/administration");
+//        }
+//        
+//        User user = userRepo.findByUsername(username);
+//        session.setAttribute("user", user);
+//
+//        return new ModelAndView("redirect:/");
+//    }
 
     @GetMapping(value = "register")
     public String form(ModelMap m) {
@@ -88,7 +77,7 @@ public class UserController {
             return new ModelAndView("redirect:/user/register") ;
         }
 
-        fileService.setUserPhoto(file, user);
+
         userService.insert(user);
         session.setAttribute("user", user);
         
