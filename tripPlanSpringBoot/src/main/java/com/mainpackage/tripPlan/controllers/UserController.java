@@ -8,6 +8,7 @@ import com.mainpackage.tripPlan.utilities.Check;
 import com.mainpackage.tripPlan.utilities.Encryption;
 import java.io.IOException;
 import java.sql.SQLException;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +37,27 @@ public class UserController {
     UserRepo userRepo;
     @Autowired
     Check check;
+    
+    
+    @GetMapping(value = "/choices")
+    public String choices() {
+        return "forms/choices";
+    }
+
+    @GetMapping(value = "/postChoices")
+    public ModelAndView postChoices(
+            HttpSession session,
+            HttpServletRequest request,
+            @RequestParam(name = "transportation") String transportation,
+            @RequestParam(name = "accomodation") String accomodation,
+            @RequestParam(name = "rental") String rental) {
+
+        session.setAttribute("transportation", transportation);
+        session.setAttribute("accomodation", accomodation);
+        session.setAttribute("rental", rental);
+
+        return new ModelAndView("redirect:/" + transportation + "/register");
+    }
 
 
 //    @PostMapping(value = "postLogIn")

@@ -76,7 +76,7 @@
 
                         <div class="row justify-content-center">
                             <div>
-                                <a href="${pageContext.request.contextPath}/choices" class="btn btn-outline-light btn-lg">Get Started</a>
+                                <a href="${pageContext.request.contextPath}/user/choices" class="btn btn-outline-light btn-lg">Get Started</a>
                             </div>
                         </div>
                     </div>
