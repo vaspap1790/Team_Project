@@ -2,9 +2,7 @@
 package com.mainpackage.tripPlan.services;
 
 import com.mainpackage.tripPlan.daos.GenericJpaDao;
-import com.mainpackage.tripPlan.model.Admin;
 import com.mainpackage.tripPlan.model.User;
-import com.mainpackage.tripPlan.repositories.AdminRepo;
 import com.mainpackage.tripPlan.repositories.UserRepo;
 import com.mainpackage.tripPlan.utilities.Check;
 import com.mainpackage.tripPlan.utilities.Encryption;
@@ -22,8 +20,6 @@ public class UserService {
     @Autowired
     UserRepo userRepo;
     @Autowired
-    AdminRepo adminRepo;
-    @Autowired
     Check check;
 
 
@@ -37,6 +33,7 @@ public class UserService {
 
     }
 
+<<<<<<< HEAD
     public String postLogIn(String username, String password) {
 
         User u = userRepo.findByUsername(username);
@@ -51,5 +48,7 @@ public class UserService {
 
         return role;
     }
+=======
+>>>>>>> 89b82550cf4e452ad4f0a7aba54b35173b453903
 
 }

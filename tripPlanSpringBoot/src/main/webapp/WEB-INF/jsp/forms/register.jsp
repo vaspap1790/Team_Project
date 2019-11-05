@@ -16,20 +16,20 @@
 
     <body>
 
-        <div class="wrapper" style="background-image: url('https://cdn-image.travelandleisure.com/sites/default/files/styles/1600x1000/public/1556296757/st-regis-bora-bora-bungalows-DREAMTRIPS0419.jpg?itok=3Si28lbw');">
+        <div class="wrapper" style="background-image: url('https://azmind.com/demo/bootstrap-registration-forms/form-1/assets/img/backgrounds/1@2x.jpg');">
             <div class="inner" style="background-image: url('');">
-                <spring:form modelAttribute="user" action="${pageContext.request.contextPath}/user/postRegister" method="POST" id="registerForm" enctype="multipart/form-data">
+                <spring:form modelAttribute="user" action="${pageContext.request.contextPath}/postRegister" method="POST" id="registerForm" enctype="multipart/form-data">
                     <h3>Registration Form</h3>
                     <div class="form-group">
-                        <div class="form-wrapper">
-                            <spring:label  path="firstname">First Name</spring:label>
-                            <spring:input path="firstname" cssClass="form-control" placeholder="Enter First Name..."/> 
-                            <spring:errors path="firstname" cssClass= "error"/>
-                        </div>
-                        <div class="form-wrapper">
-                            <spring:label path="lastname">Last Name</spring:label>
-                            <spring:input path="lastname" cssClass="form-control" placeholder="Enter Last Name..."/>
-                        </div>
+<!--                        <div class="form-wrapper">
+                            <%--<spring:label  path="firstname">First Name</spring:label>--%>
+                            <%--<spring:input path="firstname" cssClass="form-control" placeholder="Enter First Name..."/>--%> 
+                            <%--<spring:errors path="firstname" cssClass= "error"/>--%>
+                        </div>-->
+<!--                        <div class="form-wrapper">
+                            <%--<spring:label path="lastname">Last Name</spring:label>--%>
+                            <%--<spring:input path="lastname" cssClass="form-control" placeholder="Enter Last Name..."/>--%>
+                        </div>-->
                     </div>
                     <div class="form-wrapper">
                         <spring:label path="username">Username</spring:label>
@@ -57,6 +57,7 @@
                             <span class="checkmark"></span>
                         </label>
                     </div>
+                        <spring:input type="hidden" path="roleRef.roleId" value="2"/>
                     <button type="submit" Class="btn btn-primary btn-block">Register Now</button>
                 </spring:form>
             </div>
