@@ -55,8 +55,8 @@
                         <li class="nav-item"><a href="" class="nav-link">Blog</a></li>
                         <li class="nav-item"><a href="${pageContext.request.contextPath}/contact" class="nav-link">Contact</a></li>
                     </ul>
-                    <a href="${pageContext.request.contextPath}/user/logIn" class="btn btn-warning mr-2">Sign In</a>
-                    <a href="${pageContext.request.contextPath}/user/register" class="btn btn-warning">Sign Up</a>
+                    <a href="${pageContext.request.contextPath}/login" class="btn btn-warning mr-2">Sign In</a>
+                    <a href="${pageContext.request.contextPath}/register" class="btn btn-warning">Sign Up</a>
                 </div>
             </div>
         </nav>
@@ -76,7 +76,7 @@
 
                         <div class="row justify-content-center">
                             <div>
-                                <a href="${pageContext.request.contextPath}/choices" class="btn btn-outline-light btn-lg">Get Started</a>
+                                <a href="${pageContext.request.contextPath}/user/choices" class="btn btn-outline-light btn-lg">Get Started</a>
                             </div>
                         </div>
                     </div>

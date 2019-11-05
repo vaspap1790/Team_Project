@@ -6,13 +6,23 @@
         <title>Log In</title>
     </head>
     <body>
-        <form action="${pageContext.request.contextPath}/user/postLogIn" method="POST" id="logInForm">
+        <form action="${pageContext.request.contextPath}/login" method="post">
 
-            <input type="text" placeholder="username" name="username"/>
-            <input type="text" placeholder="password" name="password"/>
-            <input type="submit"/>
+            <div class="container">
+                <p>${msg}</p>
+
+                <label for="username"><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" name="username" required>
+
+                <label for="password"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="password" required>
+
+                <p>${errorMsg}</p>
+                <button type="submit">Login</button>
+            </div>
 
         </form>
+        <a href="${pageContext.request.contextPath}/">Home</a>
 
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

@@ -26,16 +26,16 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author vaspa
+ * @author vasil
  */
 @Entity
-@Table(name = "barrestaurant")
+@Table(name = "barRestaurant")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Barrestaurant.findAll", query = "SELECT b FROM Barrestaurant b")
-    , @NamedQuery(name = "Barrestaurant.findByBarRestaurantid", query = "SELECT b FROM Barrestaurant b WHERE b.barRestaurantid = :barRestaurantid")
-    , @NamedQuery(name = "Barrestaurant.findByDate", query = "SELECT b FROM Barrestaurant b WHERE b.date = :date")})
-public class Barrestaurant implements Serializable {
+    @NamedQuery(name = "BarRestaurant.findAll", query = "SELECT b FROM BarRestaurant b")
+    , @NamedQuery(name = "BarRestaurant.findByBarRestaurantid", query = "SELECT b FROM BarRestaurant b WHERE b.barRestaurantid = :barRestaurantid")
+    , @NamedQuery(name = "BarRestaurant.findByDate", query = "SELECT b FROM BarRestaurant b WHERE b.date = :date")})
+public class BarRestaurant implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -54,10 +54,10 @@ public class Barrestaurant implements Serializable {
     @ManyToOne(optional = false)
     private Trip tripId;
 
-    public Barrestaurant() {
+    public BarRestaurant() {
     }
 
-    public Barrestaurant(Integer barRestaurantid) {
+    public BarRestaurant(Integer barRestaurantid) {
         this.barRestaurantid = barRestaurantid;
     }
 
@@ -103,10 +103,10 @@ public class Barrestaurant implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Barrestaurant)) {
+        if (!(object instanceof BarRestaurant)) {
             return false;
         }
-        Barrestaurant other = (Barrestaurant) object;
+        BarRestaurant other = (BarRestaurant) object;
         if ((this.barRestaurantid == null && other.barRestaurantid != null) || (this.barRestaurantid != null && !this.barRestaurantid.equals(other.barRestaurantid))) {
             return false;
         }
@@ -115,7 +115,7 @@ public class Barrestaurant implements Serializable {
 
     @Override
     public String toString() {
-        return "com.mainpackage.tripPlan.model.Barrestaurant[ barRestaurantid=" + barRestaurantid + " ]";
+        return "com.mainpackage.tripPlan.model.BarRestaurant[ barRestaurantid=" + barRestaurantid + " ]";
     }
     
 }

@@ -4,6 +4,20 @@
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
     <class>com.mainpackage.tripPlan.model.Transportation</class>
     <class>com.mainpackage.tripPlan.model.User</class>
+    <class>com.mainpackage.tripPlan.model.Role</class>
+    <class>com.mainpackage.tripPlan.model.BarRestaurant_1</class>
+    <class>com.mainpackage.tripPlan.model.TransportationType</class>
+    <class>com.mainpackage.tripPlan.model.Accommodation</class>
+    <class>com.mainpackage.tripPlan.model.ThingsToDo_1</class>
+    <class>com.mainpackage.tripPlan.model.AccommmodationType</class>
+    <class>com.mainpackage.tripPlan.model.Trip</class>
+    <class>com.mainpackage.tripPlan.model.Location</class>
+    <class>com.mainpackage.tripPlan.model.Rental</class>
+    <class>com.mainpackage.tripPlan.model.ThingsToDo</class>
+    <class>com.mainpackage.tripPlan.model.Photo</class>
+    <class>com.mainpackage.tripPlan.model.Comment</class>
+    <class>com.mainpackage.tripPlan.model.BarRestaurant</class>
+    <class>com.mainpackage.tripPlan.model.Post</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/tripplanner?zeroDateTimeBehavior=CONVERT_TO_NULL&amp;useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC&amp;allowPublicKeyRetrieval=true&amp;useSSL=false"/>
