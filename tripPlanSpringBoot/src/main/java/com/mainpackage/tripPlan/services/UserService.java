@@ -39,19 +39,13 @@ public class UserService {
 
     public String postLogIn(String username, String password) {
 
-        String role = "Not registered";
         User u = userRepo.findByUsername(username);
-        Admin a = adminRepo.findByAdminName(username);
 
+        String role= "admin";
+        
         if (check.isNotNull(u)) {
             if (encrypt.checkPassword(password, u.getPassword())) {
                 role = "User";
-            }
-        }
-        
-        if (check.isNotNull(a)) {
-            if (encrypt.checkPassword(password, a.getPassword())) {
-                role = "Admin";
             }
         }
 
