@@ -103,5 +103,9 @@ public class Role implements Serializable {
     public String toString() {
         return "com.mainpackage.tripPlan.model.Role[ roleId=" + roleId + " ]";
     }
+
+    public Object stream() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
