@@ -41,14 +41,7 @@ public class WelcomeController {
     Check check;
 
     @GetMapping(value = "/login")
-    public String login(Model model, String error, String logout) {
-        if (error != null) {
-            model.addAttribute("errorMsg", "Your username and password are invalid.");
-        }
-
-        if (logout != null) {
-            model.addAttribute("msg", "You have been logged out successfully.");
-        }
+    public String login(Model model, String error, String logout) {      
 
         return "forms/logIn";
     }
@@ -77,11 +70,13 @@ public class WelcomeController {
 
             return new ModelAndView("redirect:/register");
         }
+        
         String originalPass = user.getPassword();
+        session.setAttribute("pass", originalPass);
         userService.insert(user);
 
-
-        return new ModelAndView("redirect:/");
+        session.setAttribute("user", user);
+        return new ModelAndView("redirect:/login");
     }
 
 
