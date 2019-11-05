@@ -8,7 +8,6 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>TripPlanner</title>
 
-
         <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
 
@@ -37,6 +36,7 @@
     </head>
 
     <body>
+
         <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
             <div class="container">
                 <a class="navbar-brand" href="${pageContext.request.contextPath}/">TripPlanner</a>
@@ -67,7 +67,7 @@
                 </div>
             </div>
         </nav>
-        <!-- END nav -->
+
         <div class="hero-wrap js-fullheight" style="background-image: url('images/bg_1.jpg');">
             <div class="overlay"></div>
             <div class="container">
@@ -75,7 +75,7 @@
                      data-scrollax-parent="true">
                     <div class="col-md-9 ftco-animate mb-5 pb-5 text-center text-md-left"
                          data-scrollax=" properties: { translateY: '70%' }">
-                        <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Discover ${sessionScope.user.username} <br>A new Place
+                        <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Discover <br>A new Place
                         </h1>
                         <p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Find great places to stay, eat,
                             shop, or visit from local experts</p>
@@ -900,7 +900,18 @@
             </div>
         </section>
 
-        <footer id="foot" class="ftco-footer ftco-bg-dark ftco-section">
+
+
+
+
+        <!-- loader -->
+        <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
+            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
+                    stroke="#F96D00" /></svg></div>
+
+
+        <footer id="foot" class="ftco-footer ftco-bg-dark ftco-section ftco-animate">
             <div class="container">
                 <div class="row mb-5">
                     <div class="col-md">
@@ -968,15 +979,6 @@
             </div>
         </footer>
 
-
-
-        <!-- loader -->
-        <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
-            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
-            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
-                    stroke="#F96D00" /></svg></div>
-
-
         <script src="js/jquery.min.js"></script>
         <script src="js/jquery-migrate-3.0.1.min.js"></script>
         <script src="js/popper.min.js"></script>
@@ -989,12 +991,17 @@
         <script src="js/aos.js"></script>
         <script src="js/jquery.animateNumber.min.js"></script>
         <script src="js/bootstrap-datepicker.js"></script>
-        <!--<script src="js/jquery.timepicker.min.js"></script>-->
         <script src="js/scrollax.min.js"></script>
-        <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-        <script src="js/google-map.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
         <script src="js/main.js"></script>
+
+        <script>
+                                $(document).ready(function () {
+                                    // get current URL path and assign 'active' class
+                                    const pathname = window.location.pathname;
+                                    $('.nav > li > a[href="' + pathname + '"]').parent().addClass('active');
+                                });
+        </script>
 
 
     </body>
