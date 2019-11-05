@@ -15,3 +15,11 @@
 <script src="../js/scrollax.min.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
 <script src="../js/main.js"></script>
+
+<script>
+    $(document).ready(function () {
+        // get current URL path and assign 'active' class
+        const pathname = window.location.pathname;
+        $('.nav > li > a[href="' + pathname + '"]').parent().addClass('active');
+    });
+</script>
