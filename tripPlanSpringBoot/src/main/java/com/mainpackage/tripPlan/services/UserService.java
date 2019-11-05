@@ -33,22 +33,5 @@ public class UserService {
 
     }
 
-<<<<<<< HEAD
-    public String postLogIn(String username, String password) {
-
-        User u = userRepo.findByUsername(username);
-
-        String role= "admin";
-        
-        if (check.isNotNull(u)) {
-            if (encrypt.checkPassword(password, u.getPassword())) {
-                role = "User";
-            }
-        }
-
-        return role;
-    }
-=======
->>>>>>> 89b82550cf4e452ad4f0a7aba54b35173b453903
 
 }
