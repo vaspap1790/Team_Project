@@ -1,6 +1,7 @@
 package com.mainpackage.tripPlan.controllers;
 
 import com.mainpackage.tripPlan.daos.GenericJpaDao;
+import com.mainpackage.tripPlan.model.Role;
 import com.mainpackage.tripPlan.model.User;
 import com.mainpackage.tripPlan.repositories.UserRepo;
 import com.mainpackage.tripPlan.services.UserService;
@@ -8,10 +9,12 @@ import com.mainpackage.tripPlan.utilities.Check;
 import com.mainpackage.tripPlan.utilities.Encryption;
 import java.io.IOException;
 import java.sql.SQLException;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -26,7 +29,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class WelcomeController {
 
-     @Autowired
+    @Autowired
     UserService userService;
     @Autowired
     GenericJpaDao<User> userDao;
@@ -36,7 +39,7 @@ public class WelcomeController {
     UserRepo userRepo;
     @Autowired
     Check check;
-    
+
     @GetMapping(value = "/login")
     public String login(Model model, String error, String logout) {
         if (error != null) {
@@ -57,37 +60,34 @@ public class WelcomeController {
 
     @GetMapping(value = "/register")
     public String form(ModelMap m) {
-        m.addAttribute("user",new User());
+        m.addAttribute("user", new User());
         return "forms/register";
     }
-    
-     @PostMapping(value = "/postRegister")
-    public ModelAndView post(@Valid @ModelAttribute("user") User user, @RequestParam("photo") MultipartFile file, BindingResult br, ModelMap m, HttpSession session) throws IOException, SQLException {
+
+    @PostMapping(value = "/postRegister")
+    public ModelAndView post(HttpServletRequest request, @Valid @ModelAttribute("user") User user, @RequestParam("photo") MultipartFile file, BindingResult br, ModelMap m, HttpSession session) throws IOException, SQLException {
 
         if (br.hasErrors()) {
-            return new ModelAndView("redirect:/register") ;
+            return new ModelAndView("redirect:/register");
         }
 
         if (check.isNotNull(userRepo.findByUsername(user.getUsername()))) {
             String failed = "This username is already in use";
             m.addAttribute("failed", failed);
-            
-            return new ModelAndView("redirect:/register") ;
+
+            return new ModelAndView("redirect:/register");
         }
-
-
+        String originalPass = user.getPassword();
         userService.insert(user);
-        session.setAttribute("user", user);
-        
-        return new ModelAndView("redirect:/") ;
+
+
+        return new ModelAndView("redirect:/");
     }
 
-    
 
 //    @GetMapping(value = "/userTripsPage")
 //    public String userTripsPage() {
 //
 //        return "userTripsPage";
 //    }
-
 }
