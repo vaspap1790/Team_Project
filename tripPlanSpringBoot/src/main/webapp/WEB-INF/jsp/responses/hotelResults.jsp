@@ -164,7 +164,7 @@
                                                         <%--<s:input type="hidden" path="" value="${res.hotel_name}" />--%>
                                                         <%--<s:input type="hidden" path="" value="${booking.checkin}" />--%>
                                                         <%--<s:input type="hidden" path="" value="${booking.checkout}" />--%>
-                                                        <span class="ml-auto"><button class="btn btn-primary" type="submit">Book Now</button></span>
+                                                        <span class="ml-auto"><a href="${pageContext.request.contextPath}/hotel/postHotelResults" class="btn btn-primary" type="submit">Book Now</a></span>
                                                         <%--</s:form>--%>
                                                     </p>
                                                 </div>

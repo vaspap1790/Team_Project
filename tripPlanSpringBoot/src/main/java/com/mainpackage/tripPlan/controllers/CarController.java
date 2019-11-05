@@ -26,7 +26,7 @@ public class CarController {
     @GetMapping(value = "postCarResults")
     public String hotelResults(ModelMap m, HttpSession session) {
 
-            return "userTripsPage";
+            return "main/userTripsPage";
 
     }
 

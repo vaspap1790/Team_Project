@@ -55,7 +55,7 @@ public class WelcomeController {
 
     @GetMapping(value = "/")
     public String home() {
-        return "index";
+        return "main/index";
     }
 
     @GetMapping(value = "/register")
@@ -83,11 +83,12 @@ public class WelcomeController {
 
         return new ModelAndView("redirect:/");
     }
+    
+        @GetMapping(value = "contact")
+    public String contact(ModelMap m) {
+
+        return "main/contact";
+    }
 
 
-//    @GetMapping(value = "/userTripsPage")
-//    public String userTripsPage() {
-//
-//        return "userTripsPage";
-//    }
 }
