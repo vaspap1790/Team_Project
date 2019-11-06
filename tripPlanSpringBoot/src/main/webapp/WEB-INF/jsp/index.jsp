@@ -55,15 +55,14 @@
                         <li class="nav-item"><a href="" class="nav-link">Blog</a></li>
                         <li class="nav-item"><a href="${pageContext.request.contextPath}/contact" class="nav-link">Contact</a></li>
                     </ul>
-                    <c:if test="${pageContext.request.userPrincipal.name == null}" >
-                        <a href="${pageContext.request.contextPath}/login" class="btn btn-warning mr-2">Sign In</a>
-                        <a href="${pageContext.request.contextPath}/register" class="btn btn-warning">Sign Up</a>
-                    </c:if>
-                    <c:if test="${pageContext.request.userPrincipal.name != null}">
-                        <span style="margin: 0 20px;" class="text-white"><strong style="font-weight: bold;">Welcome</strong>, ${pageContext.request.userPrincipal.name} </span>
-                        <a href="${pageContext.request.contextPath}/logout" class="btn btn-warning">Log out</a>
-                    </c:if>
-
+                        <c:if test="${pageContext.request.userPrincipal.name == null}" >
+                            <a href="${pageContext.request.contextPath}/login" class="btn btn-warning mr-2">Sign In</a>
+                            <a href="${pageContext.request.contextPath}/register" class="btn btn-warning">Sign Up</a>
+                        </c:if>
+                        <c:if test="${pageContext.request.userPrincipal.name != null}">
+                            <span style="margin: 0 20px;" class="text-white"><strong style="font-weight: bold;">Welcome</strong>, ${pageContext.request.userPrincipal.name} </span>
+                            <a href="${pageContext.request.contextPath}/logout" class="btn btn-warning">Log out</a>
+                        </c:if>
                 </div>
             </div>
         </nav>
