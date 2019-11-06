@@ -11,7 +11,7 @@
 
         <link href="https://fonts.googleapis.com/css?family=Montserrat:200,400,700" rel="stylesheet">
 
-        <link rel="stylesheet" href="../css/errorpagecss/style.css">
+        <link rel="stylesheet" href="css/errorpagecss/style.css">
 
     </head>
 
