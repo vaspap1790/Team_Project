@@ -68,7 +68,7 @@ public class BookingController {
         String getRentalFromSess = (String) session.getAttribute("rental");
         if (getRentalFromSess.equals("None")) {
 
-            return new ModelAndView("/userTripsPage");
+            return new ModelAndView("/main/userTripsPage");
 
         } else {
             String rental = getRentalFromSess + "/" + getRentalFromSess + "Form";
