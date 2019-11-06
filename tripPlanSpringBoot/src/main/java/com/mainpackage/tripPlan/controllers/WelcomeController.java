@@ -41,7 +41,7 @@ public class WelcomeController {
     Check check;
 
     @GetMapping(value = "/login")
-    public String login(Model model, String error, String logout) {      
+    public String login(Model model, String error, String logout) {
 
         return "forms/logIn";
     }
@@ -70,23 +70,20 @@ public class WelcomeController {
 
             return new ModelAndView("redirect:/register");
         }
-        if(check.isUser(user)){
+        String originalPass = user.getPassword();
+        if (check.isUser(user)) {
             userService.insert(user);
         }
-        
-        String originalPass = user.getPassword();
         session.setAttribute("pass", originalPass);
-        
 
         session.setAttribute("user", user);
         return new ModelAndView("redirect:/login");
     }
-    
-        @GetMapping(value = "contact")
+
+    @GetMapping(value = "contact")
     public String contact(ModelMap m) {
 
         return "main/contact";
     }
-
 
 }
