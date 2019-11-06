@@ -59,6 +59,7 @@
                                                             <option value="flight">Airplane</option>
                                                             <option value="train">Train</option>
                                                             <option value="ship">Ship</option>
+                                                            <option value="none">None</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -75,6 +76,7 @@
                                                             <option value="hotel">Hotel</option>
                                                             <option value="hostel">Hostel</option>
                                                             <option value="airbnb">AirBnb</option>
+                                                            <option value="none">None</option>
                                                         </select>
                                                     </div>
                                                 </div>

@@ -58,7 +58,7 @@ public class WelcomeController {
     }
 
     @PostMapping(value = "/postRegister")
-    public ModelAndView post(HttpServletRequest request, @Valid @ModelAttribute("user") User user, @RequestParam("photo") MultipartFile file, BindingResult br, ModelMap m, HttpSession session) throws IOException, SQLException {
+    public ModelAndView post(HttpServletRequest request, @Valid @ModelAttribute("user") User user, BindingResult br, ModelMap m, HttpSession session) throws IOException, SQLException {
 
         if (br.hasErrors()) {
             return new ModelAndView("redirect:/register");

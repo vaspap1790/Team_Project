@@ -47,10 +47,6 @@
                         <label for="confirmPassword">Confirm Password</label>
                         <input name="confirmPassword" type="password" class="form-control" placeholder="Enter Password..."/>
                     </div>
-<!--                    <div class="form-wrapper">
-                        <label for="photo">Photo</label>
-                        <input name="photo" type="file" class="form-control"/>
-                    </div>-->
                     <div class="checkbox">
                         <label>
                             <input type="checkbox"> I accept the Terms of Use & Privacy Policy.

@@ -15,20 +15,12 @@
     </head>
     <body>
 
-        <div class="wrapper" style="background-image: url('https://azmind.com/demo/bootstrap-registration-forms/form-1/assets/img/backgrounds/1@2x.jpg');">
+        <div class="wrapper" style="background-image: url('https://backgroundcheckall.com/wp-content/uploads/2017/12/login-background-images-for-website-6.jpg');">
             <div class="inner" style="background-image: url('');">
                 <form action="${pageContext.request.contextPath}/login" method="post">
                     <h3>Log In</h3>
                     <div class="form-group">
-                        <!--                        <div class="form-wrapper">
-                        <%--<spring:label  path="firstname">First Name</spring:label>--%>
-                        <%--<spring:input path="firstname" cssClass="form-control" placeholder="Enter First Name..."/>--%> 
-                        <%--<spring:errors path="firstname" cssClass= "error"/>--%>
-                    </div>-->
-                        <!--                        <div class="form-wrapper">
-                        <%--<spring:label path="lastname">Last Name</spring:label>--%>
-                        <%--<spring:input path="lastname" cssClass="form-control" placeholder="Enter Last Name..."/>--%>
-                    </div>-->
+
                     </div>
                     <c:if test="${sessionScope.user == null}">
                         <div class="form-wrapper">
@@ -63,74 +55,23 @@
 
                     <button type="submit" Class="btn btn-primary btn-block">Login</button>
 
-
-
-                    <!--                    <div class="form-wrapper text-center">
-                                            <span class="">
-                                                Or login with
-                                            </span>
-                                        </div>
-                    
-                                        <a href="#" class="form-wrapper">
-                                            <i class="fa fa-facebook-square"></i>
-                                            Facebook
-                                        </a>
-                    
-                                        <a href="#" class="form-wrapper btn-google m-b-10">
-                                            <img src="images/icons/icon-google.png" alt="GOOGLE">
-                                            Google
-                                        </a>-->
-
-<!--                    <div class="form-wrapper text-center">
+                    <div style="padding:60px 0; margin-left: 100px;" class="form-wrapper">
                         <span class="">
                             Not a member?
                         </span>
 
-                        <a class="form-wrapper" href="#">
+                        <a style="color: white; font-weight: bold;" class="form-wrapper" href="${pageContext.request.contextPath}/register">
                             Sign up now							
                         </a>
-                    </div>-->
+                    </div>
                 </form>
             </div>
         </div>
 
 
-
-<!--        <form action="${pageContext.request.contextPath}/login" method="post">
-
-    <div class="container">
-        
-        <c:if test="${sessionScope.user == null}">
-        
-        <label for="username"><b>Username</b></label>
-        <input type="text" placeholder="Enter Username" name="username" required>
-
-        <label for="password"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="password" required>
-
-        <button type="submit">Login</button>
-        </c:if>
-        
-        <c:if test="${sessionScope.user != null}">
-        
-        <label for="username"><b>Username</b></label>
-        <input type="text" value="${user.username}" name="username" required>
-
-        <label for="password"><b>Password</b></label>
-        <input type="password" value="${sessionScope.pass}" name="password" required>
-
-        <button type="submit">Login</button>
-        </c:if>
-        
-    </div>
-
-</form>-->
-
-
-
         <jsp:include page="../components/scripts.jsp"/>             
 
-<!--        <a href="${pageContext.request.contextPath}/">Home</a>-->
+
 
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
