@@ -33,7 +33,7 @@
                     </div>
                     <div class="form-wrapper">
                         <spring:label path="username">Username</spring:label>
-                        <spring:input path="username" cssClass="form-control" placeholder="Enter Username..."/>
+                        <spring:input path="username" autocomplete="off" cssClass="form-control" placeholder="Enter Username..."/>
                     </div>
                     <div class="form-wrapper">
                         <spring:label path="email">Email</spring:label>
@@ -49,7 +49,7 @@
                     </div>
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox"> I accept the Terms of Use & Privacy Policy.
+                            <input type="checkbox" required="required"> I accept the Terms of Use & Privacy Policy.
                             <span class="checkmark"></span>
                         </label>
                     </div>

@@ -60,7 +60,7 @@
                             <a href="${pageContext.request.contextPath}/register" class="btn btn-warning">Sign Up</a>
                         </c:if>
                         <c:if test="${pageContext.request.userPrincipal.name != null}">
-                            <span style="margin: 0 20px;" class="text-white"><strong style="font-weight: bold;">Welcome</strong>, ${pageContext.request.userPrincipal.name} </span>
+                            <span style="margin: 0 20px;" class="text-white"><strong style="font-weight: bold;">Welcome</strong><strong style="font-style: italic;">, ${pageContext.request.userPrincipal.name} </strong></span>
                             <a href="${pageContext.request.contextPath}/logout" class="btn btn-warning">Log out</a>
                         </c:if>
                 </div>
