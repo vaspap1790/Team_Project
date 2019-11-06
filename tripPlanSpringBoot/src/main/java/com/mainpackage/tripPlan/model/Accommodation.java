@@ -13,7 +13,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -21,6 +23,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  *
@@ -57,12 +60,20 @@ public class Accommodation implements Serializable {
     @Size(max = 30)
     @Column(name = "accommo_name")
     private String accommoName;
-    @Column(name = "checkin")
+    @Column(name = "checkin",columnDefinition="DATETIME")
     @Temporal(TemporalType.DATE)
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private Date checkin;
-    @Column(name = "checkout")
+    @Column(name = "checkout",columnDefinition="DATETIME")
     @Temporal(TemporalType.DATE)
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private Date checkout;
+    @JoinColumn(name = "type_id", referencedColumnName = "accommo_id")
+    @ManyToOne(optional = false)
+    private AccommmodationType typeId;
+    @JoinColumn(name = "trip_id", referencedColumnName = "trip_id")
+    @ManyToOne(optional = false)
+    private Trip tripId;
 
     public Accommodation() {
     }
@@ -125,6 +136,22 @@ public class Accommodation implements Serializable {
 
     public void setCheckout(Date checkout) {
         this.checkout = checkout;
+    }
+
+    public AccommmodationType getTypeId() {
+        return typeId;
+    }
+
+    public void setTypeId(AccommmodationType typeId) {
+        this.typeId = typeId;
+    }
+
+    public Trip getTripId() {
+        return tripId;
+    }
+
+    public void setTripId(Trip tripId) {
+        this.tripId = tripId;
     }
 
     @Override

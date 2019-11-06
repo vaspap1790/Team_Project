@@ -18,7 +18,6 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -28,13 +27,13 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author vasil
  */
 @Entity
-@Table(name = "transportation_type")
+@Table(name = "rental_type")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "TransportationType.findAll", query = "SELECT t FROM TransportationType t")
-    , @NamedQuery(name = "TransportationType.findByTypeId", query = "SELECT t FROM TransportationType t WHERE t.typeId = :typeId")
-    , @NamedQuery(name = "TransportationType.findByType", query = "SELECT t FROM TransportationType t WHERE t.type = :type")})
-public class TransportationType implements Serializable {
+    @NamedQuery(name = "RentalType.findAll", query = "SELECT r FROM RentalType r")
+    , @NamedQuery(name = "RentalType.findByTypeId", query = "SELECT r FROM RentalType r WHERE r.typeId = :typeId")
+    , @NamedQuery(name = "RentalType.findByType", query = "SELECT r FROM RentalType r WHERE r.type = :type")})
+public class RentalType implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -42,24 +41,17 @@ public class TransportationType implements Serializable {
     @Basic(optional = false)
     @Column(name = "type_id")
     private Integer typeId;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 8)
+    @Size(max = 9)
     @Column(name = "type")
     private String type;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "typeId")
-    private Collection<Transportation> transportationCollection;
+    private Collection<Rental> rentalCollection;
 
-    public TransportationType() {
+    public RentalType() {
     }
 
-    public TransportationType(Integer typeId) {
+    public RentalType(Integer typeId) {
         this.typeId = typeId;
-    }
-
-    public TransportationType(Integer typeId, String type) {
-        this.typeId = typeId;
-        this.type = type;
     }
 
     public Integer getTypeId() {
@@ -79,12 +71,12 @@ public class TransportationType implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Transportation> getTransportationCollection() {
-        return transportationCollection;
+    public Collection<Rental> getRentalCollection() {
+        return rentalCollection;
     }
 
-    public void setTransportationCollection(Collection<Transportation> transportationCollection) {
-        this.transportationCollection = transportationCollection;
+    public void setRentalCollection(Collection<Rental> rentalCollection) {
+        this.rentalCollection = rentalCollection;
     }
 
     @Override
@@ -97,10 +89,10 @@ public class TransportationType implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof TransportationType)) {
+        if (!(object instanceof RentalType)) {
             return false;
         }
-        TransportationType other = (TransportationType) object;
+        RentalType other = (RentalType) object;
         if ((this.typeId == null && other.typeId != null) || (this.typeId != null && !this.typeId.equals(other.typeId))) {
             return false;
         }
@@ -109,7 +101,7 @@ public class TransportationType implements Serializable {
 
     @Override
     public String toString() {
-        return "com.mainpackage.tripPlan.model.TransportationType[ typeId=" + typeId + " ]";
+        return "com.mainpackage.tripPlan.model.RentalType[ typeId=" + typeId + " ]";
     }
     
 }

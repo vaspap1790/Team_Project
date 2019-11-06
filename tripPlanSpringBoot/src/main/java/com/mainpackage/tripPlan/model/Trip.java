@@ -62,9 +62,9 @@ public class Trip implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "tripId")
     private Collection<ThingsToDo> thingsToDoCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "tripId")
-    private Collection<Comment> commentCollection;
+    private Collection<Accommodation> accommodationCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "tripId")
-    private Collection<Location> locationCollection;
+    private Collection<Comment> commentCollection;
 
     public Trip() {
     }
@@ -152,21 +152,21 @@ public class Trip implements Serializable {
     }
 
     @XmlTransient
+    public Collection<Accommodation> getAccommodationCollection() {
+        return accommodationCollection;
+    }
+
+    public void setAccommodationCollection(Collection<Accommodation> accommodationCollection) {
+        this.accommodationCollection = accommodationCollection;
+    }
+
+    @XmlTransient
     public Collection<Comment> getCommentCollection() {
         return commentCollection;
     }
 
     public void setCommentCollection(Collection<Comment> commentCollection) {
         this.commentCollection = commentCollection;
-    }
-
-    @XmlTransient
-    public Collection<Location> getLocationCollection() {
-        return locationCollection;
-    }
-
-    public void setLocationCollection(Collection<Location> locationCollection) {
-        this.locationCollection = locationCollection;
     }
 
     @Override

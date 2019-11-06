@@ -23,6 +23,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  *
@@ -47,9 +48,13 @@ public class Rental implements Serializable {
     @Size(max = 65535)
     @Column(name = "this")
     private String this1;
-    @Column(name = "date")
+    @Column(name = "date",columnDefinition="DATETIME")
     @Temporal(TemporalType.DATE)
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private Date date;
+    @JoinColumn(name = "type_id", referencedColumnName = "type_id")
+    @ManyToOne(optional = false)
+    private RentalType typeId;
     @JoinColumn(name = "trip_id", referencedColumnName = "trip_id")
     @ManyToOne(optional = false)
     private Trip tripId;
@@ -83,6 +88,14 @@ public class Rental implements Serializable {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public RentalType getTypeId() {
+        return typeId;
+    }
+
+    public void setTypeId(RentalType typeId) {
+        this.typeId = typeId;
     }
 
     public Trip getTripId() {
