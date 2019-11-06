@@ -70,10 +70,13 @@ public class WelcomeController {
 
             return new ModelAndView("redirect:/register");
         }
+        if(check.isUser(user)){
+            userService.insert(user);
+        }
         
         String originalPass = user.getPassword();
         session.setAttribute("pass", originalPass);
-        userService.insert(user);
+        
 
         session.setAttribute("user", user);
         return new ModelAndView("redirect:/login");
