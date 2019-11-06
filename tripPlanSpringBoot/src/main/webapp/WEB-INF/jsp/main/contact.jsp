@@ -1,4 +1,5 @@
-
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="spring" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -41,17 +42,24 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="ftco-nav">
-                    <ul class="nav navbar-nav ml-auto">
+                    <ul class="navbar-nav ml-auto">
                         <li class="nav-item"><a href="${pageContext.request.contextPath}/" class="nav-link">Home</a></li>
                         <li class="nav-item"><a href="" class="nav-link">About</a></li>
                         <li class="nav-item"><a href="" class="nav-link">Places</a></li>
-                        <li class="nav-item"><a href="${pageContext.request.contextPath}/flight/register" class="nav-link">Flights</a></li>
-                        <li class="nav-item"><a href="${pageContext.request.contextPath}/hotel/hotelForm" class="nav-link">Hotels</a></li>
+<!--                        <li class="nav-item"><a href="${pageContext.request.contextPath}/flight/register" class="nav-link">Flights</a></li>
+                        <li class="nav-item"><a href="${pageContext.request.contextPath}/hotel/hotelForm" class="nav-link">Hotels</a></li>-->
                         <li class="nav-item"><a href="" class="nav-link">Blog</a></li>
                         <li class="nav-item active"><a href="${pageContext.request.contextPath}/contact" class="nav-link">Contact</a></li>
                     </ul>
-                    <a href="${pageContext.request.contextPath}/user/logIn" class="btn btn-warning mr-2">Sign In</a>
-                    <a href="${pageContext.request.contextPath}/user/register" class="btn btn-warning">Sign Up</a>
+                    <c:if test="${pageContext.request.userPrincipal.name == null}" >
+                        <a href="${pageContext.request.contextPath}/login" class="btn btn-warning mr-2">Sign In</a>
+                        <a href="${pageContext.request.contextPath}/register" class="btn btn-warning">Sign Up</a>
+                    </c:if>
+                    <c:if test="${pageContext.request.userPrincipal.name != null}">
+                        <span style="margin: 0 20px;" class="text-white"><strong style="font-weight: bold;">Welcome</strong>, ${pageContext.request.userPrincipal.name} </span>
+                        <a href="${pageContext.request.contextPath}/logout" class="btn btn-warning">Log out</a>
+                    </c:if>
+
                 </div>
             </div>
         </nav>
@@ -63,7 +71,7 @@
             <div class="container">
                 <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
                     <div class="col-md-9 text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-                        <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="index.html">Home</a></span> <span>Blog</span></p>
+                        <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="${pageContext.request.contextPath}/">Home</a></span> <span>Blog</span></p>
                         <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Contact Us</h1>
                     </div>
                 </div>
