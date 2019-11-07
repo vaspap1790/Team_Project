@@ -43,7 +43,7 @@ public class PostChoicesService {
         
         user.setTripCollection(Arrays.asList(trip));
         trip.setUserId(user);
-//        userDao.update(user);
+        userDao.update(user);
         tripDao.save(trip);
         return trip;
     }
