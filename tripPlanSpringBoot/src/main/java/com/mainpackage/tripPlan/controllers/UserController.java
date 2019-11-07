@@ -1,8 +1,10 @@
 package com.mainpackage.tripPlan.controllers;
 
 import com.mainpackage.tripPlan.daos.GenericJpaDao;
+import com.mainpackage.tripPlan.model.Trip;
 import com.mainpackage.tripPlan.model.User;
 import com.mainpackage.tripPlan.repositories.UserRepo;
+import com.mainpackage.tripPlan.services.PostChoicesService;
 import com.mainpackage.tripPlan.services.UserService;
 import com.mainpackage.tripPlan.utilities.Check;
 import com.mainpackage.tripPlan.utilities.Encryption;
@@ -37,24 +39,33 @@ public class UserController {
     UserRepo userRepo;
     @Autowired
     Check check;
+    @Autowired
+    PostChoicesService postChoicesService;
 
     @GetMapping(value = "/choices")
-    public String choices() {
+    public String choices(HttpSession session) {
+        if (session.getAttribute("trip") == null) {
+            Trip trip = new Trip();
+            session.setAttribute("trip", trip);
+        }
         return "forms/choices";
     }
 
     @GetMapping(value = "/postChoices")
-    public ModelAndView postChoices(
-            HttpSession session,
-            HttpServletRequest request,
-            @RequestParam(name = "transportation") String transportation,
+    public ModelAndView postChoices(HttpSession session, @RequestParam(name = "transportation") String transportation,
             @RequestParam(name = "accomodation") String accomodation,
             @RequestParam(name = "rental") String rental) {
 
         session.setAttribute("transportation", transportation);
         session.setAttribute("accomodation", accomodation);
         session.setAttribute("rental", rental);
-        
+
+        Trip trip = (Trip) session.getAttribute("trip");
+        User user=(User)session.getAttribute("user");
+        System.out.println(user);
+        System.out.println(trip);
+        session.setAttribute("trip", postChoicesService.tripPostChoices(trip, transportation, accomodation, rental));
+       
         return new ModelAndView("redirect:/" + transportation + "/register");
     }
 
@@ -64,10 +75,10 @@ public class UserController {
         return "main/userTripsPage";
     }
 
-     @GetMapping(value = "/profil")
+    @GetMapping(value = "/profil")
     public String userProfilPage() {
 
         return "userProfil";
     }
-    
+
 }

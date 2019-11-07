@@ -20,4 +20,5 @@ public class RentalService {
         
         return rentalType;
     }
+      
 }
