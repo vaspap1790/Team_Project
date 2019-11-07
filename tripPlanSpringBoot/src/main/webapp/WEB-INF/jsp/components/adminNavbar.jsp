@@ -20,7 +20,7 @@
                 <li class="nav-item"><a href="${pageContext.request.contextPath}/admin/users">Users</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Welcome, ${sessionScope.admin.adminName}</a></li>
+                <li><a href="#">Welcome, ${pageContext.request.userPrincipal.name}</a></li>
                 <li><a href="${pageContext.request.contextPath}/logout">Logout</a></li>
             </ul>
         </div>
