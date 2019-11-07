@@ -9,7 +9,7 @@
         <jsp:include page="../components/linksHeader.jsp"/>
 
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/arrow.css">
-        <script src="https://kit.fontawesome.com/e41a5911e2.js"></script>
+
 
     </head>
     <body>
