@@ -3,6 +3,7 @@ package com.mainpackage.tripPlan.controllers;
 import com.mainpackage.tripPlan.daos.GenericJpaDao;
 import com.mainpackage.tripPlan.model.Trip;
 import com.mainpackage.tripPlan.model.User;
+import com.mainpackage.tripPlan.model.UserPrincipal;
 import com.mainpackage.tripPlan.repositories.UserRepo;
 import com.mainpackage.tripPlan.services.PostChoicesService;
 import com.mainpackage.tripPlan.services.UserService;
@@ -10,10 +11,12 @@ import com.mainpackage.tripPlan.utilities.Check;
 import com.mainpackage.tripPlan.utilities.Encryption;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Arrays;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -41,9 +44,16 @@ public class UserController {
     Check check;
     @Autowired
     PostChoicesService postChoicesService;
-
+    @Autowired
+    GenericJpaDao<Trip> tripDao;
+    
     @GetMapping(value = "/choices")
     public String choices(HttpSession session) {
+
+        UserPrincipal userPrince = (UserPrincipal) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = userRepo.findByUsername(userPrince.getUsername());
+        session.setAttribute("user", user);
+
         if (session.getAttribute("trip") == null) {
             Trip trip = new Trip();
             session.setAttribute("trip", trip);
@@ -61,11 +71,10 @@ public class UserController {
         session.setAttribute("rental", rental);
 
         Trip trip = (Trip) session.getAttribute("trip");
-        User user=(User)session.getAttribute("user");
-        System.out.println(user);
-        System.out.println(trip);
-        session.setAttribute("trip", postChoicesService.tripPostChoices(trip, transportation, accomodation, rental));
-       
+        User user = (User) session.getAttribute("user");
+
+        session.setAttribute("trip", postChoicesService.tripPostChoices(trip, transportation, accomodation, rental,user));
+
         return new ModelAndView("redirect:/" + transportation + "/register");
     }
 

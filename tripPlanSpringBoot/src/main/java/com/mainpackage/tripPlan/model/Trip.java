@@ -41,7 +41,7 @@ public class Trip implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "trip_id")
+    @Column(name = "trip_id", insertable = false, updatable = false)
     private Integer tripId;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "total_budget")
