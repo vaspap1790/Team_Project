@@ -5,9 +5,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-                <jsp:include page="../jsp/components/linksHeader.jsp"/>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>${pageContext.request.userPrincipal.name}</title>
+        <jsp:include page="../jsp/components/linksHeader.jsp"/>
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

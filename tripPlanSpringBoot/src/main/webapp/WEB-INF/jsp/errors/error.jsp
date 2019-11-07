@@ -11,7 +11,7 @@
 
         <link href="https://fonts.googleapis.com/css?family=Montserrat:200,400,700" rel="stylesheet">
 
-        <link rel="stylesheet" href="css/errorpagecss/style.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/errorpagecss/style.css">
 
     </head>
 
@@ -26,10 +26,7 @@
                 <a href="${pageContext.request.contextPath}/">Go TO Homepage</a>
             </div>
         </div>
-
-        <!--        <h1>Something went wrong! </h1>
-                <h2>Our Engineers are on it</h2>
-                <a href="/">Go Home</a>-->
+        
     </body>
 </html>
 
