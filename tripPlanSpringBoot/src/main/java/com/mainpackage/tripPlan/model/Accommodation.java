@@ -70,7 +70,7 @@ public class Accommodation implements Serializable {
     private Date checkout;
     @JoinColumn(name = "type_id", referencedColumnName = "accommo_id")
     @ManyToOne(optional = false)
-    private AccommmodationType typeId;
+    private AccommodationType typeId;
     @JoinColumn(name = "trip_id", referencedColumnName = "trip_id")
     @ManyToOne(optional = false)
     private Trip tripId;
@@ -138,11 +138,11 @@ public class Accommodation implements Serializable {
         this.checkout = checkout;
     }
 
-    public AccommmodationType getTypeId() {
+    public AccommodationType getTypeId() {
         return typeId;
     }
 
-    public void setTypeId(AccommmodationType typeId) {
+    public void setTypeId(AccommodationType typeId) {
         this.typeId = typeId;
     }
 

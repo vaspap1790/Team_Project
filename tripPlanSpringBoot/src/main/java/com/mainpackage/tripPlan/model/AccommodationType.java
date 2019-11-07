@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.mainpackage.tripPlan.model;
 
 import java.io.Serializable;
@@ -23,10 +19,7 @@ import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
-/**
- *
- * @author vasil
- */
+
 @Entity
 @Table(name = "accommmodation_type")
 @XmlRootElement
@@ -34,7 +27,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "AccommmodationType.findAll", query = "SELECT a FROM AccommmodationType a")
     , @NamedQuery(name = "AccommmodationType.findByAccommoId", query = "SELECT a FROM AccommmodationType a WHERE a.accommoId = :accommoId")
     , @NamedQuery(name = "AccommmodationType.findByType", query = "SELECT a FROM AccommmodationType a WHERE a.type = :type")})
-public class AccommmodationType implements Serializable {
+public class AccommodationType implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -50,14 +43,14 @@ public class AccommmodationType implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "typeId")
     private Collection<Accommodation> accommodationCollection;
 
-    public AccommmodationType() {
+    public AccommodationType() {
     }
 
-    public AccommmodationType(Integer accommoId) {
+    public AccommodationType(Integer accommoId) {
         this.accommoId = accommoId;
     }
 
-    public AccommmodationType(Integer accommoId, String type) {
+    public AccommodationType(Integer accommoId, String type) {
         this.accommoId = accommoId;
         this.type = type;
     }
@@ -97,10 +90,10 @@ public class AccommmodationType implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof AccommmodationType)) {
+        if (!(object instanceof AccommodationType)) {
             return false;
         }
-        AccommmodationType other = (AccommmodationType) object;
+        AccommodationType other = (AccommodationType) object;
         if ((this.accommoId == null && other.accommoId != null) || (this.accommoId != null && !this.accommoId.equals(other.accommoId))) {
             return false;
         }
