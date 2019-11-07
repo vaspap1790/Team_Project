@@ -1,10 +1,12 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.mainpackage.tripPlan.model;
 
 import java.io.Serializable;
-import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,21 +14,22 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
-
+/**
+ *
+ * @author vasil
+ */
 @Entity
-@Table(name = "accommmodation_type")
+@Table(name = "accommodation_type")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "AccommmodationType.findAll", query = "SELECT a FROM AccommmodationType a")
-    , @NamedQuery(name = "AccommmodationType.findByAccommoId", query = "SELECT a FROM AccommmodationType a WHERE a.accommoId = :accommoId")
-    , @NamedQuery(name = "AccommmodationType.findByType", query = "SELECT a FROM AccommmodationType a WHERE a.type = :type")})
+    @NamedQuery(name = "AccommodationType.findAll", query = "SELECT a FROM AccommodationType a")
+    , @NamedQuery(name = "AccommodationType.findByAccommoId", query = "SELECT a FROM AccommodationType a WHERE a.accommoId = :accommoId")
+    , @NamedQuery(name = "AccommodationType.findByType", query = "SELECT a FROM AccommodationType a WHERE a.type = :type")})
 public class AccommodationType implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -40,8 +43,6 @@ public class AccommodationType implements Serializable {
     @Size(min = 1, max = 6)
     @Column(name = "type")
     private String type;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "typeId")
-    private Collection<Accommodation> accommodationCollection;
 
     public AccommodationType() {
     }
@@ -71,15 +72,6 @@ public class AccommodationType implements Serializable {
         this.type = type;
     }
 
-    @XmlTransient
-    public Collection<Accommodation> getAccommodationCollection() {
-        return accommodationCollection;
-    }
-
-    public void setAccommodationCollection(Collection<Accommodation> accommodationCollection) {
-        this.accommodationCollection = accommodationCollection;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -102,7 +94,7 @@ public class AccommodationType implements Serializable {
 
     @Override
     public String toString() {
-        return "com.mainpackage.tripPlan.model.AccommmodationType[ accommoId=" + accommoId + " ]";
+        return "com.mainpackage.tripPlan.model.AccommodationType[ accommoId=" + accommoId + " ]";
     }
     
 }

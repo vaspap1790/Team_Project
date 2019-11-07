@@ -9,6 +9,7 @@
     <class>com.mainpackage.tripPlan.model.TransportationType</class>
     <class>com.mainpackage.tripPlan.model.Accommodation</class>
     <class>com.mainpackage.tripPlan.model.ThingsToDo_1</class>
+    <class>com.mainpackage.tripPlan.model.AccommmodationType</class>
     <class>com.mainpackage.tripPlan.model.Trip</class>
     <class>com.mainpackage.tripPlan.model.Location</class>
     <class>com.mainpackage.tripPlan.model.Rental</class>

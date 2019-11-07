@@ -54,7 +54,7 @@ public class UserController {
         session.setAttribute("transportation", transportation);
         session.setAttribute("accomodation", accomodation);
         session.setAttribute("rental", rental);
-
+        
         return new ModelAndView("redirect:/" + transportation + "/register");
     }
 
