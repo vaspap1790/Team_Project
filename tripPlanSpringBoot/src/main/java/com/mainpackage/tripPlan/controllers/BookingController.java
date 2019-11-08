@@ -68,15 +68,13 @@ public class BookingController {
     public ModelAndView hotelResults(ModelMap m, HttpSession session) {
 
         RentalType getRentalTypeFromSess = (RentalType) session.getAttribute("rentalType");
-        if (getRentalTypeFromSess.getType().equals("None")) {
+        
+        if (getRentalTypeFromSess.getType()==null) {
+            return new ModelAndView("redirect:/");
+        }
 
-            return new ModelAndView("/main/userTripsPage");
-
-        } else {
-            String rental = getRentalTypeFromSess.getType() + "/" + getRentalTypeFromSess.getType() + "Form";
-
-            return new ModelAndView("redirect:/" + rental);
+            return new ModelAndView("redirect:/rental/" +getRentalTypeFromSess.getType());
         }
     }
 
-}
+

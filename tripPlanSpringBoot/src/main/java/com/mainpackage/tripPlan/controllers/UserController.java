@@ -81,12 +81,11 @@ public class UserController {
         Trip trip = (Trip) session.getAttribute("trip");
         User user = (User) session.getAttribute("user");
 
-//        session.setAttribute("trip", postChoicesService.tripPostChoices(trip, transportation, accomodation, rental, user));
         session.setAttribute("transportationType", transType);
         session.setAttribute("accommodationType", accomType);
         session.setAttribute("rentalType", rentalType);
         
-        return new ModelAndView("redirect:/" + transType.getType() + "/register");
+        return new ModelAndView("redirect:/transportation/" + transType.getType());
     }
 
     @GetMapping(value = "/userTripsPage")

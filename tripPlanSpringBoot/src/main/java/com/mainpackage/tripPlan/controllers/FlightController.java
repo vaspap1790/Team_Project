@@ -75,12 +75,7 @@ public class FlightController {
         if(getAccomTypeFromSess==null){
             return new ModelAndView("redirect:/");
         }
-//        if(getAccomFromSess.getTypeId().getType().equals("none")){
-//            return new ModelAndView("redirect:/");
-//        }
-         
-        String accomodation = getAccomTypeFromSess.getType() + "Form";
-        return new ModelAndView("redirect:/" + getAccomTypeFromSess.getType() + "/" + accomodation);
+        return new ModelAndView("redirect:/accommodation/" + getAccomTypeFromSess.getType());
     }
 
 
@@ -93,4 +88,5 @@ public class FlightController {
         return new ResponseEntity<>(cities.getBody(), HttpStatus.OK);
     }
 
+    
 }
