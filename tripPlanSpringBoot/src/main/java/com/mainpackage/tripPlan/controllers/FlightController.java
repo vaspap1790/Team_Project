@@ -1,11 +1,8 @@
 package com.mainpackage.tripPlan.controllers;
 
-import com.mainpackage.tripPlan.model.Accommodation;
 import com.mainpackage.tripPlan.model.AccommodationType;
 import com.mainpackage.tripPlan.model.Flight;
 import com.mainpackage.tripPlan.model.Transportation;
-import com.mainpackage.tripPlan.model.Trip;
-import com.mainpackage.tripPlan.model.User;
 import com.mainpackage.tripPlan.utilities.CreateJson;
 import com.mainpackage.tripPlan.webServices.SkyApi;
 import com.mashape.unirest.http.HttpResponse;
@@ -70,8 +67,7 @@ public class FlightController {
         
         session.setAttribute("transportation", tr);
         
-        AccommodationType getAccomTypeFromSess = (AccommodationType) session.getAttribute("accommodationType");
-        
+        AccommodationType getAccomTypeFromSess = (AccommodationType) session.getAttribute("accommodationType");       
         if(getAccomTypeFromSess==null){
             return new ModelAndView("redirect:/");
         }
