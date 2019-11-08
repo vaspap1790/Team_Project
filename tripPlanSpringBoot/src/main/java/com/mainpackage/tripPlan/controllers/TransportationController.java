@@ -20,12 +20,12 @@ public class TransportationController {
     @GetMapping(value = "train")
     public String train() {
 
-        return "notAvailable";
+        return "notAvailable/transportation";
     }
     @GetMapping(value = "ship")
     public String ship() {
 
-        return "notAvailable";
+        return "notAvailable/transportation";
     }
     @GetMapping(value = "none")
     public String none(HttpSession session) {

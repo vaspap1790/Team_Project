@@ -19,12 +19,12 @@ public class AccommodationController {
     @GetMapping(value = "hostel")
     public String train() {
 
-        return "notAvailable";
+        return "notAvailable/accommodation";
     }
     @GetMapping(value = "airbnb")
     public String ship() {
 
-        return "notAvailable";
+        return "notAvailable/accommodation";
     }
     @GetMapping(value = "none")
     public String none(HttpSession session) {

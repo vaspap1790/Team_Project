@@ -1,11 +1,8 @@
 package com.mainpackage.tripPlan.controllers;
 
 import com.mainpackage.tripPlan.daos.GenericJpaDao;
-import com.mainpackage.tripPlan.model.Accommodation;
 import com.mainpackage.tripPlan.model.AccommodationType;
-import com.mainpackage.tripPlan.model.Rental;
 import com.mainpackage.tripPlan.model.RentalType;
-import com.mainpackage.tripPlan.model.Transportation;
 import com.mainpackage.tripPlan.model.TransportationType;
 import com.mainpackage.tripPlan.model.Trip;
 import com.mainpackage.tripPlan.model.User;
@@ -15,23 +12,13 @@ import com.mainpackage.tripPlan.services.PostChoicesService;
 import com.mainpackage.tripPlan.services.UserService;
 import com.mainpackage.tripPlan.utilities.Check;
 import com.mainpackage.tripPlan.utilities.Encryption;
-import java.io.IOException;
-import java.sql.SQLException;
-import java.util.Arrays;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -52,8 +39,6 @@ public class UserController {
     PostChoicesService postChoicesService;
     @Autowired
     GenericJpaDao<Trip> tripDao;
-    @Autowired
-    private HttpServletRequest request;
 
     @GetMapping(value = "/choices")
     public String choices(HttpSession session) {
