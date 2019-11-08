@@ -78,9 +78,6 @@ public class UserController {
         AccommodationType accomType=new AccommodationType(accom);
         RentalType rentalType=new RentalType(rent);
 
-        Trip trip = (Trip) session.getAttribute("trip");
-        User user = (User) session.getAttribute("user");
-
         session.setAttribute("transportationType", transType);
         session.setAttribute("accommodationType", accomType);
         session.setAttribute("rentalType", rentalType);
