@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class PostChoicesService {
-    
+
     @Autowired
     TransportationService transService;
     @Autowired
@@ -24,27 +24,28 @@ public class PostChoicesService {
     GenericJpaDao<User> userDao;
     @Autowired
     GenericJpaDao<Trip> tripDao;
-    
+
     @Transactional
-    public Trip tripPostChoices(Trip trip, String transportationType, String accommodationType, String rentalType,User user) {
-        
+    public Trip tripPostChoices(Trip trip, String transportationType, String accommodationType, String rentalType, User user) {
+
         Transportation transp = new Transportation();
         transp.setTypeId(transService.findTransportationByType(transportationType));
+        transp.setTripId(trip);
         
         Accommodation acco = new Accommodation();
         acco.setTypeId(accomoService.findTransportationByType(accommodationType));
+        acco.setTripId(trip);
         
         Rental rental = new Rental();
         rental.setTypeId(rentalService.findTransportationByType(rentalType));
+        rental.setTripId(trip);
         
         trip.setAccommodationCollection(Arrays.asList(acco));
         trip.setTransportationCollection(Arrays.asList(transp));
         trip.setRentalCollection(Arrays.asList(rental));
-        
-        user.setTripCollection(Arrays.asList(trip));
+
         trip.setUserId(user);
-        userDao.update(user);
-        tripDao.save(trip);
+        tripDao.update(trip);
         return trip;
     }
 }
