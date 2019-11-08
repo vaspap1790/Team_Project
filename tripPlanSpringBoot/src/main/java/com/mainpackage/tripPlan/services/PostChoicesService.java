@@ -44,8 +44,9 @@ public class PostChoicesService {
         trip.setTransportationCollection(Arrays.asList(transp));
         trip.setRentalCollection(Arrays.asList(rental));
 
+        user.setTripCollection(Arrays.asList(trip));
         trip.setUserId(user);
-        tripDao.update(trip);
+        tripDao.save(trip);
         return trip;
     }
 }
