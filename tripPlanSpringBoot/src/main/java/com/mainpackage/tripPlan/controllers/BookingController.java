@@ -6,6 +6,8 @@ import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import java.time.LocalDate;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.mainpackage.tripPlan.model.Rental;
+import com.mainpackage.tripPlan.model.RentalType;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -65,13 +67,13 @@ public class BookingController {
     @GetMapping(value = "postHotelResults")
     public ModelAndView hotelResults(ModelMap m, HttpSession session) {
 
-        String getRentalFromSess = (String) session.getAttribute("rental");
-        if (getRentalFromSess.equals("None")) {
+        RentalType getRentalTypeFromSess = (RentalType) session.getAttribute("rentalType");
+        if (getRentalTypeFromSess.getType().equals("None")) {
 
             return new ModelAndView("/main/userTripsPage");
 
         } else {
-            String rental = getRentalFromSess + "/" + getRentalFromSess + "Form";
+            String rental = getRentalTypeFromSess.getType() + "/" + getRentalTypeFromSess.getType() + "Form";
 
             return new ModelAndView("redirect:/" + rental);
         }

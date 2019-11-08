@@ -26,27 +26,25 @@ public class PostChoicesService {
     GenericJpaDao<Trip> tripDao;
 
     @Transactional
-    public Trip tripPostChoices(Trip trip, String transportationType, String accommodationType, String rentalType, User user) {
+    public Trip tripPostChoices(Trip trip,Transportation transportation,Accommodation accommodation,
+            Rental rental, User user) {
 
-        Transportation transp = new Transportation();
-        transp.setTypeId(transService.findTransportationByType(transportationType));
-        transp.setTripId(trip);
+        transportation.setTypeId(transService.findTransportationByType(transportation.getTypeId().getType()));
+        transportation.setTripId(trip);
         
-        Accommodation acco = new Accommodation();
-        acco.setTypeId(accomoService.findTransportationByType(accommodationType));
-        acco.setTripId(trip);
+        accommodation.setTypeId(accomoService.findAccommoByType(accommodation.getTypeId().getType()));
+        accommodation.setTripId(trip);
         
-        Rental rental = new Rental();
-        rental.setTypeId(rentalService.findTransportationByType(rentalType));
+        rental.setTypeId(rentalService.findRentalByType(rental.getTypeId().getType()));
         rental.setTripId(trip);
         
-        trip.setAccommodationCollection(Arrays.asList(acco));
-        trip.setTransportationCollection(Arrays.asList(transp));
+        trip.setAccommodationCollection(Arrays.asList(accommodation));
+        trip.setTransportationCollection(Arrays.asList(transportation));
         trip.setRentalCollection(Arrays.asList(rental));
 
         user.setTripCollection(Arrays.asList(trip));
         trip.setUserId(user);
-        tripDao.save(trip);
+
         return trip;
     }
 }

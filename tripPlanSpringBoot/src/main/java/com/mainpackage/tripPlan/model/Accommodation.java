@@ -77,6 +77,9 @@ public class Accommodation implements Serializable {
 
     public Accommodation() {
     }
+    public Accommodation(AccommodationType type) {
+        this.typeId=type;
+    }
 
     public Accommodation(Integer id) {
         this.id = id;

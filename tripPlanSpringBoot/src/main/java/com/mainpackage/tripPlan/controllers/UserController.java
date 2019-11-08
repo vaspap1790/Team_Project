@@ -1,6 +1,12 @@
 package com.mainpackage.tripPlan.controllers;
 
 import com.mainpackage.tripPlan.daos.GenericJpaDao;
+import com.mainpackage.tripPlan.model.Accommodation;
+import com.mainpackage.tripPlan.model.AccommodationType;
+import com.mainpackage.tripPlan.model.Rental;
+import com.mainpackage.tripPlan.model.RentalType;
+import com.mainpackage.tripPlan.model.Transportation;
+import com.mainpackage.tripPlan.model.TransportationType;
 import com.mainpackage.tripPlan.model.Trip;
 import com.mainpackage.tripPlan.model.User;
 import com.mainpackage.tripPlan.model.UserPrincipal;
@@ -46,7 +52,9 @@ public class UserController {
     PostChoicesService postChoicesService;
     @Autowired
     GenericJpaDao<Trip> tripDao;
-    
+    @Autowired
+    private HttpServletRequest request;
+
     @GetMapping(value = "/choices")
     public String choices(HttpSession session) {
 
@@ -62,20 +70,23 @@ public class UserController {
     }
 
     @GetMapping(value = "/postChoices")
-    public ModelAndView postChoices(HttpSession session, @RequestParam(name = "transportation") String transportation,
-            @RequestParam(name = "accomodation") String accomodation,
-            @RequestParam(name = "rental") String rental) {
+    public ModelAndView postChoices(HttpSession session, @RequestParam(name = "transportation") String trans,
+            @RequestParam(name = "accomodation") String accom,
+            @RequestParam(name = "rental") String rent) {
 
-        session.setAttribute("transportation", transportation);
-        session.setAttribute("accomodation", accomodation);
-        session.setAttribute("rental", rental);
+        TransportationType transType=new TransportationType(trans);
+        AccommodationType accomType=new AccommodationType(accom);
+        RentalType rentalType=new RentalType(rent);
 
         Trip trip = (Trip) session.getAttribute("trip");
         User user = (User) session.getAttribute("user");
 
-        session.setAttribute("trip", postChoicesService.tripPostChoices(trip, transportation, accomodation, rental,user));
-
-        return new ModelAndView("redirect:/" + transportation + "/register");
+//        session.setAttribute("trip", postChoicesService.tripPostChoices(trip, transportation, accomodation, rental, user));
+        session.setAttribute("transportationType", transType);
+        session.setAttribute("accommodationType", accomType);
+        session.setAttribute("rentalType", rentalType);
+        
+        return new ModelAndView("redirect:/" + transType.getType() + "/register");
     }
 
     @GetMapping(value = "/userTripsPage")

@@ -1,5 +1,7 @@
 package com.mainpackage.tripPlan.controllers;
 
+import com.mainpackage.tripPlan.model.Accommodation;
+import com.mainpackage.tripPlan.model.AccommodationType;
 import com.mainpackage.tripPlan.model.Flight;
 import com.mainpackage.tripPlan.model.Transportation;
 import com.mainpackage.tripPlan.model.Trip;
@@ -68,14 +70,17 @@ public class FlightController {
         
         session.setAttribute("transportation", tr);
         
-        String getAccomFromSess = (String) session.getAttribute("accomodation");
+        AccommodationType getAccomTypeFromSess = (AccommodationType) session.getAttribute("accommodationType");
         
-        if(getAccomFromSess==null){
+        if(getAccomTypeFromSess==null){
             return new ModelAndView("redirect:/");
         }
-        
-        String accomodation = getAccomFromSess + "Form";
-        return new ModelAndView("redirect:/" + getAccomFromSess + "/" + accomodation);
+//        if(getAccomFromSess.getTypeId().getType().equals("none")){
+//            return new ModelAndView("redirect:/");
+//        }
+         
+        String accomodation = getAccomTypeFromSess.getType() + "Form";
+        return new ModelAndView("redirect:/" + getAccomTypeFromSess.getType() + "/" + accomodation);
     }
 
 

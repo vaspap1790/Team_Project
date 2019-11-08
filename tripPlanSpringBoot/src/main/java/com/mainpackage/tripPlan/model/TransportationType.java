@@ -52,6 +52,9 @@ public class TransportationType implements Serializable {
 
     public TransportationType() {
     }
+    public TransportationType(String type) {
+        this.type=type;
+    }
 
     public TransportationType(Integer typeId) {
         this.typeId = typeId;

@@ -53,6 +53,9 @@ public class RentalType implements Serializable {
     public RentalType(Integer typeId) {
         this.typeId = typeId;
     }
+    public RentalType(String type) {
+        this.type = type;
+    }
 
     public Integer getTypeId() {
         return typeId;

@@ -15,7 +15,7 @@ public class RentalService {
     @Autowired
     RentTypeRepo rentTypeRepo;
     
-      public RentalType findTransportationByType(String type) {
+      public RentalType findRentalByType(String type) {
         RentalType rentalType = rentTypeRepo.findByType(type);
         
         return rentalType;

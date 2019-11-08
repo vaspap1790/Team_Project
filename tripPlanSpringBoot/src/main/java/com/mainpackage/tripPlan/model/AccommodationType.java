@@ -50,6 +50,9 @@ public class AccommodationType implements Serializable {
     public AccommodationType(Integer accommoId) {
         this.accommoId = accommoId;
     }
+    public AccommodationType(String type) {
+        this.type = type;
+    }
 
     public AccommodationType(Integer accommoId, String type) {
         this.accommoId = accommoId;

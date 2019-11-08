@@ -78,6 +78,9 @@ public class Transportation implements Serializable {
 
     public Transportation() {
     }
+    public Transportation(TransportationType type) {
+            this.typeId=type;
+    }
 
     public Transportation(Integer transportationId) {
         this.transportationId = transportationId;
