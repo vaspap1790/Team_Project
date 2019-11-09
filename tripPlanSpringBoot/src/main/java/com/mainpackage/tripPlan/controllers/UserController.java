@@ -6,15 +6,12 @@ import com.mainpackage.tripPlan.model.RentalType;
 import com.mainpackage.tripPlan.model.TransportationType;
 import com.mainpackage.tripPlan.model.Trip;
 import com.mainpackage.tripPlan.model.User;
-import com.mainpackage.tripPlan.model.UserPrincipal;
 import com.mainpackage.tripPlan.repositories.UserRepo;
-import com.mainpackage.tripPlan.services.PostChoicesService;
 import com.mainpackage.tripPlan.services.UserService;
 import com.mainpackage.tripPlan.utilities.Check;
 import com.mainpackage.tripPlan.utilities.Encryption;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,22 +32,12 @@ public class UserController {
     UserRepo userRepo;
     @Autowired
     Check check;
-    @Autowired
-    PostChoicesService postChoicesService;
-    @Autowired
-    GenericJpaDao<Trip> tripDao;
 
     @GetMapping(value = "/choices")
     public String choices(HttpSession session) {
 
-        UserPrincipal userPrince = (UserPrincipal) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User user = userRepo.findByUsername(userPrince.getUsername());
-        session.setAttribute("user", user);
+        session.setAttribute("trip", new Trip());
 
-        if (session.getAttribute("trip") == null) {
-            Trip trip = new Trip();
-            session.setAttribute("trip", trip);
-        }
         return "forms/choices";
     }
 
@@ -59,14 +46,14 @@ public class UserController {
             @RequestParam(name = "accomodation") String accom,
             @RequestParam(name = "rental") String rent) {
 
-        TransportationType transType=new TransportationType(trans);
-        AccommodationType accomType=new AccommodationType(accom);
-        RentalType rentalType=new RentalType(rent);
+        TransportationType transType = new TransportationType(trans);
+        AccommodationType accomType = new AccommodationType(accom);
+        RentalType rentalType = new RentalType(rent);
 
         session.setAttribute("transportationType", transType);
         session.setAttribute("accommodationType", accomType);
         session.setAttribute("rentalType", rentalType);
-        
+
         return new ModelAndView("redirect:/transportation/" + transType.getType());
     }
 

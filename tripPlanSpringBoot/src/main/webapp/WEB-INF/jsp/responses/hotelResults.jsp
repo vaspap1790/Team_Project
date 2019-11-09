@@ -157,15 +157,15 @@
                                                     <hr>
                                                     <p class="bottom-area d-flex">
                                                         <span><i class="icon-map-o"></i> ${res.city}</span> 
-                                                        <%--<s:form action="${pageContext.request.contextPath}/hotel/postHotelResults" modelAttribute="accommodation" method="POST">--%>
-                                                        <%--<s:input type="hidden" path="" value="${res.url}" />--%>
-                                                        <%--<s:input type="hidden" path="" value="${res.country_trans}" />--%>
-                                                        <%--<s:input type="hidden" path="" value="${res.min_total_price}" />--%>
-                                                        <%--<s:input type="hidden" path="" value="${res.hotel_name}" />--%>
-                                                        <%--<s:input type="hidden" path="" value="${booking.checkin}" />--%>
-                                                        <%--<s:input type="hidden" path="" value="${booking.checkout}" />--%>
-                                                        <span class="ml-auto"><a href="${pageContext.request.contextPath}/hotel/postHotelResults" class="btn btn-primary" type="submit">Book Now</a></span>
-                                                        <%--</s:form>--%>
+                                                        <s:form action="${pageContext.request.contextPath}/hotel/postHotelResults" modelAttribute="accommodation" method="POST">
+                                                        <s:input type="hidden" path="this1" value="${res.url}" />
+                                                        <s:input type="hidden" path="location" value="${res.country_trans}" />
+                                                        <s:input type="hidden" path="price" value="${res.min_total_price}" />
+                                                        <s:input type="hidden" path="accommoName" value="${res.hotel_name}" />
+                                                        <s:input type="hidden" path="checkin" value="${booking.checkin}" />
+                                                        <s:input type="hidden" path="checkout" value="${booking.checkout}" />
+                                                        <span class="ml-auto"><button class="btn btn-primary" type="submit">Book Now</button></span>
+                                                        </s:form>
                                                     </p>
                                                 </div>
                                             </div>          

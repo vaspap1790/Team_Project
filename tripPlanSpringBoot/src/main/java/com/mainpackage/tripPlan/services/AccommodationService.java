@@ -15,9 +15,11 @@ public class AccommodationService {
     @Autowired
     AccTypeRepo accTypeRepo;
     
-     public AccommodationType findAccommoByType(String type) {
+     public AccommodationType findAccommoTypeByType(String type) {
         AccommodationType accommoType = accTypeRepo.findByType(type);
         
         return accommoType;
     }
+     
+     
 }

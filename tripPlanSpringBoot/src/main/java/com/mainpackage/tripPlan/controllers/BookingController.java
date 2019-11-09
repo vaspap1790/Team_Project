@@ -6,6 +6,7 @@ import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import java.time.LocalDate;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.mainpackage.tripPlan.model.Accommodation;
 import com.mainpackage.tripPlan.model.Rental;
 import com.mainpackage.tripPlan.model.RentalType;
 import org.json.simple.parser.ParseException;
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import java.util.*;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 @Controller
 @RequestMapping(value = "hotel/")
@@ -55,26 +57,24 @@ public class BookingController {
                 booking.put("bookingJson", jsonUtil.createJson(bookingResults.getBody()));
                 booking.put("checkin", checkin);
                 booking.put("checkout", checkout);
+                m.addAttribute("accommodation", new Accommodation());
                 return new ModelAndView("responses/hotelResults", "booking", booking);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
         return new ModelAndView("redirect:/hotel/hotelForm");
-
     }
 
-    @GetMapping(value = "postHotelResults")
-    public ModelAndView hotelResults(ModelMap m, HttpSession session) {
+    @PostMapping(value = "postHotelResults")
+    public ModelAndView hotelResults(ModelMap m, HttpSession session,@ModelAttribute("accommodation") Accommodation accommo) {
+
+        session.setAttribute("accommodation", accommo);
 
         RentalType getRentalTypeFromSess = (RentalType) session.getAttribute("rentalType");
-        
-        if (getRentalTypeFromSess.getType()==null) {
+        if (getRentalTypeFromSess.getType() == null) {
             return new ModelAndView("redirect:/");
         }
-
-            return new ModelAndView("redirect:/rental/" +getRentalTypeFromSess.getType());
-        }
+        return new ModelAndView("redirect:/rental/" + getRentalTypeFromSess.getType());
     }
-
-
+}

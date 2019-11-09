@@ -6,6 +6,7 @@
 package com.mainpackage.tripPlan.model;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -56,7 +57,7 @@ public class Accommodation implements Serializable {
     @Column(name = "this1")
     private String this1;
     @Column(name = "price")
-    private Integer price;
+    private BigDecimal price;
     @Size(max = 30)
     @Column(name = "accommo_name")
     private String accommoName;
@@ -109,11 +110,11 @@ public class Accommodation implements Serializable {
         this.this1 = this1;
     }
 
-    public Integer getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(Integer price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 
