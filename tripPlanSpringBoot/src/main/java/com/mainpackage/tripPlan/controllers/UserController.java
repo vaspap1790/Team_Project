@@ -36,8 +36,6 @@ public class UserController {
     @GetMapping(value = "/choices")
     public String choices(HttpSession session) {
 
-        session.setAttribute("trip", new Trip());
-
         return "forms/choices";
     }
 
