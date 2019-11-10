@@ -60,10 +60,10 @@ public class UserController {
         return "main/userTripsPage";
     }
 
-    @GetMapping(value = "/profil")
-    public String userProfilPage() {
+    @GetMapping(value = "/profile")
+    public String userProfilePage() {
 
-        return "userProfil";
+        return "userProfile";
     }
 
 }
