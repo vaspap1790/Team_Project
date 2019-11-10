@@ -6,7 +6,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Hotel Form</title>
         <jsp:include page="../components/linksHeader.jsp"/>
-
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="../css/autocomplete.css">
         <style>
             img{
@@ -57,7 +57,7 @@
                                             <div class="form-group">
                                                 <label for="#">City</label>
                                                 <div class="form-field">
-                                                    <div class="icon"><span class="icon-my_location"></span></div>
+                                                    <div class="icon"><i class="fa fa-home"></i></div>
                                                     <input autocomplete="off" type="text" id="city1" class="autocomplete form-control" required placeholder="Pick destination">
                                                 </div>
                                             </div>

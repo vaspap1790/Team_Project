@@ -19,8 +19,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import java.util.List;
+import org.springframework.http.MediaType;
 
 @Controller
 @RequestMapping(value = "trip/")
@@ -42,22 +46,23 @@ public class TripController {
         
         UserPrincipal userPrince = (UserPrincipal) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = userRepo.findByUsername(userPrince.getUsername());
-        Trip trip = new Trip();
+        
+        Trip trip = (Trip)session.getAttribute("trip");
         TransportationType transType = (TransportationType) session.getAttribute("transportationType");
         AccommodationType accomType = (AccommodationType) session.getAttribute("accommodationType");
         Accommodation accommo = (Accommodation) session.getAttribute("accommodation");
         Transportation trans = (Transportation) session.getAttribute("transportation");
         
-        if (accommo == null && trans == null) {
+        if ((accommo == null && trans == null) || trip==null) {
             return new ModelAndView("redirect:/");
         }
         try {
-            tripService.setTripUser(trip, user);
+            tripService.saveTripUser(trip, user);
             if (accommo != null && !accomType.getType().equals("none")) {
-                tripService.setTripAccommodation(trip, accommo, accomType);
+                tripService.saveTripAccommodation(trip, accommo, accomType);
             }
             if (trans != null && !transType.getType().equals("none")) {
-                tripService.setTripTransportation(trip, trans, transType);
+                tripService.saveTripTransportation(trip, trans, transType);
             }
 
             return new ModelAndView("redirect:/user/userTripsPage");
@@ -66,5 +71,12 @@ public class TripController {
             e.printStackTrace();
             return new ModelAndView("redirect:/");
         }
+    }
+    
+    @GetMapping(value = "/{username}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public List<Integer> returnTrips(@PathVariable("username") String username){
+       return tripService.findTripsByUsername(username);
+        
     }
 }

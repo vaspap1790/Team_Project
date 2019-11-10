@@ -1,4 +1,3 @@
-
 package com.mainpackage.tripPlan.repositories;
 
 import com.mainpackage.tripPlan.model.User;

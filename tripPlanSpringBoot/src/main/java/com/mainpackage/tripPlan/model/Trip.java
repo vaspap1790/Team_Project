@@ -22,6 +22,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -66,8 +67,14 @@ public class Trip implements Serializable {
     private Collection<Accommodation> accommodationCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "tripId")
     private Collection<Comment> commentCollection;
+    @Size(max = 45)
+    @Column(name = "location")
+    private String location;
 
     public Trip() {
+    }
+    public Trip(String location) {
+        this.location=location;
     }
 
     public Trip(Integer tripId) {
@@ -194,5 +201,13 @@ public class Trip implements Serializable {
     public String toString() {
         return "com.mainpackage.tripPlan.model.Trip[ tripId=" + tripId + " ]";
     }
-    
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
 }

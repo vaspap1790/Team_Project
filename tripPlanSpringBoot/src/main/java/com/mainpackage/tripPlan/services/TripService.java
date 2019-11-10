@@ -7,8 +7,10 @@ import com.mainpackage.tripPlan.model.Transportation;
 import com.mainpackage.tripPlan.model.TransportationType;
 import com.mainpackage.tripPlan.model.Trip;
 import com.mainpackage.tripPlan.model.User;
+import com.mainpackage.tripPlan.repositories.TripRepo;
 import com.mainpackage.tripPlan.utilities.Check;
 import java.util.Arrays;
+import java.util.List;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,9 +30,11 @@ public class TripService {
     TransportationService transService;
     @Autowired
     Check check;
+    @Autowired
+    TripRepo tripRepo;
 
     @Transactional
-    public void setTripUser(Trip trip, User user) {
+    public void saveTripUser(Trip trip, User user) {
         trip.setUserId(user);
         user.setTripCollection(Arrays.asList(trip));
         tripDao.save(trip);
@@ -38,7 +42,7 @@ public class TripService {
     }
 
     @Transactional
-    public void setTripAccommodation(Trip trip, Accommodation acco, AccommodationType accoType) {
+    public void saveTripAccommodation(Trip trip, Accommodation acco, AccommodationType accoType) {
         check.checkAccommoName(acco);
         acco.setTypeId(accomoService.findAccommoTypeByType(accoType.getType()));
         acco.setTripId(trip);
@@ -48,12 +52,19 @@ public class TripService {
     }
 
     @Transactional
-    public void setTripTransportation(Trip trip, Transportation trans, TransportationType transType) {
+    public void saveTripTransportation(Trip trip, Transportation trans, TransportationType transType) {
 
         trans.setTypeId(transService.findTransportationByType(transType.getType()));
         trans.setTripId(trip);
         trip.setTransportationCollection(Arrays.asList(trans));
 
         transDao.save(trans);
+    }
+    
+    @Transactional
+    public List<Integer> findTripsByUsername(String username){
+        List<Integer> trips=tripRepo.findByUsername(username);
+        
+        return trips;
     }
 }

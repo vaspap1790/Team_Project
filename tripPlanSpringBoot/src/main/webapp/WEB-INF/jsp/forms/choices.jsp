@@ -8,8 +8,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
 
-                <jsp:include page="../components/linksHeader.jsp"/>
-
+        <jsp:include page="../components/linksHeader.jsp"/>
+        <link rel="stylesheet" href="../css/autocomplete.css">
     </head>
     <body>
         <jsp:include page="../components/navbar.jsp"/>
@@ -48,6 +48,19 @@
                                  aria-labelledby="v-pills-nextgen-tab">
                                 <form action="${pageContext.request.contextPath}/user/postChoices" class="search-destination">
                                     <div class="row">
+                                        <div class="col-md align-items-end">
+                                            <div class="form-group">
+                                                <label for="#">Location</label>
+                                                <div class="form-field">
+                                                    <div class="select-wrap">
+                                                        <div class="icon"><span class="icon-my_location"></span></div>
+                                                        <input type="text" name="location" class="autocomplete form-control" required="required" placeholder="Your Location *">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                         <div class="col-md align-items-end">
                                             <div class="form-group">
                                                 <label for="#">Transportation</label>
@@ -116,12 +129,15 @@
         </section>
 
 
-       
-          <jsp:include page="../components/scripts.jsp"/>
+
+        <jsp:include page="../components/scripts.jsp"/>
 
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <script type="text/javascript" src="${pageContext.request.contextPath}/js/flightJs.js"></script>
+        <script
+            src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"
+            integrity="sha256-0YPKAwZP7Mp3ALMRVB2i8GXeEndvCq3eSl/WsAl1Ryk="
+        crossorigin="anonymous"></script>
+        <script type="text/javascript" src="${pageContext.request.contextPath}/js/choices.js"></script>
 
     </body>
 </html>

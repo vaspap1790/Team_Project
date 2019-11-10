@@ -4,6 +4,7 @@ import com.mainpackage.tripPlan.daos.GenericJpaDao;
 import com.mainpackage.tripPlan.model.AccommodationType;
 import com.mainpackage.tripPlan.model.RentalType;
 import com.mainpackage.tripPlan.model.TransportationType;
+import com.mainpackage.tripPlan.model.Trip;
 import com.mainpackage.tripPlan.model.User;
 import com.mainpackage.tripPlan.repositories.UserRepo;
 import com.mainpackage.tripPlan.services.UserService;
@@ -12,6 +13,7 @@ import com.mainpackage.tripPlan.utilities.Encryption;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -33,20 +35,21 @@ public class UserController {
     Check check;
 
     @GetMapping(value = "/choices")
-    public String choices(HttpSession session) {
-
+    public String choices(HttpSession session,Model m) {
+        m.addAttribute("trip",new Trip());
         return "forms/choices";
     }
 
     @GetMapping(value = "/postChoices")
     public ModelAndView postChoices(HttpSession session, @RequestParam(name = "transportation") String trans,
-            @RequestParam(name = "accomodation") String accom,
+            @RequestParam(name = "accomodation") String accom,@RequestParam(name = "location") String location,
             @RequestParam(name = "rental") String rent) {
-
+        Trip trip=new Trip(location);
         TransportationType transType = new TransportationType(trans);
         AccommodationType accomType = new AccommodationType(accom);
         RentalType rentalType = new RentalType(rent);
-
+        
+        session.setAttribute("trip", trip);
         session.setAttribute("transportationType", transType);
         session.setAttribute("accommodationType", accomType);
         session.setAttribute("rentalType", rentalType);
