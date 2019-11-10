@@ -22,7 +22,7 @@
     </head>
     <body>
 
-        <div class="hero-wrap js-fullheight" style="background-image: url('https://previews.123rf.com/images/liuzishan/liuzishan1611/liuzishan161100097/66120105-world-map-point-line-composition-representing-the-global-global-network-connection-international-mea.jpg'); min-height: 100vh;">
+        <div class="hero-wrap js-fullheight" style="background-image: url('https://cmkt-image-prd.freetls.fastly.net/0.1.0/ps/3427679/910/741/m2/fpnw/wm1/e9h3d6vehwxpvkroqof0mehi5gc6btvlt58augcanbhlvq9w09gv9dlrbegoc0cb-.jpg?1508293067&s=d72c108776c61110bc6ad95150fc1bb2'); min-height: 100vh;">
 
             <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light fixed-top" id="ftco-navbar">
                 <div class="container-fluid px-0 row">
