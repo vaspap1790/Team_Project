@@ -64,7 +64,6 @@
                                 </li>
                             </c:if>
                         </ul>
-
                     </div>
                 </div>
                 <div class="col-4 col-lg-3 text-lg-right d-none d-lg-block">
@@ -76,11 +75,7 @@
                         <span style="margin: 0 20px;" class="text-white"><strong style="font-weight: bold;">Welcome</strong><strong style="font-style: italic;">,&nbsp;&nbsp;&nbsp; ${pageContext.request.userPrincipal.name} </strong></span>
                         <a href="${pageContext.request.contextPath}/logout" class="btn btn-sm px-3 btn-warning">Log out</a>
                     </c:if>
-
                 </div>
-
-
-
             </div>
         </nav>
 
