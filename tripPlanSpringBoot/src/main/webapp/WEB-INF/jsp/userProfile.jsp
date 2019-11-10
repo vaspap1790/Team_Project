@@ -154,6 +154,6 @@
             </div><!--/col-9-->
         </div><!--/row-->
 
-        <script type="text/javascript" src="${pageContext.request.contextPath}/js/userProfil"></script>
+        <script type="text/javascript" src="${pageContext.request.contextPath}/js/userProfile"></script>
     </body>
 </html>
