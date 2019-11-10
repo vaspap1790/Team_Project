@@ -39,6 +39,7 @@ public class TripController {
 
     @GetMapping(value = "saveTrip")
     public ModelAndView saveTrip(HttpSession session) {
+        
         UserPrincipal userPrince = (UserPrincipal) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = userRepo.findByUsername(userPrince.getUsername());
         Trip trip = new Trip();
@@ -46,7 +47,10 @@ public class TripController {
         AccommodationType accomType = (AccommodationType) session.getAttribute("accommodationType");
         Accommodation accommo = (Accommodation) session.getAttribute("accommodation");
         Transportation trans = (Transportation) session.getAttribute("transportation");
-
+        
+        if (accommo == null && trans == null) {
+            return new ModelAndView("redirect:/");
+        }
         try {
             tripService.setTripUser(trip, user);
             if (accommo != null && !accomType.getType().equals("none")) {
@@ -55,11 +59,11 @@ public class TripController {
             if (trans != null && !transType.getType().equals("none")) {
                 tripService.setTripTransportation(trip, trans, transType);
             }
-            
+
             return new ModelAndView("redirect:/user/userTripsPage");
-            
+
         } catch (Exception e) {
-           e.printStackTrace();
+            e.printStackTrace();
             return new ModelAndView("redirect:/");
         }
     }

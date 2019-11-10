@@ -4,7 +4,6 @@ import com.mainpackage.tripPlan.daos.GenericJpaDao;
 import com.mainpackage.tripPlan.model.AccommodationType;
 import com.mainpackage.tripPlan.model.RentalType;
 import com.mainpackage.tripPlan.model.TransportationType;
-import com.mainpackage.tripPlan.model.Trip;
 import com.mainpackage.tripPlan.model.User;
 import com.mainpackage.tripPlan.repositories.UserRepo;
 import com.mainpackage.tripPlan.services.UserService;

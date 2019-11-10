@@ -92,7 +92,7 @@
                                                         <select name="rental" class="form-control">
                                                             <option value="car">Car</option>
                                                             <option value="motocycle">Motocycle</option>
-                                                            <option value="none">None</option>
+                                                            <option selected="selected" value="none">None</option>
                                                         </select>
                                                     </div>
                                                 </div>

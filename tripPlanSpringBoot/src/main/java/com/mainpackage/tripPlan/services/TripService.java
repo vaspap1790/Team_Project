@@ -7,6 +7,7 @@ import com.mainpackage.tripPlan.model.Transportation;
 import com.mainpackage.tripPlan.model.TransportationType;
 import com.mainpackage.tripPlan.model.Trip;
 import com.mainpackage.tripPlan.model.User;
+import com.mainpackage.tripPlan.utilities.Check;
 import java.util.Arrays;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,8 @@ public class TripService {
     GenericJpaDao<Transportation> transDao;
     @Autowired
     TransportationService transService;
+    @Autowired
+    Check check;
 
     @Transactional
     public void setTripUser(Trip trip, User user) {
@@ -36,7 +39,7 @@ public class TripService {
 
     @Transactional
     public void setTripAccommodation(Trip trip, Accommodation acco, AccommodationType accoType) {
-
+        check.checkAccommoName(acco);
         acco.setTypeId(accomoService.findAccommoTypeByType(accoType.getType()));
         acco.setTripId(trip);
         trip.setAccommodationCollection(Arrays.asList(acco));
