@@ -22,7 +22,7 @@
     </head>
     <body>
 
-        <div class="hero-wrap js-fullheight" style="background-image: url('https://previews.123rf.com/images/funtap/funtap1811/funtap181101262/112936672-hr-human-resources-management-concept-on-blurred-business-center-background-.jpg');">
+        <div class="hero-wrap js-fullheight" style="background-image: url('https://previews.123rf.com/images/liuzishan/liuzishan1611/liuzishan161100097/66120105-world-map-point-line-composition-representing-the-global-global-network-connection-international-mea.jpg'); min-height: 100vh;">
 
             <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light fixed-top" id="ftco-navbar">
                 <div class="container-fluid px-0 row">
@@ -37,13 +37,13 @@
 
                         <div class="collapse navbar-collapse" id="ftco-nav">
                             <ul class="navbar-nav ml-auto">
-                                <li class="nav-item active"><a href="${pageContext.request.contextPath}/" class="nav-link">Home</a></li>
+                                <li class="nav-item"><a href="${pageContext.request.contextPath}/" class="nav-link">Home</a></li>
                                 <li class="nav-item"><a href="" class="nav-link">About</a></li>
                                 <li class="nav-item"><a href="" class="nav-link">Places</a></li>
                                 <li class="nav-item"><a href="" class="nav-link">Blog</a></li>
                                 <li class="nav-item"><a href="${pageContext.request.contextPath}/contact" class="nav-link">Contact</a></li>
                                     <c:if test="${pageContext.request.userPrincipal.name == null}" >
-                                    <li> <a href="${pageContext.request.contextPath}/login" class="btn  btn-sm px-3 btn-warning mr-2 d-lg-none">Sign In</a></li>
+                                    <li> <a href="${pageContext.request.contextPath}/login" class="btn btn-sm px-3 btn-warning mr-2 d-lg-none">Sign In</a></li>
                                     <li> <a href="${pageContext.request.contextPath}/register" class="btn btn-sm px-3 btn-warning d-lg-none mt-2">Sign Up</a></li>
                                     </c:if>
                                     <c:if test="${pageContext.request.userPrincipal.name != null}">
@@ -55,7 +55,7 @@
                     </div>
                     <div class="col-4 col-lg-3 text-lg-right d-none d-lg-block">
                         <c:if test="${pageContext.request.userPrincipal.name == null}" >
-                            <a href="${pageContext.request.contextPath}/login" class="btn  btn-sm px-3 btn-warning mr-2">Sign In</a>
+                            <a href="${pageContext.request.contextPath}/login" class="btn btn-sm px-3 btn-warning mr-2">Sign In</a>
                             <a href="${pageContext.request.contextPath}/register" class="btn btn-sm px-3 btn-warning">Sign Up</a>
                         </c:if>
                         <c:if test="${pageContext.request.userPrincipal.name != null}">
@@ -68,7 +68,7 @@
 
             <div class="overlay"></div>
 
-            <div class="container">
+            <div class="container pt-5">
                 <div class="container bootstrap snippet bg-white">
                     <div class="row">
                         <div class="col-sm-3 shadow-lg"><!--left col-->
@@ -192,24 +192,24 @@
                     </div><!--/col-9-->
                 </div>
 
-                <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start"
-                     data-scrollax-parent="true">
-                    <div class="col-md-9 ftco-animate mb-5 pb-5 text-center text-md-left"
-                         data-scrollax=" properties: { translateY: '70%' }">
-                        <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Discover <br>A new Place
-                        </h1>
-                        <p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Find great places to stay, eat,
-                            shop, or visit from local experts</p>
-
-                        <div class="row justify-content-center">
-                            <div>
-                                <a href="${pageContext.request.contextPath}/user/choices" class="btn btn-outline-light btn-lg">Get Started</a>
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
+                <!--                <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start"
+                                     data-scrollax-parent="true">
+                                    <div class="col-md-9 ftco-animate mb-5 pb-5 text-center text-md-left"
+                                         data-scrollax=" properties: { translateY: '70%' }">
+                                        <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Discover <br>A new Place
+                                        </h1>
+                                        <p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Find great places to stay, eat,
+                                            shop, or visit from local experts</p>
+                
+                                        <div class="row justify-content-center">
+                                            <div>
+                                                <a href="${pageContext.request.contextPath}/user/choices" class="btn btn-outline-light btn-lg">Get Started</a>
+                                            </div>
+                                        </div>
+                
+                                    </div>
+                
+                                </div>-->
 
             </div>
 
