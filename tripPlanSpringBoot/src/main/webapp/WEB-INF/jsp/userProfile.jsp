@@ -8,14 +8,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>${pageContext.request.userPrincipal.name}</title>
         <jsp:include page="../jsp/components/linksHeader.jsp"/>
-        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <!------ Include the above in your HEAD tag ---------->
-
-        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -24,7 +17,7 @@
 
         <div class="hero-wrap js-fullheight" style="background-image: url('https://cmkt-image-prd.freetls.fastly.net/0.1.0/ps/3427679/910/741/m2/fpnw/wm1/e9h3d6vehwxpvkroqof0mehi5gc6btvlt58augcanbhlvq9w09gv9dlrbegoc0cb-.jpg?1508293067&s=d72c108776c61110bc6ad95150fc1bb2'); min-height: 100vh;">
 
-            <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light fixed-top" id="ftco-navbar">
+            <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light" id="ftco-navbar">
                 <div class="container-fluid px-0 row">
 
                     <div class="col-xl-7 offset-xl-1 col-lg-9 d-flex align-items-center flex-wrap justify-content-between">
@@ -109,14 +102,14 @@
 
                                             <div class="col-xs-6">
                                                 <label for="first_name"><h4>First name</h4></label>
-                                                <input type="text" class="form-control" name="first_name" id="first_name" placeholder="first name" title="enter your first name if any.">
+                                                <input style="height: 4rem!important;" type="text" class="form-control" name="first_name" id="first_name" placeholder="Enter First name..." title="enter your first name if any.">
                                             </div>
                                         </div>
                                         <div class="form-group">
 
                                             <div class="col-xs-6">
                                                 <label for="last_name"><h4>Last name</h4></label>
-                                                <input type="text" class="form-control" name="last_name" id="last_name" placeholder="last name" title="enter your last name if any.">
+                                                <input style="height: 4rem!important;" type="text" class="form-control" name="last_name" id="last_name" placeholder="Enter Last name..." title="enter your last name if any.">
                                             </div>
                                         </div>
 
@@ -124,42 +117,42 @@
 
                                             <div class="col-xs-6">
                                                 <label for="phone"><h4>Phone</h4></label>
-                                                <input type="text" class="form-control" name="phone" id="phone" placeholder="enter phone" title="enter your phone number if any.">
+                                                <input style="height: 4rem!important;" type="text" class="form-control" name="phone" id="phone" placeholder="Enter Phone number..." title="enter your phone number if any.">
                                             </div>
                                         </div>
 
                                         <div class="form-group">
                                             <div class="col-xs-6">
                                                 <label for="mobile"><h4>Mobile</h4></label>
-                                                <input type="text" class="form-control" name="mobile" id="mobile" placeholder="enter mobile number" title="enter your mobile number if any.">
+                                                <input style="height: 4rem!important;" type="text" class="form-control" name="mobile" id="mobile" placeholder="Enter Mobile number..." title="enter your mobile number if any.">
                                             </div>
                                         </div>
                                         <div class="form-group">
 
                                             <div class="col-xs-6">
                                                 <label for="email"><h4>Email</h4></label>
-                                                <input type="email" class="form-control" name="email" id="email" placeholder="you@email.com" title="enter your email.">
+                                                <input style="height: 4rem!important;" type="email" class="form-control" name="email" id="email" placeholder="Enter Email..." title="enter your email.">
                                             </div>
                                         </div>
                                         <div class="form-group">
 
                                             <div class="col-xs-6">
                                                 <label for="email"><h4>Location</h4></label>
-                                                <input type="email" class="form-control" id="location" placeholder="somewhere" title="enter a location">
+                                                <input style="height: 4rem!important;" type="email" class="form-control" id="location" placeholder="Enter your Location..." title="enter a location">
                                             </div>
                                         </div>
                                         <div class="form-group">
 
                                             <div class="col-xs-6">
                                                 <label for="password"><h4>Password</h4></label>
-                                                <input type="password" class="form-control" name="password" id="password" placeholder="password" title="enter your password.">
+                                                <input style="height: 4rem!important;" type="password" class="form-control" name="password" id="password" placeholder="Enter password..." title="enter your password.">
                                             </div>
                                         </div>
                                         <div class="form-group">
 
                                             <div class="col-xs-6">
                                                 <label for="password2"><h4>Verify</h4></label>
-                                                <input type="password" class="form-control" name="password2" id="password2" placeholder="password2" title="enter your password2.">
+                                                <input style="height: 4rem!important;" type="password" class="form-control" name="password2" id="password2" placeholder="Retype password..." title="enter your password2.">
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -192,31 +185,12 @@
                     </div><!--/col-9-->
                 </div>
 
-                <!--                <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start"
-                                     data-scrollax-parent="true">
-                                    <div class="col-md-9 ftco-animate mb-5 pb-5 text-center text-md-left"
-                                         data-scrollax=" properties: { translateY: '70%' }">
-                                        <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Discover <br>A new Place
-                                        </h1>
-                                        <p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Find great places to stay, eat,
-                                            shop, or visit from local experts</p>
-                
-                                        <div class="row justify-content-center">
-                                            <div>
-                                                <a href="${pageContext.request.contextPath}/user/choices" class="btn btn-outline-light btn-lg">Get Started</a>
-                                            </div>
-                                        </div>
-                
-                                    </div>
-                
-                                </div>-->
-
             </div>
 
         </div>
 
         <!--/row-->
 
-        <script type="text/javascript" src="${pageContext.request.contextPath}/js/userProfile"></script>
+        <!--<script type="text/javascript" src="${pageContext.request.contextPath}/js/userProfile"></script>-->
     </body>
 </html>

@@ -11,12 +11,14 @@
                 height: 100%;
                 width: 100%;
                 background-image: url("${pageContext.request.contextPath}/images/slider1.jpg");
+                background-size: cover;
+                background-position: center;
             }
         </style>
     </head>
     <body>
         <jsp:include page="../components/navbar.jsp"/> 
-        <div class="d-flex  justify-content-center align-items-center h-100 flex-column">
+        <div class="d-flex  justify-content-center align-items-center h-100 flex-column p-5">
             <div class="mb-4 p-2"> <h4 class="text-white display-4">Are you Ready?</h4>   
                 </div>
             <div class="">
