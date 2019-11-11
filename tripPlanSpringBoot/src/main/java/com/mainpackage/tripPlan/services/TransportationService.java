@@ -20,7 +20,7 @@ public class TransportationService {
     @Autowired
     TransportationRepo transRepo;
    
-    public TransportationType findTransportationByType(String type) {
+    public TransportationType findTransportationTypeByType(String type) {
         TransportationType transType = transTypeRepo.findByType(type);
         
         return transType;

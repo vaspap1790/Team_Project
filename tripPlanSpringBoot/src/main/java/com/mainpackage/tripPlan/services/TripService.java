@@ -54,7 +54,7 @@ public class TripService {
     @Transactional
     public void saveTripTransportation(Trip trip, Transportation trans, TransportationType transType) {
 
-        trans.setTypeId(transService.findTransportationByType(transType.getType()));
+        trans.setTypeId(transService.findTransportationTypeByType(transType.getType()));
         trans.setTripId(trip);
         trip.setTransportationCollection(Arrays.asList(trans));
 
@@ -62,7 +62,7 @@ public class TripService {
     }
     
     @Transactional
-    public List<String> findTripsByUsername(String username){
+    public List<String> findTripsLocationsByUsername(String username){
         List<String> trips=tripRepo.findLocationByUsername(username);
         
         return trips;
