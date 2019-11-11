@@ -50,7 +50,7 @@
                                     <div class="row">
                                         <div class="col-md align-items-end">
                                             <div class="form-group">
-                                                <label for="#">Location</label>
+                                                <label for="#">Destination</label>
                                                 <div class="form-field">
                                                     <div class="select-wrap">
                                                         <div class="icon"><span class="icon-my_location"></span></div>
