@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.mainpackage.tripPlan.controllers;
 
 import com.mainpackage.tripPlan.model.Accommodation;
@@ -34,6 +29,7 @@ public class TripController {
     UserRepo userRepo;
     @Autowired
     TripService tripService;
+    
 
     @GetMapping(value = "submit")
     public String preSubmitTrip() {
@@ -79,4 +75,7 @@ public class TripController {
        return tripService.findTripsByUsername(username);
         
     }
+
+  
 }
+
