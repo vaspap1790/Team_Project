@@ -1,5 +1,6 @@
 package com.mainpackage.tripPlan.repositories;
 
+import com.mainpackage.tripPlan.dto.TripDTO;
 import com.mainpackage.tripPlan.model.Trip;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -10,7 +11,8 @@ import java.util.List;
 @Repository
 public interface TripRepo extends CrudRepository<Trip, Integer> {
 
-    @Query("select t.location from Trip t inner join t.userId u where "
+    @Query("select new com.mainpackage.tripPlan.dto.TripDTO(t.tripId,t.location,t.totalBudget)"
+            + " from Trip t inner join t.userId u where "
             + "u.username= :username")
-    List<String> findLocationByUsername(@Param("username") String username);
+    List<TripDTO> findTripsByUsername(@Param("username") String username);
 }

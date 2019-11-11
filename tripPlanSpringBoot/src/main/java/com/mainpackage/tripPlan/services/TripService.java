@@ -1,6 +1,7 @@
 package com.mainpackage.tripPlan.services;
 
 import com.mainpackage.tripPlan.daos.GenericJpaDao;
+import com.mainpackage.tripPlan.dto.TripDTO;
 import com.mainpackage.tripPlan.model.Accommodation;
 import com.mainpackage.tripPlan.model.AccommodationType;
 import com.mainpackage.tripPlan.model.Transportation;
@@ -62,9 +63,8 @@ public class TripService {
     }
     
     @Transactional
-    public List<String> findTripsLocationsByUsername(String username){
-        List<String> trips=tripRepo.findLocationByUsername(username);
-        
-        return trips;
+    public List<TripDTO> findUserTripsByUsername(String username){
+     
+        return tripRepo.findTripsByUsername(username);
     }
 }
