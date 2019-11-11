@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public interface TripRepo extends CrudRepository<Trip, Integer> {
 
-    @Query("select t.tripId from Trip t inner join t.userId u where "
+    @Query("select t.location from Trip t inner join t.userId u where "
             + "u.username= :username")
-    List<Integer> findByUsername(@Param("username") String username);
+    List<String> findLocationByUsername(@Param("username") String username);
 }

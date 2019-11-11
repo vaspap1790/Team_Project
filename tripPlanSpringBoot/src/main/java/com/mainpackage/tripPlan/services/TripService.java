@@ -62,8 +62,8 @@ public class TripService {
     }
     
     @Transactional
-    public List<Integer> findTripsByUsername(String username){
-        List<Integer> trips=tripRepo.findByUsername(username);
+    public List<String> findTripsByUsername(String username){
+        List<String> trips=tripRepo.findLocationByUsername(username);
         
         return trips;
     }

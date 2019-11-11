@@ -75,7 +75,7 @@ public class TripController {
     
     @GetMapping(value = "/{username}", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public List<Integer> returnTrips(@PathVariable("username") String username){
+    public List<String> returnTrips(@PathVariable("username") String username){
        return tripService.findTripsByUsername(username);
         
     }
