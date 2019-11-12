@@ -15,4 +15,8 @@ public interface TripRepo extends CrudRepository<Trip, Integer> {
             + " from Trip t inner join t.userId u where "
             + "u.username= :username")
     List<TripDTO> findTripsByUsername(@Param("username") String username);
+
+    @Query("SELECT t FROM Trip t WHERE t.tripId = :tripId")
+    Trip findTripById(@Param("tripId") Integer id);
+
 }

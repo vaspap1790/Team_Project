@@ -17,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
+@Transactional
 public class TripService {
 
     @Autowired
@@ -34,7 +35,7 @@ public class TripService {
     @Autowired
     TripRepo tripRepo;
 
-    @Transactional
+   
     public void saveTripUser(Trip trip, User user) {
         trip.setUserId(user);
         user.setTripCollection(Arrays.asList(trip));
@@ -42,7 +43,7 @@ public class TripService {
 
     }
 
-    @Transactional
+   
     public void saveTripAccommodation(Trip trip, Accommodation acco, AccommodationType accoType) {
         check.checkAccommoName(acco);
         acco.setTypeId(accomoService.findAccommoTypeByType(accoType.getType()));
@@ -52,7 +53,7 @@ public class TripService {
         accoDao.save(acco);
     }
 
-    @Transactional
+   
     public void saveTripTransportation(Trip trip, Transportation trans, TransportationType transType) {
 
         trans.setTypeId(transService.findTransportationTypeByType(transType.getType()));
@@ -61,10 +62,20 @@ public class TripService {
 
         transDao.save(trans);
     }
+
     
-    @Transactional
-    public List<TripDTO> findUserTripsByUsername(String username){
-     
+    public List<TripDTO> findUserTripsByUsername(String username) {
+
         return tripRepo.findTripsByUsername(username);
+    }
+
+    
+    public Trip findTripById(Integer id) {
+        return tripRepo.findTripById(id);
+    }
+    
+ 
+    public void saveTrip(Trip trip) {
+         tripDao.save(trip);
     }
 }

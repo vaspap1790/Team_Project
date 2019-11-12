@@ -18,12 +18,14 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import org.hibernate.annotations.CreationTimestamp;
 
 /**
  *
@@ -65,6 +67,17 @@ public class Comment implements Serializable {
 
     public Trip getTripId() {
         return tripId;
+    }
+
+    public Comment(String this1, String title, Trip tripId) {
+        this.this1 = this1;
+        this.title = title;
+        this.tripId = tripId;
+    }
+
+    @PrePersist
+    protected void onCreate() {
+        timestamp = new Date();
     }
 
     public void setTripId(Trip tripId) {
