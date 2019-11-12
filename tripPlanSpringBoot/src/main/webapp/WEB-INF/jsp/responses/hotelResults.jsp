@@ -25,7 +25,7 @@
         </div>
 
         <section id="start" class="ftco-section">
-            <div class="container">
+            <div class="container ftco-animate">
                 <div class="row">
                     <div class="col-lg-3 sidebar order-md-last ftco-animate">
                         <div class="sidebar-wrap ftco-animate">
