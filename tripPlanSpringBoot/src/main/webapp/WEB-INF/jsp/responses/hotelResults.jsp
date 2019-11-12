@@ -8,29 +8,20 @@
         <title>Hotel Results</title>
         <jsp:include page="../components/linksHeader.jsp"/>
 
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/arrow.css">
-
-
     </head>
     <body>
         <jsp:include page="../components/navbar.jsp"/>
 
-
-        <div class="hero-wrap js-fullheight" style="background-image: url('https://cdn.hotelplanner.com/Common/Images/_HotelPlanner/Home-Page/fade/sld6.jpg');">
+        <div class="hero-wrap js-fullheight" style="background-image: url('https://cdn.hotelplanner.com/Common/Images/_HotelPlanner/Home-Page/fade/sld6.jpg'); max-height: 50vh;">
             <div class="overlay"></div>
-            <div class="container">
-                <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
-                    <div class="col-md-9 text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
+            <div class="container pt-5">
+                <div class="row no-gutters slider-text align-items-center justify-content-center pt-5" data-scrollax-parent="true">
+                    <div class="col-md-9 text-center ftco-animate pt-5" data-scrollax=" properties: { translateY: '70%' }">
                         <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="${pageContext.request.contextPath}/">Home</a></span> <span>Hotel</span></p>
                         <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Hotels</h1>
                     </div>
                 </div>
             </div>
-            <a class="down-arrow" href="#start">
-                <div class="arrow bounce d-none d-md-block">
-                    <i class="fas fa-angle-down fa-3x" aria-hidden="true"></i>
-                </div>
-            </a>
         </div>
 
         <section id="start" class="ftco-section">

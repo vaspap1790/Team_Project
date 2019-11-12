@@ -10,32 +10,22 @@
         <title>Flight Results</title>
         <jsp:include page="../components/linksHeader.jsp"/>
 
-
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/flightResults.css">
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/arrow.css">
-        <script src="https://kit.fontawesome.com/e41a5911e2.js"></script>
     </head>
     <body>
         <jsp:include page="../components/navbar.jsp"/>
 
-
-        <div class="hero-wrap js-fullheight" style="background-image: url('https://www.flightshopee.com/f-images/slider/flight02.jpg');">
+        <div class="hero-wrap js-fullheight" style="background-image: url('https://www.flightshopee.com/f-images/slider/flight02.jpg'); max-height: 50vh;">
             <div class="overlay"></div>
-            <div class="container">
-                <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
-                    <div class="col-md-9 text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
+            <div class="container pt-5">
+                <div class="row no-gutters slider-text align-items-center justify-content-center pt-5" data-scrollax-parent="true">
+                    <div class="col-md-9 text-center ftco-animate pt-5" data-scrollax=" properties: { translateY: '70%' }">
                         <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="${pageContext.request.contextPath}/">Home</a></span> <span>Flights</span></p>
                         <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Flight Results</h1>
                     </div>
                 </div>
             </div>
-            <a class="down-arrow" href="#start">
-                <div class="arrow bounce d-none d-md-block">
-                    <i class="fas fa-angle-down fa-3x" aria-hidden="true"></i>
-                </div>
-            </a>
         </div>
-
 
         <section id="start" class="ftco-section">
             <div class="container">
@@ -260,21 +250,21 @@
                                                             <div class=" d-flex justify-content-center">                                                                            
                                                                 <h4> <span class="font-weight-bold" > ${it.PricingOptions[0].Price}</span></h4>
                                                                 <s:input type="hidden" path="price" value="${it.PricingOptions[0].Price}" />
-                                                                
+
                                                             </div>
-                                                                
+
                                                             <s:input type="hidden" path="this1" value="${it.PricingOptions[0].DeeplinkUrl}"/>
-                 
+
                                                         </div> 
                                                     </c:if>
                                                 </c:forEach>
                                             </div>
-                                            
-                                            
+
+
                                             <div class="col-md-2 mb-2 d-flex align-items-center">
                                                 <button id="submit" type="submit" class="btn btn-primary" > Select</button>
                                             </div>
-                                                
+
                                         </div>
                                     </s:form>
                                 </c:forEach>
