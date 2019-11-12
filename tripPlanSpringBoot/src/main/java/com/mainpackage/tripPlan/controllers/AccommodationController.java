@@ -44,11 +44,11 @@ public class AccommodationController {
         return "redirect:/rental/" + rentalType.getType();
     }
 
-    @GetMapping(value = "/{username}/{location}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/{username}/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public List<AccommodationDTO> returnAccommodation(@PathVariable("username") String username,
-            @PathVariable("location") String location) {
-        return accommoService.findTransportationByUsernameAndTripLocation(username, location);
+            @PathVariable("id") String tripId) {
+        return accommoService.findTransportationByUsernameAndTripId(username,tripId);
 
     }
 }

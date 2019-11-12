@@ -21,7 +21,7 @@ public class UsersTripsPageController {
     @Autowired
     CommentService commentService;
 
-    @PostMapping(value = "comment")
+    @PostMapping(value = "saveComment")
     @ResponseBody
     public String preSubmitTrip(@RequestParam(name = "title") String title,
             @RequestParam(name = "text") String text,

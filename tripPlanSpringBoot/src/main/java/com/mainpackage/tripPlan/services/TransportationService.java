@@ -26,8 +26,8 @@ public class TransportationService {
         return transType;
     }
     
-    public List<TransportationDTO> findTransportationByUsernameAndTripLocation(String username,String location){
-        List<TransportationDTO> list=transRepo.findTransportationByUsernameAndLocation(username,location);
+    public List<TransportationDTO> findTransportationByUsernameAndTripId(String username,String tripId){
+        List<TransportationDTO> list=transRepo.findTransportationByUsernameAndLocation(username,Integer.parseInt(tripId));
         return list;
     }
 }
