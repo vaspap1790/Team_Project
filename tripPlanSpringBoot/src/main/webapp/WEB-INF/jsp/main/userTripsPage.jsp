@@ -17,5 +17,6 @@
         
         <jsp:include page="../components/footer.jsp"/>
         <jsp:include page="../components/scripts.jsp"/>
+        <script src="${pageContext.request.contextPath}/js/tripsPage.js"></script>
     </body>
 </html>

@@ -1,6 +1,9 @@
 package com.mainpackage.tripPlan.services;
 
 import com.mainpackage.tripPlan.daos.GenericJpaDao;
+import com.mainpackage.tripPlan.dto.AccommodationDTO;
+import com.mainpackage.tripPlan.dto.TransportationDTO;
+import com.mainpackage.tripPlan.dto.TripDTO;
 import com.mainpackage.tripPlan.model.Accommodation;
 import com.mainpackage.tripPlan.model.AccommodationType;
 import com.mainpackage.tripPlan.model.Transportation;
@@ -11,11 +14,13 @@ import com.mainpackage.tripPlan.repositories.TripRepo;
 import com.mainpackage.tripPlan.utilities.Check;
 import java.util.Arrays;
 import java.util.List;
+import java.util.*;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
+@Transactional
 public class TripService {
 
     @Autowired
@@ -33,7 +38,6 @@ public class TripService {
     @Autowired
     TripRepo tripRepo;
 
-    @Transactional
     public void saveTripUser(Trip trip, User user) {
         trip.setUserId(user);
         user.setTripCollection(Arrays.asList(trip));
@@ -41,7 +45,6 @@ public class TripService {
 
     }
 
-    @Transactional
     public void saveTripAccommodation(Trip trip, Accommodation acco, AccommodationType accoType) {
         check.checkAccommoName(acco);
         acco.setTypeId(accomoService.findAccommoTypeByType(accoType.getType()));
@@ -51,20 +54,36 @@ public class TripService {
         accoDao.save(acco);
     }
 
-    @Transactional
     public void saveTripTransportation(Trip trip, Transportation trans, TransportationType transType) {
 
-        trans.setTypeId(transService.findTransportationByType(transType.getType()));
+        trans.setTypeId(transService.findTransportationTypeByType(transType.getType()));
         trans.setTripId(trip);
         trip.setTransportationCollection(Arrays.asList(trans));
 
         transDao.save(trans);
     }
-    
-    @Transactional
-    public List<String> findTripsByUsername(String username){
-        List<String> trips=tripRepo.findLocationByUsername(username);
+
+    public List<TripDTO> findUserTripsByUsername(String username) {
+
+        return tripRepo.findTripsByUsername(username);
+    }
+
+    public Trip findTripById(Integer id) {
+        return tripRepo.findTripById(id);
+    }
+
+    public void saveTrip(Trip trip) {
+        tripDao.save(trip);
+    }
+
+    public Map<String, Object> getTripByUsernameAndTripId(String username, String id) {
+        List<TransportationDTO> transp = transService.findTransportationByUsernameAndTripId(username, id);
+        List<AccommodationDTO> accommo = accomoService.findTransportationByUsernameAndTripId(username, id);
         
-        return trips;
+        Map<String, Object> trip = new HashMap<>();
+        trip.put("accommodation", accommo);
+        trip.put("transportation", transp);
+        
+        return trip;
     }
 }

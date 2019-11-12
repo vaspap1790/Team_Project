@@ -18,12 +18,14 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import org.hibernate.annotations.CreationTimestamp;
 
 /**
  *
@@ -35,7 +37,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Comment.findAll", query = "SELECT c FROM Comment c")
     , @NamedQuery(name = "Comment.findByCommentId", query = "SELECT c FROM Comment c WHERE c.commentId = :commentId")
-    , @NamedQuery(name = "Comment.findByTimestamp", query = "SELECT c FROM Comment c WHERE c.timestamp = :timestamp")})
+    , @NamedQuery(name = "Comment.findByTimestamp", query = "SELECT c FROM Comment c WHERE c.timestamp = :timestamp")
+    , @NamedQuery(name = "Comment.findByTitle", query = "SELECT c FROM Comment c WHERE c.title = :title")})
 public class Comment implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -55,9 +58,31 @@ public class Comment implements Serializable {
     @Size(min = 1, max = 65535)
     @Column(name = "this")
     private String this1;
+    @Size(max = 45)
+    @Column(name = "title")
+    private String title;
     @JoinColumn(name = "trip_id", referencedColumnName = "trip_id")
     @ManyToOne(optional = false)
     private Trip tripId;
+
+    public Trip getTripId() {
+        return tripId;
+    }
+
+    public Comment(String this1, String title, Trip tripId) {
+        this.this1 = this1;
+        this.title = title;
+        this.tripId = tripId;
+    }
+
+    @PrePersist
+    protected void onCreate() {
+        timestamp = new Date();
+    }
+
+    public void setTripId(Trip tripId) {
+        this.tripId = tripId;
+    }
 
     public Comment() {
     }
@@ -96,12 +121,12 @@ public class Comment implements Serializable {
         this.this1 = this1;
     }
 
-    public Trip getTripId() {
-        return tripId;
+    public String getTitle() {
+        return title;
     }
 
-    public void setTripId(Trip tripId) {
-        this.tripId = tripId;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     @Override
@@ -128,5 +153,5 @@ public class Comment implements Serializable {
     public String toString() {
         return "com.mainpackage.tripPlan.model.Comment[ commentId=" + commentId + " ]";
     }
-    
+
 }

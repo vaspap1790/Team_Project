@@ -1,5 +1,6 @@
 package com.mainpackage.tripPlan.controllers;
 
+import com.mainpackage.tripPlan.dto.TripDTO;
 import com.mainpackage.tripPlan.model.Accommodation;
 import com.mainpackage.tripPlan.model.AccommodationType;
 import com.mainpackage.tripPlan.model.Transportation;
@@ -71,8 +72,8 @@ public class TripController {
     
     @GetMapping(value = "/{username}", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public List<String> returnTripsLocation(@PathVariable("username") String username){
-       return tripService.findTripsByUsername(username);
+    public List<TripDTO> returnTripsLocation(@PathVariable("username") String username){
+       return tripService.findUserTripsByUsername(username);
         
     }
 

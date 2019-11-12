@@ -7,7 +7,6 @@ import com.mashape.unirest.http.exceptions.UnirestException;
 import java.time.LocalDate;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.mainpackage.tripPlan.model.Accommodation;
-import com.mainpackage.tripPlan.model.Rental;
 import com.mainpackage.tripPlan.model.RentalType;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,9 +42,9 @@ public class BookingController {
 
     @PostMapping(value = "postHotelForm")
     public ModelAndView postHotelForm(@RequestParam(name = "guests") String guests, Model m,
-            @RequestParam(name = "dest_id") String dest_id,
-            @RequestParam(name = "checkin") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate checkin,
-            @RequestParam(name = "checkout") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate checkout) throws UnirestException, ParseException, JsonProcessingException {
+                                      @RequestParam(name = "dest_id") String dest_id,
+                                      @RequestParam(name = "checkin") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate checkin,
+                                      @RequestParam(name = "checkout") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate checkout) throws UnirestException, ParseException, JsonProcessingException {
 
         HttpResponse<String> bookingResults = booking.propertiesList(dest_id, checkin, checkout, guests);
         JSONObject obj = jsonUtil.createJson(bookingResults.getBody());

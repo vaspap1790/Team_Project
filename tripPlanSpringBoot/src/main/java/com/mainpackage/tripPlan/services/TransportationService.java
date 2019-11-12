@@ -20,14 +20,14 @@ public class TransportationService {
     @Autowired
     TransportationRepo transRepo;
    
-    public TransportationType findTransportationByType(String type) {
+    public TransportationType findTransportationTypeByType(String type) {
         TransportationType transType = transTypeRepo.findByType(type);
         
         return transType;
     }
     
-    public List<TransportationDTO> findTransportationByUsernameAndTripLocation(String username,String location){
-        List<TransportationDTO> list=transRepo.findTransportationByUsernameAndLocation(username,location);
+    public List<TransportationDTO> findTransportationByUsernameAndTripId(String username,String tripId){
+        List<TransportationDTO> list=transRepo.findTransportationByUsernameAndLocation(username,Integer.parseInt(tripId));
         return list;
     }
 }

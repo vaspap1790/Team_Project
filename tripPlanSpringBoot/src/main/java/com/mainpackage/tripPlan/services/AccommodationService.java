@@ -25,8 +25,8 @@ public class AccommodationService {
         return accommoType;
     }
      
-       public List<AccommodationDTO> findTransportationByUsernameAndTripLocation(String username,String location){
-        List<AccommodationDTO> list=accommoRepo.findAccommodationtationByUsernameAndLocation(username, location);
+       public List<AccommodationDTO> findTransportationByUsernameAndTripId(String username,String tripId){
+        List<AccommodationDTO> list=accommoRepo.findAccommodationtationByUsernameAndLocation(username,Integer.parseInt(tripId));
         return list;
     }
 }

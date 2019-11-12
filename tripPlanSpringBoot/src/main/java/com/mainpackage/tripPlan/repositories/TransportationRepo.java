@@ -18,6 +18,6 @@ public interface TransportationRepo extends CrudRepository<Transportation, Integ
     @Query("select new com.mainpackage.tripPlan.dto.TransportationDTO("
             + "t.startingPoint,t.destination,t.price,t.this1,t.departure,t.arrival)  "
             + "from Transportation t inner join t.tripId tr inner join tr.userId u "
-            + " where u.username= :username and tr.location= :location")
-    List<TransportationDTO> findTransportationByUsernameAndLocation(@Param("username") String username, @Param("location") String location);
+            + " where u.username= :username and tr.tripId= :tripId")
+    List<TransportationDTO> findTransportationByUsernameAndLocation(@Param("username") String username, @Param("tripId") Integer tripId);
 }
