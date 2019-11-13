@@ -7,6 +7,9 @@
 @font-face {
   font-family: "Muli-Bold";
   src: url("../fonts/muli/Muli-Bold.ttf"); }
+.error{
+    color: red;
+}
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;

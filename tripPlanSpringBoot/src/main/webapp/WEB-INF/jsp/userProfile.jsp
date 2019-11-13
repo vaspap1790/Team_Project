@@ -169,10 +169,7 @@
                                 <div class="tab-pane" id="messages">
 
                                     <!--<hr>-->
-                                    <form class="form" action="##" method="post" id="registrationForm">
-
-
-                                    </form>
+                                  
 
                                 </div><!--/tab-pane-->
                                 <div class="tab-pane" id="settings">

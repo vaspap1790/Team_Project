@@ -5,6 +5,7 @@
  */
 package com.mainpackage.tripPlan;
 
+import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -24,6 +25,5 @@ public class Config implements WebMvcConfigurer {
         bean.setSuffix(".jsp");
         return bean;
     }
-
 
 }

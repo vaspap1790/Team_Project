@@ -1,4 +1,4 @@
-
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="spring" %>
 <!DOCTYPE html>
@@ -8,9 +8,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Register</title>
-
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/registercss/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
-
         <link href="${pageContext.request.contextPath}/css/registercss/css/style.css" rel="stylesheet">
     </head>
 
@@ -21,19 +19,11 @@
                 <spring:form modelAttribute="user" action="${pageContext.request.contextPath}/postRegister" method="POST" id="registerForm" enctype="multipart/form-data">
                     <h3>Registration Form</h3>
                     <div class="form-group">
-<!--                        <div class="form-wrapper">
-                            <%--<spring:label  path="firstname">First Name</spring:label>--%>
-                            <%--<spring:input path="firstname" cssClass="form-control" placeholder="Enter First Name..."/>--%> 
-                            <%--<spring:errors path="firstname" cssClass= "error"/>--%>
-                        </div>-->
-<!--                        <div class="form-wrapper">
-                            <%--<spring:label path="lastname">Last Name</spring:label>--%>
-                            <%--<spring:input path="lastname" cssClass="form-control" placeholder="Enter Last Name..."/>--%>
-                        </div>-->
                     </div>
                     <div class="form-wrapper">
                         <spring:label path="username">Username</spring:label>
                         <spring:input path="username" autocomplete="off" cssClass="form-control" placeholder="Enter Username..."/>
+                        <div class="error">${error} </div>                       
                     </div>
                     <div class="form-wrapper">
                         <spring:label path="email">Email</spring:label>
@@ -45,7 +35,7 @@
                     </div>
                     <div class="form-wrapper">
                         <label for="confirmPassword">Confirm Password</label>
-                        <input name="confirmPassword" type="password" class="form-control" placeholder="Enter Password..."/>
+                        <input name="confirmPassword" type="password" class="form-control" placeholder="Enter Password..."/>                      
                     </div>
                     <div class="checkbox">
                         <label>
