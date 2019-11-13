@@ -27,7 +27,7 @@
             </div>
 
             <section id="start" class="ftco-section pb-0" style="padding-top: 140px;">
-                <div class="container ftco-animate bg-white px-5 py-3">
+                <div class="container ftco-animate bg-white px-5 py-4">
                     <div class="row">
                         <div class="col-lg-3 sidebar order-md-last ftco-animate">
                             <div class="sidebar-wrap ftco-animate">
