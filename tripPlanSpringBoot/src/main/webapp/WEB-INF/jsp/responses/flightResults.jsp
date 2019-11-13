@@ -113,6 +113,11 @@
                     <div class="col-lg-9 ">
                         <div class="row">
                             <div class="container">
+                                <c:if test="${fn:length(flights.Itineraries) eq 0}">
+                                    <div class="d-flex justify-content-center">
+                                    <h1>No Available Flights </h1>
+                                    </div>
+                                </c:if>           
                                 <c:forEach items="${flights.Itineraries}" var="it" >
                                     <s:form action="${pageContext.request.contextPath}/flight/postFlightResults" method="POST" modelAttribute="transportation">
                                         <div class="row border shadow border-primary mt-2 ftco-animate">
