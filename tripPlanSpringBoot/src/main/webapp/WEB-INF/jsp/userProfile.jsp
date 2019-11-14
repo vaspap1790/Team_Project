@@ -189,7 +189,7 @@
                                                 </td>
                                                 
                                                 <td class="border p-3">
-                                                    <a href="${pageContext.request.contextPath}/user/userTripsPage?id=item.id">
+                                                    <a href="${pageContext.request.contextPath}/user/userTripsPage/{{item.id}}">
                                                         {{item.location}}
                                                     </a>
                                                 </td>

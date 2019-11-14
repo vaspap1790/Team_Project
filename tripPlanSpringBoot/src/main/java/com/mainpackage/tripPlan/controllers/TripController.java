@@ -62,7 +62,7 @@ public class TripController {
                 tripService.saveTripTransportation(trip, trans, transType);
             }
 
-            return new ModelAndView("redirect:/user/userTripsPage");
+            return new ModelAndView("redirect:/user/profile");
 
         } catch (Exception e) {
             e.printStackTrace();
