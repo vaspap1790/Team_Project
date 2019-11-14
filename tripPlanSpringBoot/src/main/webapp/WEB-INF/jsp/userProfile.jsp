@@ -56,7 +56,7 @@
                             <a href="${pageContext.request.contextPath}/register" class="btn btn-sm px-3 btn-warning">Sign Up</a>
                         </c:if>
                         <c:if test="${pageContext.request.userPrincipal.name != null}">
-                            <span style="margin: 0 20px;" class="text-white"><strong style="font-weight: bold;">Welcome</strong><strong style="font-style: italic;">,&nbsp;&nbsp;&nbsp; ${pageContext.request.userPrincipal.name} </strong></span>
+                            <span style="margin: 0 20px;" class="text-white"><strong style="font-weight: bold;">Welcome</strong><strong style="font-style: italic;">,&nbsp;&nbsp;&nbsp;<span id="username"> ${pageContext.request.userPrincipal.name}</span> </strong></span>
                             <a href="${pageContext.request.contextPath}/logout" class="btn btn-sm px-3 btn-warning">Log out</a>
                         </c:if>
                     </div>
@@ -189,14 +189,14 @@
                                                 </td>
                                                 
                                                 <td class="border p-3">
-                                                    <a href="${pageContext.request.contextPath}/user/userTripsPage?id={{item.id}}">
+                                                    <a href="${pageContext.request.contextPath}/user/userTripsPage?id=item.id">
                                                         {{item.location}}
                                                     </a>
                                                 </td>
                                                 
                                                 <td class="border p-3"> 
                                                     <a>
-                                                        <i ng-click="deleteItem($index,{{item.id}})" class="far fa-trash-alt ml-4 mt-1"></i>
+                                                        <i ng-click="deleteItem($index,item.id)" class="far fa-trash-alt ml-4 mt-1"></i>
                                                     </a>
                                                 </td>
                                                 

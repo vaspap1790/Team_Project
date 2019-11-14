@@ -26,8 +26,7 @@
                         <c:if test="${pageContext.request.userPrincipal.name != null}">
                         <li> <a href="${pageContext.request.contextPath}/logout" class="btn btn-sm px-3 btn-warning d-lg-none">Log out</a>
                         </li>
-                        <li style="display:none" id="tripId">${session.tripId}</li>
-                        </c:if>
+                    </c:if>
                 </ul>
             </div>
         </div>
@@ -37,9 +36,11 @@
                 <a href="${pageContext.request.contextPath}/register" class="btn btn-sm px-3 btn-warning">Sign Up</a>
             </c:if>
             <c:if test="${pageContext.request.userPrincipal.name != null}">
-                <span style="margin: 0 20px;" class="text-white"><strong style="font-weight: bold;">Welcome</strong><strong style="font-style: italic;">,&nbsp;&nbsp;&nbsp; ${pageContext.request.userPrincipal.name} </strong></span>
+                <span style="margin: 0 20px;" class="text-white"><strong style="font-weight: bold;">Welcome</strong><strong style="font-style: italic;">,&nbsp;&nbsp;&nbsp;<span ng-model="username"> ${pageContext.request.userPrincipal.name}</span> </strong></span>
                 <a href="${pageContext.request.contextPath}/logout" class="btn btn-sm px-3 btn-warning">Log out</a>
             </c:if>
-        </div>
+        </div>    
+        <li style="display:none" id="tripId">${session.tripId}</li>
+        <h1 class="text-white"> ${tripId}</h1>
     </div>
 </nav>
