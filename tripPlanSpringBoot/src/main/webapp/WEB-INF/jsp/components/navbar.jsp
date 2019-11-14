@@ -26,7 +26,8 @@
                         <c:if test="${pageContext.request.userPrincipal.name != null}">
                         <li> <a href="${pageContext.request.contextPath}/logout" class="btn btn-sm px-3 btn-warning d-lg-none">Log out</a>
                         </li>
-                    </c:if>
+                        <li style="display:none" id="tripId">${session.tripId}</li>
+                        </c:if>
                 </ul>
             </div>
         </div>

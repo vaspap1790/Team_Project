@@ -22,7 +22,6 @@
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#">Welcome, <span id="username">${pageContext.request.userPrincipal.name}</span></a></li>
                 <li><a href="${pageContext.request.contextPath}/logout">Logout</a></li>
-                <li style="display:none" id="tripId">${session.tripId}</li>
             </ul>
         </div>
     </div>

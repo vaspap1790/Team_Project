@@ -38,17 +38,11 @@ $(".budget").change(function (e) {
 
 $(document).ready(function () {
 
-<<<<<<< HEAD
-    const username = "dimitris";
-    const trip_id = "3";
-    const dateArray = [];
-    const URL = "http://localhost:8080/tripPlan/accommodation/" + username + "/" + trip_id;
-=======
 const username="dimitris";
 const trip_id="3";
 const dateArray = [];
     const URL = "http://localhost:8080/tripPlan/accommodation/"+username+"/"+trip_id;
->>>>>>> cea862ab48ee9fdadfcc97844b886cc64adfd7b1
+
 
     async function dates() {
         const datesAcco = await fetch(URL);
@@ -60,7 +54,6 @@ const dateArray = [];
         const checkout = new Date(data[0].checkout);
         console.log(checkin);
         console.log(checkout);
-<<<<<<< HEAD
 
         var dates = getDates(checkin, checkout);
         dates.forEach(function (date) {          
@@ -88,21 +81,7 @@ var getDates = function (startDate, endDate) {
     }
     return dates;
 };
-=======
-        var dates = getDates(checkin, checkout);
-       dates.forEach(function (date) {
-           dateArray.push(date.getMonth() + "/" + date.getDate());
-       });
-    });
-    
-    var getDates = function (startDate, endDate) {
-   var dates = [],
-           currentDate = startDate,
-           addDays = function (days) {
-               var date = new Date(this.valueOf());
-               date.setDate(date.getDate() + days);
-               return date;
-           };
+
    while (currentDate <= endDate) {
        dates.push(currentDate);
        currentDate = addDays.call(currentDate, 1);
@@ -182,4 +161,3 @@ App.controller("MainCtrl", function ($scope, $http) {
     };
 
 });
->>>>>>> cea862ab48ee9fdadfcc97844b886cc64adfd7b1
