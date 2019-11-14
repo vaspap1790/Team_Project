@@ -3,17 +3,21 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>  
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="en" ng-app="App">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>${pageContext.request.userPrincipal.name}</title>
         <jsp:include page="../jsp/components/linksHeader.jsp"/>
-        
+
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
+
+
     </head>
-    <body>
+    <body ng-controller="MainCtrl">
 
         <div class="hero-wrap js-fullheight" style="background-image: url('https://cmkt-image-prd.freetls.fastly.net/0.1.0/ps/3427679/910/741/m2/fpnw/wm1/e9h3d6vehwxpvkroqof0mehi5gc6btvlt58augcanbhlvq9w09gv9dlrbegoc0cb-.jpg?1508293067&s=d72c108776c61110bc6ad95150fc1bb2'); min-height: 100vh;">
 
@@ -89,7 +93,7 @@
                         </div><!--/col-3-->
                         <div class="col-sm-9">
                             <ul class="nav nav-tabs">
-                                <li class="active"><a data-toggle="tab" href="#home">Profil</a></li>
+                                <li class="active"><a data-toggle="tab" href="#home">Profile</a></li>
                                 <li><a data-toggle="tab" href="#messages">Trips</a></li>
                                 <li><a data-toggle="tab" href="#settings">Menu 2</a></li>
                             </ul>
@@ -164,15 +168,43 @@
                                         </div>
                                     </form>
 
-
+                                    <!--Tips Angular-->   
                                 </div><!--/tab-pane-->
                                 <div class="tab-pane" id="messages">
 
-                                    <!--<hr>-->
-                                    <form class="form" action="##" method="post" id="registrationForm">
+                                    <table class="border" ng-show="items.length !== 0">
+                                        <thead>
+                                            <tr class="bg-dark text-white">
+                                                <th class="border p-3" style="display:none;">id</th>
+                                                <th class="border p-3">Trip</th>
+                                                <th class="border p-3">Delete</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="item in items">
+                                                
+                                                <td class="border p-3" style="display:none;">
+                                                    {{item.id}}
+                                                </td>
+                                                
+                                                <td class="border p-3">
+                                                    <a href="${pageContext.request.contextPath}/user/userTripsPage?id={{item.id}}">
+                                                        {{item.location}}
+                                                    </a>
+                                                </td>
+                                                
+                                                <td class="border p-3"> 
+                                                    <a>
+                                                        <i ng-click="deleteItem($index,{{item.id}})" class="far fa-trash-alt ml-4 mt-1"></i>
+                                                    </a>
+                                                </td>
+                                                
+                                            </tr>
+                                        </tbody>
+                                    </table>
 
-
-                                    </form>
+                                    <hr>
+                                    <p ng-show="items.length == 0">No Sketches Found</p>
 
                                 </div><!--/tab-pane-->
                                 <div class="tab-pane" id="settings">
@@ -191,6 +223,15 @@
 
         <!--/row-->
 
-        <!--<script type="text/javascript" src="${pageContext.request.contextPath}/js/userProfile"></script>-->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+                integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+                integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+                integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+        <script type="text/javascript" src="../js/userProfile.js"></script>
     </body>
 </html>
