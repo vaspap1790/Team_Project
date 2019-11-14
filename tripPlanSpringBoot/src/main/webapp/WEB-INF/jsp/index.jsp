@@ -7,7 +7,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>TripPlanner</title>
-
+       
         <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
 
@@ -36,8 +36,8 @@
     </head>
 
     <body>
-
-        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+ <jsp:include page="components/navbar.jsp" />
+<!--        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
             <div class="container-fluid px-0 row">
 
                 <div class="col-xl-7 offset-xl-1 col-lg-9 d-flex align-items-center flex-wrap justify-content-between">
@@ -77,7 +77,7 @@
                     </c:if>
                 </div>
             </div>
-        </nav>
+        </nav>-->
 
         <div class="hero-wrap js-fullheight" style="background-image: url('images/bg_1.jpg');">
             <div class="overlay"></div>
