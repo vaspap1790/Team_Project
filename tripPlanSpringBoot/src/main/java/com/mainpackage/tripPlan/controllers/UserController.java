@@ -58,8 +58,10 @@ public class UserController {
     }
 
     @GetMapping(value = "/userTripsPage")
-    public String userTripsPage() {
+    public String userTripsPage(HttpSession session, @RequestParam(name = "id") String tripId) {
 
+        session.setAttribute("tripId",tripId);
+        
         return "main/userTripsPage";
     }
 
