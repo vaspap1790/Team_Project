@@ -48,7 +48,7 @@ App.controller("MainCtrl", function ($scope, $http) {
         $scope.items.splice(index, 1);
         console.log(index,id);
         //Send to backend to delete it from db
-        const deleteTripURL = "http://localhost:8080/tripPlan/tripPage/delete?"+id;
+        const deleteTripURL = "http://localhost:8080/tripPlan/tripPage/delete/"+id;
         
 //        let object = {tripId:id};
 //        let jsonObject = JSON.stringify(odject);

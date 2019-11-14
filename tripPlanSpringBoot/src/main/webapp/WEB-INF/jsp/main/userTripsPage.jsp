@@ -8,10 +8,7 @@
         <title>UserTrips Page</title>
 
         <jsp:include page="../components/linksHeader.jsp"/>
-        <link rel="stylesheet" href="../css/tripsPage.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="../../css/tripsPage.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
 
@@ -57,9 +54,9 @@
                     </thead>
                     <tbody>
                         
-                        <tr>
+                        <tr ng-repeat="date in dates">
                             
-                            <th scope="row" class="text-center align-middle">11 Dec</th>
+                            <th scope="row" class="text-center align-middle">{{date}}</th>
                             <td class="align-middle">
                                 <div class="row">
                                     <div class="col-8 d-flex align-items-center">
