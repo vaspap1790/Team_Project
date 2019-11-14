@@ -21,5 +21,5 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/flaticon.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/icomoon.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
-
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/arrow.css">
 <script src="https://kit.fontawesome.com/e41a5911e2.js"></script>

@@ -6,78 +6,11 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Contact</title>
+        <jsp:include page="../components/linksHeader.jsp"/>
 
-        <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
-
-        <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
-        <link rel="stylesheet" href="css/animate.css">
-
-        <link rel="stylesheet" href="css/owl.carousel.min.css">
-        <link rel="stylesheet" href="css/owl.theme.default.min.css">
-        <link rel="stylesheet" href="css/magnific-popup.css">
-
-        <link rel="stylesheet" href="css/aos.css">
-
-        <link rel="stylesheet" href="css/ionicons.min.css">
-
-        <link rel="stylesheet" href="css/bootstrap-datepicker.css">
-        <link rel="stylesheet" href="css/jquery.timepicker.css">
-
-
-        <link rel="stylesheet" href="css/flaticon.css">
-        <link rel="stylesheet" href="css/icomoon.css">
-        <link rel="stylesheet" href="css/style.css">
-
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/arrow.css">
-        <script src="https://kit.fontawesome.com/e41a5911e2.js"></script>
     </head>
     <body>
         <jsp:include page="../components/navbar.jsp"/>
-
-        <!--        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-                    <div class="container-fluid px-0 row">
-        
-                        <div class="col-xl-7 offset-xl-1 col-lg-9 d-flex align-items-center flex-wrap justify-content-between">
-        
-                            <a class="navbar-brand" href="${pageContext.request.contextPath}/">TripPlanner</a>
-                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
-                                    aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-                                <span class="oi oi-menu"></span> Menu
-                            </button>
-        
-                            <div class="collapse navbar-collapse" id="ftco-nav">
-                                <ul class="navbar-nav ml-auto">
-                                    <li class="nav-item"><a href="${pageContext.request.contextPath}/" class="nav-link">Home</a></li>
-                                    <li class="nav-item"><a href="" class="nav-link">About</a></li>
-                                    <li class="nav-item"><a href="" class="nav-link">Places</a></li>
-                                    <li class="nav-item"><a href="" class="nav-link">Blog</a></li>
-                                    <li class="nav-item active"><a href="${pageContext.request.contextPath}/contact" class="nav-link">Contact</a></li>
-        <c:if test="${pageContext.request.userPrincipal.name == null}" >
-        <li> <a href="${pageContext.request.contextPath}/login" class="btn  btn-sm px-3 btn-warning mr-2 d-lg-none">Sign In</a></li>
-        <li> <a href="${pageContext.request.contextPath}/register" class="btn btn-sm px-3 btn-warning d-lg-none mt-2">Sign Up</a></li>
-        </c:if>
-        <c:if test="${pageContext.request.userPrincipal.name != null}">
-        <li> <a href="${pageContext.request.contextPath}/logout" class="btn btn-sm px-3 btn-warning d-lg-none">Log out</a>
-        </li>
-        </c:if>
-    </ul>
-</div>
-</div>
-<div class="col-4 col-lg-3 text-lg-right d-none d-lg-block">
-        <c:if test="${pageContext.request.userPrincipal.name == null}" >
-            <a href="${pageContext.request.contextPath}/login" class="btn  btn-sm px-3 btn-warning mr-2">Sign In</a>
-            <a href="${pageContext.request.contextPath}/register" class="btn btn-sm px-3 btn-warning">Sign Up</a>
-        </c:if>
-        <c:if test="${pageContext.request.userPrincipal.name != null}">
-            <span style="margin: 0 20px;" class="text-white"><strong style="font-weight: bold;">Welcome</strong><strong style="font-style: italic;">,&nbsp;&nbsp;&nbsp; ${pageContext.request.userPrincipal.name} </strong></span>
-            <a href="${pageContext.request.contextPath}/logout" class="btn btn-sm px-3 btn-warning">Log out</a>
-        </c:if>
-    </div>
-</div>
-</nav>-->
-        <!-- END nav -->
-
 
         <div class="hero-wrap js-fullheight" style="background-image: url('https://alpinecabinet.com/wp-content/uploads/2018/12/contact-background.jpg');">
             <div class="overlay"></div>
@@ -165,94 +98,8 @@
             </div>
         </section>
 
-
-        <footer id="foot" class="ftco-footer ftco-bg-dark ftco-section ftco-animate">
-            <div class="container">
-                <div class="row mb-5">
-                    <div class="col-md">
-                        <div class="ftco-footer-widget mb-4">
-                            <h2 class="ftco-heading-2">Contact Us</h2>
-                            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
-                                there live the blind texts.</p>
-                            <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3">
-                                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-                                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-                                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md">
-                        <div class="ftco-footer-widget mb-4 ml-md-4">
-                            <h2 class="ftco-heading-2">Information</h2>
-                            <ul class="list-unstyled">
-                                <li><a href="#" class="py-2 d-block">About Us</a></li>
-                                <li><a href="#" class="py-2 d-block">Online enquiry</a></li>
-                                <li><a href="#" class="py-2 d-block">Call Us</a></li>
-                                <li><a href="#" class="py-2 d-block">General enquiries</a></li>
-                                <li><a href="#" class="py-2 d-block">Booking Conditions</a></li>
-                                <li><a href="#" class="py-2 d-block">Privacy and Policy</a></li>
-                                <li><a href="#" class="py-2 d-block">Refund policy</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md">
-                        <div class="ftco-footer-widget mb-4">
-                            <h2 class="ftco-heading-2">Experience</h2>
-                            <ul class="list-unstyled">
-                                <li><a href="#" class="py-2 d-block">Beach</a></li>
-                                <li><a href="#" class="py-2 d-block">Adventure</a></li>
-                                <li><a href="#" class="py-2 d-block">Wildlife</a></li>
-                                <li><a href="#" class="py-2 d-block">Honeymoon</a></li>
-                                <li><a href="#" class="py-2 d-block">Nature</a></li>
-                                <li><a href="#" class="py-2 d-block">Party</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md">
-                        <div class="ftco-footer-widget mb-4">
-                            <h2 class="ftco-heading-2">Have Questions?</h2>
-                            <div class="block-23 mb-3">
-                                <ul>
-                                    <li><span class="icon icon-map-marker"></span><span class="text"><a target="_blank" href="https://www.google.com/maps/place/Omonoia+39,+Athina+105+64/@37.9807716,23.7300947,17z/data=!3m1!4b1!4m5!3m4!1s0x14a1bd3a371b1527:0xc814362af19d1764!8m2!3d37.9807716!4d23.7322834">Πανεπιστημίου 39, 1ος όροφος,<br>Τ.Κ. 10564, Αθήνα</a></span></li>
-                                    <li><a href="#"><span class="icon icon-phone"></span><span class="text">+30 210 60 87 264
-                                            </span></a></li>
-                                    <li><a href="#"><span class="icon icon-envelope"></span><span
-                                                class="text">tripPlannerDemo@gmail.com</span></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div style="height: 250px; width: 250px;"><iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d786.2119282487015!2d23.732529646567396!3d37.98068313206236!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sgr!4v1572558339900!5m2!1sen!2sgr" width="250" height="250" frameborder="0" style="border:0;" allowfullscreen=""></iframe></div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12 text-center">
-
-                        <p>Copyright &copy;
-                            <script>document.write(new Date().getFullYear());</script> All rights reserved</p>
-                    </div>
-                </div>
-            </div>
-        </footer>
-
-
-        <script src="js/jquery.min.js"></script>
-        <script src="js/jquery-migrate-3.0.1.min.js"></script>
-        <script src="js/popper.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/jquery.easing.1.3.js"></script>
-        <script src="js/jquery.waypoints.min.js"></script>
-        <script src="js/jquery.stellar.min.js"></script>
-        <script src="js/owl.carousel.min.js"></script>
-        <script src="js/jquery.magnific-popup.min.js"></script>
-        <script src="js/aos.js"></script>
-        <script src="js/jquery.animateNumber.min.js"></script>
-        <script src="js/bootstrap-datepicker.js"></script>
-        <!--<script src="js/jquery.timepicker.min.js"></script>-->
-        <script src="js/scrollax.min.js"></script>
-        <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-        <!--<script src="js/google-map.js"></script>-->
-        <script src="js/main.js"></script>
+        <jsp:include page="../components/footer.jsp"/>
+        <jsp:include page="../components/scripts.jsp"/>
 
     </body>
 </html>
