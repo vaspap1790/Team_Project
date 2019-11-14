@@ -7,7 +7,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>TripPlanner</title>
-       
+
         <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
 
@@ -36,48 +36,7 @@
     </head>
 
     <body>
- <jsp:include page="components/navbar.jsp" />
-<!--        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-            <div class="container-fluid px-0 row">
-
-                <div class="col-xl-7 offset-xl-1 col-lg-9 d-flex align-items-center flex-wrap justify-content-between">
-
-                    <a class="navbar-brand" href="${pageContext.request.contextPath}/">TripPlanner</a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
-                            aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="oi oi-menu"></span> Menu
-                    </button>
-
-                    <div class="collapse navbar-collapse" id="ftco-nav">
-                        <ul class="navbar-nav ml-auto">
-                            <li class="nav-item active"><a href="${pageContext.request.contextPath}/" class="nav-link">Home</a></li>
-                            <li class="nav-item"><a href="" class="nav-link">About</a></li>
-                            <li class="nav-item"><a href="" class="nav-link">Places</a></li>
-                            <li class="nav-item"><a href="" class="nav-link">Blog</a></li>
-                            <li class="nav-item"><a href="${pageContext.request.contextPath}/contact" class="nav-link">Contact</a></li>
-                                <c:if test="${pageContext.request.userPrincipal.name == null}" >
-                                <li> <a href="${pageContext.request.contextPath}/login" class="btn  btn-sm px-3 btn-warning mr-2 d-lg-none">Sign In</a></li>
-                                <li> <a href="${pageContext.request.contextPath}/register" class="btn btn-sm px-3 btn-warning d-lg-none mt-2">Sign Up</a></li>
-                                </c:if>
-                                <c:if test="${pageContext.request.userPrincipal.name != null}">
-                                <li> <a href="${pageContext.request.contextPath}/logout" class="btn btn-sm px-3 btn-warning d-lg-none">Log out</a>
-                                </li>
-                            </c:if>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-4 col-lg-3 text-lg-right d-none d-lg-block">
-                    <c:if test="${pageContext.request.userPrincipal.name == null}" >
-                        <a href="${pageContext.request.contextPath}/login" class="btn  btn-sm px-3 btn-warning mr-2">Sign In</a>
-                        <a href="${pageContext.request.contextPath}/register" class="btn btn-sm px-3 btn-warning">Sign Up</a>
-                    </c:if>
-                    <c:if test="${pageContext.request.userPrincipal.name != null}">
-                        <span style="margin: 0 20px;" class="text-white"><strong style="font-weight: bold;">Welcome</strong><strong style="font-style: italic;">,&nbsp;&nbsp;&nbsp; ${pageContext.request.userPrincipal.name} </strong></span>
-                        <a href="${pageContext.request.contextPath}/logout" class="btn btn-sm px-3 btn-warning">Log out</a>
-                    </c:if>
-                </div>
-            </div>
-        </nav>-->
+        <jsp:include page="components/navbar.jsp" />
 
         <div class="hero-wrap js-fullheight" style="background-image: url('images/bg_1.jpg');">
             <div class="overlay"></div>
@@ -1005,6 +964,14 @@
         <script src="js/scrollax.min.js"></script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
         <script src="js/main.js"></script>
+        
+        <script>
+              $(document).ready(function () {
+              // get current URL path and assign 'active' class
+              const pathname = window.location.pathname;
+              $('.nav > li > a[href="' + pathname + '"]').parent().addClass('active');
+              });
+        </script>
 
     </body>
 
