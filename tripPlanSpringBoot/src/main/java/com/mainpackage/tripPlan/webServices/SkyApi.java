@@ -25,7 +25,7 @@ public class SkyApi {
 
     public String CreateSession(Flight f, @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate inboundDate) throws IOException, UnirestException {
         String sessionKey = null;
-
+        Unirest.setTimeouts(1000,200000);
         HttpResponse<String> response = Unirest.post("https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/pricing/v1.0")
                 .header("X-RapidAPI-Host", "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com")
                 .header("X-RapidAPI-Key", "2f7c656e8emsh52fa210fd1c2272p1016dbjsn00574276a26e")
@@ -59,7 +59,7 @@ public class SkyApi {
     }
 
     public HttpResponse<String> SessionResults(String sessionKey) throws UnirestException {
-
+        Unirest.setTimeouts(1000,900000);
         HttpResponse<String> response = Unirest.get("https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/pricing/uk2/v1.0/" + sessionKey + "?pageIndex=0&pageSize=10")
                 .header("X-RapidAPI-Host", "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com")
                 .header("X-RapidAPI-Key", "2f7c656e8emsh52fa210fd1c2272p1016dbjsn00574276a26e")

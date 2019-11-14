@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class WelcomeController {
@@ -51,16 +52,15 @@ public class WelcomeController {
     }
 
     @PostMapping(value = "/postRegister")
-    public ModelAndView post(HttpServletRequest request, @Valid @ModelAttribute("user") User user, BindingResult br, ModelMap m, HttpSession session) throws IOException, SQLException {
+    public ModelAndView post(HttpServletRequest request, @Valid @ModelAttribute("user") User user,
+            BindingResult br, ModelMap m, HttpSession session,RedirectAttributes redirectAttrs) throws IOException, SQLException {
 
         if (br.hasErrors()) {
             return new ModelAndView("redirect:/register");
         }
 
         if (check.isNotNull(userRepo.findByUsername(user.getUsername()))) {
-            String failed = "This username is already in use";
-            m.addAttribute("failed", failed);
-
+            redirectAttrs.addFlashAttribute("error","This username is already in use");
             return new ModelAndView("redirect:/register");
         }
         String originalPass = user.getPassword();

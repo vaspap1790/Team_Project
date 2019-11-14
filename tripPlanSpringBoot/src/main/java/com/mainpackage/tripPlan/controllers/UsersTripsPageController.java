@@ -41,7 +41,7 @@ public class UsersTripsPageController {
         return "fail";
     }
 
-    @GetMapping(value = "trip/{username}/{id}")
+    @GetMapping(value = "{username}/{id}")
     @ResponseBody
     public Map<String, Object> preSubmitTrip(@PathVariable(name = "username") String username,
             @PathVariable(name = "id") String id) {

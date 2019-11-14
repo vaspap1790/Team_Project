@@ -172,6 +172,10 @@
                                 </div><!--/tab-pane-->
                                 <div class="tab-pane" id="messages">
 
+<<<<<<< HEAD
+                                    <!--<hr>-->
+                                  
+=======
                                     <table class="border" ng-show="items.length !== 0">
                                         <thead>
                                             <tr class="bg-dark text-white">
@@ -205,6 +209,7 @@
 
                                     <hr>
                                     <p ng-show="items.length == 0">No Sketches Found</p>
+>>>>>>> cea862ab48ee9fdadfcc97844b886cc64adfd7b1
 
                                 </div><!--/tab-pane-->
                                 <div class="tab-pane" id="settings">

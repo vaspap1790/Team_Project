@@ -109,6 +109,45 @@
                             </div>
                         </div><!-- END-->
 
+<<<<<<< HEAD
+                    <div class="col-lg-9 ">
+                        <div class="row">
+                            <div class="container">
+                                <c:if test="${fn:length(flights.Itineraries) eq 0}">
+                                    <div class="d-flex justify-content-center">
+                                    <h1>No Available Flights </h1>
+                                    </div>
+                                </c:if>           
+                                <c:forEach items="${flights.Itineraries}" var="it" >
+                                    <s:form action="${pageContext.request.contextPath}/flight/postFlightResults" method="POST" modelAttribute="transportation">
+                                        <div class="row border shadow border-primary mt-2 ftco-animate">
+                                            <div class="col-md-8">
+                                                <c:forEach items="${flights.Legs}" var="f" varStatus="fcount" >
+                                                    <c:if test="${f.Id == it.OutboundLegId }">
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
+                                                                <div class="d-flex d-row">
+                                                                    <div class="pr-3">
+                                                                        <c:forEach items="${flights.Carriers}" var="car" varStatus="carcount">
+                                                                            <c:if test="${car.Id==f.Carriers[0]}">
+                                                                                <img src="${car.ImageUrl}" />
+                                                                            </c:if>
+                                                                        </c:forEach>
+                                                                    </div>
+                                                                    <div class="d-flex align-items-center">
+                                                                        <div class="p-3 ">
+                                                                            <div class="d-flex justify-content-end">
+                                                                                <span class="time">${fn:substring(f.Departure,11,16)}</span>
+                                                                                <s:input type="hidden" path="departure" value="${f.Departure}"/>
+                                                                            </div>
+                                                                            <div id="place_form" class="d-flex justify-content-end">
+                                                                                <c:forEach items="${flights.Places}" var="p" varStatus="pcount">
+                                                                                    <c:if test="${p.Id==f.OriginStation}">
+                                                                                        <s:input type="hidden" path="startingPoint" value="${p.Name}" ></s:input>
+                                                                                        <span>${p.Code}</span>
+                                                                                    </c:if>
+                                                                                </c:forEach>
+=======
                         <div class="col-lg-9">
                             <div class="row">
                                 <div class="container">
@@ -142,6 +181,7 @@
                                                                                         </c:if>
                                                                                     </c:forEach>
                                                                                 </div>
+>>>>>>> cea862ab48ee9fdadfcc97844b886cc64adfd7b1
                                                                             </div>
                                                                         </div>
                                                                         <div class="LegInfo_stopsContainer__1XNWn ">
