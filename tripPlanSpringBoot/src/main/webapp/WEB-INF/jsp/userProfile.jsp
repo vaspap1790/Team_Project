@@ -15,7 +15,6 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
 
-
     </head>
     <body ng-controller="MainCtrl">
 
@@ -53,13 +52,51 @@
                         </div><!--/col-3-->
                         <div class="col-sm-9">
                             <ul class="nav nav-tabs">
-                                <li class="active"><a data-toggle="tab" href="#home">Profile</a></li>
-                                <li><a data-toggle="tab" href="#messages">Trips</a></li>
+                                <li class="active"><a data-toggle="tab" href="#trips">Trips</a></li>
+                                <li><a data-toggle="tab" href="#profile">Profile</a></li>
                                 <li><a data-toggle="tab" href="#settings">Menu 2</a></li>
                             </ul>
 
                             <div class="tab-content">
-                                <div class="tab-pane active" id="home">
+                                <div class="tab-pane active" id="trips">
+
+                                    <table class="border" ng-show="items.length !== 0">
+                                        <thead>
+                                            <tr class="bg-dark text-white">
+                                                <th class="border p-3" style="display:none;">id</th>
+                                                <th class="border p-3">Trip</th>
+                                                <th class="border p-3">Delete</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="item in items">
+
+                                                <td class="border p-3" style="display:none;">
+                                                    {{item.id}}
+                                                </td>
+
+                                                <td class="border p-3">
+                                                    <a href="${pageContext.request.contextPath}/user/userTripsPage/{{item.id}}"><i class="fas fa-suitcase-rolling"></i>&nbsp;
+                                                        {{item.location}}
+                                                    </a>
+                                                </td>
+
+                                                <td class="border p-3"> 
+                                                    <a>
+                                                        <i ng-click="deleteItem($index, item.id)" class="far fa-trash-alt ml-4 mt-1"></i>
+                                                    </a>
+                                                </td>
+
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                    <hr>
+                                    <p ng-show="items.length == 0">No Sketches Found</p>
+
+                                </div><!--/tab-pane-->
+
+                                <div class="tab-pane" id="profile">
                                     <hr>
                                     <form class="form" action="##" method="post" id="registrationForm">
                                         <div class="form-group">
@@ -130,45 +167,7 @@
 
                                     <!--Tips Angular-->   
                                 </div><!--/tab-pane-->
-                                <div class="tab-pane" id="messages">
 
-
-                                    <table class="border" ng-show="items.length !== 0">
-                                        <thead>
-                                            <tr class="bg-dark text-white">
-                                                <th class="border p-3" style="display:none;">id</th>
-                                                <th class="border p-3">Trip</th>
-                                                <th class="border p-3">Delete</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr ng-repeat="item in items">
-
-                                                <td class="border p-3" style="display:none;">
-                                                    {{item.id}}
-                                                </td>
-
-                                                <td class="border p-3">
-                                                    <a href="${pageContext.request.contextPath}/user/userTripsPage/{{item.id}}">
-                                                        {{item.location}}
-                                                    </a>
-                                                </td>
-
-                                                <td class="border p-3"> 
-                                                    <a>
-                                                        <i ng-click="deleteItem($index, item.id)" class="far fa-trash-alt ml-4 mt-1"></i>
-                                                    </a>
-                                                </td>
-
-                                            </tr>
-                                        </tbody>
-                                    </table>
-
-                                    <hr>
-                                    <p ng-show="items.length == 0">No Sketches Found</p>
-
-
-                                </div><!--/tab-pane-->
                                 <div class="tab-pane" id="settings">
 
                                 </div>
