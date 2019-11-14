@@ -20,6 +20,7 @@
     <class>com.mainpackage.tripPlan.model.Post</class>
     <class>com.mainpackage.tripPlan.model.RentalType</class>
     <class>com.mainpackage.tripPlan.model.AccommodationType</class>
+    <class>com.mainpackage.tripPlan.model.Notes</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/tripplanner?zeroDateTimeBehavior=CONVERT_TO_NULL&amp;useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC&amp;allowPublicKeyRetrieval=true&amp;useSSL=false"/>

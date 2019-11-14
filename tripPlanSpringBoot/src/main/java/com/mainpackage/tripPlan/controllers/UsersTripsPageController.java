@@ -1,15 +1,18 @@
 package com.mainpackage.tripPlan.controllers;
 
+import com.mainpackage.tripPlan.DummyModels.DummyNotes;
 import com.mainpackage.tripPlan.model.Comment;
 import com.mainpackage.tripPlan.model.Trip;
 import com.mainpackage.tripPlan.services.CommentService;
 import com.mainpackage.tripPlan.services.TripService;
 import java.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -54,8 +57,16 @@ public class UsersTripsPageController {
 
             Map<String, Object> error = new HashMap<>();
             error.put("error", e.getMessage());
-            
+
             return error;
         }
+    }
+
+    @PostMapping(value = "saveNote", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public String saveNote(@RequestBody DummyNotes notes) {
+        System.out.println(notes);
+
+        return "successs";
     }
 }

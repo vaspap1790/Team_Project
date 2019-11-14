@@ -36,7 +36,7 @@
                 <a href="${pageContext.request.contextPath}/register" class="btn btn-sm px-3 btn-warning">Sign Up</a>
             </c:if>
             <c:if test="${pageContext.request.userPrincipal.name != null}">
-                <span style="margin: 0 20px;" class="text-white"><strong style="font-weight: bold;">Welcome</strong><strong style="font-style: italic;">,&nbsp;&nbsp;&nbsp;<span id="username"> ${pageContext.request.userPrincipal.name}</span> </strong></span>
+                <span style="margin: 0 20px;" class="text-white"><strong style="font-weight: bold;">Welcome</strong><strong style="font-style: italic;">,&nbsp;&nbsp;&nbsp;<a href="${pageContext.request.contextPath}/user/profile"> <span id="username"> ${pageContext.request.userPrincipal.name}</span></a> </strong></span>
                 <a href="${pageContext.request.contextPath}/logout" class="btn btn-sm px-3 btn-warning">Log out</a>
             </c:if>
         </div>    

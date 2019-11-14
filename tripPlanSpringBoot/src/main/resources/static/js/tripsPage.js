@@ -1,11 +1,17 @@
-const clickedBtn = null;
-$(document).ready(function () {
+let clickedBtn = null;
 
-    $(".add").click(function (e) {
-        clickedBtn = e;
-    });
-
+$(document).on("click", ".add", function (e) {
+    console.log("click");
+    clickedBtn = e;
 });
+//$(document).ready(function () {
+//
+//    $(".add").click(function (e) {
+//        console.log("dsaads");
+//    clickedBtn=e;
+//    });
+//
+//});
 
 //Handle photos
 $('#formPhotos').click(function () {
@@ -33,7 +39,7 @@ $(".budget").change(function (e) {
     // let previous = parseInt($("#totalBudget").innerText);
     // previous.innerText = (previous + parseInt(this.innerText));
 
-})
+});
 
 //Angular
 
@@ -92,20 +98,26 @@ App.controller("MainCtrl", async function ($scope, $http) {
     };
     $scope.addNote = function () {
 
-        $(clickedBtn.currentTarget.parentElement).next().append("<a href='#'><img id='notePhoto' src='https://icon-library.net/images/icon-note/icon-note-0.jpg'></a>");
+        $(clickedBtn.target.parentElement).next().append("<a href='#'><img id='notePhoto' src='https://icon-library.net/images/icon-note/icon-note-0.jpg'></a>");
         const title = $("#notesModal #noteTitle").val().trim();
         const body = $("#notesModal #noteBody").val().trim();
-        let object = {title: title, body: body, username: username, tripId: tripId};
+        let object = {title: title, body: body, tripId: tripId, date: "2019-01-01"};
         let jsonObject = JSON.stringify(object);
         console.log(jsonObject);
-        const URL = "";
-        // $http.post(URL,jsonObject)
-        //     .then(()=>{
-        //         console.log("Successfully sent the note");
-        //     })
-        //     .catch((error)=>{
-        //         console.log(error);
-        //     });
+        const URL = "http://localhost:8080/tripPlan/tripPage/saveNote";
+        var req = {
+            method: 'POST',
+            url: URL,
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            data: jsonObject
+        };
+        $http(req).then(function(){
+        console.log("success");
+        }).catch(()=>{
+        console.log("error");
+        });          
     };
     $scope.addBudget = function () {
 

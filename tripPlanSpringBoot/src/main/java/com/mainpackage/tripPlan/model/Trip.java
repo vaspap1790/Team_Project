@@ -38,6 +38,12 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Trip.findByTotalBudget", query = "SELECT t FROM Trip t WHERE t.totalBudget = :totalBudget")})
 public class Trip implements Serializable {
 
+    @Size(max = 45)
+    @Column(name = "location")
+    private String location;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tripId")
+    private Collection<Notes> notesCollection;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -66,9 +72,6 @@ public class Trip implements Serializable {
     private Collection<Accommodation> accommodationCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "tripId")
     private Collection<Comment> commentCollection;
-    @Size(max = 45)
-    @Column(name = "location")
-    private String location;
 
     public Trip() {
     }
@@ -207,6 +210,15 @@ public class Trip implements Serializable {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    @XmlTransient
+    public Collection<Notes> getNotesCollection() {
+        return notesCollection;
+    }
+
+    public void setNotesCollection(Collection<Notes> notesCollection) {
+        this.notesCollection = notesCollection;
     }
 
 }
