@@ -18,7 +18,7 @@ import com.mainpackage.tripPlan.repositories.NotesRepo;
 import java.text.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class TripPageService {
@@ -60,5 +60,15 @@ public class TripPageService {
       public List<DailyBudgetDTO> getDailyBudgetById(int id){
           List<DailyBudgetDTO> db=dbRepo.findDailyBudgetByTripId(id);
          return db;
+      }
+      
+      public Map<String,Object> getData(int id){
+          List<NotesDTO> notes=getNotesById(id);
+          List<DailyBudgetDTO> db=getDailyBudgetById(id);
+          
+          Map<String,Object> data=new HashMap<>();
+          data.put("notes",notes);
+          data.put("dailyBudget",db);
+          return data;
       }
 }
