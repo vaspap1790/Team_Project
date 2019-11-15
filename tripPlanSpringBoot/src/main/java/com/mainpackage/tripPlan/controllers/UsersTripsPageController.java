@@ -2,6 +2,8 @@ package com.mainpackage.tripPlan.controllers;
 
 import com.mainpackage.tripPlan.DummyModels.DummyDailyBudget;
 import com.mainpackage.tripPlan.DummyModels.DummyNotes;
+import com.mainpackage.tripPlan.dto.DailyBudgetDTO;
+import com.mainpackage.tripPlan.dto.NotesDTO;
 import com.mainpackage.tripPlan.model.Comment;
 import com.mainpackage.tripPlan.model.Trip;
 import com.mainpackage.tripPlan.services.CommentService;
@@ -79,5 +81,19 @@ public class UsersTripsPageController {
     public String saveBudget(@RequestBody DummyDailyBudget budget) throws ParseException {
         tripPageService.saveBudget(budget);
         return "successs";
+    }
+
+    @GetMapping(value = "getNotes/{tripId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public List<NotesDTO> getNotes(@PathVariable(name = "tripId") String id) throws ParseException {
+
+        return tripPageService.getNotesById(Integer.parseInt(id));
+    }
+
+    @GetMapping(value = "getDailyBudget/{tripId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public List<DailyBudgetDTO> getDailyBudget(@PathVariable(name = "tripId") String id) throws ParseException {
+
+        return tripPageService.getDailyBudgetById(Integer.parseInt(id));
     }
 }

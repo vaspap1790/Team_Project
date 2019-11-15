@@ -8,12 +8,17 @@ package com.mainpackage.tripPlan.services;
 import com.mainpackage.tripPlan.DummyModels.DummyDailyBudget;
 import com.mainpackage.tripPlan.DummyModels.DummyNotes;
 import com.mainpackage.tripPlan.daos.GenericJpaDao;
+import com.mainpackage.tripPlan.dto.DailyBudgetDTO;
+import com.mainpackage.tripPlan.dto.NotesDTO;
 import com.mainpackage.tripPlan.model.DailyBudget;
 import com.mainpackage.tripPlan.model.Notes;
 import com.mainpackage.tripPlan.model.Trip;
+import com.mainpackage.tripPlan.repositories.DailyBudgetRepo;
+import com.mainpackage.tripPlan.repositories.NotesRepo;
 import java.text.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.util.List;
 
 @Service
 public class TripPageService {
@@ -24,6 +29,10 @@ public class TripPageService {
     TripService tripService;
     @Autowired
     GenericJpaDao<DailyBudget> budgetDAO;
+    @Autowired
+    NotesRepo notesRepo;
+    @Autowired 
+    DailyBudgetRepo dbRepo;
 
     public void saveNotes(DummyNotes dummy) throws ParseException {
         try{
@@ -42,4 +51,14 @@ public class TripPageService {
             e.printStackTrace();
         }
     }
+      
+      public List<NotesDTO> getNotesById(int id){
+          List<NotesDTO> notes=notesRepo.findNotesByTripId(id);
+         return notes;
+      }
+      
+      public List<DailyBudgetDTO> getDailyBudgetById(int id){
+          List<DailyBudgetDTO> db=dbRepo.findDailyBudgetByTripId(id);
+         return db;
+      }
 }
