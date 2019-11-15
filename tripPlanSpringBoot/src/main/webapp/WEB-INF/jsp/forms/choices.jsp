@@ -50,11 +50,11 @@
                                     <div class="row">
                                         <div class="col-md align-items-end">
                                             <div class="form-group">
-                                                <label for="#">Destination</label>
+                                                <label for="#">Trip</label>
                                                 <div class="form-field">
                                                     <div class="select-wrap">
                                                         <div class="icon"><span class="icon-my_location"></span></div>
-                                                        <input type="text" name="location" class="autocomplete form-control" required="required" placeholder="Your Location *">
+                                                        <input type="text" name="location" class="autocomplete form-control" required="required" placeholder="Name Your Trip *">
 
                                                     </div>
                                                 </div>
