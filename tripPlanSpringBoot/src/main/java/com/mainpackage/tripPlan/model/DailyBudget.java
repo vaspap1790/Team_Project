@@ -6,6 +6,7 @@
 package com.mainpackage.tripPlan.model;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -14,15 +15,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -31,14 +29,14 @@ import org.springframework.format.annotation.DateTimeFormat;
  * @author vasil
  */
 @Entity
-@Table(name = "notes")
+@Table(name = "daily_budget")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Notes.findAll", query = "SELECT n FROM Notes n")
-    , @NamedQuery(name = "Notes.findById", query = "SELECT n FROM Notes n WHERE n.id = :id")
-    , @NamedQuery(name = "Notes.findByTitle", query = "SELECT n FROM Notes n WHERE n.title = :title")
-    , @NamedQuery(name = "Notes.findByDate", query = "SELECT n FROM Notes n WHERE n.date = :date")})
-public class Notes implements Serializable {
+    @NamedQuery(name = "DailyBudget.findAll", query = "SELECT d FROM DailyBudget d")
+    , @NamedQuery(name = "DailyBudget.findById", query = "SELECT d FROM DailyBudget d WHERE d.id = :id")
+    , @NamedQuery(name = "DailyBudget.findByDayBudget", query = "SELECT d FROM DailyBudget d WHERE d.dayBudget = :dayBudget")
+    , @NamedQuery(name = "DailyBudget.findByDate", query = "SELECT d FROM DailyBudget d WHERE d.date = :date")})
+public class DailyBudget implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -46,15 +44,9 @@ public class Notes implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Size(max = 30)
-    @Column(name = "title")
-    private String title;
-    @Lob
-    @Size(max = 65535)
-    @Column(name = "body")
-    private String body;
-    @Basic(optional = false)
-    @NotNull
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    @Column(name = "dayBudget")
+    private BigDecimal dayBudget;
     @Column(name = "date")
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
@@ -63,23 +55,19 @@ public class Notes implements Serializable {
     @ManyToOne(optional = false)
     private Trip tripId;
 
-    public Notes() {
+    public DailyBudget() {
     }
 
-    public Notes(Integer id) {
-        this.id = id;
-    }
-
-    public Notes(Integer id, Date date) {
-        this.id = id;
-        this.date = date;
-    }
-
-    public Notes(String title, String body, Date date, Trip tripId) {
-        this.title = title;
-        this.body = body;
+    public DailyBudget(BigDecimal dayBudget, Date date, Trip tripId) {
+        this.dayBudget = dayBudget;
         this.date = date;
         this.tripId = tripId;
+    }
+    
+    
+
+    public DailyBudget(Integer id) {
+        this.id = id;
     }
 
     public Integer getId() {
@@ -90,20 +78,12 @@ public class Notes implements Serializable {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public BigDecimal getDayBudget() {
+        return dayBudget;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getBody() {
-        return body;
-    }
-
-    public void setBody(String body) {
-        this.body = body;
+    public void setDayBudget(BigDecimal dayBudget) {
+        this.dayBudget = dayBudget;
     }
 
     public Date getDate() {
@@ -132,10 +112,10 @@ public class Notes implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Notes)) {
+        if (!(object instanceof DailyBudget)) {
             return false;
         }
-        Notes other = (Notes) object;
+        DailyBudget other = (DailyBudget) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -144,7 +124,7 @@ public class Notes implements Serializable {
 
     @Override
     public String toString() {
-        return "com.mainpackage.tripPlan.model.Notes[ id=" + id + " ]";
+        return "com.mainpackage.tripPlan.model.DailyBudget[ id=" + id + " ]";
     }
-
+    
 }

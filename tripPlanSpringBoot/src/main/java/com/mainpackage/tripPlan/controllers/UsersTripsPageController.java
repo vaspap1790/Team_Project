@@ -1,10 +1,13 @@
 package com.mainpackage.tripPlan.controllers;
 
+import com.mainpackage.tripPlan.DummyModels.DummyDailyBudget;
 import com.mainpackage.tripPlan.DummyModels.DummyNotes;
 import com.mainpackage.tripPlan.model.Comment;
 import com.mainpackage.tripPlan.model.Trip;
 import com.mainpackage.tripPlan.services.CommentService;
+import com.mainpackage.tripPlan.services.TripPageService;
 import com.mainpackage.tripPlan.services.TripService;
+import java.text.ParseException;
 import java.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -25,6 +28,8 @@ public class UsersTripsPageController {
     TripService tripService;
     @Autowired
     CommentService commentService;
+    @Autowired
+    TripPageService tripPageService;
 
     @PostMapping(value = "saveComment")
     @ResponseBody
@@ -64,9 +69,15 @@ public class UsersTripsPageController {
 
     @PostMapping(value = "saveNote", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public String saveNote(@RequestBody DummyNotes notes) {
-        System.out.println(notes);
+    public String saveNote(@RequestBody DummyNotes notes) throws ParseException {
+        tripPageService.saveNotes(notes);
+        return "successs";
+    }
 
+    @PostMapping(value = "saveBudget", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public String saveBudget(@RequestBody DummyDailyBudget budget) throws ParseException {
+        tripPageService.saveBudget(budget);
         return "successs";
     }
 }

@@ -6,6 +6,7 @@
 package com.mainpackage.tripPlan.DummyModels;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import java.math.BigDecimal;
 import java.sql.Date;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,24 +15,23 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-@JsonPropertyOrder({"title", "body", "tripId", "date"})
-public class DummyNotes {
-
-    public String title;
-    public String body;
+@JsonPropertyOrder({"dayBudget", "tripId","date"})
+public class DummyDailyBudget {
+    
+    public BigDecimal dayBudget;
     public int tripId;
     public Date date;
 
-    public DummyNotes(String title, String body, int tripId, Date date) {
-        this.title = title;
-        this.body = body;
+    public DummyDailyBudget(BigDecimal dayBudget, int tripId, Date date) {
+        this.dayBudget = dayBudget;
         this.tripId = tripId;
         this.date = date;
     }
 
     @Override
     public String toString() {
-        return "DummyNotes{" + "title=" + title + ", body=" + body + ", tripId=" + tripId + ", date=" + date + '}';
+        return "DummyDailyBudget{" + "dayBudget=" + dayBudget + ", tripId=" + tripId + ", date=" + date + '}';
     }
-
+    
+    
 }

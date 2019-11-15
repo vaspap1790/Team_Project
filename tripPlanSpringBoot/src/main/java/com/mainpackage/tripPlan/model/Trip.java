@@ -42,6 +42,8 @@ public class Trip implements Serializable {
     @Column(name = "location")
     private String location;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "tripId")
+    private Collection<DailyBudget> dailyBudgetCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tripId")
     private Collection<Notes> notesCollection;
 
     private static final long serialVersionUID = 1L;
@@ -204,6 +206,16 @@ public class Trip implements Serializable {
         return "com.mainpackage.tripPlan.model.Trip[ tripId=" + tripId + " ]";
     }
 
+
+    @XmlTransient
+    public Collection<Notes> getNotesCollection() {
+        return notesCollection;
+    }
+
+    public void setNotesCollection(Collection<Notes> notesCollection) {
+        this.notesCollection = notesCollection;
+    }
+
     public String getLocation() {
         return location;
     }
@@ -213,12 +225,12 @@ public class Trip implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Notes> getNotesCollection() {
-        return notesCollection;
+    public Collection<DailyBudget> getDailyBudgetCollection() {
+        return dailyBudgetCollection;
     }
 
-    public void setNotesCollection(Collection<Notes> notesCollection) {
-        this.notesCollection = notesCollection;
+    public void setDailyBudgetCollection(Collection<DailyBudget> dailyBudgetCollection) {
+        this.dailyBudgetCollection = dailyBudgetCollection;
     }
 
 }

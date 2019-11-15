@@ -65,6 +65,7 @@ App.controller("MainCtrl", async function ($scope, $http) {
     const tripId = await document.getElementById("tripId").innerText.trim();
     const dateArray = [];
     const URL = "http://localhost:8080/tripPlan/tripPage/" + username + "/" + tripId;
+    ///ean den exei accommodation ,petaei error...
     $http.get(URL)
             .then((response) => {
                 const data = response.data;
@@ -101,7 +102,7 @@ App.controller("MainCtrl", async function ($scope, $http) {
         $(clickedBtn.target.parentElement).next().append("<a href='#'><img id='notePhoto' src='https://icon-library.net/images/icon-note/icon-note-0.jpg'></a>");
         const title = $("#notesModal #noteTitle").val().trim();
         const body = $("#notesModal #noteBody").val().trim();
-        let object = {title: title, body: body, tripId: tripId, date: "2019-01-01"};
+        let object = {title: title, body: body, tripId: tripId, date: "2019-11-21"};
         let jsonObject = JSON.stringify(object);
         console.log(jsonObject);
         const URL = "http://localhost:8080/tripPlan/tripPage/saveNote";
@@ -122,18 +123,24 @@ App.controller("MainCtrl", async function ($scope, $http) {
     $scope.addBudget = function () {
 
         const budget = $("#budgetModal #budget").val().trim();
-        $(clickedBtn.currentTarget.parentElement).next().append(budget + '&euro;');
-        let object = {dayBudget: budget, username: username, tripId: tripId};
+        $(clickedBtn.target.parentElement).next().append(budget + '&euro;');
+        let object = {dayBudget: budget, tripId: tripId, date: "2019-11-21"};
         let jsonObject = JSON.stringify(object);
         console.log(jsonObject);
-        const URL = "";
-        // $http.post(URL,jsonObject)
-        //     .then(()=>{
-        //         console.log("Successfully sent the daybudget");
-        //     })
-        //     .catch((error)=>{
-        //         console.log(error);
-        //     });
+        const URL = "http://localhost:8080/tripPlan/tripPage/saveBudget";
+        var req = {
+            method: 'POST',
+            url: URL,
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            data: jsonObject
+        };
+        $http(req).then(function(){
+        console.log("success");
+        }).catch(()=>{
+        console.log("error");
+        }); 
     };
 });
 
