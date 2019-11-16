@@ -45,7 +45,7 @@ $(".budget").change(function (e) {
 //Angular
 
 const App = angular.module("App", []);
-App.controller("MainCtrl", async function ($scope, $http) {
+App.controller("MainCtrl", function ($scope, $http) {
 
     var getDates = function (startDate, endDate) {
         var dates = [],
@@ -62,8 +62,13 @@ App.controller("MainCtrl", async function ($scope, $http) {
         return dates;
     };
 
+<<<<<<< HEAD
     const username = await document.getElementById("username").innerText.trim();
     const tripId = await document.getElementById("tripId").innerText.trim();
+=======
+    const username = document.getElementById("username").innerText.trim();
+    const tripId = document.getElementById("tripId").innerText.trim();
+>>>>>>> b9c8b53f9ed4bc0b80f84b02d47514684cf6ccfc
 
     const dateArray = [];
     const flightDateArray = [];
@@ -98,7 +103,11 @@ App.controller("MainCtrl", async function ($scope, $http) {
     });
 
     $scope.dates = dateArray;
+<<<<<<< HEAD
     $scope.flightDates = flightDateArray;
+=======
+    $scope.flightDates = [dateArray[0], dateArray[dateArray.length - 1]];
+>>>>>>> b9c8b53f9ed4bc0b80f84b02d47514684cf6ccfc
     $scope.commonDates = $scope.flightDates.filter(value => $scope.dates.includes(value));
 
     $scope.totalBudget = 0;
@@ -129,6 +138,11 @@ App.controller("MainCtrl", async function ($scope, $http) {
         //         console.log(error);
         //     });
     };
+<<<<<<< HEAD
+=======
+
+    $scope.addNote = function () {
+>>>>>>> b9c8b53f9ed4bc0b80f84b02d47514684cf6ccfc
 
     $scope.addNote = async function () {
 
@@ -154,7 +168,10 @@ App.controller("MainCtrl", async function ($scope, $http) {
         });
     };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> b9c8b53f9ed4bc0b80f84b02d47514684cf6ccfc
     $scope.addBudget = function () {
 
         const budget = $("#budgetModal #budget").val().trim();

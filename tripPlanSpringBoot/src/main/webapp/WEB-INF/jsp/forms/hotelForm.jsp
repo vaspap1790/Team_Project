@@ -66,7 +66,7 @@
                                             <div class="form-group">
                                                 <label for="#">Check In</label>                           
                                                 <div class="form-field" >
-                                                    <div class="icon"><span class="icon-map-marker"></span></div>          
+                                                    <div class="icon"><span class="far fa-calendar-alt"></span></div>          
                                                     <input autocomplete="off" name="checkin" class="form-control checkin_date" required="required"  type="text" placeholder="Check In" />
                                                 </div>
                                             </div>
@@ -75,14 +75,14 @@
                                             <div  class="form-group">
                                                 <label id="labelinbounddate" for="#">Check Out</label>
                                                 <div  class="form-field ">
-                                                    <div class="icon"><span class="icon-map-marker "></span></div>                                                 
+                                                    <div class="icon"><span class="far fa-calendar-alt"></span></div>                                                 
                                                     <input autocomplete="off" name="checkout" class="form-control checkout_date "  type="text" placeholder="Check Out" />
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-md align-items-end">
                                             <div class="form-group">
-                                                <label for="#">Quests</label>
+                                                <label for="#">Guests</label>
                                                 <div class="form-field">
                                                     <div class="select-wrap">
                                                         <div class="icon"><span class="ion-ios-arrow-down"></span></div>

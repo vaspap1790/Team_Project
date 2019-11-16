@@ -62,7 +62,7 @@ public class UserController {
     public String userTripsPage(HttpSession session,@PathVariable(value="tripId") String tripId) {
 
         session.setAttribute("tripId",tripId);
-        System.out.println(tripId);
+ 
         return "main/userTripsPage";
     }
 

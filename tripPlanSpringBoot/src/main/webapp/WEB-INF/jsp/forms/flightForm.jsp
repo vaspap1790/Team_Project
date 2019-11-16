@@ -64,7 +64,7 @@
                                             <div class="form-group">
                                                 <label for="#">From</label>
                                                 <div class="form-field">
-                                                    <div class="icon"><span class="icon-my_location"></span></div>
+                                                    <div class="icon"><span class="icon-map-marker"></span></div>
                                                     <input type="text" class="autocomplete form-control" required placeholder="From *">
                                                     <spring:hidden id="originPlace" path="originPlace" />
                                                 </div>
@@ -75,10 +75,10 @@
                                         </div>   
                                         <div class="col-md align-items-end">
                                             <div class="form-group">
-                                                <label for="#">Where</label>
+                                                <label for="#">To</label>
                                                 <div class="form-field">
                                                     <div class="icon"><span class="icon-map-marker"></span></div>
-                                                    <input type="text" class="autocomplete form-control" required="required" placeholder="Where *">
+                                                    <input type="text" class="autocomplete form-control" required="required" placeholder="To *">
                                                     <spring:hidden id="destinationPlace" path="destinationPlace"/>
                                                 </div>
                                             </div>
@@ -87,8 +87,8 @@
                                             <div class="form-group">
                                                 <label for="#">Depart</label>                           
                                                 <div class="form-field" >
-                                                    <div class="icon"><span class="icon-map-marker"></span></div>          
-                                                        <spring:input autocomplete="off" path="outboundDate" cssClass="form-control checkin_date" required="required"  type="text" placeholder="To *" />
+                                                    <div class="icon"><span class="far fa-calendar-alt"></span></div>          
+                                                        <spring:input autocomplete="off" path="outboundDate" cssClass="form-control checkin_date" required="required"  type="text" placeholder="Depart *" />
                                                 </div>
                                             </div>
                                         </div>                
@@ -96,8 +96,8 @@
                                             <div  class="form-group">
                                                 <label id="labelinbounddate" for="#">Return</label>
                                                 <div  class="form-field ">
-                                                    <div class="icon"><span class="icon-map-marker "></span></div>                                                 
-                                                    <input autocomplete="off" id="inboundDate" name="inboundDate"   class="form-control checkout_date "  type="text" placeholder="From *" />
+                                                    <div class="icon"><span class="far fa-calendar-alt"></span></div>                                                 
+                                                    <input autocomplete="off" id="inboundDate" name="inboundDate"   class="form-control checkout_date "  type="text" placeholder="Return *" />
                                                 </div>
                                             </div>
                                         </div>

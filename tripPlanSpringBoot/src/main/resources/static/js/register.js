@@ -28,7 +28,8 @@ function val(text) {
             username: {
                 minlength:4,
                 required: true,
-                maxlength: 30
+                maxlength: 30,
+                lettersonly: true
             },
             email: {
                 minlength:4,
@@ -62,7 +63,8 @@ function val(text) {
             username: {
                 minlength:"Username must be between 4 and 30 characters",
                 required: "Please enter username",
-                maxlength: "Username must cosist of maximum 30 characters"
+                maxlength: "Username must cosist of maximum 30 characters",
+                lettersonly:"Only letters"
             },
             email: {
                 minlength:"Email must be between 4 and 30 characters",

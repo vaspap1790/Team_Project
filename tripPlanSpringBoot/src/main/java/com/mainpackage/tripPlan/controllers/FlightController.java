@@ -1,5 +1,6 @@
 package com.mainpackage.tripPlan.controllers;
 
+import com.mainpackage.tripPlan.DummyModels.TransportationDummy;
 import com.mainpackage.tripPlan.model.AccommodationType;
 import com.mainpackage.tripPlan.model.Flight;
 import com.mainpackage.tripPlan.model.Transportation;
@@ -35,6 +36,8 @@ public class FlightController {
 
     @Autowired
     SkyApi sky;
+     @Autowired
+    SkyApi sky1;
     @Autowired
     CreateJson createJ;
 
@@ -50,11 +53,12 @@ public class FlightController {
             @RequestParam(name = "inboundDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate inboundDate) throws IOException, UnirestException, ParseException {
 
         String sessionKey = sky.CreateSession(flight, inboundDate);
-        HttpResponse<String> skyReport = sky.SessionResults(sessionKey);
+        HttpResponse<String> skyReport = sky1.SessionResults(sessionKey);
 
         if (skyReport.getStatus() == 200 && sessionKey != null) {
             
-            m.addAttribute("transportation",new Transportation());         
+            m.addAttribute("transportation",new TransportationDummy()); 
+            
             JSONObject skyJson = createJ.createJson(skyReport.getBody());
             return new ModelAndView("responses/flightResults", "flights", skyJson);
         }
@@ -63,7 +67,7 @@ public class FlightController {
 
     @PostMapping(value = "postFlightResults")
     public ModelAndView flightResultForm(ModelMap m, HttpSession session,
-            @ModelAttribute("transportation") Transportation tr) {
+            @ModelAttribute("transportation") TransportationDummy tr) {
         
         session.setAttribute("transportation", tr);
         
