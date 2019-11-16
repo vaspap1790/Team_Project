@@ -45,7 +45,7 @@ $(".budget").change(function (e) {
 //Angular
 
 const App = angular.module("App", []);
-App.controller("MainCtrl", async function ($scope, $http) {
+App.controller("MainCtrl", function ($scope, $http) {
 
     var getDates = function (startDate, endDate) {
         var dates = [],
@@ -62,9 +62,9 @@ App.controller("MainCtrl", async function ($scope, $http) {
         return dates;
     };
 
-    const username = await document.getElementById("username").innerText.trim();
-    const tripId = await document.getElementById("tripId").innerText.trim();
-    
+    const username = document.getElementById("username").innerText.trim();
+    const tripId = document.getElementById("tripId").innerText.trim();
+
     const dateArray = [];
     const URL = "http://localhost:8080/tripPlan/tripPage/" + username + "/" + tripId;
     ///ean den exei accommodation ,petaei error...
@@ -82,11 +82,11 @@ App.controller("MainCtrl", async function ($scope, $http) {
             }).catch((error) => {
         console.log(error);
     });
-    
+
     $scope.dates = dateArray;
-    $scope.flightDates = [dateArray[0], dateArray[dateArray.length-1]];
+    $scope.flightDates = [dateArray[0], dateArray[dateArray.length - 1]];
     $scope.commonDates = $scope.flightDates.filter(value => $scope.dates.includes(value));
-    
+
     $scope.totalBudget = 0;
 
 
@@ -98,7 +98,7 @@ App.controller("MainCtrl", async function ($scope, $http) {
     $scope.currencyShow = function (index) {
         return !(document.querySelectorAll(".dayBudget")[index].innerText === '');
     };
-    
+
     $scope.addPost = function () {
 
         const title = $("#postModal #postTitle").val().trim();
@@ -115,7 +115,7 @@ App.controller("MainCtrl", async function ($scope, $http) {
         //         console.log(error);
         //     });
     };
-    
+
     $scope.addNote = function () {
 
         $(clickedBtn.target.parentElement).next().append("<a href='#'><img id='notePhoto' src='https://icon-library.net/images/icon-note/icon-note-0.jpg'></a>");
@@ -133,20 +133,20 @@ App.controller("MainCtrl", async function ($scope, $http) {
             },
             data: jsonObject
         };
-        $http(req).then(function(){
-        console.log("success");
-        }).catch(()=>{
-        console.log("error");
-        });          
+        $http(req).then(function () {
+            console.log("success");
+        }).catch(() => {
+            console.log("error");
+        });
     };
-    
+
     $scope.addBudget = function () {
 
         const budget = $("#budgetModal #budget").val().trim();
-        
-        $(clickedBtn.target.parentElement).next().children(":first").append(budget + '&euro;');
+
+        $(clickedBtn.target.parentElement).next().children(":first").append(budget);
         $scope.totalBudget += parseInt(budget);
-        
+
         let object = {dayBudget: budget, tripId: tripId, date: "2019-11-21"};
         let jsonObject = JSON.stringify(object);
         console.log(jsonObject);
@@ -159,11 +159,11 @@ App.controller("MainCtrl", async function ($scope, $http) {
             },
             data: jsonObject
         };
-        $http(req).then(function(){
-        console.log("success");
-        }).catch(()=>{
-        console.log("error");
-        }); 
+        $http(req).then(function () {
+            console.log("success");
+        }).catch(() => {
+            console.log("error");
+        });
     };
 });
 

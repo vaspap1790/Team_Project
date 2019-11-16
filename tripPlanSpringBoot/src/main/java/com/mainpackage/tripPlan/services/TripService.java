@@ -2,6 +2,8 @@ package com.mainpackage.tripPlan.services;
 
 import com.mainpackage.tripPlan.daos.GenericJpaDao;
 import com.mainpackage.tripPlan.dto.AccommodationDTO;
+import com.mainpackage.tripPlan.dto.DailyBudgetDTO;
+import com.mainpackage.tripPlan.dto.NotesDTO;
 import com.mainpackage.tripPlan.dto.TransportationDTO;
 import com.mainpackage.tripPlan.dto.TripDTO;
 import com.mainpackage.tripPlan.model.Accommodation;
@@ -20,7 +22,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-@Transactional
+//@Transactional
 public class TripService {
 
     @Autowired
@@ -37,6 +39,8 @@ public class TripService {
     Check check;
     @Autowired
     TripRepo tripRepo;
+    @Autowired
+    TripPageService tripPageService;
 
     public void saveTripUser(Trip trip, User user) {
         trip.setUserId(user);
@@ -76,14 +80,18 @@ public class TripService {
         tripDao.save(trip);
     }
 
-    public Map<String, Object> getTripByUsernameAndTripId(String username, String id) {
+    public Map<String, Object> getTripsPageDataByUsernameAndTripId(String username, String id) {
         List<TransportationDTO> transp = transService.findTransportationByUsernameAndTripId(username, id);
         List<AccommodationDTO> accommo = accomoService.findTransportationByUsernameAndTripId(username, id);
-        
+        List<NotesDTO> notes = tripPageService.getNotesById(Integer.parseInt(id));
+        List<DailyBudgetDTO> db = tripPageService.getDailyBudgetById(Integer.parseInt(id));
+
         Map<String, Object> trip = new HashMap<>();
         trip.put("accommodation", accommo);
         trip.put("transportation", transp);
-        
+        trip.put("notes",notes);
+        trip.put("dailyBudget",db);
+
         return trip;
     }
 }

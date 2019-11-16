@@ -57,7 +57,7 @@ public class UsersTripsPageController {
             @PathVariable(name = "id") String id) {
 
         try {
-            return tripService.getTripByUsernameAndTripId(username, id);
+            return tripService.getTripsPageDataByUsernameAndTripId(username, id);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -83,24 +83,24 @@ public class UsersTripsPageController {
         return "successs";
     }
 
-    @GetMapping(value = "getNotes/{tripId}", produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseBody
-    public List<NotesDTO> getNotes(@PathVariable(name = "tripId") String id) throws ParseException {
-
-        return tripPageService.getNotesById(Integer.parseInt(id));
-    }
-
-    @GetMapping(value = "getDailyBudget/{tripId}", produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseBody
-    public List<DailyBudgetDTO> getDailyBudget(@PathVariable(name = "tripId") String id) throws ParseException {
-
-        return tripPageService.getDailyBudgetById(Integer.parseInt(id));
-    }
+//    @GetMapping(value = "getNotes/{tripId}", produces = MediaType.APPLICATION_JSON_VALUE)
+//    @ResponseBody
+//    public List<NotesDTO> getNotes(@PathVariable(name = "tripId") String id) throws ParseException {
+//
+//        return tripPageService.getNotesById(Integer.parseInt(id));
+//    }
+//
+//    @GetMapping(value = "getDailyBudget/{tripId}", produces = MediaType.APPLICATION_JSON_VALUE)
+//    @ResponseBody
+//    public List<DailyBudgetDTO> getDailyBudget(@PathVariable(name = "tripId") String id) throws ParseException {
+//
+//        return tripPageService.getDailyBudgetById(Integer.parseInt(id));
+//    }
     
-     @GetMapping(value = "getDailyData/{tripId}", produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseBody
-    public Map<String,Object> getDailyData(@PathVariable(name = "tripId") String id) throws ParseException {
-
-        return tripPageService.getData(Integer.parseInt(id));
-    }
+//     @GetMapping(value = "getDailyData/{tripId}", produces = MediaType.APPLICATION_JSON_VALUE)
+//    @ResponseBody
+//    public Map<String,Object> getDailyData(@PathVariable(name = "tripId") String id) throws ParseException {
+//
+//        return tripPageService.getData(Integer.parseInt(id));
+//    }
 }
