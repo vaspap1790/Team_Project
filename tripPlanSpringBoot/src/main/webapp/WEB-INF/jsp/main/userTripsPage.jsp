@@ -28,7 +28,7 @@
             <div class="row d-flex flex-row justify-content-around align-items-center ">
 
                 <div class="col-5">
-                    <h1 class="display-4">My trip to ${trip.location}</h1>
+                    <h1 class="display-4">My trip to {{$scope.location}}</h1>
                 </div>
 
                 <div class="col-5">
@@ -80,7 +80,10 @@
 
                                         </div>
 
-                                        <div class="col-8 d-flex justify-content-center"></div>
+                                        <div class="col-8 d-flex justify-content-center" >
+                                           
+                                            <a href='#' ng-show="showNotes(date)"><img id='notePhoto' src='https://icon-library.net/images/icon-note/icon-note-0.jpg'></a>
+                                        </div>
 
                                     </div>
 

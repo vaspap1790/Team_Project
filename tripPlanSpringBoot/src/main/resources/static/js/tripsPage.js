@@ -47,41 +47,12 @@ $(".budget").change(function (e) {
 const App = angular.module("App", []);
 App.controller("MainCtrl", function ($scope, $http) {
 
-<<<<<<< HEAD
     const username = document.getElementById("username").innerText.trim();
     const tripId = document.getElementById("tripId").innerText.trim();
     const dateArray = [];
     const flightDateArray = [];
     const flightDates = [];
-
-=======
-    var getDates = function (startDate, endDate) {
-        var dates = [],
-                currentDate = startDate,
-                addDays = function (days) {
-                    var date = new Date(this.valueOf());
-                    date.setDate(date.getDate() + days);
-                    return date;
-                };
-        while (currentDate <= endDate) {
-            dates.push(currentDate);
-            currentDate = addDays.call(currentDate, 1);
-        }
-        return dates;
-    };
-
-<<<<<<< HEAD
-    const username = await document.getElementById("username").innerText.trim();
-    const tripId = await document.getElementById("tripId").innerText.trim();
-=======
-    const username = document.getElementById("username").innerText.trim();
-    const tripId = document.getElementById("tripId").innerText.trim();
->>>>>>> b9c8b53f9ed4bc0b80f84b02d47514684cf6ccfc
-
-    const dateArray = [];
-    const flightDateArray = [];
-    
->>>>>>> 735db816b7ce828b748e7749440caf6084c3bf1a
+    const notesArray = [];
     const URL = "http://localhost:8080/tripPlan/tripPage/" + username + "/" + tripId;
     ///ean den exei accommodation ,petaei error...
 
@@ -90,70 +61,41 @@ App.controller("MainCtrl", function ($scope, $http) {
             .then((response) => {
                 const data = response.data;
                 const accommodation = data.accommodation[0];
-<<<<<<< HEAD
                 const transportation = data.transportation;
-=======
-                const transportation = data.transportation[0];
->>>>>>> 735db816b7ce828b748e7749440caf6084c3bf1a
-
+                const notesDate = data.notes;
+                const location = data.location;
+                $scope.location = location;
                 const checkin = new Date(accommodation.checkin);
                 const checkout = new Date(accommodation.checkout);
                 const dates = getDates(checkin, checkout);
                 dates.forEach(function (date) {
                     dateArray.push(date.getDate() + "/" + (date.getMonth() + 1));
                 });
-
-
-
                 transportation.forEach(function (item, index) {
                     let date = new Date(transportation[index].departure.substring(0, 10));
                     flightDates.push(date);
                 });
-
                 flightDates.forEach(function (date) {
                     flightDateArray.push(date.getDate() + "/" + (date.getMonth() + 1));
-
                 });
-
-<<<<<<< HEAD
-=======
-
-                const departure = new Date(transportation.departure.substring(0, 10));
-                const arrival = new Date(transportation.arrival.substring(0, 10));
-                const flightDates = [departure, arrival];
-                flightDates.forEach(function (date) {
-                    flightDateArray.push(date.getDate() + "/" + date.getMonth());
-                    console.log(flightDateArray);
+                notesDate.forEach(function (item, index) {
+                    let date = new Date(notesDate[index].date);
+                    notesArray.push(date.getDate() + "/" + (date.getMonth() + 1));
+                    console.log(notesArray);
                 });
-
-
->>>>>>> 735db816b7ce828b748e7749440caf6084c3bf1a
             }).catch((error) => {
         console.log(error);
     });
-
+//        console.log(notesArray);
+    
     $scope.dates = dateArray;
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-    $scope.flightDates = flightDateArray;
-=======
-    $scope.flightDates = [dateArray[0], dateArray[dateArray.length - 1]];
->>>>>>> b9c8b53f9ed4bc0b80f84b02d47514684cf6ccfc
-    $scope.commonDates = $scope.flightDates.filter(value => $scope.dates.includes(value));
-
->>>>>>> 735db816b7ce828b748e7749440caf6084c3bf1a
     $scope.totalBudget = 0;
-
     $scope.show = function (date) {
         return flightDateArray.includes(date);
-
     };
-
     $scope.currencyShow = function (index) {
         return !(document.querySelectorAll(".dayBudget")[index].innerText === '');
     };
-
     $scope.addPost = function () {
 
         const title = $("#postModal #postTitle").val().trim();
@@ -170,18 +112,13 @@ App.controller("MainCtrl", function ($scope, $http) {
         //         console.log(error);
         //     });
     };
-<<<<<<< HEAD
-=======
-
     $scope.addNote = function () {
->>>>>>> b9c8b53f9ed4bc0b80f84b02d47514684cf6ccfc
 
-    $scope.addNote = async function () {
-
-        await $(clickedBtn.target.parentElement).next().append("<a href='#'><img id='notePhoto' src='https://icon-library.net/images/icon-note/icon-note-0.jpg'></a>");
+        $(clickedBtn.target.parentElement).next().append("<a href='#'><img id='notePhoto' src='https://icon-library.net/images/icon-note/icon-note-0.jpg'></a>");
         const title = $("#notesModal #noteTitle").val().trim();
         const body = $("#notesModal #noteBody").val().trim();
-        let object = {title: title, body: body, tripId: tripId, date: "2019-11-21"};
+        let date_note=$(clickedBtn.target.parentElement).parent().parent().parent().prev().text();
+        let object = {title: title, body: body, tripId: tripId, date: date_note};
         let jsonObject = JSON.stringify(object);
         console.log(jsonObject);
         const URL = "http://localhost:8080/tripPlan/tripPage/saveNote";
@@ -199,18 +136,11 @@ App.controller("MainCtrl", function ($scope, $http) {
             console.log("error");
         });
     };
-
-<<<<<<< HEAD
-
-=======
->>>>>>> b9c8b53f9ed4bc0b80f84b02d47514684cf6ccfc
     $scope.addBudget = function () {
 
         const budget = $("#budgetModal #budget").val().trim();
-
         $(clickedBtn.target.parentElement).next().children(":first").append(budget);
         $scope.totalBudget += parseInt(budget);
-
         let object = {dayBudget: budget, tripId: tripId, date: "2019-11-21"};
         let jsonObject = JSON.stringify(object);
         console.log(jsonObject);
@@ -229,7 +159,14 @@ App.controller("MainCtrl", function ($scope, $http) {
             console.log("error");
         });
     };
+
+    $scope.showNotes = function (date) {
+        return notesArray.includes(date);
+    };
 });
+
+
+
 
 
 
@@ -249,25 +186,3 @@ var getDates = function (startDate, endDate) {
     }
     return dates;
 };
-
-
-
-
-//    dates().then(function (data) {
-//        const checkin = new Date(data[0].checkin);
-//        const checkout = new Date(data[0].checkout);
-//        console.log(checkin);
-//        console.log(checkout);
-//        const dates = getDates(checkin, checkout);
-//        dates.forEach(function (date) {
-//            dateArray.push(date.getDate() + "/" + date.getMonth() + "/" + date.getYear());
-//        });
-//    }).then(function () {
-//        console.log(dateArray);
-//    });
-
-//    async function dates() {
-//        const datesAcco = await fetch(URL);
-//        const dates = await datesAcco.json();
-//        return dates;
-//    }
