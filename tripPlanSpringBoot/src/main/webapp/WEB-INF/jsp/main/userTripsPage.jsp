@@ -62,7 +62,7 @@
 
                                     <!-- Flights-Accomodation -->
                                     <div class="col-1 d-flex align-items-center flight-accom">
-                                        <a href="#" ng-show="show(date, commonDates)" data-toggle="modal"
+                                        <a href="#" ng-show="show(date)" data-toggle="modal"
                                            data-target="#flightModal">
                                             <i class="fas fa-plane"></i>
                                         </a>

@@ -47,52 +47,51 @@ $(".budget").change(function (e) {
 const App = angular.module("App", []);
 App.controller("MainCtrl", function ($scope, $http) {
 
-    var getDates = function (startDate, endDate) {
-        var dates = [],
-                currentDate = startDate,
-                addDays = function (days) {
-                    var date = new Date(this.valueOf());
-                    date.setDate(date.getDate() + days);
-                    return date;
-                };
-        while (currentDate <= endDate) {
-            dates.push(currentDate);
-            currentDate = addDays.call(currentDate, 1);
-        }
-        return dates;
-    };
-
     const username = document.getElementById("username").innerText.trim();
     const tripId = document.getElementById("tripId").innerText.trim();
-
     const dateArray = [];
+    const flightDateArray = [];
+    const flightDates = [];
+
     const URL = "http://localhost:8080/tripPlan/tripPage/" + username + "/" + tripId;
     ///ean den exei accommodation ,petaei error...
+
+
     $http.get(URL)
             .then((response) => {
                 const data = response.data;
                 const accommodation = data.accommodation[0];
-                const transportation = data.transportation[0];
+                const transportation = data.transportation;
+
                 const checkin = new Date(accommodation.checkin);
                 const checkout = new Date(accommodation.checkout);
                 const dates = getDates(checkin, checkout);
                 dates.forEach(function (date) {
-                    dateArray.push(date.getDate() + "/" + date.getMonth());
+                    dateArray.push(date.getDate() + "/" + (date.getMonth() + 1));
                 });
+
+
+
+                transportation.forEach(function (item, index) {
+                    let date = new Date(transportation[index].departure.substring(0, 10));
+                    flightDates.push(date);
+                });
+
+                flightDates.forEach(function (date) {
+                    flightDateArray.push(date.getDate() + "/" + (date.getMonth() + 1));
+
+                });
+
             }).catch((error) => {
         console.log(error);
     });
 
     $scope.dates = dateArray;
-    $scope.flightDates = [dateArray[0], dateArray[dateArray.length - 1]];
-    $scope.commonDates = $scope.flightDates.filter(value => $scope.dates.includes(value));
-
     $scope.totalBudget = 0;
 
+    $scope.show = function (date) {
+        return flightDateArray.includes(date);
 
-
-    $scope.show = function (date, commonDates) {
-        return commonDates.includes(date);
     };
 
     $scope.currencyShow = function (index) {
@@ -171,7 +170,20 @@ App.controller("MainCtrl", function ($scope, $http) {
 
 
 
-
+var getDates = function (startDate, endDate) {
+    var dates = [],
+            currentDate = startDate,
+            addDays = function (days) {
+                var date = new Date(this.valueOf());
+                date.setDate(date.getDate() + days);
+                return date;
+            };
+    while (currentDate <= endDate) {
+        dates.push(currentDate);
+        currentDate = addDays.call(currentDate, 1);
+    }
+    return dates;
+};
 
 
 
