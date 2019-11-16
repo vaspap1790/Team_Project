@@ -64,8 +64,10 @@ App.controller("MainCtrl", async function ($scope, $http) {
 
     const username = await document.getElementById("username").innerText.trim();
     const tripId = await document.getElementById("tripId").innerText.trim();
-    
+
     const dateArray = [];
+    const flightDateArray = [];
+    
     const URL = "http://localhost:8080/tripPlan/tripPage/" + username + "/" + tripId;
     ///ean den exei accommodation ,petaei error...
     $http.get(URL)
@@ -73,20 +75,32 @@ App.controller("MainCtrl", async function ($scope, $http) {
                 const data = response.data;
                 const accommodation = data.accommodation[0];
                 const transportation = data.transportation[0];
+
                 const checkin = new Date(accommodation.checkin);
                 const checkout = new Date(accommodation.checkout);
                 const dates = getDates(checkin, checkout);
                 dates.forEach(function (date) {
                     dateArray.push(date.getDate() + "/" + date.getMonth());
                 });
+
+
+                const departure = new Date(transportation.departure.substring(0, 10));
+                const arrival = new Date(transportation.arrival.substring(0, 10));
+                const flightDates = [departure, arrival];
+                flightDates.forEach(function (date) {
+                    flightDateArray.push(date.getDate() + "/" + date.getMonth());
+                    console.log(flightDateArray);
+                });
+
+
             }).catch((error) => {
         console.log(error);
     });
-    
+
     $scope.dates = dateArray;
-    $scope.flightDates = [dateArray[0], dateArray[dateArray.length-1]];
+    $scope.flightDates = flightDateArray;
     $scope.commonDates = $scope.flightDates.filter(value => $scope.dates.includes(value));
-    
+
     $scope.totalBudget = 0;
 
 
@@ -98,7 +112,7 @@ App.controller("MainCtrl", async function ($scope, $http) {
     $scope.currencyShow = function (index) {
         return !(document.querySelectorAll(".dayBudget")[index].innerText === '');
     };
-    
+
     $scope.addPost = function () {
 
         const title = $("#postModal #postTitle").val().trim();
@@ -115,10 +129,10 @@ App.controller("MainCtrl", async function ($scope, $http) {
         //         console.log(error);
         //     });
     };
-    
-    $scope.addNote = function () {
 
-        $(clickedBtn.target.parentElement).next().append("<a href='#'><img id='notePhoto' src='https://icon-library.net/images/icon-note/icon-note-0.jpg'></a>");
+    $scope.addNote = async function () {
+
+        await $(clickedBtn.target.parentElement).next().append("<a href='#'><img id='notePhoto' src='https://icon-library.net/images/icon-note/icon-note-0.jpg'></a>");
         const title = $("#notesModal #noteTitle").val().trim();
         const body = $("#notesModal #noteBody").val().trim();
         let object = {title: title, body: body, tripId: tripId, date: "2019-11-21"};
@@ -133,20 +147,21 @@ App.controller("MainCtrl", async function ($scope, $http) {
             },
             data: jsonObject
         };
-        $http(req).then(function(){
-        console.log("success");
-        }).catch(()=>{
-        console.log("error");
-        });          
+        $http(req).then(function () {
+            console.log("success");
+        }).catch(() => {
+            console.log("error");
+        });
     };
-    
+
+
     $scope.addBudget = function () {
 
         const budget = $("#budgetModal #budget").val().trim();
-        
-        $(clickedBtn.target.parentElement).next().children(":first").append(budget + '&euro;');
+
+        $(clickedBtn.target.parentElement).next().children(":first").append(budget);
         $scope.totalBudget += parseInt(budget);
-        
+
         let object = {dayBudget: budget, tripId: tripId, date: "2019-11-21"};
         let jsonObject = JSON.stringify(object);
         console.log(jsonObject);
@@ -159,11 +174,11 @@ App.controller("MainCtrl", async function ($scope, $http) {
             },
             data: jsonObject
         };
-        $http(req).then(function(){
-        console.log("success");
-        }).catch(()=>{
-        console.log("error");
-        }); 
+        $http(req).then(function () {
+            console.log("success");
+        }).catch(() => {
+            console.log("error");
+        });
     };
 });
 
