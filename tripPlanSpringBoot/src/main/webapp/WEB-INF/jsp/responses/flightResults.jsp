@@ -137,12 +137,12 @@
                                                                             <div class="p-3 ">
                                                                                 <div class="d-flex justify-content-end">
                                                                                     <span class="time">${fn:substring(f.Departure,11,16)}</span>
-                                                                                    <s:input type="hidden" path="departure" value="${f.Departure}"/>
+                                                                                    <s:input type="hidden" path="oneWay.departure" value="${f.Departure}"/>
                                                                                 </div>
                                                                                 <div id="place_form" class="d-flex justify-content-end">
                                                                                     <c:forEach items="${flights.Places}" var="p" varStatus="pcount">
                                                                                         <c:if test="${p.Id==f.OriginStation}">
-                                                                                            <s:input type="hidden" path="startingPoint" value="${p.Name}" ></s:input>
+                                                                                            <s:input type="hidden" path="oneWay.startingPoint" value="${p.Name}" ></s:input>
                                                                                             <span>${p.Code}</span>
                                                                                         </c:if>
                                                                                     </c:forEach>
@@ -160,13 +160,13 @@
                                                                             <div class=" p-3">
                                                                                 <div class="d-flex justify-content-end">
                                                                                     <span  class="time">${fn:substring(f.Arrival,11,16)}</span>
-                                                                                    <s:input type="hidden" path="arrival" value="${f.Arrival}"/>
+                                                                                    <s:input type="hidden" path="oneWay.arrival" value="${f.Arrival}"/>
                                                                                 </div>
                                                                                 <div id="place_to" class="d-flex justify-content-end">
                                                                                     <c:forEach items="${flights.Places}" var="p" varStatus="pcount">
                                                                                         <c:if test="${p.Id==f.DestinationStation}">
                                                                                             <span>${p.Code}</span>
-                                                                                            <s:input type="hidden" path="destination" value="${p.Name}" ></s:input>
+                                                                                            <s:input type="hidden" path="oneWay.destination" value="${p.Name}" ></s:input>
                                                                                         </c:if>
                                                                                     </c:forEach>
                                                                                 </div>                                             
@@ -176,7 +176,7 @@
                                                                             <div class="p-3">
                                                                                 <div class="d-flex justify-content-center">
                                                                                     <span id="date">${fn:substring(fn:replace(f.Departure,"-","/"),5,10)} </span>
-                                                                                    <s:input type="hidden" path="arrival" value="${f.Arrival}"/>
+                                                                                    <s:input type="hidden" path="oneWay.arrival" value="${f.Arrival}"/>
                                                                                 </div>                    
                                                                             </div>
                                                                         </div>
@@ -203,10 +203,12 @@
                                                                             <div class="p-3 ">
                                                                                 <div class="d-flex justify-content-end">
                                                                                     <span class="time">${fn:substring(f.Departure,11,16)}</span>
+                                                                                    <s:input type="hidden" path="roundTrip.departure" value="${f.Departure}"/>
                                                                                 </div>
                                                                                 <div id="place_form" class="d-flex justify-content-end">
                                                                                     <c:forEach items="${flights.Places}" var="p" varStatus="pcount">
                                                                                         <c:if test="${p.Id==f.OriginStation}">
+                                                                                            <s:input type="hidden" path="roundTrip.startingPoint" value="${p.Name}" ></s:input>
                                                                                             <span>${p.Code}</span>
                                                                                         </c:if>
                                                                                     </c:forEach>
@@ -224,10 +226,12 @@
                                                                             <div class="p-3">
                                                                                 <div class="d-flex justify-content-end">
                                                                                     <span  class="time">${fn:substring(f.Arrival,11,16)}</span>
+                                                                                    <s:input type="hidden" path="roundTrip.arrival" value="${f.Arrival}"/>
                                                                                 </div>
                                                                                 <div id="place_to" class="d-flex justify-content-end">
                                                                                     <c:forEach items="${flights.Places}" var="p" varStatus="pcount">
                                                                                         <c:if test="${p.Id==f.DestinationStation}">
+                                                                                            <s:input type="hidden" path="roundTrip.destination" value="${p.Name}" ></s:input>
                                                                                             <span>${p.Code}</span>
                                                                                         </c:if>
                                                                                     </c:forEach>
@@ -238,6 +242,7 @@
                                                                             <div class="p-3">
                                                                                 <div class="d-flex justify-content-center">
                                                                                     <span id="date">${fn:substring(fn:replace(f.Departure,"-","/"),5,10)} </span>
+                                                                                    <s:input type="hidden" path="roundTrip.arrival" value="${f.Arrival}"/>
                                                                                 </div>                    
                                                                             </div>
                                                                         </div>
@@ -253,12 +258,16 @@
                                                             <div class="d-flex align-items-center ml-4">
                                                                 <div class=" d-flex justify-content-center">                                                                            
                                                                     <h4> <span class="font-weight-bold" > ${it.PricingOptions[0].Price}</span></h4>
-                                                                    <s:input type="hidden" path="price" value="${it.PricingOptions[0].Price}" />
-
+                                                                    <s:input type="hidden" path="oneWay.price" value="${it.PricingOptions[0].Price}" />
+                                                                    <c:if test="${f.Id == it.InboundLegId }">
+                                                                        <s:input type="hidden" path="roundTrip.price" value="${it.PricingOptions[0].Price}" />
+                                                                    </c:if>
                                                                 </div>
 
-                                                                <s:input type="hidden" path="this1" value="${it.PricingOptions[0].DeeplinkUrl}"/>
-
+                                                                <s:input type="hidden" path="oneWay.this1" value="${it.PricingOptions[0].DeeplinkUrl}"/>
+                                                                <c:if test="${f.Id == it.InboundLegId }">
+                                                                    <s:input type="hidden" path="roundTrip.this1" value="${it.PricingOptions[0].DeeplinkUrl}"/>
+                                                                </c:if>
                                                             </div> 
                                                         </c:if>
                                                     </c:forEach>
