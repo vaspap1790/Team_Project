@@ -63,34 +63,34 @@ App.controller("MainCtrl", function ($scope, $http) {
                 const accommodation = data.accommodation[0];
                 const transportation = data.transportation;
                 const notesDate = data.notes;
-                const location = data.location;
-                $scope.location = location;
+                $scope.location = data.location;
+
                 const checkin = new Date(accommodation.checkin);
                 const checkout = new Date(accommodation.checkout);
                 const dates = getDates(checkin, checkout);
                 dates.forEach(function (date) {
-                    dateArray.push(date.getDate() + "/" + (date.getMonth() + 1));
+                    dateArray.push(date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate());
                 });
                 transportation.forEach(function (item, index) {
                     let date = new Date(transportation[index].departure.substring(0, 10));
                     flightDates.push(date);
                 });
                 flightDates.forEach(function (date) {
-                    flightDateArray.push(date.getDate() + "/" + (date.getMonth() + 1));
+                    flightDateArray.push(date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate());
                 });
                 notesDate.forEach(function (item, index) {
                     let date = new Date(notesDate[index].date);
-                    notesArray.push(date.getDate() + "/" + (date.getMonth() + 1));
-                    console.log(notesArray);
+                    notesArray.push(date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate());
                 });
             }).catch((error) => {
         console.log(error);
     });
-//        console.log(notesArray);
-    
+
+
     $scope.dates = dateArray;
     $scope.totalBudget = 0;
     $scope.show = function (date) {
+        
         return flightDateArray.includes(date);
     };
     $scope.currencyShow = function (index) {
@@ -117,7 +117,9 @@ App.controller("MainCtrl", function ($scope, $http) {
         $(clickedBtn.target.parentElement).next().append("<a href='#'><img id='notePhoto' src='https://icon-library.net/images/icon-note/icon-note-0.jpg'></a>");
         const title = $("#notesModal #noteTitle").val().trim();
         const body = $("#notesModal #noteBody").val().trim();
-        let date_note=$(clickedBtn.target.parentElement).parent().parent().parent().prev().text();
+        let date_note = $(clickedBtn.target.parentElement).parent().parent().parent().prev().text();
+
+
         let object = {title: title, body: body, tripId: tripId, date: date_note};
         let jsonObject = JSON.stringify(object);
         console.log(jsonObject);
