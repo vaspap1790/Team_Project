@@ -144,7 +144,7 @@ App.controller("MainCtrl", async function ($scope, $http) {
 
         const budget = $("#budgetModal #budget").val().trim();
         
-        $(clickedBtn.target.parentElement).next().children(":first").append(budget + '&euro;');
+        $(clickedBtn.target.parentElement).next().children(":first").append(budget);
         $scope.totalBudget += parseInt(budget);
         
         let object = {dayBudget: budget, tripId: tripId, date: "2019-11-21"};
