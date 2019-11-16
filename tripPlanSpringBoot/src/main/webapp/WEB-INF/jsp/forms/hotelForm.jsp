@@ -35,7 +35,7 @@
         </div>
 
 
-        <section class="ftco-section justify-content-end ftco-search ftco-animate">
+        <section class="ftco-section justify-content-end ftco-search animated fadeInUpBig">
             <div class="container justify-content-center">
                 <div class="row no-gutters">
                     <div class="col-md-12 nav-link-wrap">

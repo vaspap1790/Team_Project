@@ -8,7 +8,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>TripPlanner</title>
         <jsp:include page="components/linksHeader.jsp"/>
-
+        
     </head>
 
     <body>
@@ -28,7 +28,7 @@
 
                         <div class="row justify-content-center">
                             <div>
-                                <a href="${pageContext.request.contextPath}/user/choices" class="btn btn-outline-light btn-lg">Get Started</a>
+                                <a href="${pageContext.request.contextPath}/user/choices" class="btn btn-outline-light btn-lg" id="startbtn">Get Started</a>
                             </div>
                         </div>
                     </div>
@@ -855,7 +855,6 @@
 
         <jsp:include page="components/footer.jsp"/>
         <jsp:include page="components/scripts.jsp"/>
-
 
     </body>
 

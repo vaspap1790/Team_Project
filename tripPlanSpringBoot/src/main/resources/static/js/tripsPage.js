@@ -161,6 +161,14 @@ App.controller("MainCtrl", function ($scope, $http) {
             console.log("error");
         });
     };
+<<<<<<< HEAD
+=======
+
+    $scope.showNotes = function (date) {
+        return notesArray.includes(date);
+    };
+});
+>>>>>>> ad56c011fccc9204d58610f0a2e636689391d064
 
     $scope.showNotes = function (date) {
         return notesArray.includes(date);
@@ -170,8 +178,19 @@ App.controller("MainCtrl", function ($scope, $http) {
 
 
 
+function formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
 
+    if (month.length < 2) 
+        month = '0' + month;
+    if (day.length < 2) 
+        day = '0' + day;
 
+    return [year, month, day].join('-');
+}
 
 
 var getDates = function (startDate, endDate) {

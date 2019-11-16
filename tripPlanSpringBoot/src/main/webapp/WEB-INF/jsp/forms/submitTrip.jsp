@@ -4,7 +4,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Submit Trip</title>
         <jsp:include page="../components/linksHeader.jsp"/>
         <style>
             body,html{
@@ -18,7 +18,7 @@
     </head>
     <body>
         <jsp:include page="../components/navbar.jsp"/> 
-        <div class="d-flex justify-content-center align-items-center h-100 flex-column p-5">
+        <div class="d-flex justify-content-center align-items-center h-100 flex-column p-5 animated fadeIn" style="animation-duration: 2s;">
             <div class="mb-4 p-2"> <h4 class="text-white display-4">Are you Ready?</h4>   
                 </div>
             <div class="">
