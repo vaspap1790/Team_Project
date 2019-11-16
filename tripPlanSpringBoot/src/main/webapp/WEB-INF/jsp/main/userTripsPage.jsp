@@ -28,7 +28,7 @@
             <div class="row d-flex flex-row justify-content-around align-items-center ">
 
                 <div class="col-5">
-                    <h1 class="display-4">My trip to Dublin</h1>
+                    <h1 class="display-4">My trip to ${trip.location}</h1>
                 </div>
 
                 <div class="col-5">

@@ -47,12 +47,41 @@ $(".budget").change(function (e) {
 const App = angular.module("App", []);
 App.controller("MainCtrl", function ($scope, $http) {
 
+<<<<<<< HEAD
     const username = document.getElementById("username").innerText.trim();
     const tripId = document.getElementById("tripId").innerText.trim();
     const dateArray = [];
     const flightDateArray = [];
     const flightDates = [];
 
+=======
+    var getDates = function (startDate, endDate) {
+        var dates = [],
+                currentDate = startDate,
+                addDays = function (days) {
+                    var date = new Date(this.valueOf());
+                    date.setDate(date.getDate() + days);
+                    return date;
+                };
+        while (currentDate <= endDate) {
+            dates.push(currentDate);
+            currentDate = addDays.call(currentDate, 1);
+        }
+        return dates;
+    };
+
+<<<<<<< HEAD
+    const username = await document.getElementById("username").innerText.trim();
+    const tripId = await document.getElementById("tripId").innerText.trim();
+=======
+    const username = document.getElementById("username").innerText.trim();
+    const tripId = document.getElementById("tripId").innerText.trim();
+>>>>>>> b9c8b53f9ed4bc0b80f84b02d47514684cf6ccfc
+
+    const dateArray = [];
+    const flightDateArray = [];
+    
+>>>>>>> 735db816b7ce828b748e7749440caf6084c3bf1a
     const URL = "http://localhost:8080/tripPlan/tripPage/" + username + "/" + tripId;
     ///ean den exei accommodation ,petaei error...
 
@@ -61,7 +90,11 @@ App.controller("MainCtrl", function ($scope, $http) {
             .then((response) => {
                 const data = response.data;
                 const accommodation = data.accommodation[0];
+<<<<<<< HEAD
                 const transportation = data.transportation;
+=======
+                const transportation = data.transportation[0];
+>>>>>>> 735db816b7ce828b748e7749440caf6084c3bf1a
 
                 const checkin = new Date(accommodation.checkin);
                 const checkout = new Date(accommodation.checkout);
@@ -82,11 +115,34 @@ App.controller("MainCtrl", function ($scope, $http) {
 
                 });
 
+<<<<<<< HEAD
+=======
+
+                const departure = new Date(transportation.departure.substring(0, 10));
+                const arrival = new Date(transportation.arrival.substring(0, 10));
+                const flightDates = [departure, arrival];
+                flightDates.forEach(function (date) {
+                    flightDateArray.push(date.getDate() + "/" + date.getMonth());
+                    console.log(flightDateArray);
+                });
+
+
+>>>>>>> 735db816b7ce828b748e7749440caf6084c3bf1a
             }).catch((error) => {
         console.log(error);
     });
 
     $scope.dates = dateArray;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+    $scope.flightDates = flightDateArray;
+=======
+    $scope.flightDates = [dateArray[0], dateArray[dateArray.length - 1]];
+>>>>>>> b9c8b53f9ed4bc0b80f84b02d47514684cf6ccfc
+    $scope.commonDates = $scope.flightDates.filter(value => $scope.dates.includes(value));
+
+>>>>>>> 735db816b7ce828b748e7749440caf6084c3bf1a
     $scope.totalBudget = 0;
 
     $scope.show = function (date) {
@@ -114,10 +170,15 @@ App.controller("MainCtrl", function ($scope, $http) {
         //         console.log(error);
         //     });
     };
+<<<<<<< HEAD
+=======
 
     $scope.addNote = function () {
+>>>>>>> b9c8b53f9ed4bc0b80f84b02d47514684cf6ccfc
 
-        $(clickedBtn.target.parentElement).next().append("<a href='#'><img id='notePhoto' src='https://icon-library.net/images/icon-note/icon-note-0.jpg'></a>");
+    $scope.addNote = async function () {
+
+        await $(clickedBtn.target.parentElement).next().append("<a href='#'><img id='notePhoto' src='https://icon-library.net/images/icon-note/icon-note-0.jpg'></a>");
         const title = $("#notesModal #noteTitle").val().trim();
         const body = $("#notesModal #noteBody").val().trim();
         let object = {title: title, body: body, tripId: tripId, date: "2019-11-21"};
@@ -139,6 +200,10 @@ App.controller("MainCtrl", function ($scope, $http) {
         });
     };
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> b9c8b53f9ed4bc0b80f84b02d47514684cf6ccfc
     $scope.addBudget = function () {
 
         const budget = $("#budgetModal #budget").val().trim();
