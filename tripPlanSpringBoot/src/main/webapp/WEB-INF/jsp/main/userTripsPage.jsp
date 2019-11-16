@@ -53,45 +53,73 @@
                         </tr>
                     </thead>
                     <tbody>
-                        
                         <tr ng-repeat="date in dates">
-                            
-                            <th scope="row" class="text-center align-middle">{{date}}</th>
+                            <th scope="row" class="text-center align-middle"><span class="date">{{date}}</span></th>
+
                             <td class="align-middle">
+
                                 <div class="row">
-                                    <div class="col-8 d-flex align-items-center">
-                                        <div class="col-2">
+
+                                    <!-- Flights-Accomodation -->
+                                    <div class="col-1 d-flex align-items-center flight-accom">
+                                        <a href="#" ng-show="show(date, commonDates)" data-toggle="modal"
+                                           data-target="#flightModal">
+                                            <i class="fas fa-plane"></i>
+                                        </a>
+                                    </div>
+
+                                    <!-- Notes -->
+                                    <div class="col-7 d-flex align-items-center">
+
+                                        <div class="col-4">
+
                                             <button type="button" class="btn btn-secondary btn-sm add" id="notes"
                                                     data-toggle="modal" data-target="#notesModal">
                                                 Notes <i class="fas fa-plus-circle"></i>
                                             </button>
+
                                         </div>
-                                        <div class="col-10 d-flex justify-content-center"></div>
+
+                                        <div class="col-8 d-flex justify-content-center"></div>
+
                                     </div>
+
+                                    <!-- Budget -->
                                     <div class="col-2 d-flex align-items-center">
+
                                         <div class="col-9">
+
                                             <button type="button" class="btn btn-secondary btn-sm add" id="budget"
                                                     data-toggle="modal" data-target="#budgetModal">
                                                 Budget <i class="fas fa-plus-circle"></i>
                                             </button>
                                         </div>
-                                        <div class="col-3 d-flex justify-content-center budget"></div>
+
+                                        <div class="col-3 d-flex justify-content-center">
+                                            <span class="dayBudget"></span>
+                                            <span ng-show="currencyShow($index)">{{currency}} </span>
+                                        </div>
+
                                     </div>
+
+                                    <!-- Photos -->
                                     <div class="col-2 d-flex align-items-center">
+
                                         <div class="col-9">
+
                                             <button type="button" class="btn btn-secondary btn-sm add" id="photos"
                                                     data-toggle="modal" data-target="#photosModal">
                                                 Photos <i class="fas fa-plus-circle"></i>
                                             </button>
                                         </div>
+
                                         <div class="col-3 d-flex justify-content-center"></div>
+
                                     </div>
+
                                 </div>
                             </td>
-                            
                         </tr>
-                       
-          
                     </tbody>
                 </table>
 
@@ -100,14 +128,28 @@
             <div class="row mt-2">
 
                 <div class="col-5">
-                    <p>General Information from Countries API (currency,Population etc)</p>
                 </div>
 
-                <div class="col-5">
+                <div class="col-3">
+
                 </div>
 
                 <div class="col-2">
-                    <p>Total Budget:<span id="totalBudget">0</span></p>
+                    Total Budget: <span id="totalBudget">{{totalBudget}}</span>
+                    <select ng-model="currency">
+                        <option value="&euro;">&euro;</option>
+                        <option value="&dollar;">&dollar;</option>
+                        <option value="&pound;">&pound;</option>
+                        <option value="&yen;">&yen;</option>
+                    </select>
+                </div>
+
+                <div class="col-2">
+                    <p>
+                        Accommodation: <a href="#" data-toggle="modal" data-target="#accomModal">
+                            <i class="fas fa-bed"></i>
+                        </a>
+                    </p>
                 </div>
 
             </div>
@@ -239,6 +281,56 @@
                             <button type="button" class="btn btn-info submitAdd" data-dismiss="modal" id="addPhotos"
                                     name="photo">Add</button>
                         </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Flight Modal -->
+        <div class="modal fade" id="flightModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel"></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" name="close">
+                            Close
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Flight Modal -->
+        <div class="modal fade" id="accomModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel"></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" name="close">
+                            Close
+                        </button>
                     </div>
                 </div>
             </div>
