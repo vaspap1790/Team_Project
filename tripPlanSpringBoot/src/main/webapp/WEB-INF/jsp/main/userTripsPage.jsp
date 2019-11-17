@@ -75,14 +75,13 @@
 
                                             <button type="button" class="btn btn-secondary btn-sm add" id="notes"
                                                     data-toggle="modal" data-target="#notesModal">
-                                                Notes <i class="fas fa-plus-circle"></i>
+                                                <img id='notePhoto' src='https://icon-library.net/images/icon-note/icon-note-0.jpg'>
                                             </button>
 
                                         </div>
 
                                         <div class="col-8 d-flex justify-content-center" >
-                                           
-                                            <a href='#' ng-show="showNotes(date)"><img id='notePhoto' src='https://icon-library.net/images/icon-note/icon-note-0.jpg'></a>
+
                                         </div>
 
                                     </div>
@@ -91,11 +90,7 @@
                                     <div class="col-2 d-flex align-items-center">
 
                                         <div class="col-9">
-
-                                            <button type="button" class="btn btn-secondary btn-sm add" id="budget"
-                                                    data-toggle="modal" data-target="#budgetModal">
-                                                Budget <i class="fas fa-plus-circle"></i>
-                                            </button>
+                                            <a href='#'><img id='notePhoto' src='https://icon-library.net/images/icon-note/icon-note-0.jpg'></a>
                                         </div>
 
                                         <div class="col-3 d-flex justify-content-center">

@@ -98,34 +98,34 @@
 
                                 <div class="tab-pane" id="profile">
                                     <hr>
-                                    <spring:form modelAttribute="" class="form" action="${pageContext.request.contextPath}/" method="POST" id="registrationForm" enctype="multipart/form-data">
+                                    <%--<spring:form modelAttribute="" class="form" action="${pageContext.request.contextPath}/" method="POST" id="registrationForm" enctype="multipart/form-data">--%>
                                         <div class="form-group">
 
                                             <div class="col-xs-6">
-                                                <spring:label path="first_name"><h4>First name</h4></spring:label>
-                                                <spring:input style="height: 4rem!important;" type="text" class="form-control" path="first_name" id="first_name" placeholder="Enter First name ...">
+                                                <%--<spring:label path="first_name"><h4>First name</h4></spring:label>--%>
+                                                <%--<spring:input style="height: 4rem!important;" type="text" class="form-control" path="first_name" id="first_name" placeholder="Enter First name ...">--%>
                                             </div>
                                         </div>
                                         <div class="form-group">
 
                                             <div class="col-xs-6">
-                                                <spring:label path="last_name"><h4>Last name</h4></spring:label>
-                                                <spring:input style="height: 4rem!important;" type="text" class="form-control" path="last_name" id="last_name" placeholder="Enter Last name ...">
+                                                <%--<spring:label path="last_name"><h4>Last name</h4></spring:label>--%>
+                                                <%--<spring:input style="height: 4rem!important;" type="text" class="form-control" path="last_name" id="last_name" placeholder="Enter Last name ...">--%>
                                             </div>
                                         </div>
 
                                         <div class="form-group">
 
                                             <div class="col-xs-6">
-                                                <spring:label path="phone_number"><h4>Phone</h4></spring:label>
-                                                <spring:input style="height: 4rem!important;" type="text" class="form-control" path="phone_number" id="phone" placeholder="Enter Phone number ...">
+                                                <%--<spring:label path="phone_number"><h4>Phone</h4></spring:label>--%>
+                                                <%--<spring:input style="height: 4rem!important;" type="text" class="form-control" path="phone_number" id="phone" placeholder="Enter Phone number ...">--%>
                                             </div>
                                         </div>
 
                                         <div class="form-group">
                                             <div class="col-xs-6">
-                                                <spring:label path="mobile"><h4>Mobile</h4></spring:label>
-                                                <spring:input style="height: 4rem!important;" type="text" class="form-control" path="mobile" id="mobile" placeholder="Enter Mobile number ...">
+                                                <%--<spring:label path="mobile"><h4>Mobile</h4></spring:label>--%>
+                                                <%--<spring:input style="height: 4rem!important;" type="text" class="form-control" path="mobile" id="mobile" placeholder="Enter Mobile number ...">--%>
                                             </div>
                                         </div>
 <!--                                        <div class="form-group">
@@ -163,7 +163,7 @@
                                                 <button class="btn btn-danger" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button>
                                             </div>
                                         </div>
-                                    </spring:form>
+                                    <%--</spring:form>--%>
 
                                     <!--Tips Angular-->   
                                 </div><!--/tab-pane-->

@@ -161,15 +161,10 @@ App.controller("MainCtrl", function ($scope, $http) {
             console.log("error");
         });
     };
-<<<<<<< HEAD
-=======
-
     $scope.showNotes = function (date) {
         return notesArray.includes(date);
     };
 });
->>>>>>> ad56c011fccc9204d58610f0a2e636689391d064
-
     $scope.showNotes = function (date) {
         return notesArray.includes(date);
     };
