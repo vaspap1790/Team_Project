@@ -49,10 +49,11 @@ App.controller("MainCtrl", function ($scope, $http) {
 
     const username = document.getElementById("username").innerText.trim();
     const tripId = document.getElementById("tripId").innerText.trim();
-    const dateArray = [];
+    const dateArray = [];//dates
+    const dummyDates = [];
     const flightDateArray = [];
     const flightDates = [];
-    const notesArray = [];
+    const notesArray = []; //array of notes
     const URL = "http://localhost:8080/tripPlan/tripPage/" + username + "/" + tripId;
     ///ean den exei accommodation ,petaei error...
 
@@ -62,35 +63,43 @@ App.controller("MainCtrl", function ($scope, $http) {
                 const data = response.data;
                 const accommodation = data.accommodation[0];
                 const transportation = data.transportation;
-                const notesDate = data.notes;
+                const notes = data.notes;
                 $scope.location = data.location;
 
                 const checkin = new Date(accommodation.checkin);
                 const checkout = new Date(accommodation.checkout);
                 const dates = getDates(checkin, checkout);
+
+                //////////////////////////////
                 dates.forEach(function (date) {
-                    dateArray.push(date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate());
+                    let formatedDate = formatDate(date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate());
+                    dummyDates.push(date.getDate() + "/" + (date.getMonth() + 1));
+                    dateArray.push(formatedDate);
                 });
+                //////////////////////////
                 transportation.forEach(function (item, index) {
                     let date = new Date(transportation[index].departure.substring(0, 10));
-                    flightDates.push(date);
+                    flightDates.push(formatDate(date));
                 });
                 flightDates.forEach(function (date) {
-                    flightDateArray.push(date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate());
+                    flightDateArray.push(date);
                 });
-                notesDate.forEach(function (item, index) {
-                    let date = new Date(notesDate[index].date);
-                    notesArray.push(date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate());
+                ////////////////////////////
+                notes.forEach(function (item, index) {
+                    notesArray.push(item);//array of notes                 
                 });
+                console.log(dateArray);
+                ////////////////
             }).catch((error) => {
         console.log(error);
     });
 
 
+    $scope.dummyDates = dummyDates;
     $scope.dates = dateArray;
     $scope.totalBudget = 0;
     $scope.show = function (date) {
-        
+
         return flightDateArray.includes(date);
     };
     $scope.currencyShow = function (index) {
@@ -112,17 +121,17 @@ App.controller("MainCtrl", function ($scope, $http) {
         //         console.log(error);
         //     });
     };
-    $scope.addNote = function () {
+    $scope.addNote = function (date,index) {
+    console.log(date+" "+index);
+//        $(clickedBtn.target.parentElement).next().append("<a href='#'><img id='notePhoto' src='https://icon-library.net/images/icon-note/icon-note-0.jpg'></a>");
+        const title = $(`#notesModal${index} #noteTitle${index}`).val().trim();
+        const body = $(`#notesModal${index} #noteBody${index}`).val().trim();
+//        let unformatedDate = $(clickedBtn.target.previousElementSibling).text();
+//        let finalDate = formatDate(unformatedDate);
 
-        $(clickedBtn.target.parentElement).next().append("<a href='#'><img id='notePhoto' src='https://icon-library.net/images/icon-note/icon-note-0.jpg'></a>");
-        const title = $("#notesModal #noteTitle").val().trim();
-        const body = $("#notesModal #noteBody").val().trim();
-        let date_note = $(clickedBtn.target.parentElement).parent().parent().parent().prev().text();
-
-
-        let object = {title: title, body: body, tripId: tripId, date: date_note};
+        let object = {title: title, body: body, tripId: tripId, date: date};
         let jsonObject = JSON.stringify(object);
-        console.log(jsonObject);
+//        console.log(jsonObject);
         const URL = "http://localhost:8080/tripPlan/tripPage/saveNote";
         var req = {
             method: 'POST',
@@ -161,31 +170,34 @@ App.controller("MainCtrl", function ($scope, $http) {
             console.log("error");
         });
     };
-    $scope.showNotes = function (date) {
-        return notesArray.includes(date);
+
+//    $scope.showNotes = function () {
+//        dateArray.forEach(function (date, i1) {
+//            let date1 = new Date(date);
+//            notesArray.forEach(function (note, i2) {
+//                let date2 = new Date(note.date);
+//                if (date1.getTime() === date2.getTime()) {
+//                    console.log("true");
+//                    $("#note" + i1).append(`<a href='#' data-toggle="modal" data-target="#notesModal${note.id}"
+//                     id='${note.id}'><img id='notePhoto' src='https://icon-library.net/images/icon-note/icon-note-0.jpg'> </a>`);
+//                }
+//            });
+//        });
+//    };
+    $scope.showNoteBetta = function (date,index) {
+        console.log(date+" "+index);
+        console.log("aaa"+date);
     };
+
+
+
 });
-    $scope.showNotes = function (date) {
-        return notesArray.includes(date);
-    };
-});
 
 
 
 
-function formatDate(date) {
-    var d = new Date(date),
-        month = '' + (d.getMonth() + 1),
-        day = '' + d.getDate(),
-        year = d.getFullYear();
 
-    if (month.length < 2) 
-        month = '0' + month;
-    if (day.length < 2) 
-        day = '0' + day;
 
-    return [year, month, day].join('-');
-}
 
 
 var getDates = function (startDate, endDate) {
@@ -202,3 +214,16 @@ var getDates = function (startDate, endDate) {
     }
     return dates;
 };
+function formatDate(date) {
+    var d = new Date(date),
+            month = '' + (d.getMonth() + 1),
+            day = '' + d.getDate(),
+            year = d.getFullYear();
+
+    if (month.length < 2)
+        month = '0' + month;
+    if (day.length < 2)
+        day = '0' + day;
+
+    return [year, month, day].join('-');
+}

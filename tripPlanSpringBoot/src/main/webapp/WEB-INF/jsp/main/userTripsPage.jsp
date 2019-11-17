@@ -15,6 +15,7 @@
     </head>
 
     <body ng-controller="MainCtrl">
+
         <jsp:include page="../components/navbar.jsp"/>
 
         <!-- Photo container -->
@@ -53,8 +54,8 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="date in dates">
-                            <th scope="row" class="text-center align-middle"><span class="date">{{date}}</span></th>
+                        <tr ng-repeat="date in dates" id="row{{$index}}">
+                            <th scope="row" class="text-center align-middle"><span class="date">{{dummyDates[$index]}}</span></th>
 
                             <td class="align-middle">
 
@@ -72,50 +73,52 @@
                                     <div class="col-7 d-flex align-items-center">
 
                                         <div class="col-4">
-
-                                            <button type="button" class="btn btn-secondary btn-sm add" id="notes"
-                                                    data-toggle="modal" data-target="#notesModal">
+                                            <button type="button" class="btn btn-secondary btn-sm add" id="notes{{$index}}"
+                                                    data-toggle="modal" data-target="#notesModal{{$index}}">
                                                 <img id='notePhoto' src='https://icon-library.net/images/icon-note/icon-note-0.jpg'>
                                             </button>
 
                                         </div>
 
-                                        <div class="col-8 d-flex justify-content-center" >
+                                        <div class="col-8 d-flex justify-content-center " id="note{{$index}}" >
+
+                                        </div>
+
+                                        <!-- Budget -->
+                                        <div class="col-2 d-flex align-items-center">
+
+                                            <div class="col-9">
+
+                                                <button type="button" class="btn btn-secondary btn-sm add" id="budget"
+                                                        data-toggle="modal" data-target="#budgetModal">
+                                                    Budget <i class="fas fa-plus-circle"></i>
+                                                </button>
+                                            </div>
+
+                                            <div class="col-3 d-flex justify-content-center">
+                                                <span class="dayBudget"></span>
+                                                <span ng-show="currencyShow($index)">{{currency}} </span>
+                                            </div>
+
+                                        </div>
+
+                                        <!-- Photos -->
+                                        <div class="col-2 d-flex align-items-center">
+
+                                            <div class="col-9">
+
+                                                <button type="button" class="btn btn-secondary btn-sm add" id="photos"
+                                                        data-toggle="modal" data-target="#photosModal">
+                                                    Photos <i class="fas fa-plus-circle"></i>
+                                                </button>
+                                            </div>
+
+
+                                            <div class="col-3 d-flex justify-content-center"></div>
 
                                         </div>
 
                                     </div>
-
-                                    <!-- Budget -->
-                                    <div class="col-2 d-flex align-items-center">
-
-                                        <div class="col-9">
-                                            <a href='#'><img id='notePhoto' src='https://icon-library.net/images/icon-note/icon-note-0.jpg'></a>
-                                        </div>
-
-                                        <div class="col-3 d-flex justify-content-center">
-                                            <span class="dayBudget"></span>
-                                            <span ng-show="currencyShow($index)">{{currency}} </span>
-                                        </div>
-
-                                    </div>
-
-                                    <!-- Photos -->
-                                    <div class="col-2 d-flex align-items-center">
-
-                                        <div class="col-9">
-
-                                            <button type="button" class="btn btn-secondary btn-sm add" id="photos"
-                                                    data-toggle="modal" data-target="#photosModal">
-                                                Photos <i class="fas fa-plus-circle"></i>
-                                            </button>
-                                        </div>
-
-                                        <div class="col-3 d-flex justify-content-center"></div>
-
-                                    </div>
-
-                                </div>
                             </td>
                         </tr>
                     </tbody>
@@ -189,10 +192,10 @@
             </div>
         </div>
 
-        <!-- Notes Modal -->
-        <div class="modal fade" id="notesModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        Notes Modal 
+        <div ng-repeat="date in dates"  class="modal fade" id="notesModal{{$index}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
              aria-hidden="true">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog" id="dialog{{$index}}" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Add a note</h5>
@@ -203,24 +206,22 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label>Add title</label>
-                            <input type="text" class="form-control" placeholder="Note Title" id="noteTitle">
+                            <input type="text" class="form-control" placeholder="Note Title" id="noteTitle{{$index}}">
                         </div>
                         <div class="form-group">
                             <label>Note Body</label>
                             <textarea name="noteBody" class="form-control" placeholder="Note Body"
-                                      id="noteBody"></textarea>
+                                      id="noteBody{{$index}}"></textarea>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal"
                                 name="cancel">Cancel</button>
-                        <form id="formNote">
+                        <form id="formNote{{$index}}">
 
-                            <button type="submit" class="btn btn-info submitAdd" data-dismiss="modal" id="addNote"
-                                    name="post" ng-click="addNote()">Add</button>
-
-                        </form>
-
+                            <button type="submit" class="btn btn-info submitAdd" data-dismiss="modal" id="addNote{{$index}}"
+                                    name="post" ng-click="addNote(date, $index)">Add</button>
+                        </form>      
                     </div>
                 </div>
             </div>
@@ -339,6 +340,6 @@
 
     <jsp:include page="../components/footer.jsp"/>
     <jsp:include page="../components/scripts.jsp"/>
-    <script src="${pageContext.request.contextPath}/js/tripsPage.js"></script>
+    <script src="${pageContext.request.contextPath}/js/tripsPage.js"></script>  
 </body>
 </html>
