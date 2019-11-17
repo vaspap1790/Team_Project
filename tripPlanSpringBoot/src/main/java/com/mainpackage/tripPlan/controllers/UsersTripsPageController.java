@@ -10,6 +10,7 @@ import com.mainpackage.tripPlan.services.CommentService;
 import com.mainpackage.tripPlan.services.TripPageService;
 import com.mainpackage.tripPlan.services.TripService;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -83,12 +84,15 @@ public class UsersTripsPageController {
         return "successs";
     }
 
-//    @GetMapping(value = "getNotes/{tripId}", produces = MediaType.APPLICATION_JSON_VALUE)
-//    @ResponseBody
-//    public List<NotesDTO> getNotes(@PathVariable(name = "tripId") String id) throws ParseException {
-//
-//        return tripPageService.getNotesById(Integer.parseInt(id));
-//    }
+    @GetMapping(value = "getNotes/{tripId}/{date}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public List<NotesDTO> getNotes(@PathVariable(name = "tripId") String id,
+            @PathVariable(name = "date") String date) throws ParseException {
+        
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");     
+        Date finalDate=formatter.parse(date);
+        return tripPageService.getNotesByIdAndDate(Integer.parseInt(id),finalDate);
+    }
 //
 //    @GetMapping(value = "getDailyBudget/{tripId}", produces = MediaType.APPLICATION_JSON_VALUE)
 //    @ResponseBody

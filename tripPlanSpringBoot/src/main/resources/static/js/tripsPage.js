@@ -1,9 +1,9 @@
 let clickedBtn = null;
 
-$(document).on("click", ".add", function (e) {
-    console.log("click");
-    clickedBtn = e;
-});
+//$(document).on("click", ".add", function (e) {
+//    console.log("click");
+//    clickedBtn = e;
+//});
 //$(document).ready(function () {
 //
 //    $(".add").click(function (e) {
@@ -121,8 +121,7 @@ App.controller("MainCtrl", function ($scope, $http) {
         //         console.log(error);
         //     });
     };
-    $scope.addNote = function (date,index) {
-    console.log(date+" "+index);
+    $scope.addNote = function (date, index) {
 //        $(clickedBtn.target.parentElement).next().append("<a href='#'><img id='notePhoto' src='https://icon-library.net/images/icon-note/icon-note-0.jpg'></a>");
         const title = $(`#notesModal${index} #noteTitle${index}`).val().trim();
         const body = $(`#notesModal${index} #noteBody${index}`).val().trim();
@@ -184,9 +183,21 @@ App.controller("MainCtrl", function ($scope, $http) {
 //            });
 //        });
 //    };
-    $scope.showNoteBetta = function (date,index) {
-        console.log(date+" "+index);
-        console.log("aaa"+date);
+    $scope.showNote = function (index, date) {
+        console.log(date + " " + index);
+   
+        console.log("aaa" + date);
+        let URL = `http://localhost:8080/tripPlan/tripPage/getNotes/${tripId}/${date}`;
+        $http.get(URL)
+                .then((response) => {
+                    let title = response.data[0].title;
+                    let body = response.data[0].body;
+                    let date = response.data[0].date;
+                    console.log(response.data);
+
+                    $(`#notesModal${index} #noteTitle${index}`).val(title);
+                    $(`#notesModal${index} #noteBody${index}`).val(body);
+                });
     };
 
 

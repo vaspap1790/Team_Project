@@ -74,7 +74,7 @@
 
                                         <div class="col-4">
                                             <button type="button" class="btn btn-secondary btn-sm add" id="notes{{$index}}"
-                                                    data-toggle="modal" data-target="#notesModal{{$index}}">
+                                                    data-toggle="modal" data-target="#notesModal{{$index}}" ng-click="showNote($index,date)">
                                                 <img id='notePhoto' src='https://icon-library.net/images/icon-note/icon-note-0.jpg'>
                                             </button>
 
