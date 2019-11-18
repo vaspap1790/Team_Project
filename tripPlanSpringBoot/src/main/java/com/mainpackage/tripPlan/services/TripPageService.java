@@ -64,8 +64,12 @@ public class TripPageService {
         return notes;
     }
 
-    public List<DailyBudgetDTO> getDailyBudgetById(int id) {
+    public List<DailyBudgetDTO> getDailyBudgetByTripId(int id) {
         List<DailyBudgetDTO> db = dbRepo.findDailyBudgetByTripId(id);
+        return db;
+    }
+       public List<DailyBudgetDTO> getDailyBudgetByTripIdAndDate(int id,Date date) {
+        List<DailyBudgetDTO> db = dbRepo.findDailyBudgetByTripIdAndDate(id,date);
         return db;
     }
 

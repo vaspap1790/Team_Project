@@ -54,6 +54,7 @@ App.controller("MainCtrl", function ($scope, $http) {
     const flightDateArray = [];
     const flightDates = [];
     const notesArray = []; //array of notes
+    const budgetArray = [];
     const URL = "http://localhost:8080/tripPlan/tripPage/" + username + "/" + tripId;
     ///ean den exei accommodation ,petaei error...
 
@@ -65,6 +66,7 @@ App.controller("MainCtrl", function ($scope, $http) {
                 const transportation = data.transportation;
                 const notes = data.notes;
                 $scope.location = data.location;
+                const dailyBudget = data.dailyBudget;
 
                 const checkin = new Date(accommodation.checkin);
                 const checkout = new Date(accommodation.checkout);
@@ -88,22 +90,38 @@ App.controller("MainCtrl", function ($scope, $http) {
                 notes.forEach(function (item, index) {
                     notesArray.push(item);//array of notes                 
                 });
-                console.log(dateArray);
                 ////////////////
+                dailyBudget.forEach(function (budget) {
+                    budgetArray.push(budget);
+                });
             }).catch((error) => {
         console.log(error);
     });
 
-
+    $scope.budgetArray = budgetArray;
     $scope.dummyDates = dummyDates;
     $scope.dates = dateArray;
     $scope.totalBudget = 0;
+
+$scope.printData =function(){
+    budgetArray.forEach(function (bd_date, index1) {
+        dateArray.forEach(function (date, index2) {
+            
+            if(bd_date.date===date){
+                console.log(date);
+                $(`#dayBudget${date}`).text(bd_date.dayBudget);
+            }
+        });
+    });
+    };
+
+
     $scope.show = function (date) {
 
         return flightDateArray.includes(date);
     };
     $scope.currencyShow = function (index) {
-        return !(document.querySelectorAll(".dayBudget")[index].innerText === '');
+        return !(document.querySelectorAll(`.dayBudget${index}`)[index].innerText === '');
     };
     $scope.addPost = function () {
 
@@ -122,8 +140,8 @@ App.controller("MainCtrl", function ($scope, $http) {
         //     });
     };
     $scope.addNote = function (date, index) {
-        console.log(date,index);
-        
+        console.log(date, index);
+
         const title = $(`#notesModal${index} #noteTitle${index}`).val().trim();
         const body = $(`#notesModal${index} #noteBody${index}`).val().trim();
 
@@ -138,18 +156,18 @@ App.controller("MainCtrl", function ($scope, $http) {
             },
             data: jsonObject
         };
-        $http(req).then(function () {
+        $http(req).then(function (response) {
             console.log("success");
         }).catch(() => {
             console.log("error");
         });
     };
-    $scope.addBudget = function () {
+    $scope.addBudget = function (date, index) {
 
-        const budget = $("#budgetModal #budget").val().trim();
-        $(clickedBtn.target.parentElement).next().children(":first").append(budget);
+        const budget = $(`#budgetModal${index} #budget${index}`).val().trim();
+        $(`#dayBudget${index}`).text(budget);
         $scope.totalBudget += parseInt(budget);
-        let object = {dayBudget: budget, tripId: tripId, date: "2019-11-21"};
+        let object = {dayBudget: budget, tripId: tripId, date: date};
         let jsonObject = JSON.stringify(object);
         console.log(jsonObject);
         const URL = "http://localhost:8080/tripPlan/tripPage/saveBudget";
@@ -161,26 +179,13 @@ App.controller("MainCtrl", function ($scope, $http) {
             },
             data: jsonObject
         };
-        $http(req).then(function () {
-            console.log("success");
+        $http(req).then(function (response) {
+            console.log(response);
         }).catch(() => {
             console.log("error");
         });
     };
 
-//    $scope.showNotes = function () {
-//        dateArray.forEach(function (date, i1) {
-//            let date1 = new Date(date);
-//            notesArray.forEach(function (note, i2) {
-//                let date2 = new Date(note.date);
-//                if (date1.getTime() === date2.getTime()) {
-//                    console.log("true");
-//                    $("#note" + i1).append(`<a href='#' data-toggle="modal" data-target="#notesModal${note.id}"
-//                     id='${note.id}'><img id='notePhoto' src='https://icon-library.net/images/icon-note/icon-note-0.jpg'> </a>`);
-//                }
-//            });
-//        });
-//    };
     $scope.showNote = function (index, date) {
         console.log(date + " " + index);
 
@@ -191,10 +196,10 @@ App.controller("MainCtrl", function ($scope, $http) {
                         let date = response.data[0].date;
                     }
                     console.log(response.data);
-                    if (typeof date !== 'undefined' && typeof response.data[0].title !== 'undefined' ) {
+                    if (typeof date !== 'undefined' && typeof response.data[0].title !== 'undefined') {
                         $(`#notesModal${index} #noteTitle${index}`).val(response.data[0].title);
                     }
-                    if(typeof date !== 'undefined' && typeof response.data[0].body !== 'undefined'){
+                    if (typeof date !== 'undefined' && typeof response.data[0].body !== 'undefined') {
                         $(`#notesModal${index} #noteBody${index}`).val(response.data[0].body);
                     }
                 }).catch(() => {

@@ -2,6 +2,7 @@ package com.mainpackage.tripPlan.controllers;
 
 import com.mainpackage.tripPlan.DummyModels.DummyDailyBudget;
 import com.mainpackage.tripPlan.DummyModels.DummyNotes;
+import com.mainpackage.tripPlan.dto.DailyBudgetDTO;
 import com.mainpackage.tripPlan.dto.NotesDTO;
 import com.mainpackage.tripPlan.model.Comment;
 import com.mainpackage.tripPlan.model.Trip;
@@ -9,9 +10,6 @@ import com.mainpackage.tripPlan.services.CommentService;
 import com.mainpackage.tripPlan.services.TripPageService;
 import com.mainpackage.tripPlan.services.TripService;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -93,13 +91,21 @@ public class UsersTripsPageController {
 
         return tripPageService.getNotesByIdAndDate(Integer.parseInt(id),date);
     }
-//
-//    @GetMapping(value = "getDailyBudget/{tripId}", produces = MediaType.APPLICATION_JSON_VALUE)
-//    @ResponseBody
-//    public List<DailyBudgetDTO> getDailyBudget(@PathVariable(name = "tripId") String id) throws ParseException {
-//
-//        return tripPageService.getDailyBudgetById(Integer.parseInt(id));
-//    }
+
+    @GetMapping(value = "getDailyBudget/{tripId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public List<DailyBudgetDTO> getDailyBudgetWithTripId(@PathVariable(name = "tripId") String tripId) throws ParseException {
+
+        return tripPageService.getDailyBudgetByTripId(Integer.parseInt(tripId));
+    }
+    
+    @GetMapping(value = "getDailyBudget/{tripId}/{date}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public List<DailyBudgetDTO> getDailyBudgetWithDateAndTripId(@PathVariable(name = "tripId") String id,
+           @PathVariable(name = "date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date date ) throws ParseException {
+
+        return tripPageService.getDailyBudgetByTripIdAndDate(Integer.parseInt(id),date);
+    }
 
 //     @GetMapping(value = "getDailyData/{tripId}", produces = MediaType.APPLICATION_JSON_VALUE)
 //    @ResponseBody

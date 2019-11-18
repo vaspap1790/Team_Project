@@ -85,7 +85,7 @@ public class TripService {
         List<TransportationDTO> transp = transService.findTransportationByUsernameAndTripId(username, id);
         List<AccommodationDTO> accommo = accomoService.findTransportationByUsernameAndTripId(username, id);
         List<NotesDTO> notes = tripPageService.getNotesById(Integer.parseInt(id));
-        List<DailyBudgetDTO> db = tripPageService.getDailyBudgetById(Integer.parseInt(id));
+        List<DailyBudgetDTO> db = tripPageService.getDailyBudgetByTripId(Integer.parseInt(id));
         Trip tr=findTripById(Integer.parseInt(id));
         
         Map<String, Object> trip = new HashMap<>();
