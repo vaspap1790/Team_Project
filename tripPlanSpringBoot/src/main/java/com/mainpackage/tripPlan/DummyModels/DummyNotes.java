@@ -6,7 +6,7 @@
 package com.mainpackage.tripPlan.DummyModels;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import java.sql.Date;
+import java.util.Date;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

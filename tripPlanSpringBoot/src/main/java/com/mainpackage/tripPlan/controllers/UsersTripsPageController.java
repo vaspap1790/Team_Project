@@ -2,7 +2,6 @@ package com.mainpackage.tripPlan.controllers;
 
 import com.mainpackage.tripPlan.DummyModels.DummyDailyBudget;
 import com.mainpackage.tripPlan.DummyModels.DummyNotes;
-import com.mainpackage.tripPlan.dto.DailyBudgetDTO;
 import com.mainpackage.tripPlan.dto.NotesDTO;
 import com.mainpackage.tripPlan.model.Comment;
 import com.mainpackage.tripPlan.model.Trip;
@@ -11,8 +10,11 @@ import com.mainpackage.tripPlan.services.TripPageService;
 import com.mainpackage.tripPlan.services.TripService;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -87,11 +89,9 @@ public class UsersTripsPageController {
     @GetMapping(value = "getNotes/{tripId}/{date}", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public List<NotesDTO> getNotes(@PathVariable(name = "tripId") String id,
-            @PathVariable(name = "date") String date) throws ParseException {
-        
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");     
-        Date finalDate=formatter.parse(date);
-        return tripPageService.getNotesByIdAndDate(Integer.parseInt(id),finalDate);
+            @PathVariable(name = "date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date date) throws ParseException {
+
+        return tripPageService.getNotesByIdAndDate(Integer.parseInt(id),date);
     }
 //
 //    @GetMapping(value = "getDailyBudget/{tripId}", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -100,7 +100,7 @@ public class UsersTripsPageController {
 //
 //        return tripPageService.getDailyBudgetById(Integer.parseInt(id));
 //    }
-    
+
 //     @GetMapping(value = "getDailyData/{tripId}", produces = MediaType.APPLICATION_JSON_VALUE)
 //    @ResponseBody
 //    public Map<String,Object> getDailyData(@PathVariable(name = "tripId") String id) throws ParseException {

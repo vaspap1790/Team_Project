@@ -122,15 +122,13 @@ App.controller("MainCtrl", function ($scope, $http) {
         //     });
     };
     $scope.addNote = function (date, index) {
-//        $(clickedBtn.target.parentElement).next().append("<a href='#'><img id='notePhoto' src='https://icon-library.net/images/icon-note/icon-note-0.jpg'></a>");
+        console.log(date,index);
+        
         const title = $(`#notesModal${index} #noteTitle${index}`).val().trim();
         const body = $(`#notesModal${index} #noteBody${index}`).val().trim();
-//        let unformatedDate = $(clickedBtn.target.previousElementSibling).text();
-//        let finalDate = formatDate(unformatedDate);
 
         let object = {title: title, body: body, tripId: tripId, date: date};
         let jsonObject = JSON.stringify(object);
-//        console.log(jsonObject);
         const URL = "http://localhost:8080/tripPlan/tripPage/saveNote";
         var req = {
             method: 'POST',
@@ -185,19 +183,23 @@ App.controller("MainCtrl", function ($scope, $http) {
 //    };
     $scope.showNote = function (index, date) {
         console.log(date + " " + index);
-   
-        console.log("aaa" + date);
+
         let URL = `http://localhost:8080/tripPlan/tripPage/getNotes/${tripId}/${date}`;
         $http.get(URL)
                 .then((response) => {
-                    let title = response.data[0].title;
-                    let body = response.data[0].body;
-                    let date = response.data[0].date;
+                    if (typeof response.data[0].date !== 'undefined') {
+                        let date = response.data[0].date;
+                    }
                     console.log(response.data);
-
-                    $(`#notesModal${index} #noteTitle${index}`).val(title);
-                    $(`#notesModal${index} #noteBody${index}`).val(body);
-                });
+                    if (typeof date !== 'undefined' && typeof response.data[0].title !== 'undefined' ) {
+                        $(`#notesModal${index} #noteTitle${index}`).val(response.data[0].title);
+                    }
+                    if(typeof date !== 'undefined' && typeof response.data[0].body !== 'undefined'){
+                        $(`#notesModal${index} #noteBody${index}`).val(response.data[0].body);
+                    }
+                }).catch(() => {
+            console.log("No data");
+        });
     };
 
 

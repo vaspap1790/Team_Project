@@ -31,38 +31,46 @@ public class TripPageService {
     GenericJpaDao<DailyBudget> budgetDAO;
     @Autowired
     NotesRepo notesRepo;
-    @Autowired 
+    @Autowired
     DailyBudgetRepo dbRepo;
 
     public void saveNotes(DummyNotes dummy) throws ParseException {
-        try{
-        Trip trip = tripService.findTripById(dummy.getTripId());
-        notesDAO.save(new Notes(dummy.getTitle(), dummy.getBody(),dummy.getDate(), trip));
-        }catch(Exception e){
+        try {
+            Notes note = notesRepo.findByDate(dummy.getDate(),dummy.getTripId());
+            if (note != null) {
+                note.setBody(dummy.getBody());
+                note.setTitle(dummy.getTitle());
+                notesDAO.update(note);
+            } else {
+                Trip trip = tripService.findTripById(dummy.getTripId());
+                notesDAO.save(new Notes(dummy.getTitle(), dummy.getBody(), dummy.getDate(), trip));
+            }
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    
-      public void saveBudget(DummyDailyBudget dummy) throws ParseException {
-        try{
-        Trip trip = tripService.findTripById(dummy.getTripId());
-        budgetDAO.save(new DailyBudget(dummy.getDayBudget(),dummy.getDate(),trip));
-        }catch(Exception e){
+
+    public void saveBudget(DummyDailyBudget dummy) throws ParseException {
+        try {
+            Trip trip = tripService.findTripById(dummy.getTripId());
+            budgetDAO.save(new DailyBudget(dummy.getDayBudget(), dummy.getDate(), trip));
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
-      
-      public List<NotesDTO> getNotesById(int id){
-          List<NotesDTO> notes=notesRepo.findNotesByTripId(id);
-         return notes;
-      }
-      
-      public List<DailyBudgetDTO> getDailyBudgetById(int id){
-          List<DailyBudgetDTO> db=dbRepo.findDailyBudgetByTripId(id);
-         return db;
-      }
-       public List<NotesDTO> getNotesByIdAndDate(int id,Date date){
-          List<NotesDTO> notes=notesRepo.findNotesByTripIdAndDate(id,date);
-         return notes;
-      }
+
+    public List<NotesDTO> getNotesById(int id) {
+        List<NotesDTO> notes = notesRepo.findNotesByTripId(id);
+        return notes;
+    }
+
+    public List<DailyBudgetDTO> getDailyBudgetById(int id) {
+        List<DailyBudgetDTO> db = dbRepo.findDailyBudgetByTripId(id);
+        return db;
+    }
+
+    public List<NotesDTO> getNotesByIdAndDate(int id, Date date) {
+        List<NotesDTO> notes = notesRepo.findNotesByTripIdAndDate(id, date);
+        return notes;
+    }
 }
