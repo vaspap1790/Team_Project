@@ -106,11 +106,4 @@ public class UsersTripsPageController {
 
         return tripPageService.getDailyBudgetByTripIdAndDate(Integer.parseInt(id),date);
     }
-
-//     @GetMapping(value = "getDailyData/{tripId}", produces = MediaType.APPLICATION_JSON_VALUE)
-//    @ResponseBody
-//    public Map<String,Object> getDailyData(@PathVariable(name = "tripId") String id) throws ParseException {
-//
-//        return tripPageService.getData(Integer.parseInt(id));
-//    }
 }

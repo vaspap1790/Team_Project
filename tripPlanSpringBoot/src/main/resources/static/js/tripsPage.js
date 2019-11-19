@@ -45,7 +45,7 @@ $(".budget").change(function (e) {
 //Angular
 
 const App = angular.module("App", []);
-App.controller("MainCtrl", function ($scope, $http) {
+App.controller("MainCtrl", function ($scope, $http,$timeout) {
 
     const username = document.getElementById("username").innerText.trim();
     const tripId = document.getElementById("tripId").innerText.trim();
@@ -57,8 +57,6 @@ App.controller("MainCtrl", function ($scope, $http) {
     const budgetArray = [];
     const URL = "http://localhost:8080/tripPlan/tripPage/" + username + "/" + tripId;
     ///ean den exei accommodation ,petaei error...
-
-
     $http.get(URL)
             .then((response) => {
                 const data = response.data;
@@ -103,19 +101,15 @@ App.controller("MainCtrl", function ($scope, $http) {
     $scope.dates = dateArray;
     $scope.totalBudget = 0;
 
-$scope.printData =function(){
-    budgetArray.forEach(function (bd_date, index1) {
-        dateArray.forEach(function (date, index2) {
-            
-            if(bd_date.date===date){
-                console.log(date);
-                $(`#dayBudget${date}`).text(bd_date.dayBudget);
-            }
+    $scope.printBudget = function () {
+        budgetArray.forEach(function (bd_date, index1) {
+            dateArray.forEach(function (date, index2) {
+                if (bd_date.date === date) {
+                    $(`#dayBudget${date}`).text(bd_date.dayBudget);
+                }
+            });
         });
-    });
     };
-
-
     $scope.show = function (date) {
 
         return flightDateArray.includes(date);
@@ -142,8 +136,8 @@ $scope.printData =function(){
     $scope.addNote = function (date, index) {
         console.log(date, index);
 
-        const title = $(`#notesModal${index} #noteTitle${index}`).val().trim();
-        const body = $(`#notesModal${index} #noteBody${index}`).val().trim();
+        const title = $(`#notesModal${date} #noteTitle${date}`).val().trim();
+        const body = $(`#notesModal${date} #noteBody${date}`).val().trim();
 
         let object = {title: title, body: body, tripId: tripId, date: date};
         let jsonObject = JSON.stringify(object);
@@ -182,12 +176,10 @@ $scope.printData =function(){
         $http(req).then(function (response) {
             console.log(response);
         }).catch(() => {
-            console.log("error");
+            console.log("error");       
         });
     };
-
     $scope.showNote = function (index, date) {
-        console.log(date + " " + index);
 
         let URL = `http://localhost:8080/tripPlan/tripPage/getNotes/${tripId}/${date}`;
         $http.get(URL)
@@ -197,16 +189,22 @@ $scope.printData =function(){
                     }
                     console.log(response.data);
                     if (typeof date !== 'undefined' && typeof response.data[0].title !== 'undefined') {
-                        $(`#notesModal${index} #noteTitle${index}`).val(response.data[0].title);
+                        $(`#notesModal${date} #noteTitle${date}`).val(response.data[0].title);
                     }
                     if (typeof date !== 'undefined' && typeof response.data[0].body !== 'undefined') {
-                        $(`#notesModal${index} #noteBody${index}`).val(response.data[0].body);
+                        $(`#notesModal${date} #noteBody${date}`).val(response.data[0].body);
                     }
                 }).catch(() => {
             console.log("No data");
         });
     };
-
+    $scope.showNotes= function ( date){
+        notesArray.forEach(function(note,index){           
+            if (note.date===date){
+                return true;
+            }
+        });
+    };
 
 
 });

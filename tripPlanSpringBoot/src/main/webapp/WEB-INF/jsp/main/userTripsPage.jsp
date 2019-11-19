@@ -15,7 +15,7 @@
     </head>
 
     <body ng-controller="MainCtrl">
-        {{printData()}}
+        {{printBudget()}}
         <jsp:include page="../components/navbar.jsp"/>
 
         <!-- Photo container -->
@@ -74,13 +74,18 @@
 
                                         <div class="col-4">
                                             <button type="button" class="btn btn-secondary btn-sm add" id="notes{{$index}}"
-                                                    data-toggle="modal" data-target="#notesModal{{$index}}" ng-click="showNote($index, date)">
+                                                    data-toggle="modal" data-target="#notesModal{{date}}" ng-click="showNote($index, date)">
                                                 Notes <i class="fas fa-plus-circle"></i>                                           
                                             </button>
 
                                         </div>
 
-                                        <div class="col-8 d-flex justify-content-center " id="note{{$index}}" ></div>
+                                        <div class="col-8 d-flex justify-content-center " id="note{{$index}}" >
+                                            <span  id="showNotes13{{date}} " ng-click="showNote(index,date)" 
+                                                data-toggle="modal" data-target="#notesModal{{date}}" ng-show="showNotes(date)">
+                                                <i class="fa fa-calendar" style="font-size:36px"></i>
+                                            </span>
+                                        </div>
 
                                     </div>
 
@@ -193,7 +198,7 @@
         </div>
 
         Notes Modal 
-        <div ng-repeat="date in dates"  class="modal fade" id="notesModal{{$index}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        <div ng-repeat="date in dates"  class="modal fade" id="notesModal{{date}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
              aria-hidden="true">
             <div class="modal-dialog" id="dialog{{$index}}" role="document">
                 <div class="modal-content">
@@ -206,12 +211,12 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label>Add title</label>
-                            <input type="text" class="form-control" placeholder="Note Title" id="noteTitle{{$index}}">
+                            <input type="text" class="form-control" placeholder="Note Title" id="noteTitle{{date}}">
                         </div>
                         <div class="form-group">
                             <label>Note Body</label>
                             <textarea name="noteBody" class="form-control" placeholder="Note Body"
-                                      id="noteBody{{$index}}"></textarea>
+                                      id="noteBody{{date}}"></textarea>
                         </div>
                     </div>
                     <div class="modal-footer">
