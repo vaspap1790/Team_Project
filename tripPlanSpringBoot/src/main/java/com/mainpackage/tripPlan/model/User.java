@@ -64,6 +64,8 @@ public class User implements Serializable {
     @JoinColumn(name = "role_ref", referencedColumnName = "role_id")
     @ManyToOne(optional = false)
     private Role roleRef;
+    @OneToMany(mappedBy = "idUser")
+    private Collection<File> fileCollection;
 
     public User() {
     }
@@ -126,6 +128,14 @@ public class User implements Serializable {
 
     public void setRoleRef(Role roleRef) {
         this.roleRef = roleRef;
+    }
+
+    public Collection<File> getFileCollection() {
+        return fileCollection;
+    }
+
+    public void setFileCollection(Collection<File> fileCollection) {
+        this.fileCollection = fileCollection;
     }
 
 

@@ -23,6 +23,7 @@
     <class>com.mainpackage.tripPlan.model.Notes</class>
     <class>com.mainpackage.tripPlan.model.DailyBudget</class>
     <class>com.mainpackage.tripPlan.model.Profile</class>
+    <class>com.mainpackage.tripPlan.model.File</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/tripplanner?zeroDateTimeBehavior=CONVERT_TO_NULL&amp;useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC&amp;allowPublicKeyRetrieval=true&amp;useSSL=false"/>
