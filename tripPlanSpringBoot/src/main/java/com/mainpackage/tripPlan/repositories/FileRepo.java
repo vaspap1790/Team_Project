@@ -20,4 +20,12 @@ public interface FileRepo extends CrudRepository<File, Integer> {
     
 //    @Query(value = "SELECT * FROM file f ", nativeQuery = true)
 //    public List<File> showAllImages(Integer userId);
+    
+    @Query("SELECT f FROM File f inner join f.idUser u WHERE  u.username=:username")
+    File findFileByUsername(@Param("username") String username);
+    
+    
+     @Query("SELECT f FROM File f inner join f.idUser u WHERE  u.userId=:userId")
+    File findFileByUseId(@Param("userId") Integer userId);
+    
 }

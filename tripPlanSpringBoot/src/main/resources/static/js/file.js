@@ -1,20 +1,20 @@
 let username;
 let userId;
 
-document.addEventListener("DOMContentLoaded", function (event) {
-
-    const URL = "http://localhost:8080/tripPlan/user/getUser";
-    async function init() {
-        const user = await fetch(URL);
-        const userJson = await user.json();
-        return userJson;
-    }
-
-    init().then((res) => {
-        username=res.username;
-        userId=res.userId;
-    });
-});
+//document.addEventListener("DOMContentLoaded", function (event) {
+//
+//    const URL = "http://localhost:8080/tripPlan/user/getUser";
+//    async function init() {
+//        const user = await fetch(URL);
+//        const userJson = await user.json();
+//        return userJson;
+//    }
+//
+//    init().then((res) => {
+//        username = res.username;
+//        userId = res.userId;
+//    });
+//});
 
 var singleUploadForm = document.querySelector('#singleUploadForm');
 var singleFileUploadInput = document.querySelector('#singleFileUploadInput');
@@ -26,30 +26,42 @@ var singleFileUploadSuccess = document.querySelector('#singleFileUploadSuccess')
 //var multipleFileUploadError = document.querySelector('#multipleFileUploadError');
 //var multipleFileUploadSuccess = document.querySelector('#multipleFileUploadSuccess');
 
-function  uploadSingleFile(file) {
+//function  uploadSingleFile(file) {
 
-    
-    var formData = new FormData();
-    formData.append("file", file);
-    formData.append("userId",userId);
+
+//    var formData = new FormData();
+//    formData.append("file", file);
+//    formData.append("userId", userId);
+//
+//    var xhr = new XMLHttpRequest();
+//    xhr.open("POST", "http://localhost:8080/tripPlan/uploadFile");
+//
+//    xhr.onload = function () {
+//        console.log(xhr.responseText);
+//        var response = JSON.parse(xhr.responseText);
+//        if (xhr.status === 200) {
+//            singleFileUploadError.style.display = "none";
+//            singleFileUploadSuccess.innerHTML = "<p>File Uploaded Successfully.</p><p><a href='/seetree'>Go To My Tree</a></p>";
+//            singleFileUploadSuccess.style.display = "block";
+//        } else {
+//            singleFileUploadSuccess.style.display = "none";
+//            singleFileUploadError.innerHTML = (response && response.message) || "Some Error Occurred";
+//        }
+//    };
+//
+//    xhr.send(formData);
+//}
+
+function  redirect() {
+
 
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "http://localhost:8080/tripPlan/uploadFile");
+    xhr.open("GET", "http://localhost:8080/tripPlan/user/profile");
 
     xhr.onload = function () {
-        console.log(xhr.responseText);
-        var response = JSON.parse(xhr.responseText);
-        if (xhr.status === 200) {
-            singleFileUploadError.style.display = "none";
-            singleFileUploadSuccess.innerHTML = "<p>File Uploaded Successfully.</p><p><a href='/seetree'>Go To My Tree</a></p>";
-            singleFileUploadSuccess.style.display = "block";
-        } else {
-            singleFileUploadSuccess.style.display = "none";
-            singleFileUploadError.innerHTML = (response && response.message) || "Some Error Occurred";
-        }
+        console.log(xhr.responseURL); // http://example.com/test
     };
-
-   xhr.send(formData); 
+    xhr.send();
 }
 
 //function uploadMultipleFiles(files) {
@@ -81,16 +93,17 @@ function  uploadSingleFile(file) {
 //    xhr.send(formData);
 //}
 
-singleUploadForm.addEventListener('submit', function (event) {
-
-    var files = singleFileUploadInput.files;
-    if (files.length === 0) {
-        singleFileUploadError.innerHTML = "Please select a file";
-        singleFileUploadError.style.display = "block";
-    }
-    uploadSingleFile(files[0]);
-    event.preventDefault();
-}, true);
+//singleUploadForm.addEventListener('submit',  function (event) {
+//
+//    var files = singleFileUploadInput.files;
+//    if (files.length === 0) {
+//        singleFileUploadError.innerHTML = "Please select a file";
+//        singleFileUploadError.style.display = "block";
+//    }
+// uploadSingleFile(files[0]);
+//
+//    event.preventDefault();
+//}, true);
 
 
 //multipleUploadForm.addEventListener('submit', function (event) {

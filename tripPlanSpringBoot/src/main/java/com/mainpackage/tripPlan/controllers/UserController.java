@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import java.util.*;
 import org.springframework.http.MediaType;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping(value = "user/")
@@ -80,11 +81,16 @@ public class UserController {
 
         UserPrincipal userPrince = (UserPrincipal) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = userRepo.findByUsername(userPrince.getUsername());
-
-        File file = DBFileStorageService.getFileByName("IMG_20180514_123730.jpg");
-        String img = DBFileStorageService.getStringImage(file.getFileData());
-        m.addAttribute("img", img);
-        m.addAttribute("userId", user.getUserId());
+        try {
+           File  file = DBFileStorageService.checkForFile(user.getUsername());
+            if (file == null) {
+              return "userProfile";
+            }
+            String img = DBFileStorageService.getStringImage(file.getFileData());
+            m.addAttribute("img", img);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return "userProfile";
     }
 

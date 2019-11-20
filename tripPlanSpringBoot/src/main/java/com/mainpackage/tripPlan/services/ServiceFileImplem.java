@@ -37,24 +37,29 @@ public class ServiceFileImplem implements ServiceFile {
     UserService userService;
     @Autowired
     FileRepo fileRepo;
-    
-    @Override
-    public File storeFile(MultipartFile file, long userId) {
-        
-       User user= userService.findByUserId(userId);
-       
-        // Normalize file name
-        String fileName = StringUtils.cleanPath(file.getOriginalFilename());
+    @Autowired
+    GenericJpaDao<File> fileDao;
 
+    @Override
+    public void storeFile(MultipartFile file, long userId) {
+
+        User user = userService.findByUserId(userId);
+        File fileFromDb = fileRepo.findFileByUseId(Math.toIntExact(userId));
+
+        String fileName = StringUtils.cleanPath(file.getOriginalFilename());
         try {
             // Check if the file's name contains invalid characters
             if (fileName.contains("..")) {
                 throw new FileStorageException("Sorry! Filename contains invalid path sequence " + fileName);
             }
-
-            File dbFile = new File(fileName, file.getContentType(), file.getBytes(),user);
-
-            return dbFileRepository.save(dbFile);
+            if (fileFromDb == null) {
+                File dbFile = new File(fileName, file.getContentType(), file.getBytes(), user);
+                 dbFileRepository.save(dbFile);
+            } else {
+                fileFromDb.setFileData(file.getBytes());
+                fileFromDb.setFileName(fileName);
+                fileDao.update(fileFromDb);
+            }
         } catch (IOException ex) {
             throw new FileStorageException("Could not store file " + fileName + ". Please try again!", ex);
         }
@@ -67,16 +72,7 @@ public class ServiceFileImplem implements ServiceFile {
     @Override
     public String getStringImage(byte[] i) {
 
-//        ResultSet result = null;
-//        Blob blob = null;
-//        try {
-//            assert false;
-//            blob = result.getBlob("image");
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-
-       InputStream inputStream = null;
+        InputStream inputStream = null;
         inputStream = new ByteArrayInputStream(i);
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         byte[] buffer = new byte[4096];
@@ -84,7 +80,9 @@ public class ServiceFileImplem implements ServiceFile {
 
         while (true) {
             try {
-                if ((bytesRead = inputStream.read(buffer)) == -1) break;
+                if ((bytesRead = inputStream.read(buffer)) == -1) {
+                    break;
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -102,15 +100,20 @@ public class ServiceFileImplem implements ServiceFile {
             e.printStackTrace();
         }
 
-                return base64Image;
+        return base64Image;
     }
 
     @Override
     public File getFileByName(String fileName) {
-        
+
         return fileRepo.findByFileName(fileName);
     }
 
-  
-    
+    @Override
+    public File checkForFile(String username) {
+
+        File file = fileRepo.findFileByUsername(username);
+
+        return file;
+    }
 }

@@ -5,8 +5,10 @@
  */
 package com.mainpackage.tripPlan.controllers;
 
-import com.mainpackage.tripPlan.dto.UploadFileResponse;
 import com.mainpackage.tripPlan.model.File;
+import com.mainpackage.tripPlan.model.User;
+import com.mainpackage.tripPlan.model.UserPrincipal;
+import com.mainpackage.tripPlan.repositories.UserRepo;
 import com.mainpackage.tripPlan.services.ServiceFile;
 import java.util.Arrays;
 import java.util.List;
@@ -19,50 +21,46 @@ import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import org.springframework.web.servlet.ModelAndView;
 
-@RestController
+@Controller
 public class FileController {
 
     private static final Logger logger = LoggerFactory.getLogger(FileController.class);
 
     @Autowired
     private ServiceFile DBFileStorageService;
+    @Autowired
+    UserRepo userRepo;
 
-    @PostMapping(value ="/uploadFile")
-    public UploadFileResponse uploadFile(@RequestParam("file") MultipartFile file,
-                                         @RequestParam("userId") long userId) {
+    @PostMapping(value = "/uploadFile")
+    public ModelAndView uploadFile(@RequestParam("file") MultipartFile file) {
+       
+        UserPrincipal userPrince = (UserPrincipal) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User user = userRepo.findByUsername(userPrince.getUsername());
 
-        File dbFile = DBFileStorageService.storeFile(file, userId);
-
-        String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
-                .path("/downloadFile/")
-                .path(String.valueOf(dbFile.getId()))
-                .toUriString();
-
-        System.out.println("IDUSER = " + userId);
-
-        return new UploadFileResponse(dbFile.getFileName(), fileDownloadUri,
-                file.getContentType(), file.getSize());
+        DBFileStorageService.storeFile(file, user.getUserId());
+        return new ModelAndView("redirect:/user/profile");
     }
 
-    @PostMapping("/uploadMultipleFiles")
-    public List<UploadFileResponse> uploadMultipleFiles(@RequestParam("files") MultipartFile[] files,
-            @RequestParam("userId") long userId) {
-
-        return Arrays.stream(files)
-                .map(file -> uploadFile(file, userId))
-                .collect(Collectors.toList());
-    }
-
+//    @PostMapping("/uploadMultipleFiles")
+//    public List<UploadFileResponse> uploadMultipleFiles(@RequestParam("files") MultipartFile[] files,
+//            @RequestParam("userId") long userId) {
+//
+//        return Arrays.stream(files)
+//                .map(file -> uploadFile(file, userId))
+//                .collect(Collectors.toList());
+//    }
     @GetMapping("/downloadFile/{fileId}")
+    @ResponseBody
     public ResponseEntity<Resource> downloadFile(@PathVariable String fileId) {
         File dbFile = DBFileStorageService.getFile(Long.parseLong(fileId));
 
@@ -72,10 +70,11 @@ public class FileController {
                 .body(new ByteArrayResource(dbFile.getFileData()));
     }
 
-    @GetMapping(value="/getFileByName/{fileName}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public String getFileByName(@PathVariable String fileName){
-        File file= DBFileStorageService.getFileByName(fileName);
-       
+    @GetMapping(value = "/getFileByName/{fileName}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public String getFileByName(@PathVariable String fileName) {
+        File file = DBFileStorageService.getFileByName(fileName);
+
         return DBFileStorageService.getStringImage(file.getFileData());
     }
 }
