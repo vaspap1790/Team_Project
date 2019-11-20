@@ -31,12 +31,13 @@
 
                             <div class="text-center">
                                 <h1>${pageContext.request.userPrincipal.name}</h1>
-                                <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
+                                <img src="data:image/jpg;base64,${img}" class="avatar img-circle img-thumbnail" alt="avatar">
                                 <h6>Upload photo profile</h6>
                                 <form id="singleUploadForm" name="singleUploadForm">
                                     <input id="singleFileUploadInput" type="file" name="file"   class="text-center center-block file-upload file-input">                        
                                     <button type="submit" class="primary submit-btn">Submit</button>
                                 </form>
+                                
                             </div></hr><br>
 <!--                            <input id="userId " type="hidden"  value="${userId}">-->
                             <div class="upload-response">

@@ -2,12 +2,14 @@ package com.mainpackage.tripPlan.controllers;
 
 import com.mainpackage.tripPlan.daos.GenericJpaDao;
 import com.mainpackage.tripPlan.model.AccommodationType;
+import com.mainpackage.tripPlan.model.File;
 import com.mainpackage.tripPlan.model.RentalType;
 import com.mainpackage.tripPlan.model.TransportationType;
 import com.mainpackage.tripPlan.model.Trip;
 import com.mainpackage.tripPlan.model.User;
 import com.mainpackage.tripPlan.model.UserPrincipal;
 import com.mainpackage.tripPlan.repositories.UserRepo;
+import com.mainpackage.tripPlan.services.ServiceFile;
 import com.mainpackage.tripPlan.services.UserService;
 import com.mainpackage.tripPlan.utilities.Check;
 import com.mainpackage.tripPlan.utilities.Encryption;
@@ -39,6 +41,8 @@ public class UserController {
     UserRepo userRepo;
     @Autowired
     Check check;
+    @Autowired
+    private ServiceFile DBFileStorageService;
 
     @GetMapping(value = "/choices")
     public String choices(HttpSession session, Model m) {
@@ -76,7 +80,10 @@ public class UserController {
 
         UserPrincipal userPrince = (UserPrincipal) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = userRepo.findByUsername(userPrince.getUsername());
-      
+
+        File file = DBFileStorageService.getFileByName("IMG_20180514_123730.jpg");
+        String img = DBFileStorageService.getStringImage(file.getFileData());
+        m.addAttribute("img", img);
         m.addAttribute("userId", user.getUserId());
         return "userProfile";
     }
@@ -84,10 +91,10 @@ public class UserController {
     @GetMapping(value = "/getUser", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public Map<String, Object> getUser() {
-        
+
         UserPrincipal userPrince = (UserPrincipal) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = userRepo.findByUsername(userPrince.getUsername());
-        
+
         Map<String, Object> map = new HashMap<>();
         map.put("username", user.getUsername());
         map.put("userId", user.getUserId());
