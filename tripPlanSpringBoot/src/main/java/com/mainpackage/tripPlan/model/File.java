@@ -1,6 +1,12 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.mainpackage.tripPlan.model;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,9 +18,11 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -48,9 +56,21 @@ public class File implements Serializable {
     @JoinColumn(name = "id_user", referencedColumnName = "user_id")
     @ManyToOne
     private User idUser;
+    @OneToMany(mappedBy = "photoId")
+    private Collection<Profile> profileCollection;
 
     public File() {
     }
+
+    public File(String fileName, String fileType, byte[] fileData, User idUser) {
+        this.fileName = fileName;
+        this.fileType = fileType;
+        this.fileData = fileData;
+        this.idUser = idUser;
+    }
+
+  
+    
 
     public File(Integer id) {
         this.id = id;
@@ -94,6 +114,15 @@ public class File implements Serializable {
 
     public void setIdUser(User idUser) {
         this.idUser = idUser;
+    }
+
+    @XmlTransient
+    public Collection<Profile> getProfileCollection() {
+        return profileCollection;
+    }
+
+    public void setProfileCollection(Collection<Profile> profileCollection) {
+        this.profileCollection = profileCollection;
     }
 
     @Override

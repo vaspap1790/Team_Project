@@ -32,9 +32,17 @@
                             <div class="text-center">
                                 <h1>${pageContext.request.userPrincipal.name}</h1>
                                 <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
-                                <h6>Upload a different photo...</h6>
-                                <input type="file"  class="text-center center-block file-upload ">                        
+                                <h6>Upload photo profile</h6>
+                                <form id="singleUploadForm" name="singleUploadForm">
+                                    <input id="singleFileUploadInput" type="file" name="file"   class="text-center center-block file-upload file-input">                        
+                                    <button type="submit" class="primary submit-btn">Submit</button>
+                                </form>
                             </div></hr><br>
+<!--                            <input id="userId " type="hidden"  value="${userId}">-->
+                            <div class="upload-response">
+                                <div id="singleFileUploadError"></div>
+                                <div id="singleFileUploadSuccess"></div>
+                            </div>
 
                             <div class="panel panel-default shadow-lg">
                                 <div class="panel-heading">Website <i class="fa fa-link fa-1x"></i></div>
@@ -99,70 +107,70 @@
                                 <div class="tab-pane" id="profile">
                                     <hr>
                                     <%--<spring:form modelAttribute="" class="form" action="${pageContext.request.contextPath}/" method="POST" id="registrationForm" enctype="multipart/form-data">--%>
-                                        <div class="form-group">
+                                    <div class="form-group">
 
-                                            <div class="col-xs-6">
-                                                <%--<spring:label path="first_name"><h4>First name</h4></spring:label>--%>
-                                                <%--<spring:input style="height: 4rem!important;" type="text" class="form-control" path="first_name" id="first_name" placeholder="Enter First name ...">--%>
-                                            </div>
+                                        <div class="col-xs-6">
+                                            <%--<spring:label path="first_name"><h4>First name</h4></spring:label>--%>
+                                            <%--<spring:input style="height: 4rem!important;" type="text" class="form-control" path="first_name" id="first_name" placeholder="Enter First name ...">--%>
                                         </div>
-                                        <div class="form-group">
+                                    </div>
+                                    <div class="form-group">
 
-                                            <div class="col-xs-6">
-                                                <%--<spring:label path="last_name"><h4>Last name</h4></spring:label>--%>
-                                                <%--<spring:input style="height: 4rem!important;" type="text" class="form-control" path="last_name" id="last_name" placeholder="Enter Last name ...">--%>
-                                            </div>
+                                        <div class="col-xs-6">
+                                            <%--<spring:label path="last_name"><h4>Last name</h4></spring:label>--%>
+                                            <%--<spring:input style="height: 4rem!important;" type="text" class="form-control" path="last_name" id="last_name" placeholder="Enter Last name ...">--%>
                                         </div>
+                                    </div>
 
-                                        <div class="form-group">
+                                    <div class="form-group">
 
-                                            <div class="col-xs-6">
-                                                <%--<spring:label path="phone_number"><h4>Phone</h4></spring:label>--%>
-                                                <%--<spring:input style="height: 4rem!important;" type="text" class="form-control" path="phone_number" id="phone" placeholder="Enter Phone number ...">--%>
-                                            </div>
+                                        <div class="col-xs-6">
+                                            <%--<spring:label path="phone_number"><h4>Phone</h4></spring:label>--%>
+                                            <%--<spring:input style="height: 4rem!important;" type="text" class="form-control" path="phone_number" id="phone" placeholder="Enter Phone number ...">--%>
                                         </div>
+                                    </div>
 
-                                        <div class="form-group">
-                                            <div class="col-xs-6">
-                                                <%--<spring:label path="mobile"><h4>Mobile</h4></spring:label>--%>
-                                                <%--<spring:input style="height: 4rem!important;" type="text" class="form-control" path="mobile" id="mobile" placeholder="Enter Mobile number ...">--%>
-                                            </div>
+                                    <div class="form-group">
+                                        <div class="col-xs-6">
+                                            <%--<spring:label path="mobile"><h4>Mobile</h4></spring:label>--%>
+                                            <%--<spring:input style="height: 4rem!important;" type="text" class="form-control" path="mobile" id="mobile" placeholder="Enter Mobile number ...">--%>
                                         </div>
-<!--                                        <div class="form-group">
-
-                                            <div class="col-xs-6">
-                                                <label path="email"><h4>Email</h4></label>
-                                                <input style="height: 4rem!important;" type="email" class="form-control" path="email" id="email" placeholder="Enter Email...">
-                                            </div>
-                                        </div>-->
-<!--                                        <div class="form-group">
-
-                                            <div class="col-xs-6">
-                                                <label path="email"><h4>Location</h4></label>
-                                                <input style="height: 4rem!important;" type="email" class="form-control" path="email" id="location" placeholder="Enter your Location...">
-                                            </div>
-                                        </div>-->
-<!--                                        <div class="form-group">
-
-                                            <div class="col-xs-6">
-                                                <label for="password"><h4>Password</h4></label>
-                                                <input style="height: 4rem!important;" type="password" class="form-control" name="password" id="password" placeholder="Enter password...">
-                                            </div>
-                                        </div>-->
-<!--                                        <div class="form-group">
-
-                                            <div class="col-xs-6">
-                                                <label for="password2"><h4>Verify</h4></label>
-                                                <input style="height: 4rem!important;" type="password" class="form-control" name="password2" id="password2" placeholder="Retype password...">
-                                            </div>
-                                        </div>-->
-                                        <div class="form-group">
-                                            <div class="col-xs-12">
-                                                <br>
-                                                <button class="btn btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
-                                                <button class="btn btn-danger" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button>
-                                            </div>
+                                    </div>
+                                    <!--                                        <div class="form-group">
+                                    
+                                                                                <div class="col-xs-6">
+                                                                                    <label path="email"><h4>Email</h4></label>
+                                                                                    <input style="height: 4rem!important;" type="email" class="form-control" path="email" id="email" placeholder="Enter Email...">
+                                                                                </div>
+                                                                            </div>-->
+                                    <!--                                        <div class="form-group">
+                                    
+                                                                                <div class="col-xs-6">
+                                                                                    <label path="email"><h4>Location</h4></label>
+                                                                                    <input style="height: 4rem!important;" type="email" class="form-control" path="email" id="location" placeholder="Enter your Location...">
+                                                                                </div>
+                                                                            </div>-->
+                                    <!--                                        <div class="form-group">
+                                    
+                                                                                <div class="col-xs-6">
+                                                                                    <label for="password"><h4>Password</h4></label>
+                                                                                    <input style="height: 4rem!important;" type="password" class="form-control" name="password" id="password" placeholder="Enter password...">
+                                                                                </div>
+                                                                            </div>-->
+                                    <!--                                        <div class="form-group">
+                                    
+                                                                                <div class="col-xs-6">
+                                                                                    <label for="password2"><h4>Verify</h4></label>
+                                                                                    <input style="height: 4rem!important;" type="password" class="form-control" name="password2" id="password2" placeholder="Retype password...">
+                                                                                </div>
+                                                                            </div>-->
+                                    <div class="form-group">
+                                        <div class="col-xs-12">
+                                            <br>
+                                            <button class="btn btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
+                                            <button class="btn btn-danger" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button>
                                         </div>
+                                    </div>
                                     <%--</spring:form>--%>
 
                                     <!--Tips Angular-->   
@@ -194,5 +202,6 @@
                 integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
         <script type="text/javascript" src="../js/userProfile.js"></script>
+        <script src="../js/file.js" ></script>
     </body>
 </html>

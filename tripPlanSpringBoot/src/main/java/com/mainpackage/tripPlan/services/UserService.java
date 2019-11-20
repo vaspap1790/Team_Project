@@ -25,12 +25,14 @@ public class UserService {
 
     public void insert(User u) {
 
-
         String hashed = encrypt.hashPassword(u.getPassword());
         u.setPassword(hashed);
 
         userDao.save(u);
 
     }
-
+public User findByUserId(long id){
+    
+    return userRepo.findByUserId(Math.toIntExact(id));
+}
 }

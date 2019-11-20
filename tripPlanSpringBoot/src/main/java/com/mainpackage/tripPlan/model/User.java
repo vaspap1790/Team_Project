@@ -14,7 +14,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -66,6 +65,8 @@ public class User implements Serializable {
     private Role roleRef;
     @OneToMany(mappedBy = "idUser")
     private Collection<File> fileCollection;
+    @OneToMany(mappedBy = "userId")
+    private Collection<Profile> profileCollection;
 
     public User() {
     }
@@ -130,15 +131,6 @@ public class User implements Serializable {
         this.roleRef = roleRef;
     }
 
-    public Collection<File> getFileCollection() {
-        return fileCollection;
-    }
-
-    public void setFileCollection(Collection<File> fileCollection) {
-        this.fileCollection = fileCollection;
-    }
-
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -157,6 +149,22 @@ public class User implements Serializable {
             return false;
         }
         return true;
+    }
+
+    public Collection<File> getFileCollection() {
+        return fileCollection;
+    }
+
+    public void setFileCollection(Collection<File> fileCollection) {
+        this.fileCollection = fileCollection;
+    }
+
+    public Collection<Profile> getProfileCollection() {
+        return profileCollection;
+    }
+
+    public void setProfileCollection(Collection<Profile> profileCollection) {
+        this.profileCollection = profileCollection;
     }
 
     @Override
