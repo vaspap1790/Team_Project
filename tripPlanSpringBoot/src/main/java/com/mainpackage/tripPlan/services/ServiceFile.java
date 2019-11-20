@@ -12,4 +12,6 @@ public interface ServiceFile {
     File getFile(long id);
 
     String getStringImage(byte[] i);
+    
+   File getFileByName(String fileName);
 }

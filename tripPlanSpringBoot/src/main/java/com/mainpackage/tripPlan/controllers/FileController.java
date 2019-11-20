@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -71,4 +72,10 @@ public class FileController {
                 .body(new ByteArrayResource(dbFile.getFileData()));
     }
 
+    @GetMapping(value="/getFileByName/{fileName}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public String getFileByName(@PathVariable String fileName){
+        File file= DBFileStorageService.getFileByName(fileName);
+       
+        return DBFileStorageService.getStringImage(file.getFileData());
+    }
 }

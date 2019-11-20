@@ -10,6 +10,8 @@ import com.mainpackage.tripPlan.file_upload.exception.FileStorageException;
 import com.mainpackage.tripPlan.model.File;
 import com.mainpackage.tripPlan.model.User;
 import com.mainpackage.tripPlan.repositories.DbFileRepository;
+import com.mainpackage.tripPlan.repositories.FileRepo;
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -33,6 +35,8 @@ public class ServiceFileImplem implements ServiceFile {
     GenericJpaDao<User> userDao;
     @Autowired
     UserService userService;
+    @Autowired
+    FileRepo fileRepo;
     
     @Override
     public File storeFile(MultipartFile file, long userId) {
@@ -63,21 +67,17 @@ public class ServiceFileImplem implements ServiceFile {
     @Override
     public String getStringImage(byte[] i) {
 
-        ResultSet result = null;
-        Blob blob = null;
-        try {
-            assert false;
-            blob = result.getBlob("image");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+//        ResultSet result = null;
+//        Blob blob = null;
+//        try {
+//            assert false;
+//            blob = result.getBlob("image");
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
 
-        InputStream inputStream = null;
-        try {
-            inputStream = blob.getBinaryStream();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+       InputStream inputStream = null;
+        inputStream = new ByteArrayInputStream(i);
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         byte[] buffer = new byte[4096];
         int bytesRead = -1;
@@ -102,7 +102,15 @@ public class ServiceFileImplem implements ServiceFile {
             e.printStackTrace();
         }
 
-        return base64Image;
+                return base64Image;
     }
+
+    @Override
+    public File getFileByName(String fileName) {
+        
+        return fileRepo.findByFileName(fileName);
+    }
+
+  
     
 }

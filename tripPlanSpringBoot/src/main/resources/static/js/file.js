@@ -26,7 +26,7 @@ var singleFileUploadSuccess = document.querySelector('#singleFileUploadSuccess')
 //var multipleFileUploadError = document.querySelector('#multipleFileUploadError');
 //var multipleFileUploadSuccess = document.querySelector('#multipleFileUploadSuccess');
 
-function uploadSingleFile(file) {
+function  uploadSingleFile(file) {
 
     
     var formData = new FormData();
@@ -49,7 +49,7 @@ function uploadSingleFile(file) {
         }
     };
 
-    xhr.send(formData);
+   xhr.send(formData); 
 }
 
 //function uploadMultipleFiles(files) {
