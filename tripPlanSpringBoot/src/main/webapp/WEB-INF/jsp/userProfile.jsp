@@ -15,6 +15,12 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
 
+        <style>
+            #trash:hover {
+                color: red;
+                cursor: pointer;
+            }
+        </style>
     </head>
     <body ng-controller="MainCtrl">
 
@@ -38,14 +44,14 @@
                                     </c:if>
                                     <c:if test="${not empty img}">
                                         <div style="height: 202px; width: 202px;">
-                                        <img src="data:image/jpg;base64,${img}" class="avatar img-circle img-thumbnail ml-5" alt="avatar" id="blah" style="height: 202px; width: 202px;">
+                                            <img src="data:image/jpg;base64,${img}" class="avatar img-circle img-thumbnail ml-5" alt="avatar" id="blah" style="height: 202px; width: 202px;">
                                         </div>
                                         <a href="${pageContext.request.contextPath}/deleteFile/${file.id}" class="btn btn-danger btn-sm mt-3 mb-4">Delete Photo</a>
                                     </c:if>
-                                        
-                                        <input id="singleFileUploadInput" type="file" name="file"   class="text-center center-block file-upload file-input">                        
-                                        <button type="submit" class="btn btn-primary btn-sm mt-3">Submit</button>
-                                        
+
+                                    <input id="singleFileUploadInput" type="file" name="file"   class="text-center center-block file-upload file-input">                        
+                                    <button type="submit" class="btn btn-primary btn-sm mt-3">Submit</button>
+
                                 </spring:form>
                             </div></hr><br>
                             <div class="upload-response">
@@ -77,12 +83,12 @@
                             <div class="tab-content">
                                 <div class="tab-pane active" id="trips">
 
-                                    <table class="border" ng-show="items.length !== 0">
+                                    <table class="border col-12 mt-5 shadow-lg" ng-show="items.length !== 0">
                                         <thead>
                                             <tr class="bg-dark text-white">
                                                 <th class="border p-3" style="display:none;">id</th>
-                                                <th class="border p-3">Trip</th>
-                                                <th class="border p-3">Delete</th>
+                                                <th class="border p-3 text-center">Trip</th>
+                                                <th class="border p-3 text-center">Delete</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -92,14 +98,14 @@
                                                     {{item.id}}
                                                 </td>
 
-                                                <td class="border p-3">
+                                                <td class="border p-3 text-center">
                                                     <a href="${pageContext.request.contextPath}/user/userTripsPage/{{item.id}}"><i class="fas fa-suitcase-rolling"></i>&nbsp;
                                                         {{item.location}}
                                                     </a>
                                                 </td>
 
-                                                <td class="border p-3"> 
-                                                    <a>
+                                                <td class="border p-3 text-center"> 
+                                                    <a id="trash">
                                                         <i ng-click="deleteItem($index, item.id)" class="far fa-trash-alt ml-4 mt-1"></i>
                                                     </a>
                                                 </td>
@@ -111,7 +117,7 @@
                                     <hr>
                                     <p ng-show="items.length == 0">No Sketches Found</p>
                                     <row class="col-12">
-                                        <a href="${pageContext.request.contextPath}/chat" class="btn btn-success col-2">Chat</a>
+                                        <a href="${pageContext.request.contextPath}/chat" class="btn btn-success offset-5 col-2">Chat</a>
                                     </row>
 
                                 </div><!--/tab-pane-->
