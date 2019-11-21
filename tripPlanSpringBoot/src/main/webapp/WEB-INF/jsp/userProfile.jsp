@@ -30,7 +30,7 @@
 
             <div class="overlay"></div>
 
-            <div class="container pt-5">
+            <div class="container pt-5 animated fadeInUpBig">
                 <div class="container bootstrap snippet bg-white">
                     <div class="row">
                         <div class="col-sm-3 shadow-lg"><!--left col-->
@@ -117,8 +117,9 @@
                                     <hr>
                                     <p ng-show="items.length == 0">No Sketches Found</p>
                                     <br>
-                                    <!--<p class="text-center">lorem ipsum</p>-->
-                                    <div class="text-center">
+                                    <div class="border shadow-lg text-center pb-4">
+                                    <h2 class="text-center font-weight-bold pb-5">Communication Enviroment</h2>
+                                    
                                         <a href="${pageContext.request.contextPath}/chat" class="btn btn-success col-2">Chat</a>
                                     </div>
 
