@@ -32,10 +32,16 @@
                     <h1 class="display-4">My trip to {{location}}</h1>
                 </div>
 
-                <div class="col-5">
+                <div class="col-3">
+                </div>
+                <div class="col-1">
+                    <button type="button" class="btn btn-secondary add" id="photos"
+                            data-toggle="modal" data-target="#photosModal">
+                        Photos <i class="fas fa-plus-circle"></i>
+                    </button>
                 </div>
 
-                <div class="col-2">
+                <div class="col-1">
                     <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#postModal">
                         Post <i class="fas fa-share-alt"></i>
                     </button>
@@ -81,13 +87,15 @@
                                         </div>
 
                                         <div class="col-8 d-flex justify-content-center " id="note{{$index}}" >
-                                            <span  id="showNotes13{{date}} " ng-click="showNote(index,date)" 
-                                                data-toggle="modal" data-target="#notesModal{{date}}" ng-show="showNotes(date)">
+                                            <span  id="showNotes13{{date}} " ng-click="showNote(index, date)" 
+                                                   data-toggle="modal" data-target="#notesModal{{date}}" ng-show="showNotes(date)">
                                                 <i class="fa fa-calendar" style="font-size:36px"></i>
                                             </span>
                                         </div>
 
                                     </div>
+
+                                    <div class="col-2"></div>
 
                                     <!-- Budget -->
                                     <div class="col-2 d-flex align-items-center">
@@ -104,22 +112,6 @@
                                             <span id="dayBudget{{date}}"></span>
                                             <!--<span ng-show="currencyShow($index)">{{currency}} </span>-->
                                         </div>
-
-                                    </div>
-
-                                    <!-- Photos -->
-                                    <div class="col-2 d-flex align-items-center">
-
-                                        <div class="col-9">
-
-                                            <button type="button" class="btn btn-secondary btn-sm add" id="photos"
-                                                    data-toggle="modal" data-target="#photosModal">
-                                                Photos <i class="fas fa-plus-circle"></i>
-                                            </button>
-                                        </div>
-
-
-                                        <div class="col-3 d-flex justify-content-center"></div>
 
                                     </div>
 

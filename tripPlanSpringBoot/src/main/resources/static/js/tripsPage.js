@@ -16,7 +16,6 @@ let clickedBtn = null;
 //Handle photos
 $('#formPhotos').click(function () {
 
-    $(clickedBtn.currentTarget.parentElement).next().append("<a href='#'><i class='fas fa-camera-retro'></i></a>");
     var postData = new FormData($("#formPhotos")[0]);
     const URL = '';
     // $.ajax({
