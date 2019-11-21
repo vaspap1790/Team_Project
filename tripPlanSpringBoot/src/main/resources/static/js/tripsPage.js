@@ -19,8 +19,6 @@ let tripId;
 
 var multipleUploadForm = document.querySelector('#multipleUploadForm');
 var multipleFileUploadInput = document.querySelector('#multipleFileUploadInput');
-var multipleFileUploadError = document.querySelector('#multipleFileUploadError');
-var multipleFileUploadSuccess = document.querySelector('#multipleFileUploadSuccess');
 
 function uploadMultiplePhotos(files) {
     var formData = new FormData();
