@@ -116,9 +116,11 @@
 
                                     <hr>
                                     <p ng-show="items.length == 0">No Sketches Found</p>
-                                    <row class="col-12">
-                                        <a href="${pageContext.request.contextPath}/chat" class="btn btn-success offset-5 col-2">Chat</a>
-                                    </row>
+                                    <br>
+                                    <!--<p class="text-center">lorem ipsum</p>-->
+                                    <div class="text-center">
+                                        <a href="${pageContext.request.contextPath}/chat" class="btn btn-success col-2">Chat</a>
+                                    </div>
 
                                 </div><!--/tab-pane-->
 
