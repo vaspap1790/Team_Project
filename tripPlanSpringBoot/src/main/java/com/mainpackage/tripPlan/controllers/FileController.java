@@ -7,6 +7,7 @@ package com.mainpackage.tripPlan.controllers;
 
 import com.mainpackage.tripPlan.dto.UploadFileResponse;
 import com.mainpackage.tripPlan.model.File;
+import com.mainpackage.tripPlan.model.Photo;
 import com.mainpackage.tripPlan.model.User;
 import com.mainpackage.tripPlan.model.UserPrincipal;
 import com.mainpackage.tripPlan.repositories.UserRepo;
@@ -60,6 +61,8 @@ public class FileController {
         return new UploadFileResponse(dbFile.getFileName(), fileDownloadUri,
                 file.getContentType(), file.getSize());
     }
+    
+
 
     @GetMapping(value = "/deleteFile/{id}")
     public ModelAndView deletedFile(@PathVariable("id") Integer id) {
@@ -75,14 +78,18 @@ public class FileController {
         String image = DBFileStorageService.getStringImage(file.getBytes());
         return image;
     }
-//    @PostMapping("/uploadMultipleFiles")
-//    public List<UploadFileResponse> uploadMultipleFiles(@RequestParam("files") MultipartFile[] files,
-//            @RequestParam("userId") long userId) {
-//
-//        return Arrays.stream(files)
-//                .map(file -> uploadFile(file, userId))
-//                .collect(Collectors.toList());
-//    }
+
+    @PostMapping("/uploadMultiplePhotos")
+    @ResponseBody
+    public List<UploadFileResponse> uploadMultiplePhotos(@RequestParam("photos") MultipartFile[] photos,
+            @RequestParam("tripId") Integer tripId) {
+
+      return  Arrays.stream(photos)
+                .map(photo -> DBFileStorageService.uploadPhoto(photo, tripId))
+                .collect(Collectors.toList());
+
+    }
+
 //    @GetMapping("/downloadFile/{fileId}")
 //    @ResponseBody
 //    public ResponseEntity<Resource> downloadFile(@PathVariable String fileId) {

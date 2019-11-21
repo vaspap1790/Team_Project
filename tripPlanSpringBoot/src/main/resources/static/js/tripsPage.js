@@ -1,4 +1,5 @@
 let clickedBtn = null;
+let tripId;
 
 //$(document).on("click", ".add", function (e) {
 //    console.log("click");
@@ -13,25 +14,47 @@ let clickedBtn = null;
 //
 //});
 
-//Handle photos
-$('#formPhotos').click(function () {
 
-    var postData = new FormData($("#formPhotos")[0]);
-    const URL = '';
-    // $.ajax({
-    //         type:'POST',
-    //         url:URL,
-    //         processData: false,
-    //         contentType: false,
-    //         data : postData,
-    //         success:function(data){
-    //           console.log("File Uploaded");
-    //         },
-    //         error: function(error){
-    //             console.log(error); 
-    //         }
-    //      });
-});
+//Handle photos
+
+var multipleUploadForm = document.querySelector('#multipleUploadForm');
+var multipleFileUploadInput = document.querySelector('#multipleFileUploadInput');
+var multipleFileUploadError = document.querySelector('#multipleFileUploadError');
+var multipleFileUploadSuccess = document.querySelector('#multipleFileUploadSuccess');
+
+function uploadMultiplePhotos(files) {
+    var formData = new FormData();
+    for (var index = 0; index < files.length; index++) {
+        formData.append("photos", files[index]);
+        formData.append("tripId", tripId);
+    }
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "http://localhost:8080/tripPlan/uploadMultiplePhotos");
+
+    xhr.onload = function () {    
+        if (xhr.status === 200) {
+         console.log("success");
+        } else {
+          console.log("fail");
+        }
+    }
+    xhr.send(formData);
+}
+
+multipleUploadForm.addEventListener('submit', function (event) {
+    var files = multipleFileUploadInput.files;
+    if (files.length === 0) {
+        multipleFileUploadError.innerHTML = "Please select at least one file";
+        multipleFileUploadError.style.display = "block";
+    }
+    uploadMultiplePhotos(files);
+    event.preventDefault();
+}, true);
+
+
+
+
 
 //Handle total Budget
 $(".budget").change(function (e) {
@@ -47,7 +70,7 @@ const App = angular.module("App", []);
 App.controller("MainCtrl", function ($scope, $http,$timeout) {
 
     const username = document.getElementById("username").innerText.trim();
-    const tripId = document.getElementById("tripId").innerText.trim();
+    tripId = document.getElementById("tripId").innerText.trim();
     const dateArray = [];//dates
     const dummyDates = [];
     const flightDateArray = [];

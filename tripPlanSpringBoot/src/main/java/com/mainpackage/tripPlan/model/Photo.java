@@ -6,7 +6,6 @@
 package com.mainpackage.tripPlan.model;
 
 import java.io.Serializable;
-import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,9 +18,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -34,7 +32,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Photo.findAll", query = "SELECT p FROM Photo p")
     , @NamedQuery(name = "Photo.findByPhotoId", query = "SELECT p FROM Photo p WHERE p.photoId = :photoId")
-    , @NamedQuery(name = "Photo.findByTimestamp", query = "SELECT p FROM Photo p WHERE p.timestamp = :timestamp")})
+    , @NamedQuery(name = "Photo.findByFilename", query = "SELECT p FROM Photo p WHERE p.filename = :filename")
+    , @NamedQuery(name = "Photo.findByFiletype", query = "SELECT p FROM Photo p WHERE p.filetype = :filetype")})
 public class Photo implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -45,14 +44,15 @@ public class Photo implements Serializable {
     private Integer photoId;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "timestamp")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date timestamp;
-    @Basic(optional = false)
-    @NotNull
     @Lob
-    @Column(name = "this")
-    private byte[] this1;
+    @Column(name = "filedata")
+    private byte[] filedata;
+    @Size(max = 45)
+    @Column(name = "filename")
+    private String filename;
+    @Size(max = 45)
+    @Column(name = "filetype")
+    private String filetype;
     @JoinColumn(name = "trip_id", referencedColumnName = "trip_id")
     @ManyToOne(optional = false)
     private Trip tripId;
@@ -60,14 +60,22 @@ public class Photo implements Serializable {
     public Photo() {
     }
 
+    public Photo( String filename, String filetype, byte[] filedata, Trip tripId) {
+        this.filename = filename;
+        this.filetype = filetype;
+        this.filedata = filedata;
+        this.tripId = tripId;
+    }
+    
+    
+
     public Photo(Integer photoId) {
         this.photoId = photoId;
     }
 
-    public Photo(Integer photoId, Date timestamp, byte[] this1) {
+    public Photo(Integer photoId, byte[] filedata) {
         this.photoId = photoId;
-        this.timestamp = timestamp;
-        this.this1 = this1;
+        this.filedata = filedata;
     }
 
     public Integer getPhotoId() {
@@ -78,20 +86,28 @@ public class Photo implements Serializable {
         this.photoId = photoId;
     }
 
-    public Date getTimestamp() {
-        return timestamp;
+    public byte[] getFiledata() {
+        return filedata;
     }
 
-    public void setTimestamp(Date timestamp) {
-        this.timestamp = timestamp;
+    public void setFiledata(byte[] filedata) {
+        this.filedata = filedata;
     }
 
-    public byte[] getThis1() {
-        return this1;
+    public String getFilename() {
+        return filename;
     }
 
-    public void setThis1(byte[] this1) {
-        this.this1 = this1;
+    public void setFilename(String filename) {
+        this.filename = filename;
+    }
+
+    public String getFiletype() {
+        return filetype;
+    }
+
+    public void setFiletype(String filetype) {
+        this.filetype = filetype;
     }
 
     public Trip getTripId() {

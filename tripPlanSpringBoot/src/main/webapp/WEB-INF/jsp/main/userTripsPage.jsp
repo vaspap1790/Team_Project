@@ -267,18 +267,20 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label>Add photos of this day</label>
-                            <input type="file" class="form-control" id="photos">
+
+                            <form id="multipleUploadForm" name="multipleUploadForm">
+                                <input id="multipleFileUploadInput" type="file" name="files" class="file-input" multiple required />
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal"
                                 name="cancel">Cancel</button>
-                        <form id="formPhotos" enctype="multipart/form-data" method="POST">
-                            <button type="button" class="btn btn-info submitAdd" data-dismiss="modal" id="addPhotos"
-                                    name="photo">Add</button>
-                        </form>
+                        <button type="submit" class="btn btn-info" >Submit</button>
+
                     </div>
+                    </form>
                 </div>
+
             </div>
         </div>
 

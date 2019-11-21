@@ -105,7 +105,7 @@
                                     </table>
 
                                     <hr>
-                                    <p ng-show="items.length == 0">No Sketches Found</p>
+                                    <p ng-show="items.length === 0">No Sketches Found</p>
                                     <row class="col-12">
                                         <a href="${pageContext.request.contextPath}/chat" class="btn btn-success col-2">Chat</a>
                                     </row>
