@@ -41,7 +41,7 @@
                                         <a href="${pageContext.request.contextPath}/deleteFile/${file.id}" class="primary submit-btn">Delete</a>
                                     </c:if>
                                     <input id="singleFileUploadInput" type="file" name="file"   class="text-center center-block file-upload file-input">                        
-                                    <button type="submit" class="primary submit-btn">Submit</button>
+                                    <button type="submit" class="btn btn-primary btn-sm">Submit</button>
                                 </spring:form>
                             </div></hr><br>
                             <div class="upload-response">
@@ -51,7 +51,7 @@
 
                             <div class="panel panel-default shadow-lg">
                                 <div class="panel-heading">Website <i class="fa fa-link fa-1x"></i></div>
-                                <div class="panel-body"><a href="http://bootnipets.com">bootnipets.com</a></div>
+                                <div class="panel-body"><a href="#">bootnipets.com</a></div>
                             </div>
 
                             <ul class="list-group shadow-lg">
@@ -106,6 +106,9 @@
 
                                     <hr>
                                     <p ng-show="items.length == 0">No Sketches Found</p>
+                                    <row class="col-12">
+                                        <a href="${pageContext.request.contextPath}/chat" class="btn btn-success col-2">Chat</a>
+                                    </row>
 
                                 </div><!--/tab-pane-->
 
