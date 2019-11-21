@@ -1,8 +1,3 @@
-<%-- 
-    Document   : newChat
-    Created on : 19 Νοε 2019, 6:08:43 μμ
-    Author     : vasil
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -10,10 +5,10 @@
 <head>
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <title>MyGreekRoots Chat</title>
+    <title>Chat Room</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css" />
 </head>
-<body>
+<body style="background-image: url('https://www.metrocontinuingeducation.ca/wp-content/uploads/2019/06/speech-bubbles.jpg');">
 <noscript>
     <h2>Sorry! Your browser doesn't support Javascript, you have to enable it!</h2>
 </noscript>
@@ -37,7 +32,7 @@
 <div id="chat-page" class="hidden">
     <div class="chat-container">
         <div class="chat-header">
-            <h2>Global Chat Box</h2>
+            <h2>Chat Room</h2>
         </div>
         <div class="connecting">Connecting...</div>
         <ul id="messageArea">
@@ -50,8 +45,9 @@
                            autocomplete="off" class="form-control" />
                     <button type="submit" class="primary">Send</button>
                     <br>
-                    <a href="/home" style="border: none">Exit</a>
-
+                    
+                    <a href="${pageContext.request.contextPath}/user/profile" style="border: none">Exit</a>
+                    
                 </div>
             </div>
         </form>
