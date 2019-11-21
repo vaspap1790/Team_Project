@@ -44,8 +44,7 @@ public class ServiceFileImplem implements ServiceFile {
     public void storeFile(MultipartFile file, long userId) {
 
         User user = userService.findByUserId(userId);
-        File fileFromDb = fileRepo.findFileByUseId(Math.toIntExact(userId));
-
+        File fileFromDb = fileRepo.findFileByUserId(Math.toIntExact(userId));
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
         try {
             // Check if the file's name contains invalid characters
@@ -71,13 +70,11 @@ public class ServiceFileImplem implements ServiceFile {
 
     @Override
     public String getStringImage(byte[] i) {
-
         InputStream inputStream = null;
         inputStream = new ByteArrayInputStream(i);
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         byte[] buffer = new byte[4096];
         int bytesRead = -1;
-
         while (true) {
             try {
                 if ((bytesRead = inputStream.read(buffer)) == -1) {
@@ -88,18 +85,14 @@ public class ServiceFileImplem implements ServiceFile {
             }
             outputStream.write(buffer, 0, bytesRead);
         }
-
         byte[] imageBytes = outputStream.toByteArray();
-
         String base64Image = Base64.getEncoder().encodeToString(imageBytes);
-
         try {
             inputStream.close();
             outputStream.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         return base64Image;
     }
 
@@ -115,5 +108,13 @@ public class ServiceFileImplem implements ServiceFile {
         File file = fileRepo.findFileByUsername(username);
 
         return file;
+    }
+
+    @Override
+    public void deleteFile(int id) throws NullPointerException {
+        
+        File file=fileRepo.findByFileId(id);
+        fileDao.delete(file);
+
     }
 }

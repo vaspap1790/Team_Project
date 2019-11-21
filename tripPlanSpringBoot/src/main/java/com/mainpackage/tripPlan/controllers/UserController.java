@@ -86,8 +86,9 @@ public class UserController {
             if (file == null) {
               return "userProfile";
             }
-            String img = DBFileStorageService.getStringImage(file.getFileData());
-            m.addAttribute("img", img);
+            String img = DBFileStorageService.getStringImage(file.getFileData());           
+            m.addAttribute("file", file);
+            m.addAttribute("img", img);        
         } catch (Exception e) {
             e.printStackTrace();
         }

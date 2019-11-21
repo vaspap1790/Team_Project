@@ -43,11 +43,18 @@ public class FileController {
 
     @PostMapping(value = "/uploadFile")
     public ModelAndView uploadFile(@RequestParam("file") MultipartFile file) {
-       
+
         UserPrincipal userPrince = (UserPrincipal) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = userRepo.findByUsername(userPrince.getUsername());
 
         DBFileStorageService.storeFile(file, user.getUserId());
+        return new ModelAndView("redirect:/user/profile");
+    }
+
+    @GetMapping(value = "/deleteFile/{id}")
+    public ModelAndView deletedFile(@PathVariable("id") Integer id) {
+
+        DBFileStorageService.deleteFile(id);
         return new ModelAndView("redirect:/user/profile");
     }
 
@@ -59,22 +66,22 @@ public class FileController {
 //                .map(file -> uploadFile(file, userId))
 //                .collect(Collectors.toList());
 //    }
-    @GetMapping("/downloadFile/{fileId}")
-    @ResponseBody
-    public ResponseEntity<Resource> downloadFile(@PathVariable String fileId) {
-        File dbFile = DBFileStorageService.getFile(Long.parseLong(fileId));
-
-        return ResponseEntity.ok()
-                .contentType(MediaType.parseMediaType(dbFile.getFileType()))
-                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + dbFile.getFileName() + "\"")
-                .body(new ByteArrayResource(dbFile.getFileData()));
-    }
-
-    @GetMapping(value = "/getFileByName/{fileName}", produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseBody
-    public String getFileByName(@PathVariable String fileName) {
-        File file = DBFileStorageService.getFileByName(fileName);
-
-        return DBFileStorageService.getStringImage(file.getFileData());
-    }
+//    @GetMapping("/downloadFile/{fileId}")
+//    @ResponseBody
+//    public ResponseEntity<Resource> downloadFile(@PathVariable String fileId) {
+//        File dbFile = DBFileStorageService.getFile(Long.parseLong(fileId));
+//
+//        return ResponseEntity.ok()
+//                .contentType(MediaType.parseMediaType(dbFile.getFileType()))
+//                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + dbFile.getFileName() + "\"")
+//                .body(new ByteArrayResource(dbFile.getFileData()));
+//    }
+//
+//    @GetMapping(value = "/getFileByName/{fileName}", produces = MediaType.APPLICATION_JSON_VALUE)
+//    @ResponseBody
+//    public String getFileByName(@PathVariable String fileName) {
+//        File file = DBFileStorageService.getFileByName(fileName);
+//
+//        return DBFileStorageService.getStringImage(file.getFileData());
+//    }
 }
