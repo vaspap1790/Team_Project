@@ -5,11 +5,13 @@
  */
 package com.mainpackage.tripPlan.controllers;
 
+import com.mainpackage.tripPlan.dto.UploadFileResponse;
 import com.mainpackage.tripPlan.model.File;
 import com.mainpackage.tripPlan.model.User;
 import com.mainpackage.tripPlan.model.UserPrincipal;
 import com.mainpackage.tripPlan.repositories.UserRepo;
 import com.mainpackage.tripPlan.services.ServiceFile;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -30,6 +32,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @Controller
 public class FileController {
@@ -42,13 +45,20 @@ public class FileController {
     UserRepo userRepo;
 
     @PostMapping(value = "/uploadFile")
-    public ModelAndView uploadFile(@RequestParam("file") MultipartFile file) {
+    @ResponseBody
+    public UploadFileResponse uploadFile(@RequestParam("file") MultipartFile file) {
 
         UserPrincipal userPrince = (UserPrincipal) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User user = userRepo.findByUsername(userPrince.getUsername());
 
-        DBFileStorageService.storeFile(file, user.getUserId());
-        return new ModelAndView("redirect:/user/profile");
+        File dbFile = DBFileStorageService.storeFile(file, user.getUserId());
+        String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
+                .path("/downloadFile/")
+                .path(String.valueOf(dbFile.getId()))
+                .toUriString();
+
+        return new UploadFileResponse(dbFile.getFileName(), fileDownloadUri,
+                file.getContentType(), file.getSize());
     }
 
     @GetMapping(value = "/deleteFile/{id}")
@@ -58,6 +68,13 @@ public class FileController {
         return new ModelAndView("redirect:/user/profile");
     }
 
+    @GetMapping(value = "/getImage")
+    @ResponseBody
+    public String getImage(@RequestParam("file") MultipartFile file) throws IOException {
+
+        String image = DBFileStorageService.getStringImage(file.getBytes());
+        return image;
+    }
 //    @PostMapping("/uploadMultipleFiles")
 //    public List<UploadFileResponse> uploadMultipleFiles(@RequestParam("files") MultipartFile[] files,
 //            @RequestParam("userId") long userId) {

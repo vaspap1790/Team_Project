@@ -41,7 +41,7 @@ public class ServiceFileImplem implements ServiceFile {
     GenericJpaDao<File> fileDao;
 
     @Override
-    public void storeFile(MultipartFile file, long userId) {
+    public File storeFile(MultipartFile file, long userId) {
 
         User user = userService.findByUserId(userId);
         File fileFromDb = fileRepo.findFileByUserId(Math.toIntExact(userId));
@@ -53,15 +53,17 @@ public class ServiceFileImplem implements ServiceFile {
             }
             if (fileFromDb == null) {
                 File dbFile = new File(fileName, file.getContentType(), file.getBytes(), user);
-                 dbFileRepository.save(dbFile);
+               return dbFileRepository.save(dbFile);
+                 
             } else {
                 fileFromDb.setFileData(file.getBytes());
                 fileFromDb.setFileName(fileName);
                 fileDao.update(fileFromDb);
+                return fileFromDb;
             }
         } catch (IOException ex) {
             throw new FileStorageException("Could not store file " + fileName + ". Please try again!", ex);
-        }
+        }       
     }
 
     public File getFile(long id) {

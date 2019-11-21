@@ -31,13 +31,13 @@
 
                             <div class="text-center">
                                 <h1>${pageContext.request.userPrincipal.name}</h1>
-                                <spring:form modelAttribute="file" action="${pageContext.request.contextPath}/uploadFile" id="singleUploadForm" name="singleUploadForm" method="POST" enctype="multipart/form-data">
+                                <spring:form modelAttribute="file" action="" id="singleUploadForm" name="singleUploadForm" enctype="multipart/form-data">
                                     <c:if test="${empty img}">
-                                        <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
+                                        <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar" id="blah">
                                         <h6>Upload photo profile</h6>
                                     </c:if>
                                     <c:if test="${not empty img}">
-                                        <img src="data:image/jpg;base64,${img}" class="avatar img-circle img-thumbnail" alt="avatar">
+                                        <img src="data:image/jpg;base64,${img}" class="avatar img-circle img-thumbnail" alt="avatar" id="blah">
                                         <a href="${pageContext.request.contextPath}/deleteFile/${file.id}" class="primary submit-btn">Delete</a>
                                     </c:if>
                                     <input id="singleFileUploadInput" type="file" name="file"   class="text-center center-block file-upload file-input">                        
