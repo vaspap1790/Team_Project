@@ -20,6 +20,7 @@ import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.*;
+import javax.transaction.Transactional;
 
 @Service
 public class PostService {
@@ -56,11 +57,15 @@ public class PostService {
         }
     }
     
-    
+    @Transactional
     public List<SuperPostDto> buildSuperPost(){
         List<SuperPostDto> superPosts=new ArrayList<>();
         
         List<PostDTO> posts=postRepo.getAllPosts();
+        
+        List<PostLikesDTO> likes=postRepo.getLikesOfPosts();
+        List<PostCommentsDto> comments=postRepo.getCommentsOfPosts();
+        List<PostPhotosDto> photos=postRepo.getPhotosOfPosts();
         
         posts.forEach((post)->superPosts.add(new SuperPostDto(post.getTripId(),post.getPostId(),post.getUsername(),
                                                  post.getTitle(),post.getBody(),post.getTimeStamp(),
@@ -68,10 +73,22 @@ public class PostService {
        
         superPosts.forEach((superPost)->{
            
-            superPost.setLikes((postRepo.getLikesOfPosts(superPost.getPostId())));
-            superPost.setComments((postRepo.getCommentsOfPosts(superPost.getPostId())));
-            superPost.setPhotos((postRepo.getPhotosOfPosts(superPost.getTripId())));
-            
+            likes.forEach((like)->{
+            if(like.getPostId()==superPost.getPostId()){
+                superPost.setLikes(Arrays.asList(like));
+            };
+            });
+//            comments.forEach((comment)->{
+//            if(comment.getPostId()==superPost.getPostId()){
+//                superPost.getComments().add(comment);
+//            };
+//            });
+//            photos.forEach((photo)->{
+//            if(photo.getTripId()==superPost.getTripId()){
+//                superPost.getPhotos().add(photo);
+//            };
+//            });
+//            
         });
         
         return superPosts;

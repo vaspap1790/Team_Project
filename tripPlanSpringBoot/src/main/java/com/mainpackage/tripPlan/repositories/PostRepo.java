@@ -22,14 +22,14 @@ public interface PostRepo extends CrudRepository<Post, Integer>{
     List<PostDTO> getAllPosts();
     
     @Query("select new com.mainpackage.tripPlan.dto.PostLikesDTO"
-            + "(p.id,l) FROM Likes l INNER JOIN l.postId p where p.id=:postId")
-    List<PostLikesDTO> getLikesOfPosts(@Param("postId") Integer postId);
+            + "(p.id,l) FROM Likes l INNER JOIN l.postId p")
+    List<PostLikesDTO> getLikesOfPosts();
     
     @Query("select new com.mainpackage.tripPlan.dto.PostCommentsDto"
-            + "(p.id,c) FROM Comment c INNER JOIN c.postId p where p.id=:postId")
-    List<PostCommentsDto> getCommentsOfPosts(@Param("postId") Integer postId);
+            + "(p.id,c) FROM Comment c INNER JOIN c.postId p")
+    List<PostCommentsDto> getCommentsOfPosts();
     
     @Query("select new com.mainpackage.tripPlan.dto.PostPhotosDto"
-            + "(tr.tripId,ph) FROM Photo ph INNER JOIN ph.tripId tr  WHERE tr.tripId= :tripId")
-    List<PostPhotosDto> getPhotosOfPosts(@Param("tripId") Integer tripId);
+            + "(tr.tripId,ph) FROM Photo ph INNER JOIN ph.tripId tr")
+    List<PostPhotosDto> getPhotosOfPosts();
 }

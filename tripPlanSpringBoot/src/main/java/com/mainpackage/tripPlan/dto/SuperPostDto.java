@@ -49,6 +49,11 @@ public class SuperPostDto {
         this.timeStamp = timeStamp;
     }
 
+    @Override
+    public String toString() {
+        return "SuperPostDto{" + "tripId=" + tripId + ", postId=" + postId + ", body=" + body + ", timeStamp=" + timeStamp + ", profilePhoto=" + profilePhoto + ", photos=" + photos + ", comments=" + comments + ", likes=" + likes + '}';
+    }
+
 
     
     

@@ -2,16 +2,17 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="spring" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html ng-app="App">
 
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>TripPlanner</title>
         <jsp:include page="components/linksHeader.jsp"/>
-        
+           <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular.min.js"></script>
+
     </head>
 
-    <body>
+    <body ng-controller="MainCtrl">
         <jsp:include page="components/navbar.jsp" />
 
         <div class="hero-wrap js-fullheight" style="background-image: url('http://smashingtips.com/wp-content/uploads/2012/08/Amazing-Scenery-HD-Wallpapers.jpg');">
@@ -41,7 +42,69 @@
             </a>
         </div>
 
-        <section id="start" class="ftco-section bg-light">
+               <div class="container d-flex justify-content-center" id="mainPostContainer">
+
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex row mt-2 mb-2 align-items-center">
+                    <div class="col-1  pr-1">
+                        <img src="https://img6.androidappsapk.co/300/7/3/a/com.profile.admires_stalkers_unknown.png"
+                            class="rounded-circle rounded-circle" id="profilePicture">
+                    </div>
+                    <div class="col-11">
+
+                        <div><strong> {{username}} 's trip: {{title}}</strong></div>
+                        <div><small> {{timestamp}}</small></div>
+                    </div>
+                </div>
+                <div class="d-flex row mt-2 mb-2 px-1">
+                    <p class="card-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cumque voluptatum id
+                        ipsa doloremque.</p>
+                </div>
+
+                <div class="row mt-2 mb-2">
+
+                    <img src="https://cdn.blueswandaily.com//2018/11/Travel000-2000x1200.jpg" id="mainPicture" alt=""
+                        srcset="">
+                </div>
+                <div class="row mt-1 d-flex justify-content-between align-items-center px-2">
+                    <div>
+                        <img src="https://image.flaticon.com/icons/svg/2065/2065064.svg" style="width:30px;" alt="">
+                        {{numOfLikes}}
+                    </div>
+                    <p>{{numOfComments}} Comments</p>
+                </div>
+
+                <div class="row d-flex justify-content-around align-items-center">
+
+                    <hr
+                        style="width: 96%; color:rgba(99, 99, 99, 0.05); height: 0.05px; background-color:rgba(99, 99, 99, 0.05);" />
+
+                    <a href="#" class="btn btn-basic"><i class="far fa-thumbs-up"></i> Like</a>
+                    <a href="#" class="btn btn-basic"><i class="far fa-comments"></i> Comment</a>
+                    <a href="#" class="btn btn-basic"><i class="fas fa-share-alt"></i> Share</a>
+
+                    <hr
+                        style="width: 96%; color:rgba(99, 99, 99, 0.05); height: 0.05px; background-color:rgba(99, 99, 99, 0.05);" />
+
+                </div>
+
+                <div class="row d-flex justify-content-center">
+
+                    <form style="width:96%" action="#">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Write a comment...">
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+    </div>             
+                            
+                            
+<!--        <section id="start" class="ftco-section bg-light">
             <div class="container">
                 <div class="row">
                     <div class="col-md-4">
@@ -557,6 +620,13 @@
                 </div>
                 <div class="row ftco-animate">
                     <div class="col-md-12">
+                        
+                        
+                        
+                        
+                        
+                        
+                        
                         <div class="carousel-testimony owl-carousel ftco-owl">
                             <div class="item">
                                 <div class="testimony-wrap p-4 pb-5">
@@ -634,6 +704,10 @@
                                 </div>
                             </div>
                         </div>
+                        
+                        
+                        
+                        
                     </div>
                 </div>
             </div>
@@ -736,8 +810,8 @@
                                     <span class="icon-link"></span>
                                 </div>
                             </a>
-                            <div class="text p-3">
-                                <h3><a href="#">Luxury Restaurant</a></h3>
+                            <div class="text p-3">-->
+<!--                                <h3><a href="#">Luxury Restaurant</a></h3>
                                 <p class="rate">
                                     <i class="icon-star"></i>
                                     <i class="icon-star"></i>
@@ -844,7 +918,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section>-->
 
 
         <!-- loader -->
@@ -855,7 +929,7 @@
 
         <jsp:include page="components/footer.jsp"/>
         <jsp:include page="components/scripts.jsp"/>
-
+        <script src="${pageContext.request.contextPath}/js/indexPosts.js"></script>
     </body>
 
 </html>

@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.*;
+import org.springframework.http.MediaType;
 
 @Controller
 @RequestMapping(value = "post/")
@@ -43,13 +44,13 @@ public class PostController {
         return "";
     }
 
-    @GetMapping(value = "getPosts")
+    @GetMapping(value = "/build", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public List<SuperPostDto> getPosts() {
-      
-      return  postService.buildSuperPost();
-//        posts.forEach((post)->post.setProfilePhoto(serviceFile.getStringImage(post.getProfilePhoto())));
-        
-        
+    public Map<String,List<SuperPostDto>> returnTripsLocation() {
+        Map<String,List<SuperPostDto>> map=new HashMap<>();
+        map.put("key",postService.buildSuperPost());
+        return map;
+
     }
+
 }
