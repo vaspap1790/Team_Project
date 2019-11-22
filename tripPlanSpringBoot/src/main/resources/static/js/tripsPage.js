@@ -30,11 +30,11 @@ function uploadMultiplePhotos(files) {
     var xhr = new XMLHttpRequest();
     xhr.open("POST", "http://localhost:8080/tripPlan/uploadMultiplePhotos");
 
-    xhr.onload = function () {    
+    xhr.onload = function () {
         if (xhr.status === 200) {
-         console.log("success");
+            console.log("success");
         } else {
-          console.log("fail");
+            console.log("fail");
         }
     }
     xhr.send(formData);
@@ -65,7 +65,7 @@ $(".budget").change(function (e) {
 //Angular
 
 const App = angular.module("App", []);
-App.controller("MainCtrl", function ($scope, $http,$timeout) {
+App.controller("MainCtrl", function ($scope, $http, $timeout) {
 
     const username = document.getElementById("username").innerText.trim();
     tripId = document.getElementById("tripId").innerText.trim();
@@ -141,17 +141,24 @@ App.controller("MainCtrl", function ($scope, $http,$timeout) {
 
         const title = $("#postModal #postTitle").val().trim();
         const body = $("#postModal #postBody").val().trim();
-        let object = {title: title, body: body, username: username, tripId: tripId};
+
+        let object = {title: title, body: body, tripId: tripId};
         let jsonObject = JSON.stringify(object);
         console.log(jsonObject);
-        const URL = "";
-        // $http.post(URL,jsonObject)
-        //     .then(()=>{
-        //         console.log("Successfully sent the post");
-        //     })
-        //     .catch((error)=>{
-        //         console.log(error);
-        //     });
+        const URL = "http://localhost:8080/tripPlan/post/create";
+        var req = {
+            method: 'POST',
+            url: URL,
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            data: jsonObject
+        };
+        $http(req).then(function (response) {
+            console.log("success");
+        }).catch(() => {
+            console.log("error");
+        });
     };
     $scope.addNote = function (date, index) {
         console.log(date, index);
@@ -196,7 +203,7 @@ App.controller("MainCtrl", function ($scope, $http,$timeout) {
         $http(req).then(function (response) {
             console.log(response);
         }).catch(() => {
-            console.log("error");       
+            console.log("error");
         });
     };
     $scope.showNote = function (index, date) {
@@ -218,9 +225,9 @@ App.controller("MainCtrl", function ($scope, $http,$timeout) {
             console.log("No data");
         });
     };
-    $scope.showNotes= function ( date){
-        notesArray.forEach(function(note,index){           
-            if (note.date===date){
+    $scope.showNotes = function (date) {
+        notesArray.forEach(function (note, index) {
+            if (note.date === date) {
                 return true;
             }
         });

@@ -14,6 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -63,10 +64,14 @@ public class User implements Serializable {
     @JoinColumn(name = "role_ref", referencedColumnName = "role_id")
     @ManyToOne(optional = false)
     private Role roleRef;
-    @OneToMany(mappedBy = "idUser")
-    private Collection<File> fileCollection;
+    @OneToOne(mappedBy = "idUser")
+    private File file;
     @OneToMany(mappedBy = "userId")
     private Collection<Profile> profileCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
+    private Collection<Comment> commentCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
+    private Collection<Likes> likesCollection;
 
     public User() {
     }
@@ -151,13 +156,14 @@ public class User implements Serializable {
         return true;
     }
 
-    public Collection<File> getFileCollection() {
-        return fileCollection;
+    public File getFile() {
+        return file;
     }
 
-    public void setFileCollection(Collection<File> fileCollection) {
-        this.fileCollection = fileCollection;
+    public void setFile(File file) {
+        this.file = file;
     }
+
 
     public Collection<Profile> getProfileCollection() {
         return profileCollection;
@@ -170,6 +176,22 @@ public class User implements Serializable {
     @Override
     public String toString() {
         return "com.mainpackage.tripPlan.model.User[ userId=" + userId + " ]";
+    }
+
+    public Collection<Comment> getCommentCollection() {
+        return commentCollection;
+    }
+
+    public void setCommentCollection(Collection<Comment> commentCollection) {
+        this.commentCollection = commentCollection;
+    }
+
+    public Collection<Likes> getLikesCollection() {
+        return likesCollection;
+    }
+
+    public void setLikesCollection(Collection<Likes> likesCollection) {
+        this.likesCollection = likesCollection;
     }
 
 }

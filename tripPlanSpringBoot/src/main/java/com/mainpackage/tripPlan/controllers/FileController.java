@@ -84,22 +84,5 @@ public class FileController {
 
     }
 
-//    @GetMapping("/downloadFile/{fileId}")
-//    @ResponseBody
-//    public ResponseEntity<Resource> downloadFile(@PathVariable String fileId) {
-//        File dbFile = DBFileStorageService.getFile(Long.parseLong(fileId));
-//
-//        return ResponseEntity.ok()
-//                .contentType(MediaType.parseMediaType(dbFile.getFileType()))
-//                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + dbFile.getFileName() + "\"")
-//                .body(new ByteArrayResource(dbFile.getFileData()));
-//    }
-//
-//    @GetMapping(value = "/getFileByName/{fileName}", produces = MediaType.APPLICATION_JSON_VALUE)
-//    @ResponseBody
-//    public String getFileByName(@PathVariable String fileName) {
-//        File file = DBFileStorageService.getFileByName(fileName);
-//
-//        return DBFileStorageService.getStringImage(file.getFileData());
-//    }
+
 }

@@ -34,23 +34,23 @@ public class UsersTripsPageController {
     @Autowired
     TripPageService tripPageService;
 
-    @PostMapping(value = "saveComment")
-    @ResponseBody
-    public String preSubmitTrip(@RequestParam(name = "title") String title,
-            @RequestParam(name = "text") String text,
-            @RequestParam(name = "tripId") String id) {
-        try {
-            Trip trip = tripService.findTripById(Integer.parseInt(id));
-            Comment comment = new Comment(text, title, trip);
-            comment.setTripId(trip);
-            trip.setCommentCollection(Arrays.asList(comment));
-            commentService.saveComment(comment);
-            return "Success";
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return "fail";
-    }
+//    @PostMapping(value = "saveComment")
+//    @ResponseBody
+//    public String preSubmitTrip(@RequestParam(name = "title") String title,
+//            @RequestParam(name = "text") String text,
+//            @RequestParam(name = "tripId") String id) {
+//        try {
+//            Trip trip = tripService.findTripById(Integer.parseInt(id));
+//            Comment comment = new Comment(text, title, trip);
+//            comment.setTripId(trip);
+//            trip.setCommentCollection(Arrays.asList(comment));
+//            commentService.saveComment(comment);
+//            return "Success";
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        return "fail";
+//    }
 
     @GetMapping(value = "{username}/{id}")
     @ResponseBody

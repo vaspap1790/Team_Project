@@ -18,14 +18,12 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import org.hibernate.annotations.CreationTimestamp;
 
 /**
  *
@@ -37,8 +35,7 @@ import org.hibernate.annotations.CreationTimestamp;
 @NamedQueries({
     @NamedQuery(name = "Comment.findAll", query = "SELECT c FROM Comment c")
     , @NamedQuery(name = "Comment.findByCommentId", query = "SELECT c FROM Comment c WHERE c.commentId = :commentId")
-    , @NamedQuery(name = "Comment.findByTimestamp", query = "SELECT c FROM Comment c WHERE c.timestamp = :timestamp")
-    , @NamedQuery(name = "Comment.findByTitle", query = "SELECT c FROM Comment c WHERE c.title = :title")})
+    , @NamedQuery(name = "Comment.findByTimestamp", query = "SELECT c FROM Comment c WHERE c.timestamp = :timestamp")})
 public class Comment implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -52,37 +49,16 @@ public class Comment implements Serializable {
     @Column(name = "timestamp")
     @Temporal(TemporalType.TIMESTAMP)
     private Date timestamp;
-    @Basic(optional = false)
-    @NotNull
     @Lob
-    @Size(min = 1, max = 65535)
-    @Column(name = "this")
-    private String this1;
-    @Size(max = 45)
-    @Column(name = "title")
-    private String title;
-    @JoinColumn(name = "trip_id", referencedColumnName = "trip_id")
+    @Size(max = 65535)
+    @Column(name = "text")
+    private String text;
+    @JoinColumn(name = "post_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private Trip tripId;
-
-    public Trip getTripId() {
-        return tripId;
-    }
-
-    public Comment(String this1, String title, Trip tripId) {
-        this.this1 = this1;
-        this.title = title;
-        this.tripId = tripId;
-    }
-
-    @PrePersist
-    protected void onCreate() {
-        timestamp = new Date();
-    }
-
-    public void setTripId(Trip tripId) {
-        this.tripId = tripId;
-    }
+    private Post postId;
+    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
+    @ManyToOne(optional = false)
+    private User userId;
 
     public Comment() {
     }
@@ -91,10 +67,9 @@ public class Comment implements Serializable {
         this.commentId = commentId;
     }
 
-    public Comment(Integer commentId, Date timestamp, String this1) {
+    public Comment(Integer commentId, Date timestamp) {
         this.commentId = commentId;
         this.timestamp = timestamp;
-        this.this1 = this1;
     }
 
     public Integer getCommentId() {
@@ -113,20 +88,28 @@ public class Comment implements Serializable {
         this.timestamp = timestamp;
     }
 
-    public String getThis1() {
-        return this1;
+    public String getText() {
+        return text;
     }
 
-    public void setThis1(String this1) {
-        this.this1 = this1;
+    public void setText(String text) {
+        this.text = text;
     }
 
-    public String getTitle() {
-        return title;
+    public Post getPostId() {
+        return postId;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setPostId(Post postId) {
+        this.postId = postId;
+    }
+
+    public User getUserId() {
+        return userId;
+    }
+
+    public void setUserId(User userId) {
+        this.userId = userId;
     }
 
     @Override
@@ -153,5 +136,5 @@ public class Comment implements Serializable {
     public String toString() {
         return "com.mainpackage.tripPlan.model.Comment[ commentId=" + commentId + " ]";
     }
-
+    
 }
