@@ -269,8 +269,10 @@
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <label>Add photos of this day</label>
-                            <input type="file" class="form-control" id="photos">
+                            <label>Add photos of this day</label><br>
+                            <label class="btn btn-info mt-3">Choose File
+                                <input type="file" class="form-control" id="photos" style="display: none;">
+                            </label>
                         </div>
                     </div>
                     <div class="modal-footer">
