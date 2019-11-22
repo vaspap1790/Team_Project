@@ -19,7 +19,7 @@ App.controller("MainCtrl", function ($scope, $http) {
         const URL = "http://localhost:8080/tripPlan/post/build";
 
         $http.get(URL).then((response)=> {
-           console.log(response);
+           console.log(response.data);
         }).catch(() => {
             console.log("error");
         });

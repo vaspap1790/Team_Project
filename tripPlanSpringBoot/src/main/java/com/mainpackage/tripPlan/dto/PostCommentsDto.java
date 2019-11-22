@@ -5,7 +5,7 @@
  */
 package com.mainpackage.tripPlan.dto;
 
-import com.mainpackage.tripPlan.model.Comment;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -15,13 +15,22 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 public class PostCommentsDto {
-
+    
+    int commentId;
     int postId;
-    Comment comments;
+    int tripId;
+    String text;
+    String username;
 
-    public PostCommentsDto(int postId,Comment comments) {
+    public PostCommentsDto(int commentId, int postId, int tripId, String text, String username) {
+        this.commentId = commentId;
         this.postId = postId;
-        this.comments = comments;
+        this.tripId = tripId;
+        this.text = text;
+        this.username = username;
     }
 
+
+
+  
 }

@@ -48,7 +48,7 @@ public class PostController {
     @ResponseBody
     public Map<String,List<SuperPostDto>> returnTripsLocation() {
         Map<String,List<SuperPostDto>> map=new HashMap<>();
-        map.put("key",postService.buildSuperPost());
+        map.put("Posts",postService.buildSuperPost());
         return map;
 
     }

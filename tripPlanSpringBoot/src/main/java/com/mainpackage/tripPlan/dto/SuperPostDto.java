@@ -5,9 +5,6 @@
  */
 package com.mainpackage.tripPlan.dto;
 
-import com.mainpackage.tripPlan.model.Comment;
-import com.mainpackage.tripPlan.model.Likes;
-import com.mainpackage.tripPlan.model.Photo;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -26,11 +23,12 @@ public class SuperPostDto {
     String body;
     Date timeStamp;
     String profilePhoto;
-    List<PostPhotosDto> photos;
-    List<PostCommentsDto> comments;
-    List<PostLikesDTO> likes;
+    List<PostPhotosDto> photos=new ArrayList<>();
+    List<PostCommentsDto> comments=new ArrayList<>();
+    List<PostLikesDTO> likes=new ArrayList<>();
 
     public SuperPostDto(int tripId,int postId, String username, String title, String body, Date timeStamp,String profilePhoto) {
+       this.tripId=tripId;
         this.postId = postId;
         this.username = username;
         this.title = title;

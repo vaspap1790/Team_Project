@@ -17,19 +17,21 @@ public interface PostRepo extends CrudRepository<Post, Integer>{
      @Query("SELECT p FROM Post p inner join p.tripId tr  WHERE tr.tripId= :tripId")
     Post findByTripId(@Param("tripId") Integer tripId);
     
-    @Query("select new com.mainpackage.tripPlan.dto.PostDTO(tr.tripId,p.id,f.fileData,u.username,p.title,p.text,p.timestamp) FROM Post p INNER JOIN p.tripId tr  "
+    @Query("select new com.mainpackage.tripPlan.dto.PostDTO(tr.tripId,p.id,f.fileData,u.username,p.title,p.text,p.timestamp)"
+            + " FROM Post p INNER JOIN p.tripId tr  "
             + "inner join tr.userId u inner join u.file f ")
     List<PostDTO> getAllPosts();
     
     @Query("select new com.mainpackage.tripPlan.dto.PostLikesDTO"
-            + "(p.id,l) FROM Likes l INNER JOIN l.postId p")
+            + "(p.id,l.value) FROM Likes l INNER JOIN l.postId p")
     List<PostLikesDTO> getLikesOfPosts();
     
     @Query("select new com.mainpackage.tripPlan.dto.PostCommentsDto"
-            + "(p.id,c) FROM Comment c INNER JOIN c.postId p")
+            + "(c.commentId,p.id,tr.tripId,c.text,u.username) FROM Comment c "
+            + "INNER JOIN c.postId p inner join p.tripId tr inner join tr.userId u")
     List<PostCommentsDto> getCommentsOfPosts();
     
     @Query("select new com.mainpackage.tripPlan.dto.PostPhotosDto"
-            + "(tr.tripId,ph) FROM Photo ph INNER JOIN ph.tripId tr")
+            + "(tr.tripId,ph.filedata) FROM Photo ph INNER JOIN ph.tripId tr")
     List<PostPhotosDto> getPhotosOfPosts();
 }

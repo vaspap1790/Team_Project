@@ -56,41 +56,42 @@ public class PostService {
             e.printStackTrace();
         }
     }
-    
+
     @Transactional
-    public List<SuperPostDto> buildSuperPost(){
-        List<SuperPostDto> superPosts=new ArrayList<>();
+    public List<SuperPostDto> buildSuperPost() {
         
-        List<PostDTO> posts=postRepo.getAllPosts();
-        
-        List<PostLikesDTO> likes=postRepo.getLikesOfPosts();
-        List<PostCommentsDto> comments=postRepo.getCommentsOfPosts();
-        List<PostPhotosDto> photos=postRepo.getPhotosOfPosts();
-        
-        posts.forEach((post)->superPosts.add(new SuperPostDto(post.getTripId(),post.getPostId(),post.getUsername(),
-                                                 post.getTitle(),post.getBody(),post.getTimeStamp(),
-                                                serviceFile.getStringImage(post.getProfilePhoto()))));
-       
-        superPosts.forEach((superPost)->{
-           
-            likes.forEach((like)->{
-            if(like.getPostId()==superPost.getPostId()){
-                superPost.setLikes(Arrays.asList(like));
-            };
+        List<SuperPostDto> superPosts = new ArrayList<>();
+
+        List<PostDTO> posts = postRepo.getAllPosts();
+        List<PostLikesDTO> likes = postRepo.getLikesOfPosts();
+        List<PostCommentsDto> comments = postRepo.getCommentsOfPosts();
+        List<PostPhotosDto> photos = postRepo.getPhotosOfPosts();
+
+        posts.forEach((post) -> superPosts.add(new SuperPostDto(post.getTripId(), post.getPostId(), post.getUsername(),
+                post.getTitle(), post.getBody(), post.getTimeStamp(),
+                serviceFile.getStringImage(post.getProfilePhoto()))));
+
+        superPosts.forEach((superPost) -> {
+
+            likes.forEach((like) -> {
+                if (like.getPostId() == superPost.getPostId()) {
+                    superPost.getLikes().add(like);
+                }
             });
-//            comments.forEach((comment)->{
-//            if(comment.getPostId()==superPost.getPostId()){
-//                superPost.getComments().add(comment);
-//            };
-//            });
-//            photos.forEach((photo)->{
-//            if(photo.getTripId()==superPost.getTripId()){
-//                superPost.getPhotos().add(photo);
-//            };
-//            });
-//            
+            comments.forEach((comment) -> {
+                if (comment.getPostId() == superPost.getPostId()) {
+                    superPost.getComments().add(comment);
+                }
+            });
+            photos.forEach((photo) -> {
+                if (photo.getTripId() == superPost.getTripId()) {
+                    photo.setFinalPhoto(serviceFile.getStringImage(photo.getPhotos()));
+                    superPost.getPhotos().add(photo);
+                    
+                }
+            });
+
         });
-        
         return superPosts;
     }
 }

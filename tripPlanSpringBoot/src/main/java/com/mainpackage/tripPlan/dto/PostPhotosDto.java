@@ -5,7 +5,6 @@
  */
 package com.mainpackage.tripPlan.dto;
 
-import com.mainpackage.tripPlan.model.Photo;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -17,9 +16,10 @@ import java.util.List;
 public class PostPhotosDto {
 
     int tripId;
-    Photo photos;
+    byte[]  photos;
+    String finalPhoto;
 
-    public PostPhotosDto(int tripId, Photo photos) {
+    public PostPhotosDto(int tripId, byte[] photos) {
         this.tripId = tripId;
         this.photos = photos;
     }

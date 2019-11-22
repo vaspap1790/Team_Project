@@ -21,9 +21,6 @@ public class PostDTO {
     String title;
     String body;
     Date timeStamp;
-//    Integer likes;
-//    List<Photo> photos;
-//    List<Comment> comments;
 
     public PostDTO(int tripId,int postId,byte[] profilePhoto, String username, String title, String body, Date timeStamp) {
         this.tripId=tripId;
@@ -33,9 +30,6 @@ public class PostDTO {
         this.title = title;
         this.body = body;
         this.timeStamp = timeStamp;
-//        this.likes = likes;
-//        this.photos = photos;
-//        this.comments = comments;
     }
     
     
