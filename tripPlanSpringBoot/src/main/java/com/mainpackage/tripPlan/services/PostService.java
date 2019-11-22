@@ -7,6 +7,11 @@ package com.mainpackage.tripPlan.services;
 
 import com.mainpackage.tripPlan.DummyModels.DummyPost;
 import com.mainpackage.tripPlan.daos.GenericJpaDao;
+import com.mainpackage.tripPlan.dto.PostCommentsDto;
+import com.mainpackage.tripPlan.dto.PostDTO;
+import com.mainpackage.tripPlan.dto.PostLikesDTO;
+import com.mainpackage.tripPlan.dto.PostPhotosDto;
+import com.mainpackage.tripPlan.dto.SuperPostDto;
 import com.mainpackage.tripPlan.model.Likes;
 import com.mainpackage.tripPlan.model.Post;
 import com.mainpackage.tripPlan.model.Trip;
@@ -27,6 +32,8 @@ public class PostService {
     TripService tripService;
     @Autowired
     GenericJpaDao<Likes> likesDao;
+    @Autowired
+    ServiceFile serviceFile;
 
     public void savePost(DummyPost dummy) throws ParseException {
         try {
@@ -47,5 +54,26 @@ public class PostService {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    
+    
+    public List<SuperPostDto> buildSuperPost(){
+        List<SuperPostDto> superPosts=new ArrayList<>();
+        
+        List<PostDTO> posts=postRepo.getAllPosts();
+        
+        posts.forEach((post)->superPosts.add(new SuperPostDto(post.getTripId(),post.getPostId(),post.getUsername(),
+                                                 post.getTitle(),post.getBody(),post.getTimeStamp(),
+                                                serviceFile.getStringImage(post.getProfilePhoto()))));
+       
+        superPosts.forEach((superPost)->{
+           
+            superPost.setLikes((postRepo.getLikesOfPosts(superPost.getPostId())));
+            superPost.setComments((postRepo.getCommentsOfPosts(superPost.getPostId())));
+            superPost.setPhotos((postRepo.getPhotosOfPosts(superPost.getTripId())));
+            
+        });
+        
+        return superPosts;
     }
 }

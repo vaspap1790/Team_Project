@@ -44,7 +44,7 @@ public class Likes implements Serializable {
     @ManyToOne(optional = false)
     private Post postId;
     @JoinColumn(name = "user_id", referencedColumnName = "user_id")
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = true)
     private User userId;
 
     public Likes() {

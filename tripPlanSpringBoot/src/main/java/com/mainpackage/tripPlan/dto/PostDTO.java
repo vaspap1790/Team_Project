@@ -13,7 +13,9 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class PostDTO {
-  
+    
+    int tripId;
+    int postId;
     byte[] profilePhoto;
     String username;
     String title;
@@ -23,7 +25,9 @@ public class PostDTO {
 //    List<Photo> photos;
 //    List<Comment> comments;
 
-    public PostDTO(byte[] profilePhoto, String username, String title, String body, Date timeStamp) {
+    public PostDTO(int tripId,int postId,byte[] profilePhoto, String username, String title, String body, Date timeStamp) {
+        this.tripId=tripId;
+        this.postId=postId;
         this.profilePhoto = profilePhoto;
         this.username = username;
         this.title = title;

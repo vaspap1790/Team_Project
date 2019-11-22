@@ -6,9 +6,13 @@
 package com.mainpackage.tripPlan.controllers;
 
 import com.mainpackage.tripPlan.DummyModels.DummyPost;
+import com.mainpackage.tripPlan.dto.PostCommentsDto;
 import com.mainpackage.tripPlan.dto.PostDTO;
+import com.mainpackage.tripPlan.dto.PostPhotosDto;
+import com.mainpackage.tripPlan.dto.SuperPostDto;
 import com.mainpackage.tripPlan.repositories.PostRepo;
 import com.mainpackage.tripPlan.services.PostService;
+import com.mainpackage.tripPlan.services.ServiceFile;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,6 +32,8 @@ public class PostController {
     PostService postService;
     @Autowired
     PostRepo postRepo;
+    @Autowired
+    ServiceFile serviceFile;
 
     @PostMapping(value = "create")
     @ResponseBody
@@ -39,8 +45,11 @@ public class PostController {
 
     @GetMapping(value = "getPosts")
     @ResponseBody
-    public List<PostDTO> getPosts() {
-
-        return postRepo.getAllPosts();
+    public List<SuperPostDto> getPosts() {
+      
+      return  postService.buildSuperPost();
+//        posts.forEach((post)->post.setProfilePhoto(serviceFile.getStringImage(post.getProfilePhoto())));
+        
+        
     }
 }
