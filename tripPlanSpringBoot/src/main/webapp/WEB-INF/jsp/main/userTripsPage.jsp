@@ -18,142 +18,145 @@
         {{printBudget()}}
         <jsp:include page="../components/navbar.jsp"/>
 
-        <!-- Photo container -->
-        <div class="container-fluid" id="up">
+        <!--Fixed Background-->
+        <div id="fixedbackground">
+
+            <!-- Photo container -->
+            <div class="container-fluid" id="up">
+            </div>
+
+            <!-- Main Container -->
+            <div class="container border up col-11 animated fadeInUpBig" id="main">
+
+                <!-- Title -->
+                <div class="row d-flex flex-row justify-content-around align-items-center ">
+
+                    <div class="col-5">
+                        <h1 class="display-4">My trip to {{location}}</h1>
+                    </div>
+
+                    <div class="col-3">
+                    </div>
+                    <div class="col-1">
+                        <button type="button" class="btn btn-secondary add" id="photos"
+                                data-toggle="modal" data-target="#photosModal">
+                            Photos <i class="fas fa-plus-circle"></i>
+                        </button>
+                    </div>
+
+                    <div class="col-1">
+                        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#postModal">
+                            Post <i class="fas fa-share-alt"></i>
+                        </button>
+                    </div>
+
+                </div>
+
+                <!-- Table -->
+                <div class="row mt-2">
+
+                    <table class="table table-striped table-bordered table-hover">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th style="width: 5%" class="text-center align-middle" scope="col">Dates</th>
+                                <th scope="col" class="text-center align-middle">Content</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="date in dates" id="row{{date}}">
+                                <th scope="row" class="text-center align-middle"><span class="date">{{dummyDates[$index]}}</span></th>
+
+                                <td class="align-middle">
+
+                                    <div class="row">
+
+                                        <!-- Flights-Accomodation -->
+                                        <div class="col-1 d-flex align-items-center flight-accom">
+                                            <a href="#" ng-show="show(date)" data-toggle="modal"
+                                               data-target="#flightModal">
+                                                <i class="fas fa-plane"></i>
+                                            </a>
+                                        </div>
+
+                                        <!-- Notes -->
+                                        <div class="col-7 d-flex align-items-center">
+
+                                            <div class="col-4">
+                                                <button type="button" class="btn btn-secondary btn-sm add" id="notes{{$index}}"
+                                                        data-toggle="modal" data-target="#notesModal{{date}}" ng-click="showNote($index, date)">
+                                                    Notes <i class="fas fa-plus-circle"></i>                                           
+                                                </button>
+
+                                            </div>
+
+                                            <div class="col-8 d-flex justify-content-center " id="note{{$index}}" >
+                                                <span  id="showNotes13{{date}} " ng-click="showNote(index, date)" 
+                                                       data-toggle="modal" data-target="#notesModal{{date}}" ng-show="showNotes(date)">
+                                                    <i class="fa fa-calendar" style="font-size:36px"></i>
+                                                </span>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="col-2"></div>
+
+                                        <!-- Budget -->
+                                        <div class="col-2 d-flex align-items-center">
+
+                                            <div class="col-9">
+
+                                                <button type="button" class="btn btn-secondary btn-sm add" id="budget{{$index}}"
+                                                        data-toggle="modal" data-target="#budgetModal{{$index}}">
+                                                    Budget <i class="fas fa-plus-circle"></i>
+                                                </button>
+                                            </div>
+
+                                            <div class="col-3 d-flex justify-content-center">
+                                                <span id="dayBudget{{date}}"></span>
+                                                <!--<span ng-show="currencyShow($index)">{{currency}} </span>-->
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+
+                <div class="row mt-2">
+
+                    <div class="col-5">
+                    </div>
+
+                    <div class="col-3">
+
+                    </div>
+
+                    <div class="col-2">
+                        Total Budget: <span id="totalBudget">{{totalBudget}}</span>
+                        <select ng-model="currency">
+                            <option value="&euro;">&euro;</option>
+                            <option value="&dollar;">&dollar;</option>
+                            <option value="&pound;">&pound;</option>
+                            <option value="&yen;">&yen;</option>
+                        </select>
+                    </div>
+
+                    <div class="col-2">
+                        <p>
+                            Accommodation: <a href="#" data-toggle="modal" data-target="#accomModal">
+                                <i class="fas fa-bed"></i>
+                            </a>
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
         </div>
-
-        <!-- Main Container -->
-        <div class="container border up col-11" id="main">
-
-            <!-- Title -->
-            <div class="row d-flex flex-row justify-content-around align-items-center ">
-
-                <div class="col-5">
-                    <h1 class="display-4">My trip to {{location}}</h1>
-                </div>
-
-                <div class="col-3">
-                </div>
-                <div class="col-1">
-                    <button type="button" class="btn btn-secondary add" id="photos"
-                            data-toggle="modal" data-target="#photosModal">
-                        Photos <i class="fas fa-plus-circle"></i>
-                    </button>
-                </div>
-
-                <div class="col-1">
-                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#postModal">
-                        Post <i class="fas fa-share-alt"></i>
-                    </button>
-                </div>
-
-            </div>
-
-            <!-- Table -->
-            <div class="row mt-2">
-
-                <table class="table table-striped table-bordered table-hover">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th style="width: 5%" class="text-center align-middle" scope="col">Dates</th>
-                            <th scope="col" class="text-center align-middle">Content</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr ng-repeat="date in dates" id="row{{date}}">
-                            <th scope="row" class="text-center align-middle"><span class="date">{{dummyDates[$index]}}</span></th>
-
-                            <td class="align-middle">
-
-                                <div class="row">
-
-                                    <!-- Flights-Accomodation -->
-                                    <div class="col-1 d-flex align-items-center flight-accom">
-                                        <a href="#" ng-show="show(date)" data-toggle="modal"
-                                           data-target="#flightModal">
-                                            <i class="fas fa-plane"></i>
-                                        </a>
-                                    </div>
-
-                                    <!-- Notes -->
-                                    <div class="col-7 d-flex align-items-center">
-
-                                        <div class="col-4">
-                                            <button type="button" class="btn btn-secondary btn-sm add" id="notes{{$index}}"
-                                                    data-toggle="modal" data-target="#notesModal{{date}}" ng-click="showNote($index, date)">
-                                                Notes <i class="fas fa-plus-circle"></i>                                           
-                                            </button>
-
-                                        </div>
-
-                                        <div class="col-8 d-flex justify-content-center " id="note{{$index}}" >
-                                            <span  id="showNotes13{{date}} " ng-click="showNote(index, date)" 
-                                                   data-toggle="modal" data-target="#notesModal{{date}}" ng-show="showNotes(date)">
-                                                <i class="fa fa-calendar" style="font-size:36px"></i>
-                                            </span>
-                                        </div>
-
-                                    </div>
-
-                                    <div class="col-2"></div>
-
-                                    <!-- Budget -->
-                                    <div class="col-2 d-flex align-items-center">
-
-                                        <div class="col-9">
-
-                                            <button type="button" class="btn btn-secondary btn-sm add" id="budget{{$index}}"
-                                                    data-toggle="modal" data-target="#budgetModal{{$index}}">
-                                                Budget <i class="fas fa-plus-circle"></i>
-                                            </button>
-                                        </div>
-
-                                        <div class="col-3 d-flex justify-content-center">
-                                            <span id="dayBudget{{date}}"></span>
-                                            <!--<span ng-show="currencyShow($index)">{{currency}} </span>-->
-                                        </div>
-
-                                    </div>
-
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-
-            </div>
-
-            <div class="row mt-2">
-
-                <div class="col-5">
-                </div>
-
-                <div class="col-3">
-
-                </div>
-
-                <div class="col-2">
-                    Total Budget: <span id="totalBudget">{{totalBudget}}</span>
-                    <select ng-model="currency">
-                        <option value="&euro;">&euro;</option>
-                        <option value="&dollar;">&dollar;</option>
-                        <option value="&pound;">&pound;</option>
-                        <option value="&yen;">&yen;</option>
-                    </select>
-                </div>
-
-                <div class="col-2">
-                    <p>
-                        Accommodation: <a href="#" data-toggle="modal" data-target="#accomModal">
-                            <i class="fas fa-bed"></i>
-                        </a>
-                    </p>
-                </div>
-
-            </div>
-
-        </div>
-
     <modals>
 
         <!-- Post Modal -->
@@ -189,7 +192,7 @@
             </div>
         </div>
 
-        Notes Modal 
+        <!--Notes Modal--> 
         <div ng-repeat="date in dates"  class="modal fade" id="notesModal{{date}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
              aria-hidden="true">
             <div class="modal-dialog" id="dialog{{$index}}" role="document">
@@ -266,10 +269,12 @@
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <label>Add photos of this day</label>
 
-                            <form id="multipleUploadForm" name="multipleUploadForm">
-                                <input id="multipleFileUploadInput" type="file" name="files" class="file-input" multiple required />
+                            <label class="btn btn-info mt-3">Add Photos of my Trip
+                                <br>
+                                <form id="multipleUploadForm" name="multipleUploadForm">
+                                    <input id="multipleFileUploadInput" type="file" name="files" class="form-control" multiple required style="display: none;"/>
+                            </label>
                         </div>
                     </div>
                     <div class="modal-footer">

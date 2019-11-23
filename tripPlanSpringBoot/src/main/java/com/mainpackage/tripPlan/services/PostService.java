@@ -86,8 +86,7 @@ public class PostService {
             photos.forEach((photo) -> {
                 if (photo.getTripId() == superPost.getTripId()) {
                     photo.setFinalPhoto(serviceFile.getStringImage(photo.getPhotos()));
-                    superPost.getPhotos().add(photo);
-                    
+                    superPost.getPhotos().add(photo);                
                 }
             });
 
