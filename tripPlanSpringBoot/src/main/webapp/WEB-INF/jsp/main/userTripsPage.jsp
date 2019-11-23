@@ -193,7 +193,7 @@
         </div>
 
         <!--Notes Modal--> 
-        <div ng-repeat="date in dates"  class="modal fade" id="notesModal{{date}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        <div ng-repeat="date in dates"  class="modal fade notesModal" id="notesModal{{date}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
              aria-hidden="true">
             <div class="modal-dialog" id="dialog{{$index}}" role="document">
                 <div class="modal-content">
@@ -228,7 +228,7 @@
         </div>
 
         <!-- Budget Modal -->
-        <div ng-repeat="date in dates" class="modal fade" id="budgetModal{{$index}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        <div ng-repeat="date in dates" class="modal fade budgetModal" id="budgetModal{{$index}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
              aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
