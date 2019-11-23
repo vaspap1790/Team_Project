@@ -46,12 +46,12 @@
                                         <div style="height: 202px; width: 202px;">
                                             <img src="data:image/jpg;base64,${img}" class="avatar img-circle img-thumbnail ml-5" alt="avatar" id="blah" style="height: 202px; width: 202px;">
                                         </div>
-                                            <a href="${pageContext.request.contextPath}/deleteFile/${file.id}" class="btn btn-danger btn-sm mt-3 mb-4">Delete Photo</a><br>
+                                            <a href="${pageContext.request.contextPath}/deleteFile/${file.id}" class="btn btn-danger btn-sm mt-3 mb-4"><i class="far fa-trash-alt"></i> Delete Photo </a><br>
                                     </c:if>
-                                        <label class="btn btn-primary btn-sm mt-3">Choose File
+                                        <label class="btn btn-primary btn-sm mt-3"><i class="fas fa-folder-plus"></i> Choose File 
                                             <input id="singleFileUploadInput" type="file" name="file"   class="text-center center-block file-upload file-input" style="display: none;">
                                         </label>
-                                    <button type="submit" class="btn btn-success btn-sm mt-3">Submit</button>
+                                    <button type="submit" class="btn btn-success btn-sm mt-3"><i class="fas fa-check-circle"></i> Submit </button>
 
                                 </spring:form>
                             </div></hr><br>
@@ -121,7 +121,7 @@
                                     <div class="border shadow-lg text-center pb-4">
                                     <h2 class="text-center font-weight-bold pb-5">Communication Enviroment</h2>
                                     
-                                        <a href="${pageContext.request.contextPath}/chat" class="btn btn-success col-2">Chat</a>
+                                        <a href="${pageContext.request.contextPath}/chat" class="btn btn-success col-2"> Chat <i class="fas fa-comments"></i></a>
                                     </div>
 
                                 </div><!--/tab-pane-->
