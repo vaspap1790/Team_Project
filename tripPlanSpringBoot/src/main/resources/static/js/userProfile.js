@@ -48,18 +48,15 @@ App.controller("MainCtrl", function ($scope, $http) {
         $scope.items.splice(index, 1);
         console.log(index,id);
         //Send to backend to delete it from db
-        const deleteTripURL = "http://localhost:8080/tripPlan/tripPage/delete/"+id;
-        
-//        let object = {tripId:id};
-//        let jsonObject = JSON.stringify(odject);
-//        
-//        $http.post(deleteTripURL,jsonObject)
-//                .then(()=>{
-//                     console.log("Id successfully sent to backend");
-//                })
-//                .catch((error)=>{
-//                     console.log(error);
-//                }); 
+        const deleteTripURL = "http://localhost:8080/tripPlan/trip/delete/"+id+"/"+username;
+
+        $http.post(deleteTripURL)
+                .then(()=>{
+                     console.log("Id successfully sent to backend");
+                })
+                .catch((error)=>{
+                     console.log(error);
+                }); 
     };
     });
 });

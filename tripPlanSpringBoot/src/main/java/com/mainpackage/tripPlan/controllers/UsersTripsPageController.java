@@ -4,8 +4,6 @@ import com.mainpackage.tripPlan.DummyModels.DummyDailyBudget;
 import com.mainpackage.tripPlan.DummyModels.DummyNotes;
 import com.mainpackage.tripPlan.dto.DailyBudgetDTO;
 import com.mainpackage.tripPlan.dto.NotesDTO;
-import com.mainpackage.tripPlan.model.Comment;
-import com.mainpackage.tripPlan.model.Trip;
 import com.mainpackage.tripPlan.services.CommentService;
 import com.mainpackage.tripPlan.services.TripPageService;
 import com.mainpackage.tripPlan.services.TripService;
@@ -20,7 +18,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller

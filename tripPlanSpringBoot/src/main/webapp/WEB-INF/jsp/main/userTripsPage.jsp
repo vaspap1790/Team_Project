@@ -15,7 +15,7 @@
     </head>
 
     <body ng-controller="MainCtrl">
-        {{printBudget()}}
+       
         <jsp:include page="../components/navbar.jsp"/>
 
         <!--Fixed Background-->
@@ -340,7 +340,7 @@
         </div>
 
     </modals>
-
+ {{printBudget()}}
 
     <jsp:include page="../components/footer.jsp"/>
     <jsp:include page="../components/scripts.jsp"/>

@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 @RequestMapping(value = "trip/")
@@ -83,4 +84,9 @@ public class TripController {
 
     }
 
+    @PostMapping(value = "delete/{tripId}/{username}")
+    @ResponseBody
+    public void deleteTrip(@PathVariable("tripId") int tripId,@PathVariable("username") String username) {
+        tripService.deleteTrip(tripId,username);
+    }
 }
