@@ -48,7 +48,7 @@
                                         </div>
                                             <a href="${pageContext.request.contextPath}/deleteFile/${file.id}" class="btn btn-danger btn-sm mt-3 mb-4"><i class="far fa-trash-alt"></i> Delete Photo </a><br>
                                     </c:if>
-                                        <label class="btn btn-primary btn-sm mt-3"><i class="fas fa-folder-plus"></i> Choose File 
+                                        <label class="btn btn-warning btn-sm mt-3"><i class="fas fa-folder-plus"></i> Choose File 
                                             <input id="singleFileUploadInput" type="file" name="file"   class="text-center center-block file-upload file-input" style="display: none;">
                                         </label>
                                     <button type="submit" class="btn btn-success btn-sm mt-3"><i class="fas fa-check-circle"></i> Submit </button>
