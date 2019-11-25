@@ -41,4 +41,11 @@ body {
     bottom: 4px;z-index:9;
 }
 
+md-card {
+    margin: auto;
+    left: 0;
+    right: 0;
+    margin-bottom: 20px;
+}
+
 

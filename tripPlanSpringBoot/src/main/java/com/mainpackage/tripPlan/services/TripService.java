@@ -76,26 +76,39 @@ public class TripService {
         return tripRepo.findTripById(id);
     }
 
+    public Trip findTripByIdAndUsername(Integer id,String username) {
+        return tripRepo.findTripByIdAndUsername(id,username);
+    }
+
     public void saveTrip(Trip trip) {
         tripDao.save(trip);
     }
 
     public Map<String, Object> getTripsPageDataByUsernameAndTripId(String username, String id) {
-        
+
         List<TransportationDTO> transp = transService.findTransportationByUsernameAndTripId(username, id);
         List<AccommodationDTO> accommo = accomoService.findTransportationByUsernameAndTripId(username, id);
         List<NotesDTO> notes = tripPageService.getNotesById(Integer.parseInt(id));
         List<DailyBudgetDTO> db = tripPageService.getDailyBudgetByTripId(Integer.parseInt(id));
-        Trip tr=findTripById(Integer.parseInt(id));
-        
+        Trip tr = findTripById(Integer.parseInt(id));
+
         Map<String, Object> trip = new HashMap<>();
-        trip.put("username",username);
+        trip.put("username", username);
         trip.put("location", tr.getLocation());
         trip.put("accommodation", accommo);
         trip.put("transportation", transp);
-        trip.put("notes",notes);
-        trip.put("dailyBudget",db);
-    
+        trip.put("notes", notes);
+        trip.put("dailyBudget", db);
+
         return trip;
+    }
+
+    public void deleteTrip(int tripId,String username) {
+        try {
+            Trip trip = findTripByIdAndUsername(tripId,username);
+            tripRepo.delete(trip);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

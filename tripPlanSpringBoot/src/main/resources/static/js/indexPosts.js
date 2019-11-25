@@ -1,6 +1,7 @@
 const visitor = document.getElementById("username");
 let posts;
-const App = angular.module("App", []);
+
+const App = angular.module("App", ["ngMaterial", "jkAngularCarousel"]);
 
 function checkIfUserIsLogged() {
     return !(visitor === null);
@@ -36,8 +37,10 @@ App.controller("MainCtrl", function ($scope, $http) {
         if (checkIfUserIsLogged()) {
             let number = posts[index].likes.length;
             $event.currentTarget.parentElement.previousElementSibling.firstElementChild.innerHTML = `<img src='https://image.flaticon.com/icons/svg/2065/2065064.svg' style='width:30px;' alt=''> ${number}`;
-
+            
             //httpRequest
+            if(posts[index].includes(visitor)){}
+            else{}
 
         } else {
             alert("You have to be logged in to perform that action.");

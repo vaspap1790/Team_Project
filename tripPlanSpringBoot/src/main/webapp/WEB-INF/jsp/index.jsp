@@ -9,8 +9,18 @@
         <title>TripPlanner</title>
         <jsp:include page="components/linksHeader.jsp"/>
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/posts.css">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular.min.js"></script>
         
+        <script data-require="angular.js@*" data-semver="1.5.0"
+        src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.js"></script>
+        <script src="https://code.angularjs.org/1.5.0/angular-animate.min.js"></script>
+        <script src="https://code.angularjs.org/1.5.0/angular-aria.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.5/angular-material.min.js"></script>
+        <link rel="stylesheet"
+              href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.5/angular-material.min.css" />
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/jk-carousel.min.css" />
+
     </head>
 
     <body ng-controller="MainCtrl">
@@ -55,7 +65,10 @@
 
         <div class="container d-flex flex-wrap justify-content-center" id="mainPostContainer">
 
-            <div class="card shadow-lg" ng-repeat="post in posts">
+
+
+            <div class="card shadow-lg" ng-repeat="post in posts track by $index">
+
                 <div class="card-body">
                     <div class="d-flex row mt-2 mb-2 align-items-center">
 
@@ -77,6 +90,14 @@
                     <div class="row mt-2 mb-2">
 
                         <!--////////////////Carousel (yet to add)////////////////-->
+
+
+<!--                        <md-card layout="column" layout-align="center center" style="padding-bottom: 10px">
+                            <h3>AutoSlide Carousel</h3>
+                            <jk-carousel data="post.photos" item-template-url="'item-template.'" max-width="800" max-height="500"
+                                         auto-slide="true" auto-slide-time="2000">
+                            </jk-carousel>
+                        </md-card>-->
 
 
                         <!--When carousel is ready add ng-show="!post.photos.length"--> 
@@ -950,7 +971,8 @@
                     stroke="#F96D00" /></svg></div>
 
         <jsp:include page="components/footer.jsp"/>
-        <jsp:include page="components/scripts.jsp"/>
+        <jsp:include page="components/scripts.jsp"/>     
+        <script src="${pageContext.request.contextPath}/js/jk-carousel.min.js"></script>
         <script src="${pageContext.request.contextPath}/js/indexPosts.js"></script>
     </body>
 

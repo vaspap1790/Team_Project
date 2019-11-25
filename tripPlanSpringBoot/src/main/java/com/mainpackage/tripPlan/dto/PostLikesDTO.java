@@ -18,12 +18,14 @@ import java.util.List;
 public class PostLikesDTO {
     
     int postId;
+    String username;
     int likes;
- 
+    
 
-    public PostLikesDTO(int postId,int likes) {
+    public PostLikesDTO(int postId,int likes,String username) {
         this.likes = likes;
         this.postId=postId;
+        this.username=username;
     }
     
 }
