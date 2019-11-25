@@ -96,7 +96,7 @@
                     <div class="row mt-1 d-flex justify-content-between align-items-center px-2">
                         <div>
                             <img src="https://image.flaticon.com/icons/svg/2065/2065064.svg" style="width:30px;" alt="">
-                            {{post.likes.length - 1}}
+                            <span id="numOfLikes{{$index}}">{{post.likes.length}}</span>
                         </div>
                         <p>{{post.comments.length}} Comments</p>
                     </div>

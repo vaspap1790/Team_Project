@@ -34,13 +34,38 @@ App.controller("MainCtrl", function ($scope, $http) {
 
 
     $scope.handleLikeBtn = function ($event, index) {
+
+
         if (checkIfUserIsLogged()) {
-            let number = posts[index].likes.length;
-            $event.currentTarget.parentElement.previousElementSibling.firstElementChild.innerHTML = `<img src='https://image.flaticon.com/icons/svg/2065/2065064.svg' style='width:30px;' alt=''> ${number}`;
-            
-            //httpRequest
-            if(posts[index].includes(visitor)){}
-            else{}
+
+            if (posts[index].includes(visitor)) {
+
+                let numOfLikesSpan = document.getElementById("numOfLikes" + index);
+                let currentNumOfLikes = parseInt(numOfLikesSpan.innerText);
+                numOfLikesSpan.innerText = currentNumOfLikes + 1;
+
+                let URL = `http://localhost:8080/tripPlan/post/likes/${post.postId}/${username}`;
+                $http.get(URL)
+                        .then(() => {
+                            console.log("Success")
+                        }).catch(() => {
+                    console.log("Error");
+                });
+            } else {
+
+                let numOfLikesSpan = document.getElementById("numOfLikes" + index);
+                let currentNumOfLikes = parseInt(numOfLikesSpan.innerText);
+                numOfLikesSpan.innerText = currentNumOfLikes - 1;
+
+                let URL = `http://localhost:8080/tripPlan/post/likes/${post.postId}/${username}`;
+                $http.get(URL)
+                        .then(() => {
+                            console.log("Success")
+                        }).catch(() => {
+                    console.log("Error");
+                });
+
+            }
 
         } else {
             alert("You have to be logged in to perform that action.");
@@ -60,9 +85,9 @@ App.controller("MainCtrl", function ($scope, $http) {
     $scope.handleCommentSubmitBtn = function ($event, index) {
 
         if (checkIfUserIsLogged()) {
-            
+
             //httpRequest
-            
+
         } else {
             alert("You have to be logged in to perform that action.");
         }
