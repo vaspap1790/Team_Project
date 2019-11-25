@@ -55,6 +55,12 @@ public class Likes implements Serializable {
         this.postId = postId;
     }
 
+    public Likes(Integer value, Post postId, User userId) {
+        this.value = value;
+        this.postId = postId;
+        this.userId = userId;
+    }
+
     
     public Likes(Integer id) {
         this.id = id;

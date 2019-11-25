@@ -1,4 +1,3 @@
-
 package com.mainpackage.tripPlan.services;
 
 import com.mainpackage.tripPlan.daos.GenericJpaDao;
@@ -8,7 +7,6 @@ import com.mainpackage.tripPlan.utilities.Check;
 import com.mainpackage.tripPlan.utilities.Encryption;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 
 @Service
 public class UserService {
@@ -22,7 +20,6 @@ public class UserService {
     @Autowired
     Check check;
 
-
     public void insert(User u) {
 
         String hashed = encrypt.hashPassword(u.getPassword());
@@ -31,8 +28,14 @@ public class UserService {
         userDao.save(u);
 
     }
-public User findByUserId(long id){
-    
-    return userRepo.findByUserId(Math.toIntExact(id));
-}
+
+    public User findByUserId(long id) {
+
+        return userRepo.findByUserId(Math.toIntExact(id));
+    }
+
+    public User findByUsername(String username) {
+
+        return userRepo.findByUsername(username);
+    }
 }

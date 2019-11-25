@@ -67,6 +67,12 @@ public class Comment implements Serializable {
         this.commentId = commentId;
     }
 
+    public Comment(String text, Post postId, User userId) {
+        this.text = text;
+        this.postId = postId;
+        this.userId = userId;
+    }
+
     public Comment(Integer commentId, Date timestamp) {
         this.commentId = commentId;
         this.timestamp = timestamp;
