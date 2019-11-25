@@ -21,7 +21,7 @@
                      data-scrollax-parent="true">
                     <div class="col-md-9 ftco-animate mb-5 pb-5 text-center text-md-left"
                          data-scrollax=" properties: { translateY: '70%' }">
-                        <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Plan <br>Your own
+                        <h1 style="text-shadow: 4px 2px grey;" class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Plan <br>Your own
                             Trip</h1>
                         <p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Find great places to stay, eat,
                             shop, or visit from local experts</p>
