@@ -10,7 +10,7 @@
         <jsp:include page="components/linksHeader.jsp"/>
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/posts.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular.min.js"></script>
-
+        
     </head>
 
     <body ng-controller="MainCtrl">
@@ -43,20 +43,27 @@
             </a>
         </div>
 
+        <div class="container ftco-section bg-light" id="start">
+            <div class="row justify-content-center">
+                <div class="col-md-7 heading-section text-center ftco-animate">
+                    <h2><strong>Posts</strong> &amp; Comments</h2>
+                </div>
+            </div>
+        </div>
 
         <!--Posts-->
 
         <div class="container d-flex flex-wrap justify-content-center" id="mainPostContainer">
 
-            <div class="card" ng-repeat="post in posts">
+            <div class="card shadow-lg" ng-repeat="post in posts">
                 <div class="card-body">
                     <div class="d-flex row mt-2 mb-2 align-items-center">
 
-                        <div class="col-1">
-                            <img src="data:image/jpg;base64,{{post.profilePhoto}}" id="profilePicture"  alt="avatar">
+                        <div class="col-1 photoHover" style="height: 40px; width: 40px;">
+                            <img src="data:image/jpg;base64,{{post.profilePhoto}}" id="profilePicture"  alt="avatar" style="height: 40px; width: 40px;">
                         </div>
 
-                        <div class="col-11 pr-2">
+                        <div class="col-11 pl-3 pr-2">
                             <div><strong> {{post.username}} 's trip: {{post.title}}</strong></div>
                             <div style="font-size:xx-small;"><strong>{{post.timeStamp.substring(0, 19).replace("T", " ")}}</strong></div>
                         </div>
@@ -71,7 +78,7 @@
 
                         <!--////////////////Carousel (yet to add)////////////////-->
 
-                        
+
                         <!--When carousel is ready add ng-show="!post.photos.length"--> 
                         <img src="https://cdn.blueswandaily.com//2018/11/Travel000-2000x1200.jpg" 
                              id="mainPicture" alt="" srcset="">
@@ -106,8 +113,8 @@
                             <div class="input-group mycustom">
                                 <input type="text" class="form-control" placeholder="Write a comment..." required>
                                 <div class="input-group-prepend">
-                                    <input type="submit" value="submit" ng-click="handleCommentSubmitBtn($event, $index)"
-                                           class="btn btn-primary btn-sm">
+                                    <button type="submit" ng-click="handleCommentSubmitBtn($event, $index)"
+                                            class="btn btn-warning btn-sm"><i class="fas fa-arrow-circle-right text-white pl-2 pr-2"></i></button>
                                 </div>
                             </div>
                         </form>
