@@ -9,7 +9,7 @@
         <title>TripPlanner</title>
         <jsp:include page="components/linksHeader.jsp"/>
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/posts.css">
-        
+
         <script data-require="angular.js@*" data-semver="1.5.0"
         src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.js"></script>
         <script src="https://code.angularjs.org/1.5.0/angular-animate.min.js"></script>
@@ -65,8 +65,6 @@
 
         <div class="container d-flex flex-wrap justify-content-center" id="mainPostContainer">
 
-
-
             <div class="card shadow-lg" ng-repeat="post in posts track by $index">
 
                 <div class="card-body">
@@ -92,12 +90,12 @@
                         <!--////////////////Carousel (yet to add)////////////////-->
 
 
-<!--                        <md-card layout="column" layout-align="center center" style="padding-bottom: 10px">
-                            <h3>AutoSlide Carousel</h3>
-                            <jk-carousel data="post.photos" item-template-url="'item-template.'" max-width="800" max-height="500"
-                                         auto-slide="true" auto-slide-time="2000">
-                            </jk-carousel>
-                        </md-card>-->
+                        <!--                        <md-card layout="column" layout-align="center center" style="padding-bottom: 10px">
+                                                    <h3>AutoSlide Carousel</h3>
+                                                    <jk-carousel data="post.photos" item-template-url="'item-template.'" max-width="800" max-height="500"
+                                                                 auto-slide="true" auto-slide-time="2000">
+                                                    </jk-carousel>
+                                                </md-card>-->
 
 
                         <!--When carousel is ready add ng-show="!post.photos.length"--> 
