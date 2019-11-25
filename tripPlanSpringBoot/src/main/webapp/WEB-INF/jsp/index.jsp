@@ -53,7 +53,7 @@
             </a>
         </div>
 
-        <div class="container ftco-section bg-light" id="start">
+        <div class="container ftco-section bg-light ftco-animate" id="start">
             <div class="row justify-content-center">
                 <div class="col-md-7 heading-section text-center ftco-animate">
                     <h2><strong>Posts</strong> &amp; Comments</h2>
@@ -63,9 +63,9 @@
 
         <!--Posts-->
 
-        <div class="container d-flex flex-wrap justify-content-center" id="mainPostContainer">
+        <div class="container d-flex flex-wrap justify-content-center ftco-animate" id="mainPostContainer">
 
-            <div class="card shadow-lg" ng-repeat="post in posts track by $index">
+            <div class="card shadow-lg ftco-animate" ng-repeat="post in posts track by $index">
 
                 <div class="card-body">
                     <div class="d-flex row mt-2 mb-2 align-items-center">
