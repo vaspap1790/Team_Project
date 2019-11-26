@@ -65,7 +65,7 @@
 
         <div class="container d-flex flex-wrap justify-content-center ftco-animate" id="mainPostContainer">
 
-            <div class="card shadow-lg ftco-animate" ng-repeat="post in posts track by $index">
+            <div class="card shadow-lg" ng-repeat="post in posts track by $index">
 
                 <div class="card-body">
                     <div class="d-flex row mt-2 mb-2 align-items-center">
@@ -75,7 +75,7 @@
                         </div>
 
                         <div class="col-11 pl-3 pr-2">
-                            <div><strong class="d-flex mt-3"><p style="color: #385898; font-weight: 600;"> {{post.username}} </p>'s trip: {{post.title}}</strong></div>
+                            <div><strong class="d-flex"><a style="color: #385898; font-weight: 600;"> {{post.username}} </a>'s trip: {{post.title}}</strong></div>
                             <div style="font-size:small;"><strong>{{post.timeStamp.substring(0, 19).replace("T", " ")}}</strong></div>
                         </div>
 
