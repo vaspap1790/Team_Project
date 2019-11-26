@@ -26,7 +26,7 @@
     <body ng-controller="MainCtrl">
         <jsp:include page="components/navbar.jsp" />
 
-        <div class="hero-wrap js-fullheight" style="background-image: url('http://smashingtips.com/wp-content/uploads/2012/08/Amazing-Scenery-HD-Wallpapers.jpg');">
+        <div class="hero-wrap js-fullheight" style="background-image: url(${pageContext.request.contextPath}/images/bg_1.jpg);">
             <div class="overlay"></div>
             <div class="container">
                 <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start"
@@ -118,7 +118,7 @@
                         <hr
                             style="width: 96%; color:rgba(99, 99, 99, 0.05); height: 0.05px; background-color:rgba(99, 99, 99, 0.05);" />
 
-                        <a href="" ng-class="clickedLike(post,index)===true ? 'clickedLike' : 'unclickedLike'" id="BtnOfLikes{{$index}}" class="btn btn-basic" ng-click="handleLikeBtn($index)"><i class="far fa-thumbs-up"></i> Like</a>
+                        <a href="" ng-class="clickedLike(post, index) === true ? 'clickedLike' : 'unclickedLike'" id="BtnOfLikes{{$index}}" class="btn btn-basic" ng-click="handleLikeBtn($index)"><i class="far fa-thumbs-up"></i> Like</a>
                         <a href="" class="btn btn-basic" ng-click="handleCommentBtn($event, $index)"><i class="far fa-comments"></i> Comment</a>
                         <a href="" class="btn btn-basic"><i class="fas fa-share-alt"></i> Share</a>
 
@@ -127,16 +127,16 @@
 
                     </div>
                     <div id="commentDiv{{$index}}" >
-                    <div ng-repeat="comment in post.comments" ng-init="innerIndex=$index">
-                        <div style="background-color: #f2f3f5; border-radius: 18px;">
-                            <p class="p-2"><a href="" style="color: #385898; font-weight: 600;"> {{comment.username}} </a> 
-                                {{comment.text}}
+                        <div ng-repeat="comment in post.comments" ng-init="innerIndex = $index">
+                            <div style="background-color: #f2f3f5; border-radius: 18px;">
+                                <p class="p-2"><a href="" style="color: #385898; font-weight: 600;"> {{comment.username}} </a> 
+                                    {{comment.text}}
+                            </div>
+                            <div class="mb-3 pl-2" style="margin-top: -20px;">
+                                <a href="" style="color: #385898;">Like &nbsp;·&nbsp; Reply</a>
+                            </div>                     
                         </div>
-                        <div class="mb-3 pl-2" style="margin-top: -20px;">
-                            <a href="" style="color: #385898;">Like &nbsp;·&nbsp; Reply</a>
-                        </div>                     
                     </div>
-                        </div>
                     <div class="row d-flex justify-content-center">
 
                         <form style="width:96%">
@@ -278,204 +278,7 @@
                     </div>
                 </section>
         
-                <section class="ftco-section">
-                    <div class="container">
-                        <div class="row justify-content-center mb-5 pb-3">
-                            <div class="col-md-7 heading-section text-center ftco-animate">
-                                <h2 class="mb-4">Most Popular Destination</h2>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-sm col-md-6 col-lg ftco-animate">
-                                <div class="destination">
-                                    <a href="#" class="img img-2 d-flex justify-content-center align-items-center"
-                                       style="background-image: url(images/destination-1.jpg);">
-                                        <div class="icon d-flex justify-content-center align-items-center">
-                                            <span class="icon-link"></span>
-                                        </div>
-                                    </a>
-                                    <div class="text p-3">
-                                        <div class="d-flex">
-                                            <div class="one">
-                                                <h3><a href="#">Paris, Italy</a></h3>
-                                                <p class="rate">
-                                                    <i class="icon-star"></i>
-                                                    <i class="icon-star"></i>
-                                                    <i class="icon-star"></i>
-                                                    <i class="icon-star"></i>
-                                                    <i class="icon-star-o"></i>
-                                                    <span>8 Rating</span>
-                                                </p>
-                                            </div>
-                                            <div class="two">
-                                                <span class="price">$200</span>
-                                            </div>
-                                        </div>
-                                        <p>Far far away, behind the word mountains, far from the countries</p>
-                                        <p class="days"><span>2 days 3 nights</span></p>
-                                        <hr>
-                                        <p class="bottom-area d-flex">
-                                            <span><i class="icon-map-o"></i> San Franciso, CA</span>
-                                            <span class="ml-auto"><a href="#">Discover</a></span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm col-md-6 col-lg ftco-animate">
-                                <div class="destination d-md-flex flex-column-reverse">
-                                    <a href="#" class="img img-2 d-flex justify-content-center align-items-center"
-                                       style="background-image: url(images/destination-2.jpg);">
-                                        <div class="icon d-flex justify-content-center align-items-center">
-                                            <span class="icon-link"></span>
-                                        </div>
-                                    </a>
-                                    <div class="text p-3">
-                                        <div class="d-flex">
-                                            <div class="one">
-                                                <h3><a href="#">Paris, Italy</a></h3>
-                                                <p class="rate">
-                                                    <i class="icon-star"></i>
-                                                    <i class="icon-star"></i>
-                                                    <i class="icon-star"></i>
-                                                    <i class="icon-star"></i>
-                                                    <i class="icon-star-o"></i>
-                                                    <span>8 Rating</span>
-                                                </p>
-                                            </div>
-                                            <div class="two">
-                                                <span class="price">$200</span>
-                                            </div>
-                                        </div>
-                                        <p>Far far away, behind the word mountains, far from the countries</p>
-                                        <p class="days"><span>2 days 3 nights</span></p>
-                                        <hr>
-                                        <p class="bottom-area d-flex">
-                                            <span><i class="icon-map-o"></i> San Franciso, CA</span>
-                                            <span class="ml-auto"><a href="#">Discover</a></span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm col-md-6 col-lg ftco-animate">
-                                <div class="destination">
-                                    <a href="#" class="img img-2 d-flex justify-content-center align-items-center"
-                                       style="background-image: url(images/destination-3.jpg);">
-                                        <div class="icon d-flex justify-content-center align-items-center">
-                                            <span class="icon-link"></span>
-                                        </div>
-                                    </a>
-                                    <div class="text p-3">
-                                        <div class="d-flex">
-                                            <div class="one">
-                                                <h3><a href="#">Paris, Italy</a></h3>
-                                                <p class="rate">
-                                                    <i class="icon-star"></i>
-                                                    <i class="icon-star"></i>
-                                                    <i class="icon-star"></i>
-                                                    <i class="icon-star"></i>
-                                                    <i class="icon-star-o"></i>
-                                                    <span>8 Rating</span>
-                                                </p>
-                                            </div>
-                                            <div class="two">
-                                                <span class="price">$200</span>
-                                            </div>
-                                        </div>
-                                        <p>Far far away, behind the word mountains, far from the countries</p>
-                                        <p class="days"><span>2 days 3 nights</span></p>
-                                        <hr>
-                                        <p class="bottom-area d-flex">
-                                            <span><i class="icon-map-o"></i> San Franciso, CA</span>
-                                            <span class="ml-auto"><a href="#">Discover</a></span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm col-md-6 col-lg ftco-animate">
-                                <div class="destination d-md-flex flex-column-reverse">
-                                    <a href="#" class="img img-2 d-flex justify-content-center align-items-center"
-                                       style="background-image: url(images/destination-4.jpg);">
-                                        <div class="icon d-flex justify-content-center align-items-center">
-                                            <span class="icon-link"></span>
-                                        </div>
-                                    </a>
-                                    <div class="text p-3">
-                                        <div class="d-flex">
-                                            <div class="one">
-                                                <h3><a href="#">Paris, Italy</a></h3>
-                                                <p class="rate">
-                                                    <i class="icon-star"></i>
-                                                    <i class="icon-star"></i>
-                                                    <i class="icon-star"></i>
-                                                    <i class="icon-star"></i>
-                                                    <i class="icon-star-o"></i>
-                                                    <span>8 Rating</span>
-                                                </p>
-                                            </div>
-                                            <div class="two">
-                                                <span class="price">$200</span>
-                                            </div>
-                                        </div>
-                                        <p>Far far away, behind the word mountains, far from the countries</p>
-                                        <p class="days"><span>2 days 3 nights</span></p>
-                                        <hr>
-                                        <p class="bottom-area d-flex">
-                                            <span><i class="icon-map-o"></i> San Franciso, CA</span>
-                                            <span class="ml-auto"><a href="#">Discover</a></span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-        
-                <section class="ftco-section ftco-counter img" id="section-counter" style="background-image: url(images/bg_1.jpg);"
-                         data-stellar-background-ratio="0.5">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-md-10">
-                                <div class="row">
-                                    <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
-                                        <div class="block-18 text-center">
-                                            <div class="text">
-                                                <strong class="number" data-number="100000">0</strong>
-                                                <span>Happy Customers</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
-                                        <div class="block-18 text-center">
-                                            <div class="text">
-                                                <strong class="number" data-number="40000">0</strong>
-                                                <span>Destination Places</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
-                                        <div class="block-18 text-center">
-                                            <div class="text">
-                                                <strong class="number" data-number="87000">0</strong>
-                                                <span>Hotels</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
-                                        <div class="block-18 text-center">
-                                            <div class="text">
-                                                <strong class="number" data-number="56400">0</strong>
-                                                <span>Restaurant</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-        
+                
         
                 <section class="ftco-section">
                     <div class="container">
@@ -661,109 +464,7 @@
                     </div>
                 </section>
         
-                <section class="ftco-section testimony-section">
-                    <div class="container">
-                        <div class="row justify-content-center mb-5 pb-3">
-                            <div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
-                                <h2 class="mb-4">Our satisfied customer says</h2>
-                                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there
-                                    live the blind texts. Separated they live in</p>
-                            </div>
-                        </div>
-                        <div class="row ftco-animate">
-                            <div class="col-md-12">
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-                                <div class="carousel-testimony owl-carousel ftco-owl">
-                                    <div class="item">
-                                        <div class="testimony-wrap p-4 pb-5">
-                                            <div class="user-img mb-5" style="background-image: url(images/person_1.jpg)">
-                                                <span class="quote d-flex align-items-center justify-content-center">
-                                                    <i class="icon-quote-left"></i>
-                                                </span>
-                                            </div>
-                                            <div class="text">
-                                                <p class="mb-5">Far far away, behind the word mountains, far from the countries
-                                                    Vokalia and Consonantia, there live the blind texts.</p>
-                                                <p class="name">Mark Web</p>
-                                                <span class="position">Marketing Manager</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="testimony-wrap p-4 pb-5">
-                                            <div class="user-img mb-5" style="background-image: url(images/person_2.jpg)">
-                                                <span class="quote d-flex align-items-center justify-content-center">
-                                                    <i class="icon-quote-left"></i>
-                                                </span>
-                                            </div>
-                                            <div class="text">
-                                                <p class="mb-5">Far far away, behind the word mountains, far from the countries
-                                                    Vokalia and Consonantia, there live the blind texts.</p>
-                                                <p class="name">Mark Web</p>
-                                                <span class="position">Interface Designer</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="testimony-wrap p-4 pb-5">
-                                            <div class="user-img mb-5" style="background-image: url(images/person_3.jpg)">
-                                                <span class="quote d-flex align-items-center justify-content-center">
-                                                    <i class="icon-quote-left"></i>
-                                                </span>
-                                            </div>
-                                            <div class="text">
-                                                <p class="mb-5">Far far away, behind the word mountains, far from the countries
-                                                    Vokalia and Consonantia, there live the blind texts.</p>
-                                                <p class="name">Mark Web</p>
-                                                <span class="position">UI Designer</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="testimony-wrap p-4 pb-5">
-                                            <div class="user-img mb-5" style="background-image: url(images/person_1.jpg)">
-                                                <span class="quote d-flex align-items-center justify-content-center">
-                                                    <i class="icon-quote-left"></i>
-                                                </span>
-                                            </div>
-                                            <div class="text">
-                                                <p class="mb-5">Far far away, behind the word mountains, far from the countries
-                                                    Vokalia and Consonantia, there live the blind texts.</p>
-                                                <p class="name">Mark Web</p>
-                                                <span class="position">Web Developer</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="testimony-wrap p-4 pb-5">
-                                            <div class="user-img mb-5" style="background-image: url(images/person_1.jpg)">
-                                                <span class="quote d-flex align-items-center justify-content-center">
-                                                    <i class="icon-quote-left"></i>
-                                                </span>
-                                            </div>
-                                            <div class="text">
-                                                <p class="mb-5">Far far away, behind the word mountains, far from the countries
-                                                    Vokalia and Consonantia, there live the blind texts.</p>
-                                                <p class="name">Mark Web</p>
-                                                <span class="position">System Analyst</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                
-                                
-                                
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                
         
                 <section class="ftco-section">
                     <div class="container">
@@ -948,29 +649,341 @@
                     </div>
                 </section>
         
-                <section class="ftco-section-parallax">
-                    <div class="parallax-img d-flex align-items-center">
-                        <div class="container">
-                            <div class="row d-flex justify-content-center">
-                                <div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
-                                    <h2>Subcribe to our Newsletter</h2>
-                                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
-                                        there live the blind texts. Separated they live in</p>
-                                    <div class="row d-flex justify-content-center mt-5">
-                                        <div class="col-md-8">
-                                            <form action="#" class="subscribe-form">
-                                                <div class="form-group d-flex">
-                                                    <input type="text" class="form-control" placeholder="Enter email address">
-                                                    <input type="submit" value="Subscribe" class="submit px-3">
-                                                </div>
-                                            </form>
-                                        </div>
+                -->
+
+        <section class="ftco-section services-section bg-light">
+            <div class="container">
+                <div class="row d-flex">
+                    <div class="col-md-3 d-flex align-self-stretch ftco-animate">
+                        <div class="media block-6 services d-block">
+                            <div class="icon"><span class="flaticon-yatch"></span></div>
+                            <div class="media-body">
+                                <h3 class="heading mb-3">Special Activities</h3>
+                                <p>A small river named Duden flows by their place and supplies.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 d-flex align-self-stretch ftco-animate">
+                        <div class="media block-6 services d-block">
+                            <div class="icon"><span class="flaticon-around"></span></div>
+                            <div class="media-body">
+                                <h3 class="heading mb-3">Travel Arrangements</h3>
+                                <p>A small river named Duden flows by their place and supplies.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 d-flex align-self-stretch ftco-animate">
+                        <div class="media block-6 services d-block">
+                            <div class="icon"><span class="flaticon-compass"></span></div>
+                            <div class="media-body">
+                                <h3 class="heading mb-3">Private Guide</h3>
+                                <p>A small river named Duden flows by their place and supplies.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 d-flex align-self-stretch ftco-animate">
+                        <div class="media block-6 services d-block">
+                            <div class="icon"><span class="flaticon-map-of-roads"></span></div>
+                            <div class="media-body">
+                                <h3 class="heading mb-3">Location Manager</h3>
+                                <p>A small river named Duden flows by their place and supplies.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="ftco-section testimony-section">
+            <div class="container">
+                <div class="row justify-content-center mb-5 pb-3">
+                    <div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
+                        <h2 class="mb-4">Our satisfied customer says</h2>
+                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there
+                            live the blind texts. Separated they live in</p>
+                    </div>
+                </div>
+                <div class="row ftco-animate">
+                    <div class="col-md-12">
+                        <div class="carousel-testimony owl-carousel ftco-owl">
+                            <div class="item">
+                                <div class="testimony-wrap p-4 pb-5">
+                                    <div class="user-img mb-5" style="background-image: url(images/person_1.jpg)">
+                                        <span class="quote d-flex align-items-center justify-content-center">
+                                            <i class="icon-quote-left"></i>
+                                        </span>
+                                    </div>
+                                    <div class="text">
+                                        <p class="mb-5">Far far away, behind the word mountains, far from the countries
+                                            Vokalia and Consonantia, there live the blind texts.</p>
+                                        <p class="name">Mark Web</p>
+                                        <span class="position">Marketing Manager</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="testimony-wrap p-4 pb-5">
+                                    <div class="user-img mb-5" style="background-image: url(images/person_2.jpg)">
+                                        <span class="quote d-flex align-items-center justify-content-center">
+                                            <i class="icon-quote-left"></i>
+                                        </span>
+                                    </div>
+                                    <div class="text">
+                                        <p class="mb-5">Far far away, behind the word mountains, far from the countries
+                                            Vokalia and Consonantia, there live the blind texts.</p>
+                                        <p class="name">David brand</p>
+                                        <span class="position">Interface Designer</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="testimony-wrap p-4 pb-5">
+                                    <div class="user-img mb-5" style="background-image: url(images/person_3.jpg)">
+                                        <span class="quote d-flex align-items-center justify-content-center">
+                                            <i class="icon-quote-left"></i>
+                                        </span>
+                                    </div>
+                                    <div class="text">
+                                        <p class="mb-5">Far far away, behind the word mountains, far from the countries
+                                            Vokalia and Consonantia, there live the blind texts.</p>
+                                        <p class="name">George Wilson</p>
+                                        <span class="position">UI Designer</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="testimony-wrap p-4 pb-5">
+                                    <div class="user-img mb-5" style="background-image: url(images/person_1.jpg)">
+                                        <span class="quote d-flex align-items-center justify-content-center">
+                                            <i class="icon-quote-left"></i>
+                                        </span>
+                                    </div>
+                                    <div class="text">
+                                        <p class="mb-5">Far far away, behind the word mountains, far from the countries
+                                            Vokalia and Consonantia, there live the blind texts.</p>
+                                        <p class="name">Nick Jones</p>
+                                        <span class="position">Web Developer</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="testimony-wrap p-4 pb-5">
+                                    <div class="user-img mb-5" style="background-image: url(images/person_1.jpg)">
+                                        <span class="quote d-flex align-items-center justify-content-center">
+                                            <i class="icon-quote-left"></i>
+                                        </span>
+                                    </div>
+                                    <div class="text">
+                                        <p class="mb-5">Far far away, behind the word mountains, far from the countries
+                                            Vokalia and Consonantia, there live the blind texts.</p>
+                                        <p class="name">John Brown</p>
+                                        <span class="position">System Analyst</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </section>-->
+                </div>
+            </div>
+        </section>
+
+        <section class="ftco-section">
+            <div class="container">
+                <div class="row justify-content-center mb-5 pb-3">
+                    <div class="col-md-7 heading-section text-center ftco-animate">
+                        <h2 class="mb-4">Most Popular Destination</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm col-md-6 col-lg ftco-animate">
+                        <div class="destination">
+                            <a href="#" class="img img-2 d-flex justify-content-center align-items-center"
+                               style="background-image: url(images/destination-1.jpg);">
+                                <div class="icon d-flex justify-content-center align-items-center">
+                                    <span class="icon-link"></span>
+                                </div>
+                            </a>
+                            <div class="text p-3">
+                                <div class="d-flex">
+                                    <div class="one">
+                                        <h3><a href="#">Paris, Italy</a></h3>
+                                        <p class="rate">
+                                            <i class="icon-star"></i>
+                                            <i class="icon-star"></i>
+                                            <i class="icon-star"></i>
+                                            <i class="icon-star"></i>
+                                            <i class="icon-star-o"></i>
+                                            <span>8 Rating</span>
+                                        </p>
+                                    </div>
+                                    <div class="two">
+                                        <span class="price">$200</span>
+                                    </div>
+                                </div>
+                                <p>Far far away, behind the word mountains, far from the countries</p>
+                                <p class="days"><span>2 days 3 nights</span></p>
+                                <hr>
+                                <p class="bottom-area d-flex">
+                                    <span><i class="icon-map-o"></i> San Franciso, CA</span>
+                                    <span class="ml-auto"><a href="#">Discover</a></span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm col-md-6 col-lg ftco-animate">
+                        <div class="destination d-md-flex flex-column-reverse">
+                            <a href="#" class="img img-2 d-flex justify-content-center align-items-center"
+                               style="background-image: url(images/destination-2.jpg);">
+                                <div class="icon d-flex justify-content-center align-items-center">
+                                    <span class="icon-link"></span>
+                                </div>
+                            </a>
+                            <div class="text p-3">
+                                <div class="d-flex">
+                                    <div class="one">
+                                        <h3><a href="#">Paris, Italy</a></h3>
+                                        <p class="rate">
+                                            <i class="icon-star"></i>
+                                            <i class="icon-star"></i>
+                                            <i class="icon-star"></i>
+                                            <i class="icon-star"></i>
+                                            <i class="icon-star-o"></i>
+                                            <span>8 Rating</span>
+                                        </p>
+                                    </div>
+                                    <div class="two">
+                                        <span class="price">$200</span>
+                                    </div>
+                                </div>
+                                <p>Far far away, behind the word mountains, far from the countries</p>
+                                <p class="days"><span>2 days 3 nights</span></p>
+                                <hr>
+                                <p class="bottom-area d-flex">
+                                    <span><i class="icon-map-o"></i> San Franciso, CA</span>
+                                    <span class="ml-auto"><a href="#">Discover</a></span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm col-md-6 col-lg ftco-animate">
+                        <div class="destination">
+                            <a href="#" class="img img-2 d-flex justify-content-center align-items-center"
+                               style="background-image: url(images/destination-3.jpg);">
+                                <div class="icon d-flex justify-content-center align-items-center">
+                                    <span class="icon-link"></span>
+                                </div>
+                            </a>
+                            <div class="text p-3">
+                                <div class="d-flex">
+                                    <div class="one">
+                                        <h3><a href="#">Paris, Italy</a></h3>
+                                        <p class="rate">
+                                            <i class="icon-star"></i>
+                                            <i class="icon-star"></i>
+                                            <i class="icon-star"></i>
+                                            <i class="icon-star"></i>
+                                            <i class="icon-star-o"></i>
+                                            <span>8 Rating</span>
+                                        </p>
+                                    </div>
+                                    <div class="two">
+                                        <span class="price">$200</span>
+                                    </div>
+                                </div>
+                                <p>Far far away, behind the word mountains, far from the countries</p>
+                                <p class="days"><span>2 days 3 nights</span></p>
+                                <hr>
+                                <p class="bottom-area d-flex">
+                                    <span><i class="icon-map-o"></i> San Franciso, CA</span>
+                                    <span class="ml-auto"><a href="#">Discover</a></span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm col-md-6 col-lg ftco-animate">
+                        <div class="destination d-md-flex flex-column-reverse">
+                            <a href="#" class="img img-2 d-flex justify-content-center align-items-center"
+                               style="background-image: url(images/destination-4.jpg);">
+                                <div class="icon d-flex justify-content-center align-items-center">
+                                    <span class="icon-link"></span>
+                                </div>
+                            </a>
+                            <div class="text p-3">
+                                <div class="d-flex">
+                                    <div class="one">
+                                        <h3><a href="#">Paris, Italy</a></h3>
+                                        <p class="rate">
+                                            <i class="icon-star"></i>
+                                            <i class="icon-star"></i>
+                                            <i class="icon-star"></i>
+                                            <i class="icon-star"></i>
+                                            <i class="icon-star-o"></i>
+                                            <span>8 Rating</span>
+                                        </p>
+                                    </div>
+                                    <div class="two">
+                                        <span class="price">$200</span>
+                                    </div>
+                                </div>
+                                <p>Far far away, behind the word mountains, far from the countries</p>
+                                <p class="days"><span>2 days 3 nights</span></p>
+                                <hr>
+                                <p class="bottom-area d-flex">
+                                    <span><i class="icon-map-o"></i> San Franciso, CA</span>
+                                    <span class="ml-auto"><a href="#">Discover</a></span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="ftco-section ftco-counter img" id="section-counter" style="background-image: url(${pageContext.request.contextPath}/images/bg_1.jpg);"
+                 data-stellar-background-ratio="0.5">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-10">
+                        <div class="row">
+                            <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
+                                <div class="block-18 text-center">
+                                    <div class="text">
+                                        <strong class="number" data-number="100000">0</strong>
+                                        <span>Happy Customers</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
+                                <div class="block-18 text-center">
+                                    <div class="text">
+                                        <strong class="number" data-number="40000">0</strong>
+                                        <span>Destination Places</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
+                                <div class="block-18 text-center">
+                                    <div class="text">
+                                        <strong class="number" data-number="87000">0</strong>
+                                        <span>Hotels</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
+                                <div class="block-18 text-center">
+                                    <div class="text">
+                                        <strong class="number" data-number="56400">0</strong>
+                                        <span>Restaurant</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
 
         <!-- loader -->
