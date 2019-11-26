@@ -36,7 +36,7 @@ $(document).ready(function () {
                     "method": "GET",
                     "headers": {
                         "x-rapidapi-host": "apidojo-booking-v1.p.rapidapi.com",
-                        "x-rapidapi-key": "755b00a104msh85506be4fa8861dp10f6abjsn986404c91cd5"
+                        "x-rapidapi-key": "7b289bfc4emsh8f06189af10e8a3p1ef94cjsnd2fffd899a1b"
                     }
                 };
 
