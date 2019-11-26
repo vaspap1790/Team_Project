@@ -126,8 +126,8 @@
                             style="width: 96%; color:rgba(99, 99, 99, 0.05); height: 0.05px; background-color:rgba(99, 99, 99, 0.05);" />
 
                     </div>
-
-                    <div ng-repeat="comment in post.comments">
+                    <div id="commentDiv{{$index}}" >
+                    <div ng-repeat="comment in post.comments" ng-init="innerIndex=$index">
                         <div style="background-color: #f2f3f5; border-radius: 18px;">
                             <p class="p-2"><a href="" style="color: #385898; font-weight: 600;"> {{comment.username}} </a> 
                                 {{comment.text}}
@@ -136,7 +136,7 @@
                             <a href="" style="color: #385898;">Like &nbsp;·&nbsp; Reply</a>
                         </div>                     
                     </div>
-
+                        </div>
                     <div class="row d-flex justify-content-center">
 
                         <form style="width:96%">
