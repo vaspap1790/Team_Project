@@ -65,7 +65,7 @@
 
         <div class="container d-flex flex-wrap justify-content-center ftco-animate" id="mainPostContainer">
 
-            <div class="card shadow-lg ftco-animate" ng-repeat="post in posts track by $index">
+            <div class="card shadow-lg" ng-repeat="post in posts track by $index">
 
                 <div class="card-body">
                     <div class="d-flex row mt-2 mb-2 align-items-center">
@@ -126,12 +126,36 @@
 
                     </div>
 
+                    <div>
+                        <div style="background-color: #f2f3f5; border-radius: 18px;">
+                            <p class="p-2"><a href="" style="color: #385898; font-weight: 600;"> Marina Gialantzi </a> Lorem ipsum adgfasddfas asfasfgasf asfasfasfasf asfsafsaf asfasfsafsaasf asddfasfsafsa</p>
+                        </div>
+                        <div class="mb-3 pl-2" style="margin-top: -20px;">
+                            <a href="" style="color: #385898;">Like &nbsp;·&nbsp; Reply</a>
+                        </div>
+
+                        <div style="background-color: #f2f3f5; border-radius: 18px;">
+                            <p class="p-2"><a href="" style="color: #385898; font-weight: 600;"> George Karvounis </a>Lorem ipsum adgfasddfas asfasfgasf sdfdsfdsfdsf dsfdsfdsfdsfds dsfdsfdsfdsfds dsfdsfdsf fdsfdsfdsf dsfsdfdsf dsfsd asfasfasfasf asfsafsaf asfasfsafsaasf asddfasfsafsa</p>
+                        </div>
+                        <div class="mb-3 pl-2" style="margin-top: -20px;">
+                            <a href="" style="color: #385898;">Like &nbsp;·&nbsp; Reply</a>
+                        </div>
+
+                        <div style="background-color: #f2f3f5; border-radius: 18px;">
+                            <p class="p-2"><a href="" style="color: #385898; font-weight: 600;"> Anastasia Nikolidaki </a>Lorem ipsum adgfasddfas asfasfgasf sdfdsfdsfdsf gdfgfdgfdgf dfgfdg fdgfg dfg dfg dsfdsfdsfdsfds dsfdsfdsfdsfds dsfdsfdsf fdsfdsfdsf dsfsdfdsf dsfsd asfasfasfasf asfsafsaf asfasfsafsaasf asddfasfsafsa</p>
+                        </div>
+                        <div class="mb-3 pl-2" style="margin-top: -20px;">
+                            <a href="" style="color: #385898;">Like &nbsp;·&nbsp; Reply</a>
+                        </div>
+
+                    </div>
+
                     <div class="row d-flex justify-content-center">
 
                         <form style="width:96%">
                             <div class="input-group mycustom">
                                 <input type="text" class="form-control" placeholder="Write a comment..." required>
-                                <div class="input-group-prepend">
+                                <div class="input-group-prepend align-items-center"><a href=""><i class="far fa-smile pr-3"></i></a><a href=""><i class="fas fa-camera pr-3"></i></a>
                                     <button type="submit" ng-click="handleCommentSubmitBtn($event, $index)"
                                             class="btn btn-warning btn-sm"><i class="fas fa-arrow-circle-right text-white pl-2 pr-2"></i></button>
                                 </div>
