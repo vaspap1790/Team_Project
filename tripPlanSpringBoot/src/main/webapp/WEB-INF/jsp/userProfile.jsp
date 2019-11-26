@@ -24,7 +24,7 @@
     </head>
     <body ng-controller="MainCtrl">
 
-        <div class="hero-wrap js-fullheight" style="background-image: url('https://cmkt-image-prd.freetls.fastly.net/0.1.0/ps/3427679/910/741/m2/fpnw/wm1/e9h3d6vehwxpvkroqof0mehi5gc6btvlt58augcanbhlvq9w09gv9dlrbegoc0cb-.jpg?1508293067&s=d72c108776c61110bc6ad95150fc1bb2'); min-height: 100vh;">
+        <div class="hero-wrap js-fullheight" style="background-image: url('https://cdn2.vectorstock.com/i/1000x1000/04/61/nice-background-vector-16200461.jpg'); min-height: 100vh;">
 
             <jsp:include page="components/navbar.jsp" />
 
