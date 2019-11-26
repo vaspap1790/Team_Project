@@ -47,6 +47,7 @@ multipleUploadForm.addEventListener('submit', function (event) {
         multipleFileUploadError.style.display = "block";
     }
     uploadMultiplePhotos(files);
+    $('#photosModal').modal('hide');
     event.preventDefault();
 }, true);
 
@@ -82,6 +83,10 @@ App.controller("MainCtrl", function ($scope, $http, $timeout) {
                 const data = response.data;
                 const accommodation = data.accommodation[0];
                 const transportation = data.transportation;
+                console.log("acc", accommodation)
+                console.log(transportation)
+                $scope.accommodation = accommodation;
+                $scope.transportation = transportation;
                 const notes = data.notes;
                 $scope.location = data.location;
                 const dailyBudget = data.dailyBudget;
@@ -112,6 +117,7 @@ App.controller("MainCtrl", function ($scope, $http, $timeout) {
                 dailyBudget.forEach(function (budget) {
                     budgetArray.push(budget);
                 });
+
             }).catch((error) => {
         console.log(error);
     });

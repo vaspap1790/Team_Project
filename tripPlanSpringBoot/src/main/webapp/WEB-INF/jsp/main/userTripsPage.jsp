@@ -11,11 +11,11 @@
         <link rel="stylesheet" href="../../css/tripsPage.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
-
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/flightResults.css">
     </head>
 
     <body ng-controller="MainCtrl">
-       
+
         <jsp:include page="../components/navbar.jsp"/>
 
         <!--Fixed Background-->
@@ -290,9 +290,9 @@
         </div>
 
         <!-- Flight Modal -->
-        <div class="modal fade" id="flightModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        <div class="modal fade " id="flightModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
              aria-hidden="true">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel"></h5>
@@ -302,10 +302,61 @@
                     </div>
                     <div class="modal-body">
 
+                        <div ng-repeat="trans in transportation" class="row border shadow border-primary mt-2">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="d-flex d-row">
+                                            <div class="col-3 d-flex align-items-center">
+                                                <div class="p-3 ">
+                                                    <div class="d-flex justify-content-start">
+                                                        <span class="time">12:30</span>
 
+                                                    </div>
+                                                    <div id="place_form" class="d-flex justify-content-end">
+                                                        <span>{{trans.startingPoint}}</span>
 
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-3 LegInfo_stopsContainer__1XNWn align-self-center">
+                                                <span class="airUp"></span>
+                                                <ul class="LegInfo_stopLine__3_s15">
+                                                    <li class="LegInfo_stopDot__2vHOR"></li>
+                                                </ul>
+                                                <span class="airUp"></span>
+                                            </div>
+                                            <div class="col-3 d-flex align-items-center">
+                                                <div class=" p-3">
+                                                    <div class="d-flex justify-content-start">
+                                                        <span  class="time">15:30</span>
+
+                                                    </div>
+                                                    <div id="place_to" class="d-flex justify-content-end">
+
+                                                        <span>{{trans.destination}}</span>
+
+                                                    </div>                                             
+                                                </div>
+                                            </div>
+                                            <div class="col-3 d-flex align-items-center justify-content-center">
+                                                <span id="date">{{trans.arrival.substring(0, 10)}} </span>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="modal-footer">
+                        <div class=" d-flex align-items-center justify-content-end">
+                            <span class="font-weight-bold" id="date"> {{transportation[0].price}} &euro; </span>
+                        </div>
+                        <div class="d-flex align-items-center" >
+                            <a href="{{transportation[0].link}}" target="_blank" class="btn btn-md btn-info text-white">Pay</a>
+                        </div>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal" name="close">
                             Close
                         </button>
@@ -340,7 +391,7 @@
         </div>
 
     </modals>
- {{printBudget()}}
+    {{printBudget()}}
 
     <jsp:include page="../components/footer.jsp"/>
     <jsp:include page="../components/scripts.jsp"/>
