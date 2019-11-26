@@ -53,6 +53,7 @@ App.controller("MainCtrl", function ($scope, $http) {
 
         let post = posts[index];
         if (checkIfUserIsLogged()) {
+    
 
             let URL = `http://localhost:8080/tripPlan/post/likes/${post.postId}/${visitor}`;
             $http.get(URL)
@@ -107,6 +108,7 @@ App.controller("MainCtrl", function ($scope, $http) {
                     console.log("error");
                 });
             }
+
         } else {
             alert("You have to be logged in to perform that action.");
         }

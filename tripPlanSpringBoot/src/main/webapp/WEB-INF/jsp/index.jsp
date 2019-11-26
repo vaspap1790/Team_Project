@@ -9,6 +9,7 @@
         <title>TripPlanner</title>
         <jsp:include page="components/linksHeader.jsp"/>
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/posts.css">
+
         <script data-require="angular.js@*" data-semver="1.5.0"
         src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.js"></script>
         <script src="https://code.angularjs.org/1.5.0/angular-animate.min.js"></script>
@@ -52,12 +53,17 @@
             </a>
         </div>
 
+        <div class="container ftco-section bg-light ftco-animate" id="start">
+            <div class="row justify-content-center">
+                <div class="col-md-7 heading-section text-center ftco-animate">
+                    <h2><strong>Posts</strong> &amp; Comments</h2>
+                </div>
+            </div>
+        </div>
 
-         <!--Posts-->
+        <!--Posts-->
 
-        <div class="container d-flex flex-wrap justify-content-center" id="mainPostContainer">
-
-
+        <div class="container d-flex flex-wrap justify-content-center ftco-animate" id="mainPostContainer">
 
             <div class="card shadow-lg" ng-repeat="post in posts track by $index">
 
@@ -69,8 +75,9 @@
                         </div>
 
                         <div class="col-11 pl-3 pr-2">
-                            <div><strong> {{post.username}} 's trip: {{post.title}}</strong></div>
-                            <div style="font-size:xx-small;"><strong>{{post.timeStamp.substring(0, 19).replace("T", " ")}}</strong></div>
+
+                            <div><strong class="d-flex"><a style="color: #385898; font-weight: 600;"> {{post.username}} </a>'s trip: {{post.title}}</strong></div>
+                            <div style="font-size:small;"><strong>{{post.timeStamp.substring(0, 19).replace("T", " ")}}</strong></div>
                         </div>
 
                     </div>
@@ -84,18 +91,18 @@
                         <!--////////////////Carousel (yet to add)////////////////-->
 
 
-<!--                        <md-card layout="column" layout-align="center center" style="padding-bottom: 10px">
-                            <h3>AutoSlide Carousel</h3>
-                            <jk-carousel data="post.photos" item-template-url="'item-template.'" max-width="800" max-height="500"
-                                         auto-slide="true" auto-slide-time="2000">
-                            </jk-carousel>
-                        </md-card>-->
 
+                        <!--                        <md-card layout="column" layout-align="center center" style="padding-bottom: 10px">
+                                                    <h3>AutoSlide Carousel</h3>
+                                                    <jk-carousel data="post.photos" item-template-url="'item-template.'" max-width="800" max-height="500"
+                                                                 auto-slide="true" auto-slide-time="2000">
+                                                    </jk-carousel>
+                                                </md-card>-->
 
-                        <!--When carousel is ready add ng-show="!post.photos.length"--> 
-                        <img src="data:image/jpg;base64,{{post.photos[0]}}" 
+                        <img ng-show="post.photos.length" src="data:image/jpg;base64,{{post.photos[0]}} " 
                              id="mainPicture" alt="" srcset="">
-
+                        <img ng-show="!post.photos.length" src="https://cdn.blueswandaily.com//2018/11/Travel000-2000x1200.jpg" 
+                             id="mainPicture" alt="" srcset="">
                     </div>
 
                     <div class="row mt-1 d-flex justify-content-between align-items-center px-2">
@@ -111,7 +118,7 @@
                         <hr
                             style="width: 96%; color:rgba(99, 99, 99, 0.05); height: 0.05px; background-color:rgba(99, 99, 99, 0.05);" />
 
-                        <a href=""  class="btn btn-basic" ng-click="handleLikeBtn($index)"><i class="far fa-thumbs-up"></i> Like</a>
+                        <a href="" ng-class="clickedLike(post,index)===true ? 'clickedLike' : 'unclickedLike'" id="BtnOfLikes{{$index}}" class="btn btn-basic" ng-click="handleLikeBtn($index)"><i class="far fa-thumbs-up"></i> Like</a>
                         <a href="" class="btn btn-basic" ng-click="handleCommentBtn($event, $index)"><i class="far fa-comments"></i> Comment</a>
                         <a href="" class="btn btn-basic"><i class="fas fa-share-alt"></i> Share</a>
 
@@ -120,12 +127,22 @@
 
                     </div>
 
+                    <div ng-repeat="comment in post.comments">
+                        <div style="background-color: #f2f3f5; border-radius: 18px;">
+                            <p class="p-2"><a href="" style="color: #385898; font-weight: 600;"> {{comment.username}} </a> 
+                                {{comment.text}}
+                        </div>
+                        <div class="mb-3 pl-2" style="margin-top: -20px;">
+                            <a href="" style="color: #385898;">Like &nbsp;·&nbsp; Reply</a>
+                        </div>                     
+                    </div>
+
                     <div class="row d-flex justify-content-center">
 
                         <form style="width:96%">
                             <div class="input-group mycustom">
                                 <input type="text" class="form-control" id="commentBody{{$index}}" placeholder="Write a comment...">
-                                <div class="input-group-prepend">
+                                <div class="input-group-prepend align-items-center"><a href=""><i class="far fa-smile pr-3"></i></a><a href=""><i class="fas fa-camera pr-3"></i></a>
                                     <button type="submit" ng-click="handleCommentSubmitBtn($index)"
                                             class="btn btn-warning btn-sm"><i class="fas fa-arrow-circle-right text-white pl-2 pr-2"></i></button>
                                 </div>

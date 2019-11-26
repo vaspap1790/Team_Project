@@ -4,7 +4,7 @@ body {
 }
 
 #mainPostContainer {
-    background-color: white;
+    background-color: #F8F8F8;
 }
 
 .card {
@@ -23,7 +23,14 @@ body {
     width: 100%;
     height: 100%;
 }
+.clickedLike {
 
+    color:blue!important;
+}
+
+.unclickedLike {
+
+}
 
 .mycustom {
     border: solid 1px green;
