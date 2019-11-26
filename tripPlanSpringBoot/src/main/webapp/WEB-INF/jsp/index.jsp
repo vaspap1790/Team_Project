@@ -65,7 +65,7 @@
 
         <div class="container d-flex flex-wrap justify-content-center ftco-animate" id="mainPostContainer">
 
-            <div class="card shadow-lg" ng-repeat="post in posts track by $index">
+            <div class="card shadow-lg ftco-animate" ng-repeat="post in posts track by $index">
 
                 <div class="card-body">
                     <div class="d-flex row mt-2 mb-2 align-items-center">
@@ -75,8 +75,8 @@
                         </div>
 
                         <div class="col-11 pl-3 pr-2">
-                            <div><strong> {{post.username}} 's trip: {{post.title}}</strong></div>
-                            <div style="font-size:xx-small;"><strong>{{post.timeStamp.substring(0, 19).replace("T", " ")}}</strong></div>
+                            <div><strong class="d-flex mt-3"><p style="color: #385898; font-weight: 600;"> {{post.username}} </p>'s trip: {{post.title}}</strong></div>
+                            <div style="font-size:small;"><strong>{{post.timeStamp.substring(0, 19).replace("T", " ")}}</strong></div>
                         </div>
 
                     </div>
@@ -128,21 +128,22 @@
 
                     <div>
                         <div style="background-color: #f2f3f5; border-radius: 18px;">
-                            <p class="p-2"><a href="" style="color: #385898; font-weight: 600;"> Marina Gialantzi </a> Lorem ipsum adgfasddfas asfasfgasf asfasfasfasf asfsafsaf asfasfsafsaasf asddfasfsafsa</p>
+                            <p class="p-2"><a href="" style="color: #385898; font-weight: 600;"> Marina Gialantzi </a> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus molestiae eaque
+                                deleniti alias temporibus hic sequi consequatur pariatur magni inventore quisquam, nostrum beatae! Praesentium repudiandae et enim vitae harum possimus.</p>
                         </div>
                         <div class="mb-3 pl-2" style="margin-top: -20px;">
                             <a href="" style="color: #385898;">Like &nbsp;·&nbsp; Reply</a>
                         </div>
 
                         <div style="background-color: #f2f3f5; border-radius: 18px;">
-                            <p class="p-2"><a href="" style="color: #385898; font-weight: 600;"> George Karvounis </a>Lorem ipsum adgfasddfas asfasfgasf sdfdsfdsfdsf dsfdsfdsfdsfds dsfdsfdsfdsfds dsfdsfdsf fdsfdsfdsf dsfsdfdsf dsfsd asfasfasfasf asfsafsaf asfasfsafsaasf asddfasfsafsa</p>
+                            <p class="p-2"><a href="" style="color: #385898; font-weight: 600;"> George Karvounis </a> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus molestiae eaque deleniti alias temporibus hic sequi</p>
                         </div>
                         <div class="mb-3 pl-2" style="margin-top: -20px;">
                             <a href="" style="color: #385898;">Like &nbsp;·&nbsp; Reply</a>
                         </div>
 
                         <div style="background-color: #f2f3f5; border-radius: 18px;">
-                            <p class="p-2"><a href="" style="color: #385898; font-weight: 600;"> Anastasia Nikolidaki </a>Lorem ipsum adgfasddfas asfasfgasf sdfdsfdsfdsf gdfgfdgfdgf dfgfdg fdgfg dfg dfg dsfdsfdsfdsfds dsfdsfdsfdsfds dsfdsfdsf fdsfdsfdsf dsfsdfdsf dsfsd asfasfasfasf asfsafsaf asfasfsafsaasf asddfasfsafsa</p>
+                            <p class="p-2"><a href="" style="color: #385898; font-weight: 600;"> Anastasia Nikolidaki </a> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus molestiae eaque deleniti alias temporibus hic sequi consequatur pariatur magni inventore quisquam, nostrum beatae!</p>
                         </div>
                         <div class="mb-3 pl-2" style="margin-top: -20px;">
                             <a href="" style="color: #385898;">Like &nbsp;·&nbsp; Reply</a>
