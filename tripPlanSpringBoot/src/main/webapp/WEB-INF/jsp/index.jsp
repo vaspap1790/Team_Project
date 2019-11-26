@@ -111,7 +111,7 @@
                         <hr
                             style="width: 96%; color:rgba(99, 99, 99, 0.05); height: 0.05px; background-color:rgba(99, 99, 99, 0.05);" />
 
-                        <a href="" ng-class="clickedLike(post,index)===true ? 'clickedLike' : 'unclickedLike'" id="BtnOfLikes{{$index}}" class="btn btn-basic" ng-click="handleLikeBtn($index)"><i class="far fa-thumbs-up"></i> Like</a>
+                        <a href=""  class="btn btn-basic" ng-click="handleLikeBtn($index)"><i class="far fa-thumbs-up"></i> Like</a>
                         <a href="" class="btn btn-basic" ng-click="handleCommentBtn($event, $index)"><i class="far fa-comments"></i> Comment</a>
                         <a href="" class="btn btn-basic"><i class="fas fa-share-alt"></i> Share</a>
 
