@@ -3,7 +3,6 @@ package com.mainpackage.tripPlan.controllers;
 import com.mainpackage.tripPlan.DummyModels.TransportationDummy;
 import com.mainpackage.tripPlan.model.AccommodationType;
 import com.mainpackage.tripPlan.model.Flight;
-import com.mainpackage.tripPlan.model.Transportation;
 import com.mainpackage.tripPlan.utilities.CreateJson;
 import com.mainpackage.tripPlan.webServices.SkyApi;
 import com.mashape.unirest.http.HttpResponse;
@@ -11,6 +10,7 @@ import com.mashape.unirest.http.exceptions.UnirestException;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.time.LocalDate;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
@@ -29,6 +29,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping(value = "flight/")
@@ -62,6 +63,7 @@ public class FlightController {
             JSONObject skyJson = createJ.createJson(skyReport.getBody());
             return new ModelAndView("responses/flightResults", "flights", skyJson);
         }
+        session.setAttribute("errorFlight","No available Flights");
         return new ModelAndView("redirect:/flight/register");
     }
 

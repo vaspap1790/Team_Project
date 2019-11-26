@@ -17,7 +17,7 @@
 
     <body>
         <jsp:include page="../components/navbar.jsp"/>
-
+       ${errorFlight}
         <div class="hero-wrap js-fullheight" style="background-image: url('https://cdnstatic1.eskypartners.com/backgrounds/main_page/hero_main_3_1.jpg');">
             <div class="overlay"></div>
             <div class="container">
@@ -125,7 +125,7 @@
             integrity="sha256-0YPKAwZP7Mp3ALMRVB2i8GXeEndvCq3eSl/WsAl1Ryk="
         crossorigin="anonymous"></script>
         <script type="text/javascript" src="${pageContext.request.contextPath}/js/flightJs.js"></script>
-
+        <%session.removeAttribute("errorFlight");%>
     </body>
 
 </html>
