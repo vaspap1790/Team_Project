@@ -18,6 +18,7 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -66,6 +67,7 @@ public class Comment implements Serializable {
     public Comment(Integer commentId) {
         this.commentId = commentId;
     }
+    
 
     public Comment(String text, Post postId, User userId) {
         this.text = text;
@@ -76,6 +78,10 @@ public class Comment implements Serializable {
     public Comment(Integer commentId, Date timestamp) {
         this.commentId = commentId;
         this.timestamp = timestamp;
+    }
+    @PrePersist
+    public void generateDate(){
+        timestamp=new Date();
     }
 
     public Integer getCommentId() {

@@ -1,4 +1,4 @@
-const visitor = document.getElementById("username");
+const visitor = document.getElementById("username").innerText.trim();
 let posts;
 
 const App = angular.module("App", ["ngMaterial", "jkAngularCarousel"]);
@@ -33,18 +33,56 @@ App.controller("MainCtrl", function ($scope, $http) {
     });
 
 
-    $scope.handleLikeBtn = function ($event, index) {
-        if (checkIfUserIsLogged()) {
-            let number = posts[index].likes.length;
-            $event.currentTarget.parentElement.previousElementSibling.firstElementChild.innerHTML = `<img src='https://image.flaticon.com/icons/svg/2065/2065064.svg' style='width:30px;' alt=''> ${number}`;
-            
-            //httpRequest
-            if(posts[index].includes(visitor)){}
-            else{}
 
+    $scope.clickedLike = function (post, index) {
+        let boolean;
+        let usernames = [];
+
+        for (let i = 0; i < post.likes.length; i++) {
+
+            usernames.push(post.likes[i].username);
+
+            if (usernames.includes(visitor)) {
+                boolean = true;
+                let BtnOfLikes = document.getElementById("BtnOfLikes" + index);
+
+            } else {
+                boolean = false;
+                console.log("error")
+            }
+        }
+        ;
+        return boolean;
+    }
+
+
+    $scope.handleLikeBtn = function (index) {
+
+        let post = posts[index];
+
+        if (checkIfUserIsLogged()) {
+
+            let URL = `http://localhost:8080/tripPlan/post/likes/${post.postId}/${visitor}`;
+            $http.get(URL)
+                    .then((response) => {
+
+                        console.log("Success");
+
+                        document.getElementById("numOfLikes" + index).innerText = response.data.postLikes;
+
+                        if (response.data.addedToDb) {
+                            document.getElementById("BtnOfLikes" + index).classList.add("clickedLike");
+                        } else {
+                            document.getElementById("BtnOfLikes" + index).classList.remove("clickedLike");
+                        }
+
+                    }).catch(() => {
+                console.log("Error");
+            });
         } else {
             alert("You have to be logged in to perform that action.");
         }
+        ;
     };
 
 
@@ -57,12 +95,35 @@ App.controller("MainCtrl", function ($scope, $http) {
     };
 
 
-    $scope.handleCommentSubmitBtn = function ($event, index) {
-
+    $scope.handleCommentSubmitBtn = function (index) {
+        console.log(index);
         if (checkIfUserIsLogged()) {
+
+            let post = posts[index];
+            let body = document.getElementById("commentBody" + index).value.trim();
+            let URL = `http://localhost:8080/tripPlan/post/save/comment`;
+
+            let object = {username: visitor, postId: post.postId, text: body};
+            let jsonObject = JSON.stringify(object);
+            document.getElementById("commentBody" + index).value = "";
             
-            //httpRequest
-            
+            if (body !== null && body !== "") {
+                console.log(jsonObject);
+                var req = {
+                    method: 'POST',
+                    url: URL,
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    data: jsonObject
+                };
+                $http(req).then(function (response) {
+                    console.log("success");
+
+                }).catch(() => {
+                    console.log("error");
+                });
+            }
         } else {
             alert("You have to be logged in to perform that action.");
         }
@@ -70,4 +131,3 @@ App.controller("MainCtrl", function ($scope, $http) {
     };
 
 });
-

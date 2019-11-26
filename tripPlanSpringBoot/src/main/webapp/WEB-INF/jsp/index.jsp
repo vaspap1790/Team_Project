@@ -53,19 +53,22 @@
         </div>
 
 
-        <!--Posts-->
+         <!--Posts-->
 
         <div class="container d-flex flex-wrap justify-content-center" id="mainPostContainer">
 
-            <div class="card" ng-repeat="post in posts track by $index">
+
+
+            <div class="card shadow-lg" ng-repeat="post in posts track by $index">
+
                 <div class="card-body">
                     <div class="d-flex row mt-2 mb-2 align-items-center">
 
-                        <div class="col-1">
-                            <img src="data:image/jpg;base64,{{post.profilePhoto}}" id="profilePicture"  alt="avatar">
+                        <div class="col-1 photoHover" style="height: 40px; width: 40px;">
+                            <img src="data:image/jpg;base64,{{post.profilePhoto}}" id="profilePicture"  alt="avatar" style="height: 40px; width: 40px;">
                         </div>
 
-                        <div class="col-11 pr-2">
+                        <div class="col-11 pl-3 pr-2">
                             <div><strong> {{post.username}} 's trip: {{post.title}}</strong></div>
                             <div style="font-size:xx-small;"><strong>{{post.timeStamp.substring(0, 19).replace("T", " ")}}</strong></div>
                         </div>
@@ -80,6 +83,7 @@
 
                         <!--////////////////Carousel (yet to add)////////////////-->
 
+
 <!--                        <md-card layout="column" layout-align="center center" style="padding-bottom: 10px">
                             <h3>AutoSlide Carousel</h3>
                             <jk-carousel data="post.photos" item-template-url="'item-template.'" max-width="800" max-height="500"
@@ -87,8 +91,9 @@
                             </jk-carousel>
                         </md-card>-->
 
+
                         <!--When carousel is ready add ng-show="!post.photos.length"--> 
-                        <img src="https://cdn.blueswandaily.com//2018/11/Travel000-2000x1200.jpg" 
+                        <img src="data:image/jpg;base64,{{post.photos[0]}}" 
                              id="mainPicture" alt="" srcset="">
 
                     </div>
@@ -96,7 +101,7 @@
                     <div class="row mt-1 d-flex justify-content-between align-items-center px-2">
                         <div>
                             <img src="https://image.flaticon.com/icons/svg/2065/2065064.svg" style="width:30px;" alt="">
-                            {{post.likes.length - 1}}
+                            <span id="numOfLikes{{$index}}">{{post.likes.length}}</span>
                         </div>
                         <p>{{post.comments.length}} Comments</p>
                     </div>
@@ -106,7 +111,7 @@
                         <hr
                             style="width: 96%; color:rgba(99, 99, 99, 0.05); height: 0.05px; background-color:rgba(99, 99, 99, 0.05);" />
 
-                        <a href="" class="btn btn-basic" ng-click="handleLikeBtn($event, $index)"><i class="far fa-thumbs-up"></i> Like</a>
+                        <a href="" ng-class="clickedLike(post,index)===true ? 'clickedLike' : 'unclickedLike'" id="BtnOfLikes{{$index}}" class="btn btn-basic" ng-click="handleLikeBtn($index)"><i class="far fa-thumbs-up"></i> Like</a>
                         <a href="" class="btn btn-basic" ng-click="handleCommentBtn($event, $index)"><i class="far fa-comments"></i> Comment</a>
                         <a href="" class="btn btn-basic"><i class="fas fa-share-alt"></i> Share</a>
 
@@ -119,10 +124,10 @@
 
                         <form style="width:96%">
                             <div class="input-group mycustom">
-                                <input type="text" class="form-control" placeholder="Write a comment..." required>
+                                <input type="text" class="form-control" id="commentBody{{$index}}" placeholder="Write a comment...">
                                 <div class="input-group-prepend">
-                                    <input type="submit" value="submit" ng-click="handleCommentSubmitBtn($event, $index)"
-                                           class="btn btn-primary btn-sm">
+                                    <button type="submit" ng-click="handleCommentSubmitBtn($index)"
+                                            class="btn btn-warning btn-sm"><i class="fas fa-arrow-circle-right text-white pl-2 pr-2"></i></button>
                                 </div>
                             </div>
                         </form>
@@ -131,7 +136,7 @@
                 </div>
             </div>
 
-        </div>             
+        </div>       
 
 
         <!--        <section id="start" class="ftco-section bg-light">
