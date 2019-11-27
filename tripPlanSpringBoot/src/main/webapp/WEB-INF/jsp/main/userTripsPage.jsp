@@ -368,7 +368,7 @@
         <!-- Accommo Modal -->
         <div class="modal fade" id="accomModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
              aria-hidden="true">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel"></h5>
@@ -377,11 +377,34 @@
                         </button>
                     </div>
                     <div class="modal-body">
-
+                        <table class="table">
+                            <thead>
+                                <tr>                           
+                                    <th scope="col">Hotel</th>
+                                    <th scope="col">Location</th>
+                                    <th scope="col">Check in</th>
+                                    <th scope="col">Check out</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{{accommodation.accommoName}}</td>
+                                    <td>{{accommodation.location}}</td>
+                                    <td>{{accommodation.checkin}}</td>
+                                    <td>{{accommodation.checkout}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
 
 
                     </div>
                     <div class="modal-footer">
+                        <div class=" d-flex align-items-center justify-content-end">
+                            <span class="font-weight-bold" id="date"> {{accommodation.price}} &euro; </span>
+                        </div>
+                        <div class="d-flex align-items-center" >
+                            <a href="{{accommodation.this1}}" target="_blank" class="btn btn-md btn-info text-white">Pay</a>
+                        </div>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal" name="close">
                             Close
                         </button>

@@ -29,7 +29,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping(value = "flight/")
@@ -88,7 +87,5 @@ public class FlightController {
         HttpResponse<String> cities = sky.cities(city);
 
         return new ResponseEntity<>(cities.getBody(), HttpStatus.OK);
-    }
-
-    
+    }   
 }
