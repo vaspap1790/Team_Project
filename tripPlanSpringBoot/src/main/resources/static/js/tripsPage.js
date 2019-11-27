@@ -1,3 +1,4 @@
+console.log(Math.random());
 let clickedBtn = null;
 let tripId;
 
@@ -55,13 +56,7 @@ multipleUploadForm.addEventListener('submit', function (event) {
 
 
 
-//Handle total Budget
-$(".budget").change(function (e) {
-    console.log(e);
-    // let previous = parseInt($("#totalBudget").innerText);
-    // previous.innerText = (previous + parseInt(this.innerText));
 
-});
 
 //Angular
 
@@ -79,53 +74,63 @@ App.controller("MainCtrl", function ($scope, $http, $timeout) {
     const URL = "http://localhost:8080/tripPlan/tripPage/" + username + "/" + tripId;
     ///ean den exei accommodation ,petaei error...
     $http.get(URL)
-            .then((response) => {
-                const data = response.data;
-                const accommodation = data.accommodation[0];
-                const transportation = data.transportation;
-                console.log("acc", accommodation)
-                console.log(transportation)
-                $scope.accommodation = accommodation;
-                $scope.transportation = transportation;
-                const notes = data.notes;
-                $scope.location = data.location;
-                const dailyBudget = data.dailyBudget;
+        .then((response) => {
+            const data = response.data;
+            const accommodation = data.accommodation[0];
+            const transportation = data.transportation;
+            console.log("acc", accommodation)
+            console.log(transportation)
+            $scope.accommodation = accommodation;
+            $scope.transportation = transportation;
+            const notes = data.notes;
+            $scope.location = data.location;
+            const dailyBudget = data.dailyBudget;
 
-                const checkin = new Date(accommodation.checkin);
-                const checkout = new Date(accommodation.checkout);
-                const dates = getDates(checkin, checkout);
+            const checkin = new Date(accommodation.checkin);
+            const checkout = new Date(accommodation.checkout);
+            const dates = getDates(checkin, checkout);
 
-                //////////////////////////////
-                dates.forEach(function (date) {
-                    let formatedDate = formatDate(date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate());
-                    dummyDates.push(date.getDate() + "/" + (date.getMonth() + 1));
-                    dateArray.push(formatedDate);
-                });
-                //////////////////////////
-                transportation.forEach(function (item, index) {
-                    let date = new Date(transportation[index].departure.substring(0, 10));
-                    flightDates.push(formatDate(date));
-                });
-                flightDates.forEach(function (date) {
-                    flightDateArray.push(date);
-                });
-                ////////////////////////////
-                notes.forEach(function (item, index) {
-                    notesArray.push(item);//array of notes                 
-                });
-                ////////////////
-                dailyBudget.forEach(function (budget) {
-                    budgetArray.push(budget);
-                });
+            //////////////////////////////
+            dates.forEach(function (date) {
+                let formatedDate = formatDate(date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate());
+                dummyDates.push(date.getDate() + "/" + (date.getMonth() + 1));
+                dateArray.push(formatedDate);
+            });
+            //////////////////////////
+            transportation.forEach(function (item, index) {
+                let date = new Date(transportation[index].departure.substring(0, 10));
+                flightDates.push(formatDate(date));
+            });
+            flightDates.forEach(function (date) {
+                flightDateArray.push(date);
+            });
+            ////////////////////////////
+            notes.forEach(function (item, index) {
+                notesArray.push(item);//array of notes                 
+            });
+            ////////////////
+            dailyBudget.forEach(function (budget) {
+                budgetArray.push(budget);
+            });
 
-            }).catch((error) => {
-        console.log(error);
-    });
+        }).catch((error) => {
+            console.log(error);
+        });
 
     $scope.budgetArray = budgetArray;
     $scope.dummyDates = dummyDates;
     $scope.dates = dateArray;
-    $scope.totalBudget = 0;
+    console.log($scope.dates);
+
+    ////Handle total Budget
+    //$scope.totalBudget = function(){
+    //    let total = 0;
+    //    for(let i = 0; i < document.querySelectorAll(".toAdd").length; i++){
+    //        
+    //        total += parseInt(document.querySelectorAll(".toAdd")[i].replace(/\D/g,'').trim());
+    //    }
+    //    return total;
+    //}
 
     $scope.printBudget = function () {
         budgetArray.forEach(function (bd_date, index1) {
@@ -140,15 +145,24 @@ App.controller("MainCtrl", function ($scope, $http, $timeout) {
 
         return flightDateArray.includes(date);
     };
-    $scope.currencyShow = function (index) {
-        return !(document.querySelectorAll(`.dayBudget${index}`)[index].innerText === '');
+
+
+    $scope.currencyShow = function (date) {
+        return (document.getElementById(`dayBudget${date}`).innerText.trim().length > 0);
     };
+
+    //    $scope.showNoteIcon = function(date){
+    //      return !((document.getElementById(`noteTitle${date}`).value==="")&&(document.getElementById(`noteBody${date}`).value===""));  
+    //    };
+
+
+
     $scope.addPost = function () {
 
         const title = $("#postModal #postTitle").val().trim();
         const body = $("#postModal #postBody").val().trim();
 
-        let object = {title: title, body: body, tripId: tripId};
+        let object = { title: title, body: body, tripId: tripId };
         let jsonObject = JSON.stringify(object);
         console.log(jsonObject);
         const URL = "http://localhost:8080/tripPlan/post/create";
@@ -166,13 +180,15 @@ App.controller("MainCtrl", function ($scope, $http, $timeout) {
             console.log("error");
         });
     };
+
+
     $scope.addNote = function (date, index) {
         console.log(date, index);
 
         const title = $(`#notesModal${date} #noteTitle${date}`).val().trim();
         const body = $(`#notesModal${date} #noteBody${date}`).val().trim();
 
-        let object = {title: title, body: body, tripId: tripId, date: date};
+        let object = { title: title, body: body, tripId: tripId, date: date };
         let jsonObject = JSON.stringify(object);
         const URL = "http://localhost:8080/tripPlan/tripPage/saveNote";
         var req = {
@@ -189,12 +205,14 @@ App.controller("MainCtrl", function ($scope, $http, $timeout) {
             console.log("error");
         });
     };
+
+
     $scope.addBudget = function (date, index) {
 
         const budget = $(`#budgetModal${index} #budget${index}`).val().trim();
-        $(`#dayBudget${index}`).text(budget);
+        $(`#dayBudget${date}`).text(budget);
         $scope.totalBudget += parseInt(budget);
-        let object = {dayBudget: budget, tripId: tripId, date: date};
+        let object = { dayBudget: budget, tripId: tripId, date: date };
         let jsonObject = JSON.stringify(object);
         console.log(jsonObject);
         const URL = "http://localhost:8080/tripPlan/tripPage/saveBudget";
@@ -212,25 +230,29 @@ App.controller("MainCtrl", function ($scope, $http, $timeout) {
             console.log("error");
         });
     };
+
+
     $scope.showNote = function (index, date) {
 
         let URL = `http://localhost:8080/tripPlan/tripPage/getNotes/${tripId}/${date}`;
         $http.get(URL)
-                .then((response) => {
-                    if (typeof response.data[0].date !== 'undefined') {
-                        let date = response.data[0].date;
-                    }
-                    console.log(response.data);
-                    if (typeof date !== 'undefined' && typeof response.data[0].title !== 'undefined') {
-                        $(`#notesModal${date} #noteTitle${date}`).val(response.data[0].title);
-                    }
-                    if (typeof date !== 'undefined' && typeof response.data[0].body !== 'undefined') {
-                        $(`#notesModal${date} #noteBody${date}`).val(response.data[0].body);
-                    }
-                }).catch(() => {
-            console.log("No data");
-        });
+            .then((response) => {
+                if (typeof response.data[0].date !== 'undefined') {
+                    let date = response.data[0].date;
+                }
+                console.log(response.data);
+                if (typeof date !== 'undefined' && typeof response.data[0].title !== 'undefined') {
+                    $(`#notesModal${date} #noteTitle${date}`).val(response.data[0].title);
+                }
+                if (typeof date !== 'undefined' && typeof response.data[0].body !== 'undefined') {
+                    $(`#notesModal${date} #noteBody${date}`).val(response.data[0].body);
+                }
+            }).catch(() => {
+                console.log("No data");
+            });
     };
+
+
     $scope.showNotes = function (date) {
         notesArray.forEach(function (note, index) {
             if (note.date === date) {
@@ -251,12 +273,12 @@ App.controller("MainCtrl", function ($scope, $http, $timeout) {
 
 var getDates = function (startDate, endDate) {
     var dates = [],
-            currentDate = startDate,
-            addDays = function (days) {
-                var date = new Date(this.valueOf());
-                date.setDate(date.getDate() + days);
-                return date;
-            };
+        currentDate = startDate,
+        addDays = function (days) {
+            var date = new Date(this.valueOf());
+            date.setDate(date.getDate() + days);
+            return date;
+        };
     while (currentDate <= endDate) {
         dates.push(currentDate);
         currentDate = addDays.call(currentDate, 1);
@@ -265,9 +287,9 @@ var getDates = function (startDate, endDate) {
 };
 function formatDate(date) {
     var d = new Date(date),
-            month = '' + (d.getMonth() + 1),
-            day = '' + d.getDate(),
-            year = d.getFullYear();
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
 
     if (month.length < 2)
         month = '0' + month;

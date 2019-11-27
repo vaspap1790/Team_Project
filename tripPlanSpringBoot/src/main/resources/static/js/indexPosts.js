@@ -1,7 +1,10 @@
-const visitor = document.getElementById("username").innerText.trim();
+let visitor = document.getElementById("username");
 let posts;
 const App = angular.module("App", ["ngMaterial", "jkAngularCarousel"]);
 function checkIfUserIsLogged() {
+    if (visitor !== null) {
+        visitor = document.getElementById("username").innerText.trim();
+    }
     return !(visitor === null);
 }
 
@@ -29,23 +32,25 @@ App.controller("MainCtrl", function ($scope, $http) {
     }).catch(() => {
         console.log("error");
     });
-    
-    $scope.clickedLike = function (post, index) {
-        let boolean;
-        let usernames = [];
-        for (let i = 0; i < post.likes.length; i++) {
 
-            usernames.push(post.likes[i].username);
-            if (usernames.includes(visitor)) {
-                boolean = true;
-                let BtnOfLikes = document.getElementById("BtnOfLikes" + index);
-            } else {
-                boolean = false;
-                console.log("error")
+    $scope.clickedLike = function (post, index) {
+        if (checkIfUserIsLogged()) {
+            let boolean;
+            let usernames = [];
+            for (let i = 0; i < post.likes.length; i++) {
+
+                usernames.push(post.likes[i].username);
+                if (usernames.includes(visitor)) {
+                    boolean = true;
+                    let BtnOfLikes = document.getElementById("BtnOfLikes" + index);
+                } else {
+                    boolean = false;
+                    console.log("error")
+                }
             }
+
+            return boolean;
         }
-        ;
-        return boolean;
     }
 
 
@@ -53,7 +58,7 @@ App.controller("MainCtrl", function ($scope, $http) {
 
         let post = posts[index];
         if (checkIfUserIsLogged()) {
-    
+
 
             let URL = `http://localhost:8080/tripPlan/post/likes/${post.postId}/${visitor}`;
             $http.get(URL)
@@ -92,14 +97,14 @@ App.controller("MainCtrl", function ($scope, $http) {
             let object = {username: visitor, postId: post.postId, text: body};
             let jsonObject = JSON.stringify(object);
             document.getElementById("commentBody" + index).value = "";
-             document.getElementById("commentDiv"+index).firstElementChild.innerHTML+=`<div style="background-color: #f2f3f5; border-radius: 18px;">
+            document.getElementById("commentDiv" + index).firstElementChild.innerHTML += `<div style="background-color: #f2f3f5; border-radius: 18px;">
                             <p class="p-2"><a href="" style="color: #385898; font-weight: 600;"> ${visitor} </a> 
                                 ${body}
                         </div>
                         <div class="mb-3 pl-2" style="margin-top: -20px;">
                             <a href="" style="color: #385898;">Like &nbsp;·&nbsp; Reply</a>
                         </div>   `
-            
+
             if (body !== null && body !== "") {
                 console.log(jsonObject);
                 var req = {
