@@ -20,6 +20,11 @@
                 color: red;
                 cursor: pointer;
             }
+            
+            #trip:hover {
+                color: green;
+                cursor: pointer;
+            }
         </style>
     </head>
     <body ng-controller="MainCtrl">
@@ -100,7 +105,7 @@
                                                 </td>
 
                                                 <td class="border p-3 text-center">
-                                                    <a href="${pageContext.request.contextPath}/user/userTripsPage/{{item.id}}"><i class="fas fa-suitcase-rolling"></i>&nbsp;
+                                                    <a href="${pageContext.request.contextPath}/user/userTripsPage/{{item.id}}" id="trip" style="font-size: 20px; text-decoration: none; font-family: Abril Fatface;><i class="fas fa-suitcase-rolling"></i>&nbsp;
                                                         {{item.location}}
                                                     </a>
                                                 </td>
@@ -114,7 +119,9 @@
                                             </tr>
                                         </tbody>
                                     </table>
-
+                                                        <div class="row pt-2 text-center">
+                                                            <a href="${pageContext.request.contextPath}/user/choices" class="btn btn-warning btn-md">Create New Trip</a>
+                                                        </div>
                                     <hr>
                                     <p ng-show="items.length == 0">No Sketches Found</p>
                                     <br>
