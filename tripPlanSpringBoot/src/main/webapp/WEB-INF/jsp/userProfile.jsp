@@ -112,7 +112,7 @@
 
                                                 <td class="border p-3 text-center"> 
                                                     <a id="trash">
-                                                        <i ng-click="deleteItem($index, item.id)" class="far fa-trash-alt ml-4 mt-1"></i>
+                                                        <i ng-click="deleteItem($index, item.id)" class="far fa-trash-alt ml-4 mt-1" style="font-size: 17px;"></i>
                                                     </a>
                                                 </td>
 
