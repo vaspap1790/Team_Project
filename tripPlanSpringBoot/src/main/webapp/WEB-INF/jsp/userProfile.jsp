@@ -20,7 +20,7 @@
                 color: red;
                 cursor: pointer;
             }
-            
+
             #trip:hover {
                 color: green;
                 cursor: pointer;
@@ -105,7 +105,7 @@
                                                 </td>
 
                                                 <td class="border p-3 text-center">
-                                                    <a href="${pageContext.request.contextPath}/user/userTripsPage/{{item.id}}" id="trip" style="font-size: 20px; text-decoration: none; font-family: Abril Fatface;><i class="fas fa-suitcase-rolling"></i>&nbsp;
+                                                    <a href="${pageContext.request.contextPath}/user/userTripsPage/{{item.id}}" id="trip" style="font-size: 20px; text-decoration: none; font-family: Abril Fatface;"><i class="fas fa-suitcase-rolling"></i>&nbsp;
                                                         {{item.location}}
                                                     </a>
                                                 </td>
@@ -119,16 +119,16 @@
                                             </tr>
                                         </tbody>
                                     </table>
-                                                        <div class="row pt-2 text-center">
-                                                            <a href="${pageContext.request.contextPath}/user/choices" class="btn btn-warning btn-md">Create New Trip</a>
-                                                        </div>
+                                    <div class="row pt-5 justify-content-center">
+                                        <a href="${pageContext.request.contextPath}/user/choices" class="btn btn-info btn-md">Create New Trip</a>
+                                    </div>
                                     <hr>
                                     <p ng-show="items.length == 0">No Sketches Found</p>
                                     <br>
                                     <div class="border shadow-lg text-center pb-4">
                                         <h2 class="text-center font-weight-bold pb-5">Communication Enviroment</h2>
 
-                                        <a href="${pageContext.request.contextPath}/chat" class="btn btn-success col-2"> Chat <i class="fas fa-comments"></i></a>
+                                        <a href="${pageContext.request.contextPath}/chat" class="btn btn-success col-2"><i class="fas fa-comments"></i> Chat </a>
                                     </div>
 
                                 </div><!--/tab-pane-->
