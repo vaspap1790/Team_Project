@@ -17,7 +17,7 @@
     </head>
     <body>
         <jsp:include page="../components/navbar.jsp"/> 
-
+${accommoError}
 
         <div class="hero-wrap js-fullheight" style="background-image: url('https://cdnstatic1.eskypartners.com/backgrounds/hotele/hero_main4.jpg');">
             <div class="overlay"></div>
@@ -115,7 +115,7 @@
             </div>
         </section>
 
-
+<%session.removeAttribute("accommoError");%>
         <jsp:include page="../components/scripts.jsp"/>
 
 
