@@ -58,7 +58,6 @@ public class SkyApi {
     }
 
     public HttpResponse<String> sessionResults(String sessionKey) throws UnirestException {
-        Unirest.setTimeouts(30000, 600000);
         HttpResponse<String> response = Unirest.get("https://skyscanner-skyscanner-flight-search-v1.p.rapidapi.com/apiservices/pricing/uk2/v1.0/" + sessionKey + "?pageIndex=0&pageSize=10")
                 .header("X-RapidAPI-Host", "skyscanner-skyscanner-flight-search-v1.p.rapidapi.com")
                 .header("X-RapidAPI-Key", "7b289bfc4emsh8f06189af10e8a3p1ef94cjsnd2fffd899a1b")

@@ -97,7 +97,7 @@ App.controller("MainCtrl", function ($scope, $http) {
             let object = {username: visitor, postId: post.postId, text: body};
             let jsonObject = JSON.stringify(object);
             document.getElementById("commentBody" + index).value = "";
-            document.getElementById("commentDiv" + index).firstElementChild.innerHTML += `<div style="background-color: #f2f3f5; border-radius: 18px;">
+            document.getElementById("commentDiv" + index).innerHTML += `<div style="background-color: #f2f3f5; border-radius: 18px;">
                             <p class="p-2"><a href="" style="color: #385898; font-weight: 600;"> ${visitor} </a> 
                                 ${body}
                         </div>
