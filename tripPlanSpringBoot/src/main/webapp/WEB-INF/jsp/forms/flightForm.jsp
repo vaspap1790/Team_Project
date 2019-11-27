@@ -57,7 +57,7 @@
 
                             <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel"
                                  aria-labelledby="v-pills-nextgen-tab">
-                                <spring:form  id="flightForm" modelAttribute="flight" action="${pageContext.request.contextPath}/flight/postRegister" method="POST"
+                                <spring:form  id="flightForm" modelAttribute="flight" action="${pageContext.request.contextPath}/flight/postRegister" method="GET"
                                               class="search-destination">
                                     <div class="d-flex form-row pt-2">
                                         <div class="form-group my-auto">
