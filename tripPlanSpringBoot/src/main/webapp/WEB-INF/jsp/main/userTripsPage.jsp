@@ -379,7 +379,7 @@
                     <div class="modal-body">
                         <table class="table">
                             <thead>
-                                <tr>                           
+                                <tr>
                                     <th scope="col">Hotel</th>
                                     <th scope="col">Location</th>
                                     <th scope="col">Check in</th>

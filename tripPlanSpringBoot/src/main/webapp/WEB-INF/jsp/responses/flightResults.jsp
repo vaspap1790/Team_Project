@@ -72,7 +72,7 @@
                                     </div>
                                 </form>
                             </div>
-                            <div class="sidebar-wrap ftco-animate">
+                            <div class="sidebar-wrap ftco-animate text-center">
                                 <h3 class="heading mb-4">Star Rating</h3>
                                 <form method="post" class="star-rating">
                                     <div class="form-check">

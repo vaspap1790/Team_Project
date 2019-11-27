@@ -59,6 +59,22 @@
     background-size: cover;
 }
 
+#flightModal .modal-header {
+    color: white;
+    min-height: 370px;
+    background-image: url("https://studybreaks.com/wp-content/uploads/2017/11/3042609-poster-1280-improved-wifi-inflight.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#accomModal .modal-header {
+    color: white;
+    min-height: 370px;
+    background-image: url("http://cdn.cnn.com/cnnnext/dam/assets/180418163431-conrad-maldives-rangali-island-underwater-villa--cmri-usv-bedroom.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 textarea {
     min-height: 200px;
 }
