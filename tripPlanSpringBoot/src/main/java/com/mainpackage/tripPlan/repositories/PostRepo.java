@@ -27,7 +27,7 @@ public interface PostRepo extends CrudRepository<Post, Integer> {
     List<PostLikesDTO> getLikesOfPosts();
 
     @Query("select new com.mainpackage.tripPlan.dto.PostCommentsDto"
-            + "(c.commentId,p.id,tr.tripId,c.text,u.username) FROM Comment c "
+            + "(c.commentId,p.id,tr.tripId,c.text,c.userId.username) FROM Comment c "
             + "INNER JOIN c.postId p inner join p.tripId tr inner join tr.userId u")
     List<PostCommentsDto> getCommentsOfPosts();
 
