@@ -86,6 +86,9 @@
                                                         data-toggle="modal" data-target="#notesModal{{date}}" ng-click="showNote($index, date)">
                                                     Notes <i class="fas fa-clipboard"></i>                                           
                                                 </button>
+<!--                                                <div ng-show="titles[$index]">
+                                                    <i class="fas fa-file-alt"></i>
+                                                </div>-->
 
                                             </div>
 
@@ -112,8 +115,8 @@
                                             </div>
 
                                             <div class="col-3 d-flex justify-content-center">
-                                                <span id="dayBudget{{date}}"></span>
-                                                <!--<span ng-show="currencyShow($index)">{{currency}} </span>-->
+                                                <span id="dayBudget{{date}}" class="toAdd"></span>
+                                                <span ng-show="currencyShow(date)">{{currency}} </span>
                                             </div>
 
                                         </div>
@@ -136,12 +139,12 @@
                     </div>
 
                     <div class="col-2">
-                        Total Budget: <span id="totalBudget">{{totalBudget}}</span>
+                        Total Budget: <span id="totalBudget">{{totalBudget()}}</span>
                         <select ng-model="currency">
-                            <option value="&euro;">&euro;</option>
-                            <option value="&dollar;">&dollar;</option>
-                            <option value="&pound;">&pound;</option>
-                            <option value="&yen;">&yen;</option>
+                            <option value="euro">&euro;</option>
+                            <option value="dollar">&dollar;</option>
+                            <option value="pound">&pound;</option>
+                            <option value="yen">&yen;</option>
                         </select>
                     </div>
 
@@ -193,7 +196,7 @@
         </div>
 
         <!--Notes Modal--> 
-        <div ng-repeat="date in dates"  class="modal fade notesModal" id="notesModal{{date}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        <div ng-repeat="date in dates" for="{{date}}"  class="modal fade notesModal" id="notesModal{{date}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
              aria-hidden="true">
             <div class="modal-dialog" id="dialog{{$index}}" role="document">
                 <div class="modal-content">
@@ -415,7 +418,6 @@
 
     </modals>
     {{printBudget()}}
-
     <jsp:include page="../components/footer.jsp"/>
     <jsp:include page="../components/scripts.jsp"/>
     <script src="${pageContext.request.contextPath}/js/tripsPage.js"></script>  
