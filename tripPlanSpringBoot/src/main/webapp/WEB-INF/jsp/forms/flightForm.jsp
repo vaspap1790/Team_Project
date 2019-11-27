@@ -17,18 +17,26 @@
 
     <body>
         <jsp:include page="../components/navbar.jsp"/>
-
+       
         <div class="hero-wrap js-fullheight" style="background-image: url('https://cdnstatic1.eskypartners.com/backgrounds/main_page/hero_main_3_1.jpg');">
             <div class="overlay"></div>
             <div class="container">
                 <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start"
                      data-scrollax-parent="true">
-                    <div class="col-md-9 ftco-animate mb-5 pb-5 text-center text-md-left"
+                    <div class="col-md-8 ftco-animate mb-5 pb-5 text-center text-md-left"
                          data-scrollax=" properties: { translateY: '70%' }">
                         <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Plan <br>Your Flight
                         </h1>
                         <p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Find great prices to fly and explore the world</p>
                     </div>
+                    
+                    <div class="col-md-4 ftco-animate mb-5 pb-5 text-center text-md-left"
+                         data-scrollax=" properties: { translateY: '70%' }">
+                        <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }" style="font-size: 30px;"> ${errorFlight}
+                        </h1>
+                        
+                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -49,7 +57,7 @@
 
                             <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel"
                                  aria-labelledby="v-pills-nextgen-tab">
-                                <spring:form  id="flightForm" modelAttribute="flight" action="${pageContext.request.contextPath}/flight/postRegister" method="POST"
+                                <spring:form  id="flightForm" modelAttribute="flight" action="${pageContext.request.contextPath}/flight/postRegister" method="GET"
                                               class="search-destination">
                                     <div class="d-flex form-row pt-2">
                                         <div class="form-group my-auto">
@@ -125,7 +133,7 @@
             integrity="sha256-0YPKAwZP7Mp3ALMRVB2i8GXeEndvCq3eSl/WsAl1Ryk="
         crossorigin="anonymous"></script>
         <script type="text/javascript" src="${pageContext.request.contextPath}/js/flightJs.js"></script>
-
+        <%session.removeAttribute("errorFlight");%>
     </body>
 
 </html>

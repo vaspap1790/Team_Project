@@ -24,11 +24,16 @@
             <div class="container">
                 <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start"
                      data-scrollax-parent="true">
-                    <div class="col-md-9 ftco-animate mb-5 pb-5 text-center text-md-left"
+                    <div class="col-md-8 ftco-animate mb-5 pb-5 text-center text-md-left"
                          data-scrollax=" properties: { translateY: '70%' }">
                         <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Plan <br>Your own
                             Accommodation</h1>
                         <p data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Find great places to stay</p>
+                    </div>
+                    <div class="col-md-4 ftco-animate mb-5 pb-5 text-center text-md-left"
+                         data-scrollax=" properties: { translateY: '70%' }">
+                        <h1 class="mb-4" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }" style="font-size: 30px;">${accommoError}
+                        </h1>
                     </div>
                 </div>
             </div>
@@ -115,7 +120,7 @@
             </div>
         </section>
 
-
+        <%session.removeAttribute("accommoError");%>
         <jsp:include page="../components/scripts.jsp"/>
 
 

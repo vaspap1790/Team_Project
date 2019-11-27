@@ -3,7 +3,6 @@ package com.mainpackage.tripPlan.controllers;
 import com.mainpackage.tripPlan.DummyModels.TransportationDummy;
 import com.mainpackage.tripPlan.model.AccommodationType;
 import com.mainpackage.tripPlan.model.Flight;
-import com.mainpackage.tripPlan.model.Transportation;
 import com.mainpackage.tripPlan.utilities.CreateJson;
 import com.mainpackage.tripPlan.webServices.SkyApi;
 import com.mashape.unirest.http.HttpResponse;
@@ -11,6 +10,7 @@ import com.mashape.unirest.http.exceptions.UnirestException;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.time.LocalDate;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
@@ -36,7 +36,7 @@ public class FlightController {
 
     @Autowired
     SkyApi sky;
-     @Autowired
+    @Autowired
     SkyApi sky1;
     @Autowired
     CreateJson createJ;
@@ -47,37 +47,39 @@ public class FlightController {
         return "forms/flightForm";
     }
 
-    @PostMapping(value = "postRegister")
+    @GetMapping(value = "postRegister")
     public ModelAndView postFlight(@ModelAttribute("flight") Flight flight,
-            HttpSession session,ModelMap m,
+            HttpSession session, ModelMap m,
             @RequestParam(name = "inboundDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate inboundDate) throws IOException, UnirestException, ParseException {
 
-        String sessionKey = sky.CreateSession(flight, inboundDate);
-        HttpResponse<String> skyReport = sky1.SessionResults(sessionKey);
+        sky.createSession(flight, session, inboundDate);
+        String sessionKey=(String) session.getAttribute("sessionKey");
+        
+        HttpResponse<String> skyReport = sky1.sessionResults(sessionKey);
 
         if (skyReport.getStatus() == 200 && sessionKey != null) {
-            
-            m.addAttribute("transportation",new TransportationDummy()); 
-            
+
+            m.addAttribute("transportation", new TransportationDummy());
             JSONObject skyJson = createJ.createJson(skyReport.getBody());
+            
             return new ModelAndView("responses/flightResults", "flights", skyJson);
         }
+        session.setAttribute("errorFlight", "No available Flights");
         return new ModelAndView("redirect:/flight/register");
     }
 
     @PostMapping(value = "postFlightResults")
     public ModelAndView flightResultForm(ModelMap m, HttpSession session,
             @ModelAttribute("transportation") TransportationDummy tr) {
-        
+
         session.setAttribute("transportation", tr);
-        
-        AccommodationType getAccomTypeFromSess = (AccommodationType) session.getAttribute("accommodationType");       
-        if(getAccomTypeFromSess==null){
+
+        AccommodationType getAccomTypeFromSess = (AccommodationType) session.getAttribute("accommodationType");
+        if (getAccomTypeFromSess == null) {
             return new ModelAndView("redirect:/");
         }
         return new ModelAndView("redirect:/accommodation/" + getAccomTypeFromSess.getType());
     }
-
 
     @GetMapping(value = "city/{city}", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
@@ -87,6 +89,4 @@ public class FlightController {
 
         return new ResponseEntity<>(cities.getBody(), HttpStatus.OK);
     }
-
-    
 }

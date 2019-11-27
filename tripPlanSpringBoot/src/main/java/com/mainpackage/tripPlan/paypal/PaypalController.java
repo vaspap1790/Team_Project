@@ -18,49 +18,65 @@ public class PaypalController {
     @Autowired
     PaypalService service;
 
-    public static final String PAYPAL_SUCCESS_URL = "pay/success";
-    public static final String PAYPAL_CANCEL_URL = "pay/cancel";
+    public static final String SUCCESS_URL = "pay/success";
+    public static final String CANCEL_URL = "pay/cancel";
 
     @GetMapping("/payment")
-    public String payment() {
+    public String home() {
+
         return "payment";
+
     }
 
     @PostMapping("/pay")
-    public String payment(@ModelAttribute("order") Order order,HttpServletRequest request) throws PayPalRESTException {
-        String cancelUrl = URLUtils.getBaseURl(request) + "/" + PAYPAL_CANCEL_URL;
-        String successUrl = URLUtils.getBaseURl(request) + "/" + PAYPAL_SUCCESS_URL;
+    public String payment(@ModelAttribute("order") Order order) {
 
-        Payment payment = service.createPayment(
-                order.getPrice(),
-                order.getCurrency(),
-                order.getMethod(),
-                order.getIntent(),
-                order.getDescription(),
-                cancelUrl,
-                successUrl);
-        for (Links link : payment.getLinks()) {
-            if (link.getRel().equals("approval_url")) {
-                return "redirect:" + link.getHref();
+        try {
+            Payment payment = service.createPayment(order.getPrice(), order.getCurrency(), order.getMethod(),
+                    order.getIntent(), order.getDescription(), "http://localhost:8080/tripPlan/" + CANCEL_URL,
+                    "http://localhost:8080/tripPlan/" + SUCCESS_URL);
+
+            for (Links link : payment.getLinks()) {
+                if (link.getRel().equals("approval_url")) {
+                    return "redirect:" + link.getHref();
+                }
             }
+        } catch (PayPalRESTException e) {
+            e.printStackTrace();
         }
         return "redirect:/";
 
     }
 
-    @GetMapping(value = PAYPAL_CANCEL_URL)
+    @GetMapping(value = CANCEL_URL)
     public String cancelPay() {
+
         return "cancel";
+
     }
 
-    @GetMapping(value = PAYPAL_SUCCESS_URL)
-    public String successPay(@RequestParam("paymentId") String paymentId, @RequestParam("PayerID") String payerId) throws PayPalRESTException {
-        Payment payment = service.executePayment(paymentId, payerId);
+    @GetMapping(value = SUCCESS_URL)
+    public String successPay(@RequestParam("paymentId") String paymentId, @RequestParam("PayerID") String payerId) {
 
-        if (payment.getState().equals("approved")) {
-            return "success";
+        try {
+
+            Payment payment = service.executePayment(paymentId, payerId);
+
+            System.out.println(payment.toJSON());
+
+            if (payment.getState().equals("approved")) {
+
+                return "success";
+
+            }
+
+        } catch (PayPalRESTException e) {
+
+            System.out.println(e.getMessage());
+
         }
         return "redirect:/";
+
     }
 
 }

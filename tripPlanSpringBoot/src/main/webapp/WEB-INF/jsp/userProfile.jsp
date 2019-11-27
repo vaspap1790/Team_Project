@@ -46,11 +46,11 @@
                                         <div style="height: 202px; width: 202px;">
                                             <img src="data:image/jpg;base64,${img}" class="avatar img-circle img-thumbnail ml-5" alt="avatar" id="blah" style="height: 202px; width: 202px;">
                                         </div>
-                                            <a href="${pageContext.request.contextPath}/deleteFile/${file.id}" class="btn btn-danger btn-sm mt-3 mb-4"><i class="far fa-trash-alt"></i> Delete Photo </a><br>
+                                        <a href="${pageContext.request.contextPath}/deleteFile/${file.id}" class="btn btn-danger btn-sm mt-3 mb-4"><i class="far fa-trash-alt"></i> Delete Photo </a><br>
                                     </c:if>
-                                        <label class="btn btn-warning btn-sm mt-3"><i class="fas fa-folder-plus"></i> Choose File 
-                                            <input id="singleFileUploadInput" type="file" name="file"   class="text-center center-block file-upload file-input" style="display: none;">
-                                        </label>
+                                    <label class="btn btn-warning btn-sm mt-3"><i class="fas fa-folder-plus"></i> Choose File 
+                                        <input id="singleFileUploadInput" type="file" name="file"   class="text-center center-block file-upload file-input" style="display: none;">
+                                    </label>
                                     <button type="submit" class="btn btn-success btn-sm mt-3"><i class="fas fa-check-circle"></i> Submit </button>
 
                                 </spring:form>
@@ -119,8 +119,8 @@
                                     <p ng-show="items.length == 0">No Sketches Found</p>
                                     <br>
                                     <div class="border shadow-lg text-center pb-4">
-                                    <h2 class="text-center font-weight-bold pb-5">Communication Enviroment</h2>
-                                    
+                                        <h2 class="text-center font-weight-bold pb-5">Communication Enviroment</h2>
+
                                         <a href="${pageContext.request.contextPath}/chat" class="btn btn-success col-2"> Chat <i class="fas fa-comments"></i></a>
                                     </div>
 
@@ -128,74 +128,74 @@
 
                                 <div class="tab-pane" id="profile">
                                     <hr>
-                                    <%--<spring:form modelAttribute="" class="form" action="${pageContext.request.contextPath}/" method="POST" id="registrationForm" enctype="multipart/form-data">--%>
-                                    <div class="form-group">
+                                    <form class="form" action="${pageContext.request.contextPath}/" id="registrationForm" enctype="multipart/form-data">
+                                        <div class="form-group">
 
-                                        <div class="col-xs-6">
-                                            <%--<spring:label path="first_name"><h4>First name</h4></spring:label>--%>
-                                            <%--<spring:input style="height: 4rem!important;" type="text" class="form-control" path="first_name" id="first_name" placeholder="Enter First name ...">--%>
+                                            <div class="col-xs-6">
+                                                <label path="first_name"><h4>First name</h4></label>
+                                                <input style="height: 4rem!important;" type="text" class="form-control" path="first_name" id="first_name" placeholder="Enter First name ...">
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="form-group">
+                                        <div class="form-group">
 
-                                        <div class="col-xs-6">
-                                            <%--<spring:label path="last_name"><h4>Last name</h4></spring:label>--%>
-                                            <%--<spring:input style="height: 4rem!important;" type="text" class="form-control" path="last_name" id="last_name" placeholder="Enter Last name ...">--%>
+                                            <div class="col-xs-6">
+                                                <label path="last_name"><h4>Last name</h4></label>
+                                                <input style="height: 4rem!important;" type="text" class="form-control" path="last_name" id="last_name" placeholder="Enter Last name ...">
+                                            </div>
                                         </div>
-                                    </div>
 
-                                    <div class="form-group">
+                                        <div class="form-group">
 
-                                        <div class="col-xs-6">
-                                            <%--<spring:label path="phone_number"><h4>Phone</h4></spring:label>--%>
-                                            <%--<spring:input style="height: 4rem!important;" type="text" class="form-control" path="phone_number" id="phone" placeholder="Enter Phone number ...">--%>
+                                            <div class="col-xs-6">
+                                                <label path="phone_number"><h4>Phone</h4></label>
+                                                <input style="height: 4rem!important;" type="text" class="form-control" path="phone_number" id="phone" placeholder="Enter Phone number ...">
+                                            </div>
                                         </div>
-                                    </div>
 
-                                    <div class="form-group">
-                                        <div class="col-xs-6">
-                                            <%--<spring:label path="mobile"><h4>Mobile</h4></spring:label>--%>
-                                            <%--<spring:input style="height: 4rem!important;" type="text" class="form-control" path="mobile" id="mobile" placeholder="Enter Mobile number ...">--%>
+                                        <div class="form-group">
+                                            <div class="col-xs-6">
+                                                <label path="mobile"><h4>Mobile</h4></label>
+                                                <input style="height: 4rem!important;" type="text" class="form-control" path="mobile" id="mobile" placeholder="Enter Mobile number ...">
+                                            </div>
                                         </div>
-                                    </div>
-                                    <!--                                        <div class="form-group">
-                                    
-                                                                                <div class="col-xs-6">
-                                                                                    <label path="email"><h4>Email</h4></label>
-                                                                                    <input style="height: 4rem!important;" type="email" class="form-control" path="email" id="email" placeholder="Enter Email...">
-                                                                                </div>
-                                                                            </div>-->
-                                    <!--                                        <div class="form-group">
-                                    
-                                                                                <div class="col-xs-6">
-                                                                                    <label path="email"><h4>Location</h4></label>
-                                                                                    <input style="height: 4rem!important;" type="email" class="form-control" path="email" id="location" placeholder="Enter your Location...">
-                                                                                </div>
-                                                                            </div>-->
-                                    <!--                                        <div class="form-group">
-                                    
-                                                                                <div class="col-xs-6">
-                                                                                    <label for="password"><h4>Password</h4></label>
-                                                                                    <input style="height: 4rem!important;" type="password" class="form-control" name="password" id="password" placeholder="Enter password...">
-                                                                                </div>
-                                                                            </div>-->
-                                    <!--                                        <div class="form-group">
-                                    
-                                                                                <div class="col-xs-6">
-                                                                                    <label for="password2"><h4>Verify</h4></label>
-                                                                                    <input style="height: 4rem!important;" type="password" class="form-control" name="password2" id="password2" placeholder="Retype password...">
-                                                                                </div>
-                                                                            </div>-->
-                                    <div class="form-group">
-                                        <div class="col-xs-12">
-                                            <br>
-                                            <button class="btn btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
-                                            <button class="btn btn-danger" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button>
-                                        </div>
-                                    </div>
-                                    <%--</spring:form>--%>
+                                        <div class="form-group">
 
-                                    <!--Tips Angular-->   
+                                            <div class="col-xs-6">
+                                                <label path="email"><h4>Email</h4></label>
+                                                <input style="height: 4rem!important;" type="email" class="form-control" path="email" id="email" placeholder="Enter Email...">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+
+                                            <div class="col-xs-6">
+                                                <label path="email"><h4>Location</h4></label>
+                                                <input style="height: 4rem!important;" type="email" class="form-control" path="email" id="location" placeholder="Enter your Location...">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+
+                                            <div class="col-xs-6">
+                                                <label for="password"><h4>Password</h4></label>
+                                                <input style="height: 4rem!important;" type="password" class="form-control" name="password" id="password" placeholder="Enter password...">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+
+                                            <div class="col-xs-6">
+                                                <label for="password2"><h4>Verify</h4></label>
+                                                <input style="height: 4rem!important;" type="password" class="form-control" name="password2" id="password2" placeholder="Retype password...">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-xs-12">
+                                                <br>
+                                                <button class="btn btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
+                                                <button class="btn btn-danger" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button>
+                                            </div>
+                                        </div>
+                                        <%--</spring:form>--%>
+
+                                        <!--Tips Angular-->   
                                 </div><!--/tab-pane-->
 
                                 <div class="tab-pane" id="settings">

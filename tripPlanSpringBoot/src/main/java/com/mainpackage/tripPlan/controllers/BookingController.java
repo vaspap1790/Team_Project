@@ -44,7 +44,8 @@ public class BookingController {
     public ModelAndView postHotelForm(@RequestParam(name = "guests") String guests, Model m,
                                       @RequestParam(name = "dest_id") String dest_id,
                                       @RequestParam(name = "checkin") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate checkin,
-                                      @RequestParam(name = "checkout") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate checkout) throws UnirestException, ParseException, JsonProcessingException {
+                                      @RequestParam(name = "checkout") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate checkout,
+                                      HttpSession session) throws UnirestException, ParseException, JsonProcessingException {
 
         HttpResponse<String> bookingResults = booking.propertiesList(dest_id, checkin, checkout, guests);
         JSONObject obj = jsonUtil.createJson(bookingResults.getBody());
@@ -62,6 +63,7 @@ public class BookingController {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        session.setAttribute("accommoError","No hotels Found !");
         return new ModelAndView("redirect:/hotel/hotelForm");
     }
 

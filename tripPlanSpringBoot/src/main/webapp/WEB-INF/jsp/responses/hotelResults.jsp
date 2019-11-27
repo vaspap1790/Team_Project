@@ -69,7 +69,7 @@
                                     </div>
                                 </form>
                             </div>
-                            <div class="sidebar-wrap ftco-animate">
+                            <div class="sidebar-wrap ftco-animate text-center">
                                 <h3 class="heading mb-4">Star Rating</h3>
                                 <form method="post" class="star-rating">
                                     <div class="form-check">
@@ -121,7 +121,7 @@
                                                     <div class="text p-3">
                                                         <div class="d-flex">
                                                             <div class="one">
-                                                                <h3 style="width: 180px; height: 30px; overflow: hidden;"><a href="${res.url}">${res.hotel_name}</a></h3>
+                                                                <h3 style="width: 150px; height: 30px; overflow: hidden;"><a href="${res.url}">${res.hotel_name}</a></h3>
 
                                                                 <p class="rate">
                                                                     <i class="icon-star"></i>
