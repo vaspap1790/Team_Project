@@ -1,6 +1,6 @@
 let visitor = document.getElementById("username");
 let posts;
-const App = angular.module("App", ["ngMaterial", "jkAngularCarousel"]);
+const App = angular.module("App", []);
 function checkIfUserIsLogged() {
     if (visitor !== null) {
         visitor = document.getElementById("username").innerText.trim();
@@ -19,14 +19,23 @@ App.controller("MainCtrl", function ($scope, $http) {
         console.log("Success");
         console.log(response.data);
         posts = response.data.Posts;
-        let slides = [];
-        for (let i = 0; i < posts.length; i++) {
-            for (let j = 0; j < posts[i].photos.length; j++) {
-
-                slides.push(posts[i].photos[j].photos);
-            }
-            posts[i].photos = slides;
-        }
+        
+//        for (let i = 0; i < posts.length; i++) {
+//            for (let j = 0; j < posts[i].photos.length; j++) {
+//
+//                slides.push(posts[i].photos[j].photos);
+//            }
+//            posts[i].photos = slides;
+//        }
+posts.forEach((post)=>{
+    let photos = [];
+    post.photos.forEach((photoObj)=>{
+        photos.push(photoObj.photos);
+        
+    });
+    post.photos=photos;
+    
+});
         $scope.posts = posts;
         console.log($scope.posts);
     }).catch(() => {

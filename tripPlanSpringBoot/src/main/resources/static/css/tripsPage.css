@@ -1,10 +1,9 @@
 
-
 /* Main */
 
 #up {
     /*background: url(https://wordpress-network.prod.aws.skyscnr.com/wp-content/uploads/2018/05/dublin-temple-bar.jpg?w=1000&h=312&crop=1);*/
-    min-height: 300px;
+    min-height: 150px;
     background-repeat: no-repeat;
     background-size: cover;
 }
