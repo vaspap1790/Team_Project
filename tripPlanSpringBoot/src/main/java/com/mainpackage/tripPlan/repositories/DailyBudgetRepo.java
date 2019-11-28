@@ -18,7 +18,7 @@ public interface DailyBudgetRepo extends CrudRepository<DailyBudget, Integer> {
     @Query("select new com.mainpackage.tripPlan.dto.DailyBudgetDTO("
             + "db.id,db.dayBudget,db.date)  "
             + " from DailyBudget db inner join db.tripId tr  "
-            + " where  tr.tripId= :tripId")
+            + " where  tr.tripId= :tripId ORDER BY db.date ASC")
     List<DailyBudgetDTO> findDailyBudgetByTripId(@Param("tripId") Integer tripId);
     
      @Query("select new com.mainpackage.tripPlan.dto.DailyBudgetDTO("
@@ -26,4 +26,10 @@ public interface DailyBudgetRepo extends CrudRepository<DailyBudget, Integer> {
             + " from DailyBudget db inner join db.tripId tr  "
             + " where  tr.tripId= :tripId and db.date=:date")
         List<DailyBudgetDTO> findDailyBudgetByTripIdAndDate(@Param("tripId") Integer tripId,@Param("date") Date date);
+
+          @Query("select db "
+            + " from DailyBudget db inner join db.tripId tr  "
+            + " where  tr.tripId= :tripId and db.date=:date")
+        DailyBudget findDailyBudgetEntityByTripIdAndDate(@Param("tripId") Integer tripId,@Param("date") Date date);
+
 }

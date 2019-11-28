@@ -36,7 +36,7 @@ public class TripPageService {
 
     public void saveNotes(DummyNotes dummy) throws ParseException {
         try {
-            Notes note = notesRepo.findByDate(dummy.getDate(),dummy.getTripId());
+            Notes note = notesRepo.findByDate(dummy.getDate(), dummy.getTripId());
             if (note != null) {
                 note.setBody(dummy.getBody());
                 note.setTitle(dummy.getTitle());
@@ -53,7 +53,14 @@ public class TripPageService {
     public void saveBudget(DummyDailyBudget dummy) throws ParseException {
         try {
             Trip trip = tripService.findTripById(dummy.getTripId());
-            budgetDAO.save(new DailyBudget(dummy.getDayBudget(), dummy.getDate(), trip));
+            DailyBudget dbBudget = dbRepo.findDailyBudgetEntityByTripIdAndDate(dummy.getTripId(), dummy.getDate());
+                if (dbBudget == null) {
+                budgetDAO.save(new DailyBudget(dummy.getDayBudget(), dummy.getDate(), trip));
+            } else {
+                dbBudget.setDayBudget(dummy.getDayBudget());
+                budgetDAO.update(dbBudget);
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -68,8 +75,9 @@ public class TripPageService {
         List<DailyBudgetDTO> db = dbRepo.findDailyBudgetByTripId(id);
         return db;
     }
-       public List<DailyBudgetDTO> getDailyBudgetByTripIdAndDate(int id,Date date) {
-        List<DailyBudgetDTO> db = dbRepo.findDailyBudgetByTripIdAndDate(id,date);
+
+    public List<DailyBudgetDTO> getDailyBudgetByTripIdAndDate(int id, Date date) {
+        List<DailyBudgetDTO> db = dbRepo.findDailyBudgetByTripIdAndDate(id, date);
         return db;
     }
 
