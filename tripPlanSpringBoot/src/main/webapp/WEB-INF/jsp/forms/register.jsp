@@ -28,6 +28,7 @@
                     <div class="form-wrapper">
                         <spring:label path="email">Email</spring:label>
                         <spring:input path="email" cssClass="form-control" placeholder="Enter Email..."/>
+                        <div class="error">${emailError} </div>  
                     </div>
                     <div class="form-wrapper">
                         <spring:label path="password">Password</spring:label>

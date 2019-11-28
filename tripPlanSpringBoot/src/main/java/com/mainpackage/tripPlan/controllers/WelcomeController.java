@@ -69,6 +69,10 @@ public class WelcomeController {
             redirectAttrs.addFlashAttribute("error","This username is already in use");
             return new ModelAndView("redirect:/register");
         }
+        if(userRepo.findByEmail(user.getEmail()) !=null){
+           redirectAttrs.addFlashAttribute("emailError","This email is already in use");
+            return new ModelAndView("redirect:/register"); 
+        }
         String originalPass = user.getPassword();
         if (check.isUser(user)) {
             userService.insert(user);
