@@ -50,7 +50,7 @@
                                    autocomplete="off" class="form-control" />
                             <button type="submit" class="primary">Send</button>
                             <br>
-                            <!--<a href="${pageContext.request.contextPath}/user/profile" style="border: none">Exit</a>-->
+                            
                         </div>
                     </div>
                 </form>
