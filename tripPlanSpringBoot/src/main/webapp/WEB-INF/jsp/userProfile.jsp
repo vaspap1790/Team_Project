@@ -126,7 +126,7 @@
                                     <p ng-show="items.length == 0">No Sketches Found</p>
                                     <br>
                                     <div class="border shadow-lg text-center pb-4">
-                                        <h2 class="text-center font-weight-bold pb-5">Communication Enviroment</h2>
+                                        <h2 class="text-center font-weight-bold pb-5">Edw mporeite na mas rwtisete ta panta </h2>
 
                                         <a href="${pageContext.request.contextPath}/chat" class="btn btn-success col-2"><i class="fas fa-comments"></i> Chat </a>
                                     </div>
