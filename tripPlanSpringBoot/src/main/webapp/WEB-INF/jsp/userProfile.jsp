@@ -123,12 +123,13 @@
                                         <a href="${pageContext.request.contextPath}/user/choices" class="btn btn-info btn-md">Create New Trip</a>
                                     </div>
                                     <hr>
-                                    <p ng-show="items.length == 0">No Sketches Found</p>
+                                    <p ng-show="items.length == 0" style="font-size: 20px; font-family: Abril Fatface;">No Trips Found</p>
                                     <br>
                                     <div class="border shadow-lg text-center pb-4">
-                                        <h2 class="text-center font-weight-bold pb-5">Edw mporeite na mas rwtisete ta panta </h2>
+                                        <h2 class="text-center font-weight-bold pb-5" style="font-size: 30px; font-family: Abril Fatface;"> SUPPORT CHANNELS </h2>
+                                        <p class="text-center">Our expertly trained support team is ready to answer your questions and solve your problems 24/7 available up to 24 hours a day and 7 days a week via chat. Also you can communicate with other users and share experiences!</p>
 
-                                        <a href="${pageContext.request.contextPath}/chat" class="btn btn-success col-2"><i class="fas fa-comments"></i> Chat </a>
+                                        <a href="${pageContext.request.contextPath}/chat" class="btn btn-success col-2 mt-4"><i class="fas fa-comments"></i> Chat </a>
                                     </div>
 
                                 </div><!--/tab-pane-->
