@@ -8,13 +8,13 @@
         <title>Chat Room</title>
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css" />
     </head>
-    <body style="background-image: url('https://www.metrocontinuingeducation.ca/wp-content/uploads/2019/06/speech-bubbles.jpg');">
+    <body style="background-image: url('https://images.unsplash.com/photo-1542435503-956c469947f6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1867&q=80'); background-size:cover!important; height:100vh;">
         <noscript>
         <h2>Sorry! Your browser doesn't support Javascript, you have to enable it!</h2>
         </noscript>
 
         <div id="username-page">
-            <div class="username-page-container">
+            <div class="username-page-container" style="width:700px!important;">
                 <h1 class="title">Type your username</h1>
                 <form id="usernameForm" name="usernameForm">
                     <div class="form-group">
@@ -35,7 +35,7 @@
         </div>
 
         <div id="chat-page" class="hidden">
-            <div class="chat-container">
+            <div class="chat-container" style="width:480px; z-index:-1!important;">
                 <div class="chat-header" style="background-color: lightgray;">
                     <h2>Chat Room</h2>
                 </div>
