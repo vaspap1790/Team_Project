@@ -1,11 +1,13 @@
 package com.mainpackage.tripPlan.controllers;
 
 import com.mainpackage.tripPlan.daos.GenericJpaDao;
+import com.mainpackage.tripPlan.model.File;
 import com.mainpackage.tripPlan.model.User;
 import com.mainpackage.tripPlan.repositories.UserRepo;
 import com.mainpackage.tripPlan.services.UserService;
 import com.mainpackage.tripPlan.utilities.Check;
 import com.mainpackage.tripPlan.utilities.Encryption;
+import com.mainpackage.tripPlan.utilities.ImgUtils;
 import java.io.IOException;
 import java.sql.SQLException;
 import javax.servlet.http.HttpServletRequest;
@@ -34,6 +36,10 @@ public class WelcomeController {
     UserRepo userRepo;
     @Autowired
     Check check;
+    @Autowired
+    ImgUtils imgUtils;
+    @Autowired
+    GenericJpaDao<File> fileDao;
 
     @GetMapping(value = "/login")
     public String login() {
@@ -53,7 +59,7 @@ public class WelcomeController {
 
     @PostMapping(value = "/postRegister")
     public ModelAndView post(HttpServletRequest request, @Valid @ModelAttribute("user") User user,
-            BindingResult br, ModelMap m, HttpSession session,RedirectAttributes redirectAttrs) throws IOException, SQLException {
+            BindingResult br, ModelMap m, HttpSession session,RedirectAttributes redirectAttrs) throws IOException, SQLException, Exception {
 
         if (br.hasErrors()) {
             return new ModelAndView("redirect:/register");
@@ -66,6 +72,12 @@ public class WelcomeController {
         String originalPass = user.getPassword();
         if (check.isUser(user)) {
             userService.insert(user);
+            try{
+            File profImg =new File("avatar","jpg",imgUtils.defaultImage(),user);
+            fileDao.save(profImg);
+            }catch(Exception e){
+                e.printStackTrace();
+            }
         }
         session.setAttribute("pass", originalPass);
 
