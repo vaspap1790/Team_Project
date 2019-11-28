@@ -1,4 +1,3 @@
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
@@ -11,6 +10,7 @@
         <link rel="stylesheet" href="../../css/tripsPage.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular-sanitize.js"></script>
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/flightResults.css">
     </head>
 
@@ -26,16 +26,16 @@
             </div>
 
             <!-- Main Container -->
-            <div class="container border up col-11 animated fadeInUpBig" id="main">
+            <div class="container border up col-9 animated fadeInUpBig" id="main">
 
                 <!-- Title -->
                 <div class="row d-flex flex-row justify-content-around align-items-center ">
 
-                    <div class="col-5">
-                        <h1 class="display-4">My trip to {{location}}</h1>
+                    <div class="col-7">
+                        <h1>My trip to <br> <em>{{location}}</em></h1>
                     </div>
 
-                    <div class="col-3">
+                    <div class="col-1">
                     </div>
                     <div class="col-1">
                         <button type="button" class="btn btn-secondary add" id="photos"
@@ -63,7 +63,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="date in dates" id="row{{date}}">
+                            <tr ng-repeat="date in dates track by $index" id="row{{date}}">
                                 <th scope="row" class="text-center align-middle"><span class="date">{{dummyDates[$index]}}</span></th>
 
                                 <td class="align-middle">
@@ -79,16 +79,13 @@
                                         </div>
 
                                         <!-- Notes -->
-                                        <div class="col-7 d-flex align-items-center">
+                                        <div class="col-6 d-flex align-items-center">
 
                                             <div class="col-4">
                                                 <button type="button" class="btn btn-secondary btn-sm add" id="notes{{$index}}"
                                                         data-toggle="modal" data-target="#notesModal{{date}}" ng-click="showNote($index, date)">
                                                     Notes <i class="fas fa-clipboard"></i>                                           
                                                 </button>
-<!--                                                <div ng-show="titles[$index]">
-                                                    <i class="fas fa-file-alt"></i>
-                                                </div>-->
 
                                             </div>
 
@@ -104,7 +101,7 @@
                                         <div class="col-2"></div>
 
                                         <!-- Budget -->
-                                        <div class="col-2 d-flex align-items-center">
+                                        <div class="col-3 d-flex align-items-center">
 
                                             <div class="col-9">
 
@@ -115,8 +112,8 @@
                                             </div>
 
                                             <div class="col-3 d-flex justify-content-center">
-                                                <span id="dayBudget{{date}}" class="toAdd"></span>
-                                                <span ng-show="currencyShow(date)">{{currency}} </span>
+                                                <span id="dayBudget{{$index}}" class="toAdd">{{printBudget($index)}}</span>
+                                                <span ng-show="currencyShow($index)" ng-bind-html="currencies[currency]"></span>
                                             </div>
 
                                         </div>
@@ -131,30 +128,27 @@
 
                 <div class="row mt-2">
 
-                    <div class="col-5">
+                    <div class="col-6">
+                    </div>
+
+                    
+                    <div class="col-3">
+                        <p>
+                            Accommodation: <a href="#" data-toggle="modal" data-target="#accomModal">
+                                <i class="fas fa-bed"></i></a>
+                        </p>
                     </div>
 
                     <div class="col-3">
-
-                    </div>
-
-                    <div class="col-2">
-                        Total Budget: <span id="totalBudget">{{totalBudget()}}</span>
-                        <select ng-model="currency">
+                        Total Budget: <span id="totalBudget"></span>
+                        <select name="" id="currency" ng-model="currency">
                             <option value="euro">&euro;</option>
                             <option value="dollar">&dollar;</option>
-                            <option value="pound">&pound;</option>
                             <option value="yen">&yen;</option>
+                            <option value="pound">&pound;</option>
                         </select>
                     </div>
 
-                    <div class="col-2">
-                        <p>
-                            Accommodation: <a href="#" data-toggle="modal" data-target="#accomModal">
-                                <i class="fas fa-bed"></i>
-                            </a>
-                        </p>
-                    </div>
 
                 </div>
 
@@ -417,7 +411,7 @@
         </div>
 
     </modals>
-    {{printBudget()}}
+    {{calculateTotalBudget()}}
     <jsp:include page="../components/footer.jsp"/>
     <jsp:include page="../components/scripts.jsp"/>
     <script src="${pageContext.request.contextPath}/js/tripsPage.js"></script>  

@@ -1,23 +1,8 @@
-console.log(Math.random());
 let clickedBtn = null;
 let tripId;
 
-//$(document).on("click", ".add", function (e) {
-//    console.log("click");
-//    clickedBtn = e;
-//});
-//$(document).ready(function () {
-//
-//    $(".add").click(function (e) {
-//        console.log("dsaads");
-//    clickedBtn=e;
-//    });
-//
-//});
-
 
 //Handle photos
-
 var multipleUploadForm = document.querySelector('#multipleUploadForm');
 var multipleFileUploadInput = document.querySelector('#multipleFileUploadInput');
 
@@ -53,14 +38,8 @@ multipleUploadForm.addEventListener('submit', function (event) {
 }, true);
 
 
-
-
-
-
-
 //Angular
-
-const App = angular.module("App", []);
+const App = angular.module("App", ['ngSanitize']);
 App.controller("MainCtrl", function ($scope, $http, $timeout) {
 
     const username = document.getElementById("username").innerText.trim();
@@ -71,6 +50,16 @@ App.controller("MainCtrl", function ($scope, $http, $timeout) {
     const flightDates = [];
     const notesArray = []; //array of notes
     const budgetArray = [];
+    const daysThatHaveBudget = [];
+    const indexes = [];
+    $scope.currency = "euro";   // Set default select option value
+    $scope.currencies = {
+        euro: '&euro;',
+        dollar: '&dollar;',
+        yen: '&yen;',
+        pound: '&pound;'
+    }
+
     const URL = "http://localhost:8080/tripPlan/tripPage/" + username + "/" + tripId;
     ///ean den exei accommodation ,petaei error...
     $http.get(URL)
@@ -78,17 +67,19 @@ App.controller("MainCtrl", function ($scope, $http, $timeout) {
             const data = response.data;
             const accommodation = data.accommodation[0];
             const transportation = data.transportation;
-            console.log("acc", accommodation)
-            console.log(transportation)
+
             $scope.accommodation = accommodation;
             $scope.transportation = transportation;
             const notes = data.notes;
             $scope.location = data.location;
             const dailyBudget = data.dailyBudget;
+            console.log(dailyBudget);
+
 
             const checkin = new Date(accommodation.checkin);
             const checkout = new Date(accommodation.checkout);
             const dates = getDates(checkin, checkout);
+
 
             //////////////////////////////
             dates.forEach(function (date) {
@@ -109,52 +100,74 @@ App.controller("MainCtrl", function ($scope, $http, $timeout) {
                 notesArray.push(item);//array of notes                 
             });
             ////////////////
-            dailyBudget.forEach(function (budget) {
-                budgetArray.push(budget);
+
+            dateArray.forEach(() => {
+                budgetArray.push(0);
             });
+
+            dailyBudget.forEach((dbudget) => {
+                daysThatHaveBudget.push(dbudget.date);
+            });
+
+            dateArray.forEach((date, index) => {
+                if (daysThatHaveBudget.includes(date)) {
+                    indexes.push(index)
+                }
+            });
+
+            dateArray.forEach((date, index) => {
+                if (daysThatHaveBudget.includes(date)) {
+                    indexes.push(index)
+                }
+            })
+
+            dailyBudget.forEach((db, index) => {
+                db.index = indexes[index]
+            })
+
+            dailyBudget.forEach((db, index) => {
+                budgetArray[db.index] = db.dayBudget
+
+            })
+
+            console.log($scope.dates);
+
+            console.log(budgetArray);
 
         }).catch((error) => {
             console.log(error);
         });
 
     $scope.budgetArray = budgetArray;
+
     $scope.dummyDates = dummyDates;
     $scope.dates = dateArray;
-    console.log($scope.dates);
 
-    ////Handle total Budget
-    //$scope.totalBudget = function(){
-    //    let total = 0;
-    //    for(let i = 0; i < document.querySelectorAll(".toAdd").length; i++){
-    //        
-    //        total += parseInt(document.querySelectorAll(".toAdd")[i].replace(/\D/g,'').trim());
-    //    }
-    //    return total;
-    //}
-
-    $scope.printBudget = function () {
-        budgetArray.forEach(function (bd_date, index1) {
-            dateArray.forEach(function (date, index2) {
-                if (bd_date.date === date) {
-                    $(`#dayBudget${date}`).text(bd_date.dayBudget);
-                }
-            });
-        });
+    $scope.printBudget = function (index) {
+        document.getElementById(`dayBudget${index}`).innerText = budgetArray[index];
     };
+
+    $scope.calculateTotalBudget = function () {
+        let temp = 0;
+        budgetArray.forEach((db) => {
+
+            temp += parseInt(db);
+        })
+
+        document.getElementById("totalBudget").innerText = temp;
+
+    }
+
+
     $scope.show = function (date) {
 
         return flightDateArray.includes(date);
     };
 
 
-    $scope.currencyShow = function (date) {
-        return (document.getElementById(`dayBudget${date}`).innerText.trim().length > 0);
+    $scope.currencyShow = function (index) {
+        return (document.getElementById(`dayBudget${index}`).innerText.trim().length > 0);
     };
-
-    //    $scope.showNoteIcon = function(date){
-    //      return !((document.getElementById(`noteTitle${date}`).value==="")&&(document.getElementById(`noteBody${date}`).value===""));  
-    //    };
-
 
 
     $scope.addPost = function () {
@@ -209,9 +222,16 @@ App.controller("MainCtrl", function ($scope, $http, $timeout) {
 
     $scope.addBudget = function (date, index) {
 
+        console.log(budgetArray);
+
         const budget = $(`#budgetModal${index} #budget${index}`).val().trim();
-        $(`#dayBudget${date}`).text(budget);
-        $scope.totalBudget += parseInt(budget);
+        budgetArray[index] = budget;
+        console.log(budgetArray);
+
+        $scope.printBudget(index);
+        $scope.calculateTotalBudget();
+
+
         let object = { dayBudget: budget, tripId: tripId, date: date };
         let jsonObject = JSON.stringify(object);
         console.log(jsonObject);
@@ -225,7 +245,7 @@ App.controller("MainCtrl", function ($scope, $http, $timeout) {
             data: jsonObject
         };
         $http(req).then(function (response) {
-            console.log(response);
+            console.log("successfull saveBudget");
         }).catch(() => {
             console.log("error");
         });
@@ -253,21 +273,16 @@ App.controller("MainCtrl", function ($scope, $http, $timeout) {
     };
 
 
-    $scope.showNotes = function (date) {
-        notesArray.forEach(function (note, index) {
-            if (note.date === date) {
-                return true;
-            }
-        });
-    };
+    // $scope.showNotes = function (date) {
+    //     notesArray.forEach(function (note, index) {
+    //         if (note.date === date) {
+    //             return true;
+    //         }
+    //     });
+    // };
 
 
 });
-
-
-
-
-
 
 
 

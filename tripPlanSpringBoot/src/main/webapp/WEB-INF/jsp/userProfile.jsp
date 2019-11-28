@@ -38,7 +38,7 @@
             <div class="container pt-5 animated fadeInUpBig">
                 <div class="container bootstrap snippet bg-white">
                     <div class="row">
-                        <div class="col-sm-3 shadow-lg"><!--left col-->
+                        <div class="col-sm-3 shadow-lg" style="background-color: #d4e1ee;"><!--left col-->
 
                             <div class="text-center">
                                 <h1>${pageContext.request.userPrincipal.name}</h1>
@@ -71,7 +71,7 @@
                             </div>
 
                             <ul class="list-group shadow-lg">
-                                <li class="list-group-item text-muted">Activity <i class="fa fa-dashboard fa-1x"></i></li>
+                                <li class="list-group-item text-muted" style="background-color: #f1f1f1c5;">Activity <i class="fa fa-dashboard fa-1x"></i></li>
                                 <li class="list-group-item text-right"><span class="pull-left"><strong>Shares</strong></span> 125</li>
                                 <li class="list-group-item text-right"><span class="pull-left"><strong>Likes</strong></span> 13</li>
                                 <li class="list-group-item text-right"><span class="pull-left"><strong>Posts</strong></span> 37</li>
@@ -89,7 +89,7 @@
                             <div class="tab-content">
                                 <div class="tab-pane active" id="trips">
 
-                                    <table class="border col-12 mt-5 shadow-lg" ng-show="items.length !== 0">
+                                    <table class="table table-striped table-bordered table-hover border col-12 mt-5 shadow-lg" ng-show="items.length !== 0">
                                         <thead>
                                             <tr class="bg-dark text-white">
                                                 <th class="border p-3" style="display:none;">id</th>
@@ -123,12 +123,13 @@
                                         <a href="${pageContext.request.contextPath}/user/choices" class="btn btn-info btn-md">Create New Trip</a>
                                     </div>
                                     <hr>
-                                    <p ng-show="items.length == 0">No Sketches Found</p>
+                                    <p ng-show="items.length == 0" style="font-size: 20px; font-family: Abril Fatface;">No Trips Found</p>
                                     <br>
                                     <div class="border shadow-lg text-center pb-4">
-                                        <h2 class="text-center font-weight-bold pb-5">Communication Enviroment</h2>
+                                        <h2 class="text-center font-weight-bold pb-5" style="font-size: 30px; font-family: Abril Fatface;"> SUPPORT CHANNEL </h2>
+                                        <p class="text-center">Our expertly trained support team is ready to answer your questions and solve your problems 24/7 available up to 24 hours a day and 7 days a week via chat. Also you can communicate with other users and share experiences!</p>
 
-                                        <a href="${pageContext.request.contextPath}/chat" class="btn btn-success col-2"><i class="fas fa-comments"></i> Chat </a>
+                                        <a href="${pageContext.request.contextPath}/chat" class="btn btn-success col-2 mt-4"><i class="fas fa-comments"></i> Chat </a>
                                     </div>
 
                                 </div><!--/tab-pane-->

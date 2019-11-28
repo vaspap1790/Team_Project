@@ -119,7 +119,7 @@
                                     </c:if>
                                     <c:forEach items="${flights.Itineraries}" var="it" >
                                         <s:form action="${pageContext.request.contextPath}/flight/postFlightResults" method="POST" modelAttribute="transportation">
-                                            <div class="row border shadow border-primary mt-2 ftco-animate">
+                                            <div class="row border shadow border-primary py-4 mt-2 ftco-animate">
                                                 <div class="col-md-8">
                                                     <c:forEach items="${flights.Legs}" var="f" varStatus="fcount" >
                                                         <c:if test="${f.Id == it.OutboundLegId }">
