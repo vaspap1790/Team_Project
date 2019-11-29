@@ -6,6 +6,7 @@ import com.mainpackage.tripPlan.model.Flight;
 import com.mainpackage.tripPlan.utilities.CreateJson;
 import com.mainpackage.tripPlan.webServices.SkyApi;
 import com.mashape.unirest.http.HttpResponse;
+import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -53,6 +54,7 @@ public class FlightController {
             @RequestParam(name = "inboundDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate inboundDate) throws IOException, UnirestException, ParseException {
 
         sky.createSession(flight, session, inboundDate);
+        Unirest.setTimeouts(20000,400000);
         String sessionKey=(String) session.getAttribute("sessionKey");
         
         HttpResponse<String> skyReport = sky1.sessionResults(sessionKey);
