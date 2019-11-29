@@ -35,7 +35,7 @@
         </div>
 
         <div id="chat-page" class="hidden">
-            <div class="chat-container" style="width:480px; z-index:-1!important;">
+            <div class="chat-container" style="width:480px;">
                 <div class="chat-header" style="background-color: lightgray;">
                     <h2>Chat Room</h2>
                 </div>
