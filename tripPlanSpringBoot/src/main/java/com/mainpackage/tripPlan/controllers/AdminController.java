@@ -2,6 +2,8 @@
 package com.mainpackage.tripPlan.controllers;
 
 
+import com.mainpackage.tripPlan.model.User;
+import com.mainpackage.tripPlan.repositories.UserRepo;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +13,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import java.lang.Iterable;
+import java.util.*;
+import javax.transaction.Transactional;
 
 @Controller
 @RequestMapping(value = "admin/")
@@ -18,25 +23,17 @@ public class AdminController {
 
 //    @Autowired
 //    AdminService adminService;
+    @Autowired
+    UserRepo userRepo;
     
-    @GetMapping(value = "adminRegister")
-    public String form(ModelMap m) {
-        
-//        Admin admin = new Admin();
-//        m.addAttribute("admin", admin);
-        return "forms/adminRegister";
-    }
 
-//    @PostMapping(value = "postRegister")
-//    public ModelAndView post(@ModelAttribute("admin") Admin admin) {
-//
-//        adminService.insert(admin);
-//
-//        return new ModelAndView("redirect:/");
-//    }
 
     @GetMapping(value="administration")
-    public String administration (){
+    @Transactional
+    public String administration (ModelMap m){
+        
+        List<User> users=userRepo.findAllUsers();
+        m.addAttribute("users",users);
         return "administration/admin";
     }
     

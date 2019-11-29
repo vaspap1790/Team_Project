@@ -38,6 +38,7 @@ $(document).ready(function () {
                         "x-rapidapi-host": "apidojo-booking-v1.p.rapidapi.com",
                         "x-rapidapi-key": "7b289bfc4emsh8f06189af10e8a3p1ef94cjsnd2fffd899a1b"
                     }
+//                    1906a2b529mshdda175c220c23f1p1ea9ffjsne37101d1c044
                 };
 
                 $.ajax(settings).done(function (response) {

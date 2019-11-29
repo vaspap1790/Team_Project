@@ -55,7 +55,7 @@ public class WelcomeController {
     public String form(ModelMap m) {
         m.addAttribute("user", new User());
         return "forms/register";
-    }
+    } 
 
     @PostMapping(value = "/postRegister")
     public ModelAndView post(HttpServletRequest request, @Valid @ModelAttribute("user") User user,
@@ -64,7 +64,6 @@ public class WelcomeController {
         if (br.hasErrors()) {
             return new ModelAndView("redirect:/register");
         }
-
         if (check.isNotNull(userRepo.findByUsername(user.getUsername()))) {
             redirectAttrs.addFlashAttribute("error","This username is already in use");
             return new ModelAndView("redirect:/register");

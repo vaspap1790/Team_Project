@@ -1,4 +1,5 @@
-
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+<%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -28,7 +29,7 @@
                 <div class="row">
 
                     <jsp:include page="../components/adminAside.jsp"/>
-                    
+
                     <div class="col-md-9">
 
                         <!-- Website Overview -->
@@ -71,51 +72,26 @@
                             </div>
                             <div class="panel-body">
                                 <table class="table table-striped table-hover">
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Joined</th>
-                                    </tr>
-                                    <tr>
-                                        <td>Jill Smith</td>
-                                        <td>jillsmith@gmail.com</td>
-                                        <td>Dec 12, 2016</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Eve Jackson</td>
-                                        <td>ejackson@yahoo.com</td>
-                                        <td>Dec 13, 2016</td>
-                                    </tr>
-                                    <tr>
-                                        <td>John Doe</td>
-                                        <td>jdoe@gmail.com</td>
-                                        <td>Dec 13, 2016</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Stephanie Landon</td>
-                                        <td>landon@yahoo.com</td>
-                                        <td>Dec 14, 2016</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Mike Johnson</td>
-                                        <td>mjohnson@gmail.com</td>
-                                        <td>Dec 15, 2016</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Curt Douglas</td>
-                                        <td>cdougl@gmail.com</td>
-                                        <td>Dec 15, 2016</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Matt Davidson</td>
-                                        <td>mdavidson@gmail.com</td>
-                                        <td>Dec 15, 2016</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Cat Anniston</td>
-                                        <td>catherine@gmail.com</td>
-                                        <td>Dec 15, 2016</td>
-                                    </tr>
+                                    <tbody>
+                                    <thead>
+                                    <th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Role</th>
+                                    </th>
+                                    </thead>
+                                    <c:forEach items="${users}" var="user"> 
+                                        <tr>
+                                            <td></td>
+                                            <td>${user.username}</td>
+                                            <td>${user.email}</td>
+                                            <td>${user.roleRef.this1}</td>
+                                            <td><a class="btn btn-default" href="editUser.html">Edit</a> 
+                                                <a class="btn btn-danger"  href="#">Delete</a>
+                                            </td>
+                                        </tr>
+                                    </c:forEach>
+                                    </tbody>
                                 </table>
                             </div>
                         </div>
@@ -127,6 +103,6 @@
         <jsp:include page="../components/adminFooter.jsp"/>
         <jsp:include page="../components/adminModals.jsp"/>
         <jsp:include page="../components/adminScripts.jsp"/>
-        
+
     </body>
 </html>
