@@ -40,13 +40,13 @@
                             <div class="panel-body">
                                 <div class="col-md-3">
                                     <div class="well dash-box">
-                                        <h2><span class="glyphicon glyphicon-user" aria-hidden="true"></span> 20</h2>
+                                        <h2><i class="fas fa-user-friends"></i></span> 20</h2>
                                         <h4>Users</h4>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="well dash-box">
-                                        <h2><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> 1</h2>
+                                        <h2><i class="far fa-file-alt"></i></span> 1</h2>
                                         <h4>Pages</h4>
                                     </div>
                                 </div>
@@ -58,7 +58,7 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="well dash-box">
-                                        <h2><span class="glyphicon glyphicon-stats" aria-hidden="true"></span> 564</h2>
+                                        <h2><i class="fas fa-male"></i></span> 564</h2>
                                         <h4>Visitors</h4>
                                     </div>
                                 </div>

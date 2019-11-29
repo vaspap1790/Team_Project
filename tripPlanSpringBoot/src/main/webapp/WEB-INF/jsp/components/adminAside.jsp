@@ -4,40 +4,40 @@
             <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Dashboard
         </a>
         <a href="pages.html" class="list-group-item">
-            <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Pages <span class="badge">1</span>
+            <i class="far fa-file-alt"></i></span> Pages <span class="badge">1</span>
         </a>
         <a href="posts.html" class="list-group-item">
             <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Posts <span class="badge">33</span>
         </a>
         <a href="users.html" class="list-group-item">
-            <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Users <span class="badge">20</span>
+            <i class="fas fa-user-friends"></i></span> Users <span class="badge">20</span>
         </a>
         <a href="courses.html" class="list-group-item">
             <i class="fas fa-book"></i> Administrators<span class="badge">4</span>
         </a>
         <a href="trainers.html" class="list-group-item">
-            <i class="fas fa-chalkboard-teacher"></i> Trips <span class="badge">10</span>
+            <i class="fas fa-suitcase"></i> Trips <span class="badge">10</span>
         </a>
         <a href="students.html" class="list-group-item"> 
-            <i class="fas fa-user-graduate"></i> Transportation <span class="badge">40</span>
+            <i class="fas fa-plane"></i> Transportation <span class="badge">40</span>
         </a>
         <a href="assignments.html" class="list-group-item">
-            <i class="fas fa-file-alt"></i> Comments <span class="badge">81</span>
+            <i class="fas fa-comment-alt"></i> Comments <span class="badge">81</span>
         </a>
         <a href="assignments.html" class="list-group-item">
-            <i class="fas fa-file-alt"></i> Location <span class="badge">81</span>
+            <i class="fas fa-map-marked-alt"></i> Location <span class="badge">81</span>
         </a>
         <a href="assignments.html" class="list-group-item">
-            <i class="fas fa-file-alt"></i> Photos <span class="badge">81</span>
+            <i class="fas fa-camera-retro"></i> Photos <span class="badge">81</span>
         </a>
         <a href="assignments.html" class="list-group-item">
-            <i class="fas fa-file-alt"></i> Rental <span class="badge">81</span>
+            <i class="fas fa-car"></i> Rental <span class="badge">81</span>
         </a>
         <a href="assignments.html" class="list-group-item">
-            <i class="fas fa-file-alt"></i> BarRestaurant <span class="badge">81</span>
+            <i class="fas fa-utensils"></i> BarRestaurant <span class="badge">81</span>
         </a>
         <a href="assignments.html" class="list-group-item">
-            <i class="fas fa-file-alt"></i> ThingsToDo <span class="badge">81</span>
+            <i class="far fa-clipboard"></i> ThingsToDo <span class="badge">81</span>
         </a>
     </div>
 
