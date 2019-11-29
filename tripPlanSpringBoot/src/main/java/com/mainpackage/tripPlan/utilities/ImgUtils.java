@@ -17,7 +17,7 @@ import org.springframework.stereotype.Component;
 public class ImgUtils {
 
     public byte[] defaultImage() throws Exception {
-        URL urlInput = new URL("https://greendestinations.org/wp-content/uploads/2019/05/avatar-exemple.jpg");
+        URL urlInput = new URL("https://www.pinclipart.com/picdir/middle/379-3796154_profile-clipart-john-doe-circle-png-download.png");
         BufferedImage bImage = ImageIO.read(urlInput);
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         ImageIO.write(bImage, "jpg", bos);

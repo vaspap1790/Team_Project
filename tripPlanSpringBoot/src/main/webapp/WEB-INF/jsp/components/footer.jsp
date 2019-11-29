@@ -60,8 +60,8 @@
         </div>
         <div class="row">
             <div class="col-md-12 text-center">
-
-                <p>Copyright &copy;
+                
+                <p><img src="https://image.flaticon.com/icons/svg/201/201623.svg" style="width:20px;"/> Copyright &copy;
                     <script>document.write(new Date().getFullYear());</script> All rights reserved</p>
             </div>
         </div>

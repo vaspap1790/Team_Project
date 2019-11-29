@@ -26,7 +26,7 @@
             </div>
 
             <!-- Main Container -->
-            <div class="container border up col-9 animated fadeInUpBig" id="main">
+            <div class="container border up col-8 animated fadeInUpBig" id="main">
 
                 <!-- Title -->
                 <div class="row d-flex flex-row justify-content-around align-items-center ">

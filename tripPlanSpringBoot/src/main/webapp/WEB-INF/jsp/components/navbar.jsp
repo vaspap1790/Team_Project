@@ -5,8 +5,8 @@
     <div class="container-fluid px-0 row">
 
         <div class="col-xl-7 offset-xl-1 col-lg-8 d-flex align-items-center flex-wrap justify-content-between">
-
-            <a class="navbar-brand" href="${pageContext.request.contextPath}/">TripPlanner</a>
+            <img src="https://image.flaticon.com/icons/svg/201/201623.svg" style="width:40px;"/>
+            <a class="navbar-brand ml-2" href="${pageContext.request.contextPath}/">TripPlanner</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
                     aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="oi oi-menu"></span> Menu

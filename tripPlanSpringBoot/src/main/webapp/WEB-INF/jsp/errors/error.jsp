@@ -12,7 +12,9 @@
         <link href="https://fonts.googleapis.com/css?family=Montserrat:200,400,700" rel="stylesheet">
 
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/errorpagecss/style.css">
-
+        <link rel="shortcut icon"
+              href="https://cdn.iconscout.com/icon/premium/png-256-thumb/compass-1098-751593.png"
+              type="image/x-icon">
     </head>
 
     <body>
@@ -26,7 +28,7 @@
                 <a href="${pageContext.request.contextPath}/">Go TO Homepage</a>
             </div>
         </div>
-        
+            
     </body>
 </html>
 

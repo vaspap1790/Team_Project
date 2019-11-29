@@ -10,7 +10,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>404 Error Page</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="shortcut icon" href="https://i.ibb.co/NYjrFJC/keyboard.png" type="image/x-icon">
+    <link rel="shortcut icon"
+              href="https://cdn.iconscout.com/icon/premium/png-256-thumb/compass-1098-751593.png"
+              type="image/x-icon">
 </head>
 
 <body>
@@ -35,7 +37,7 @@
     </section>
 
     <footer id="footer" class="text-center">
-        <p><img src="https://i.ibb.co/YfsyLGp/logo.png" style="height: 1.5rem;"> Copyright AdminCS, &copy; 2019</p>
+        <p><img src="https://image.flaticon.com/icons/svg/201/201623.svg" style="width:20px;"/> Copyright TripPlanner, &copy; 2019</p>
     </footer>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

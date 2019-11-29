@@ -1,4 +1,6 @@
-
+<link rel="shortcut icon"
+              href="https://cdn.iconscout.com/icon/premium/png-256-thumb/compass-1098-751593.png"
+              type="image/x-icon">
 
 <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">

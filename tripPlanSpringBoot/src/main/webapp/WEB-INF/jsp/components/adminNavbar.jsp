@@ -31,7 +31,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-10">
-                <h1><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Dashboard <small> Manage Your
+                <h1><img src="https://image.flaticon.com/icons/svg/201/201623.svg" style="width:40px;"/> Dashboard <small> Manage Your
                         Site</small>
                 </h1>
             </div>
