@@ -1,7 +1,9 @@
-# Team_Project
+# Team_Project 
 
+An application where you can build,manage and share your trips 
+Administration Site
 
-Admins
+Admin
 stergios,1234
 
 User
