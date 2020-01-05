@@ -11,12 +11,10 @@ Users:
 dimitris 1234
 bill 1234
 
-mail:
-
+mail: 
 tripPlannerBeta@gmail.com
 
-password:
-
+password: 
 mivast13
 
 
