@@ -4,18 +4,18 @@ An application where you can build,manage and share your trips
 
 Administration Site
 
-Admin
+Admin:
 stergios,1234
 
-User
+Users:
 dimitris 1234
 bill 1234
 
-mail
+mail:
 
 tripPlannerBeta@gmail.com
 
-password
+password:
 
 mivast13
 
